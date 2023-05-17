@@ -27,12 +27,23 @@ const StyledImg = styled.img`
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position='fixed'
+        sx={{ backgroundColor: '#131714' }}
+      >
         <Toolbar>
           <StyledImg src={EngsocLogo} />
+          <Typography
+            variant='h1'
+            fontSize='2.5rem'
+            fontWeight='400'
+            sx={{ ml: '2rem' }}
+          >
+            ENGSOC MERCH
+          </Typography>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   )
 }
 
