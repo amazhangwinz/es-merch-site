@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
 import EngsocLogo from '../assets/EngsocLogo.svg';
 import {
   Box,
@@ -25,10 +26,21 @@ const StyledImg = styled.img`
 
 
 const Navbar = () => {
+  // used to switch pages
+  const navigate = useNavigate();
+
+  const homeLink = () => {
+    navigate("/")
+  }
+
+  const cartLink = () => {
+    navigate("/cart")
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
-        position='fixed'
+        position='static'
         sx={{ backgroundColor: '#131714' }}
       >
         <Toolbar>
@@ -37,9 +49,19 @@ const Navbar = () => {
             variant='h1'
             fontSize='2.5rem'
             fontWeight='400'
-            sx={{ ml: '2rem' }}
+            sx={{ ml: '2rem', cursor: 'pointer' }}
+            onClick={homeLink}
           >
             ENGSOC MERCH
+          </Typography>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: 'pointer' }}
+            onClick={cartLink}
+          >
+            Cart
           </Typography>
         </Toolbar>
       </AppBar>

@@ -4,7 +4,7 @@ const Homepage = () => {
   return (
     <div>
       <h1>
-        HOMEPAGE
+        HOME PAGE
       </h1>
     </div>
   )
