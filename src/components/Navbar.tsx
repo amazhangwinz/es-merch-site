@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import EngsocLogo from '../assets/EngsocLogo.svg';
 import {
   Box,
@@ -38,10 +38,10 @@ const Navbar = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: 'sticky', top: '0'}}>
       <AppBar
         position='static'
-        sx={{ backgroundColor: '#131714' }}
+        sx={{ backgroundColor: '#1C3A59' }}
       >
         <Toolbar>
           <StyledImg src={EngsocLogo} />
