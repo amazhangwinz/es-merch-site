@@ -2,11 +2,11 @@ import React from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
 import img from '../assets/plush.jpg';
 import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
+    Box,
+    AppBar,
+    Toolbar,
+    Typography,
+    Container,
 } from '@mui/material';
 import styled from "styled-components";
 
@@ -51,26 +51,25 @@ type Props = {
     img: string;
 }
 
-const RelatedItemBox = (props:Props) => {
+const RelatedItemBox = (props: Props) => {
 
-  return (
-
-    <Box
-    maxWidth = "xs">
-        <StyledImg src={props.img} />
-        <Typography
-        variant = "body1">
-        <StyledText>
-            {props.itemtext}
-        </StyledText>
-        </Typography>
-        <Typography
-        variant = "body1">
-             <BoldStyledText>
-            {"$"+ props.price.toFixed(2)}
-            </BoldStyledText>
-        </Typography>
-    </Box>
-  )
+    return (
+        <Box
+            maxWidth="xs">
+            <StyledImg src={props.img} />
+            <Typography
+                variant="body1">
+                <StyledText>
+                    {props.itemtext}
+                </StyledText>
+            </Typography>
+            <Typography
+                variant="body1">
+                <BoldStyledText>
+                    {"$" + props.price.toFixed(2)}
+                </BoldStyledText>
+            </Typography>
+        </Box>
+    )
 }
 export default RelatedItemBox;
