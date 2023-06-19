@@ -55,10 +55,12 @@ const RelatedItemBox = (props: Props) => {
 
     return (
         <Box
-            maxWidth="xs">
+            maxWidth="xs"
+        >
             <StyledImg src={props.img} />
             <Typography
-                variant="body1">
+                variant="body1"
+            >
                 <StyledText>
                     {props.itemtext}
                 </StyledText>
