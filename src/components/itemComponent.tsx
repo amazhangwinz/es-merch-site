@@ -9,8 +9,8 @@ type Props = {
 const ItemDescription = ({productName, price, description} : Props) => {
   return (
     <div>
-      <h1>{productName}</h1>
-      <h2>Price: ${price}</h2>
+      <h1><b>{productName}</b></h1>
+      <h2><b>Price: ${price}</b></h2>
       <p>{description}</p>
     </div>
   );

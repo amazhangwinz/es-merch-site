@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.itemDescription {
+  font-family:'Courier New', Courier, monospace;
+  color: rgba(73, 73, 223, 0.479);
+}
+
+.descriptionBox {
+  background-color: rgb(209, 207, 207);
+}
