@@ -6,7 +6,7 @@ type Props = {
   description: string;
 }
 
-const ItemDescription = (Props) => {
+const ItemDescription = ({productName, price, description} : Props) => {
   return (
     <div>
       <h1>{productName}</h1>
@@ -17,22 +17,3 @@ const ItemDescription = (Props) => {
 };
 
 export default ItemDescription;
-
-const SingleItemPage = () => {
-  const productName = "Limited Edition Plush";
-  const price = "$24.50";
-  const description = "If you love baking cookies, eating almond pound cake and cuddling with cute animals, you will adore this sanrio my melody plush.";
-
-  return (
-    <div>
-      <h1>Single Item Page</h1>
-      <ItemDescription
-        productName={productName}
-        price={price}
-        description={description}
-      />
-    </div>
-  );
-};
-
-export default SingleItemPage;
