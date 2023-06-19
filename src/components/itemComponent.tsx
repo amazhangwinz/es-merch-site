@@ -1,6 +1,12 @@
 import React from 'react';
 
-const ItemDescription = ({ productName, price, description }) => {
+type Props = {
+  productName: string;
+  price: number;
+  description: string;
+}
+
+const ItemDescription = (Props) => {
   return (
     <div>
       <h1>{productName}</h1>
