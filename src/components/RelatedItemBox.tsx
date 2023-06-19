@@ -48,7 +48,7 @@ const RelatedItemBox = () => {
 
   return (
 
-    <Container
+    <Box
     maxWidth = "xs">
             <StyledImg src={img} />
         <Typography
@@ -63,7 +63,7 @@ const RelatedItemBox = () => {
             {"$"+ Price.toFixed(2)}
             </BoldStyledText>
         </Typography>
-    </Container>
+    </Box>
   )
 }
 export default RelatedItemBox;
