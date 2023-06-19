@@ -44,23 +44,30 @@ const ItemName = "Sanrio Plush";
 
 const Price = 20.50;
 
-const RelatedItemBox = () => {
+type Props = {
+    children?: any;
+    price: number;
+    itemtext: string;
+    img: string;
+}
+
+const RelatedItemBox = (props:Props) => {
 
   return (
 
     <Box
     maxWidth = "xs">
-            <StyledImg src={img} />
+        <StyledImg src={props.img} />
         <Typography
         variant = "body1">
-            <StyledText>
-            {ItemName}
-            </StyledText>
+        <StyledText>
+            {props.itemtext}
+        </StyledText>
         </Typography>
         <Typography
         variant = "body1">
              <BoldStyledText>
-            {"$"+ Price.toFixed(2)}
+            {"$"+ props.price.toFixed(2)}
             </BoldStyledText>
         </Typography>
     </Box>
