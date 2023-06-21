@@ -31,10 +31,10 @@ const Cartpage = () => {
           description="Hoodie"
           colour="Green"
           size="Small"
-          unitPrice={75}
+          unitPrice={50}
           quantity={Quantity} 
           removeItem={Bin} 
-          total={150} 
+          total={100} 
         />
         <CartCard
           image={Neel} 
