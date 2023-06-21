@@ -20,7 +20,7 @@ const Cartpage = () => {
           description="Limited Edition Hoodie"
           colour="Black"
           size="Small"
-          unitPrice={75}
+          unitPrice={100}
           quantity={Quantity} 
           removeItem={Bin} 
           total={200} 
@@ -34,7 +34,7 @@ const Cartpage = () => {
           unitPrice={75}
           quantity={Quantity} 
           removeItem={Bin} 
-          total={75} 
+          total={150} 
         />
         <CartCard
           image={Neel} 
@@ -45,7 +45,7 @@ const Cartpage = () => {
           unitPrice={20}
           quantity={Quantity} 
           removeItem={Bin} 
-          total={20} 
+          total={40} 
         />
 			</div>
     </div>

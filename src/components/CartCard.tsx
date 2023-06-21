@@ -57,7 +57,7 @@ const CartCard = (props: Prop) => {
 			<StyledProperty style = {{width: '20%'}}>
   				<StyledImage style = {{width: '100%'}} src={props.image} alt=""/>
 			</StyledProperty>
-			<StyledProperty style = {{width: '30%'}}> 
+			<StyledProperty style = {{width: '30%', justifyContent: 'left', paddingLeft: '2%'}}> 
 				<StyledText>
 					<StyledTitle>{props.title}</StyledTitle>
 					<StyledInfo>Product: {props.description}</StyledInfo>
