@@ -4,7 +4,6 @@ import Winnie from '../assets/WinnieZhang.png'
 import Quantity from '../assets/Quantity.png'
 import Bin from '../assets/Bin.png'
 
-
 const Cartpage = () => {
   return (
     <div>
@@ -22,7 +21,7 @@ const Cartpage = () => {
           quantity={Quantity} 
           removeItem={Bin} 
           total={200} 
-          />
+        />
 			</div>
     </div>
   )

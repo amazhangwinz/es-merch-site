@@ -33,7 +33,6 @@ const StyledProperty = styled.div`
 const StyledImage = styled.img`
 	width: 100%;
 `;
-
 // const StyledImage = styled.img`
 // 	width: ${(props) => props.width || "100%"};
 // `;
@@ -47,23 +46,13 @@ const StyledText = styled.div`
 const StyledTitle = styled.div`
 	font-size: 25px
 `;
+
 const StyledInfo = styled.div`
 	font-size: 15px
 `;
 
-const StyledTotal = styled.div`
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	padding: 1rem;
-	box-sizing: border-box;
-	align-items: flex-start;
-`;
-
 const CartCard = (props: Prop) => {
 	return (
-		
 		<StyledProduct>
 			<StyledProperty style = {{width: '20%'}}>
   				<StyledImage style = {{width: '100%'}} src={props.image} alt=""/>
