@@ -44,11 +44,11 @@ const StyledText = styled.div`
 `;
 
 const StyledTitle = styled.div`
-	font-size: 25px
+	font-size: 200%
 `;
 
 const StyledInfo = styled.div`
-	font-size: 15px
+	font-size: 100%
 `;
 
 const CartCard = (props: Prop) => {
