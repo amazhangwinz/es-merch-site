@@ -86,20 +86,6 @@ const CartCard = (props: Prop) => {
 			<StyledProperty style = {{width: '20%'}}>  
 				<StyledTitle>${props.total}</StyledTitle>
 			</StyledProperty>
-
-
-			{/* <StyledText>
-				<StyledTitle>{props.title}</StyledTitle>
-				<StyledInfo>Product: {props.description}</StyledInfo>
-				<StyledInfo>Colour: {props.colour}</StyledInfo>
-				<StyledInfo>Size: {props.size}</StyledInfo>
-				<StyledInfo>Unit Price: ${props.unitPrice}</StyledInfo>
-			</StyledText>
-			<StyledImage src={props.quantity} alt="" />
-			<StyledImage src={props.removeItem} alt="" />
-			<StyledText>
-				<StyledTitle>${props.total}</StyledTitle>
-			</StyledText> */}
 		</StyledProduct>
 	);
 };
