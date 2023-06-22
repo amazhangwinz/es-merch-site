@@ -14,7 +14,7 @@ const StyledComponent = styled.div`
 	display: flex;
 	height: 10vw;
 	width: 30vw;
-	border-radius: 10px;
+	border-radius: 0.75vw;
 	background: #fbf9f9;
 	margin: 1.75vw;
 	box-shadow: 3px 5px 2px silver;
@@ -25,7 +25,7 @@ const StyledContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding: 1rem;
+	padding: 1vw;
 	box-sizing: border-box;
 	align-items: flex-start;
 `;
@@ -34,20 +34,31 @@ const StyledImage = styled.img`
 	height: 100%;
 	width: auto;
 	max-width: 33%;
-	border-radius: 0 10px 10px 0;
+	border-radius: 0 0.75vw 0.75vw 0;
 `;
 
 const StyledPrice = styled.p`
 	margin-bottom: 0;
+	font-size: 1.1vw;
+`;
+
+const StyledTitle = styled.h1`
+	margin-bottom: 0;
+	height: 2.5vw;
+	font-size: 1.25vw;
+	margin: 0;
+	cursor: pointer;
 `;
 
 const StyledDescription = styled.p`
-	max-width: 60vw;
-	max-height: 10vw;
+	margin: 0;
+	width: 100%;
+	height: 25vw;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	word-wrap: break-word;
+	font-size: 1vw;
 `;
 
 const StyledColours = styled.p`
@@ -58,8 +69,8 @@ const StyledColours = styled.p`
 `;
 
 const ColourCircles = styled.div`
-	height: 20px;
-	width: 20px;
+	height: 1.4vw;
+	width: 1.4vw;
 	border-radius: 50%;
 	margin: 0;
 	margin-right: 0.5rem;
@@ -75,11 +86,12 @@ const ItemCard = (props: Prop) => {
 	return (
 		<StyledComponent>
 			<StyledContent>
-				<h1 onClick={productPage} style={{ margin: 0, cursor: 'pointer', fontSize: '130%' }}>
-					{props.title}
-				</h1>
+				<StyledTitle onClick={productPage}>{props.title}</StyledTitle>
 				<StyledDescription style={{ margin: 0, textAlign: 'left', height: '3rem' }}>{props.description}</StyledDescription>
-				<StyledPrice style={{ margin: 0, marginBottom: 5 }}>${props.price}</StyledPrice>
+				<StyledPrice style={{ margin: 0, marginBottom: 5 }}>
+					<b>$</b>
+					{props.price}
+				</StyledPrice>
 				<StyledColours style={{ margin: 0 }}>
 					{props.colours.map((colour) => (
 						<ColourCircles style={{ background: `linear-gradient(190deg, ${colour}, grey 125%)` }}></ColourCircles>
