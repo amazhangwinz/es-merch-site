@@ -16,7 +16,7 @@ function App() {
           <Route path='/cart' element={<Cartpage />} />
         </Routes>
         <div className = "descriptionBox">
-          <ItemDescription className ="itemDescription"
+          <ItemDescription
             productName={"Limited Edition Plush"}
             price={24.50}
             description={"If you love baking cookies, eating almond pound cake and cuddling with cute animals, you will adore this sanrio my melody plush."}

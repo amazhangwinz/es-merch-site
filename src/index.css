@@ -13,10 +13,16 @@ code {
 }
 
 .itemDescription {
-  font-family:'Courier New', Courier, monospace;
-  color: rgba(73, 73, 223, 0.479);
+  font-family: sans-serif;
+  color: rgba(16, 16, 99, 0.904);
+  text-align: left;
+  text-indent: 5%;
 }
 
 .descriptionBox {
-  background-color: rgb(209, 207, 207);
+  background-color: rgba(235, 232, 232, 0.74);
+  width: 20%;
+  line-height: 160%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
