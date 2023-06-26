@@ -21,6 +21,7 @@ import styled from "styled-components";
  * @link https://styled-components.com/docs/basics
 */
 const StyledImg = styled.img`
+  
   width: 2.5rem;
 `;
 
@@ -67,6 +68,7 @@ const Navbar = () => {
       </AppBar>
     </Box >
   )
+
 }
 
 export default Navbar;
