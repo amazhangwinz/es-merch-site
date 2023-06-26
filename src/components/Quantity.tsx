@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
-interface QuantityProps {
+interface Props {
   count: number;
+  onCountChange: (newCount: number) => void;
 }
 
-const Quantity: React.FC<QuantityProps> = ({ count }) => {
-  const [currentCount, setCurrentCount] = useState(count);
+const QuantityWrapper = styled.div`
+  display: inline-block;
+  border: 1px solid black;
+  width: 7rem
+`;
 
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 2rem
+`;
+
+const Count = styled.span`
+  border: none;
+  vertical-align: middle;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 3rem
+`;
+
+const Quantity: React.FC<Props> = ({ count, onCountChange }) => {
   const handleIncrease = () => {
-    setCurrentCount(currentCount + 1);
+    onCountChange(count + 1);
   };
 
   const handleDecrease = () => {
-    if (currentCount > 1) {
-      setCurrentCount(currentCount - 1);
+    if (count > 1) {
+      onCountChange(count - 1);
     }
   };
 
   return (
-    <div>
-      <button onClick={handleDecrease}>-</button>
-      <span>{currentCount}</span>      
-      <button onClick={handleIncrease}>+</button>
-    </div>
+    <QuantityWrapper>
+      <Button onClick={handleDecrease}>-</Button>
+      <Count>{count}</Count>
+      <Button onClick={handleIncrease}>+</Button>
+    </QuantityWrapper>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -53,7 +53,13 @@ const StyledInfo = styled.div`
 `;
 
 const CartCard = (props: Prop) => {
-	const total = props.unitPrice * props.quantity
+	const [quantity, setQuantity] = useState(props.quantity);
+	const total = props.unitPrice * quantity;
+
+	const handleQuantityChange = (newQuantity: number) => {
+		setQuantity(newQuantity);
+	};
+	
 	return (
 		<StyledProduct>
 			<StyledProperty style = {{width: '20%'}}>
@@ -69,7 +75,7 @@ const CartCard = (props: Prop) => {
 				</StyledText>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 
-				<Quantity count={props.quantity} />
+				<Quantity count={quantity} onCountChange={handleQuantityChange} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
 				<StyledImage style = {{width: '30%'}}src={props.removeItem} alt=""/>
