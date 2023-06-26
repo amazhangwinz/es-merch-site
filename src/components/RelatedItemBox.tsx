@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useNavigate } from "react-router-dom";
-import img from '../assets/plush.jpg';
+
 import {
     Box,
     AppBar,
@@ -40,9 +40,9 @@ const BoldStyledText = styled(StyledText)`
 
 `;
 
-const ItemName = "Sanrio Plush";
+// const ItemName = "Sanrio Plush";
 
-const Price = 20.50;
+// const Price = 20.50;
 
 type Props = {
     children?: any;
