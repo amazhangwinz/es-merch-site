@@ -1,10 +1,12 @@
 import React from 'react'
 import CartCard from '../components/CartCard';
+import Quantity from '../components/Quantity';
+
 import Winnie from '../assets/WinnieZhang.png'
 import Lawrence from '../assets/LawrenceChau.png'
 import Neel from '../assets/NeelDutta.png'
 
-import Quantity from '../assets/Quantity.png'
+import QuantityPic from '../assets/Quantity.png'
 import Bin from '../assets/Bin.png'
 
 const Cartpage = () => {
@@ -15,15 +17,15 @@ const Cartpage = () => {
       </h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
 				<CartCard
-          image={Winnie} 
+          image={Winnie}
           title="Winnie Zhang"
           description="Limited Edition Hoodie"
           colour="Black"
           size="Small"
           unitPrice={100}
-          quantity={Quantity} 
+          quantity={1}
           removeItem={Bin} 
-          total={200} 
+          // total={0}        
         />
         <CartCard
           image={Lawrence} 
@@ -32,9 +34,9 @@ const Cartpage = () => {
           colour="Green"
           size="Small"
           unitPrice={50}
-          quantity={Quantity} 
+          quantity={1} 
           removeItem={Bin} 
-          total={100} 
+          // total={100} 
         />
         <CartCard
           image={Neel} 
@@ -43,9 +45,9 @@ const Cartpage = () => {
           colour="Neon blue"
           size="N/A"
           unitPrice={20}
-          quantity={Quantity} 
+          quantity={1} 
           removeItem={Bin} 
-          total={40} 
+          // total={40} 
         />
 			</div>
     </div>

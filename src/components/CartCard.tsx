@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
+import Quantity from './Quantity';
+
 interface Prop {
 	image: string;
 	title: string;
@@ -9,9 +11,8 @@ interface Prop {
 	colour: string;
 	size: string;
 	unitPrice: number;
-	quantity: string;
+	quantity: number;
 	removeItem: string;
-	total: number;
 }
 
 const StyledProduct = styled.div`
@@ -52,6 +53,7 @@ const StyledInfo = styled.div`
 `;
 
 const CartCard = (props: Prop) => {
+	const total = props.unitPrice * props.quantity
 	return (
 		<StyledProduct>
 			<StyledProperty style = {{width: '20%'}}>
@@ -67,13 +69,13 @@ const CartCard = (props: Prop) => {
 				</StyledText>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 
-				<StyledImage style = {{width: '65%'}} src={props.quantity} alt=""/>
+				<Quantity count={props.quantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
 				<StyledImage style = {{width: '30%'}}src={props.removeItem} alt=""/>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}>  
-				<StyledTitle>${props.total}</StyledTitle>
+				<StyledTitle>${total}</StyledTitle>
 			</StyledProperty>
 		</StyledProduct>
 	);
