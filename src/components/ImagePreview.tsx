@@ -65,7 +65,7 @@ class imagegallery {
     }
 }
 
-const promotetoHero = () => {
+const promotetoHero = (event ,imageid:number) => {
     const images = new imagegallery();
 };
 
@@ -74,10 +74,10 @@ const promotetoHero = () => {
 const ImagePreview = () => {
     return (
         <StyledGird>
-            <StyledImg src={img}></StyledImg>
-            <LargeStyledImg src={img1}></LargeStyledImg>
-            <StyledImg src={img2}></StyledImg>
-            <StyledImg src={img3}></StyledImg>
+            <StyledImg src={img} onClick={(event) => promotetoHero (event, 1)}></StyledImg>
+            <LargeStyledImg src={img1} onClick={(event) => promotetoHero (event, 2)}></LargeStyledImg>
+            <StyledImg src={img2} onClick={(event) => promotetoHero (event, 3)}></StyledImg>
+            <StyledImg src={img3} onClick={(event) => promotetoHero (event, 4)}></StyledImg>
         </StyledGird>
     )
 
