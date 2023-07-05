@@ -24,28 +24,43 @@ const StyledGird = styled.div`
     grid-template-columns: repeat(var(--num-cols), 1fr);
     grid-auto-rows: var(--row-row);
     gap: var(--gap);
+//  width: 36.5625rem;
+//  height: 28.125rem;
 
 `
 const StyledImg = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 0.625rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-self: stretch;
+
 `
 
 const LargeStyledImg = styled.img`
     width: 100%;
     height: 100%;
+    flex-shrink: 0;
     object-fit: cover;
     grid-column: span 3;
     grid-row: span 3;
+    justify-self: stretch;
+    border-radius: 0.625rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-self: stretch;
+
 `
 
-// class imagegallery {
-//     id: Array<string>;
-//     constructor() {
-
-//     }
-// }
+class imagegallery {
+    id: Array<String>;
+    constructor() {
+        this.id = new Array<String>;
+    }
+    addImage(src: String){
+        this.id.push(src);
+    }
+}
 
 // const promotetoHero(){
 
@@ -53,7 +68,7 @@ const LargeStyledImg = styled.img`
 
 // const image() {
 // id: string;
-// string: 
+// string:
 // }
 
 const ImagePreview = () => {
