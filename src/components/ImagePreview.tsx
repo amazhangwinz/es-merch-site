@@ -60,10 +60,13 @@ class imagegallery {
     addImage(src: String) {
         this.id.push(src);
     }
+    getImage(id: number) {
+        return this.id[id];
+    }
 }
 
 const promotetoHero = () => {
-
+    const images = new imagegallery();
 };
 
 
