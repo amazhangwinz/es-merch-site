@@ -57,19 +57,16 @@ class imagegallery {
     constructor() {
         this.id = new Array<String>;
     }
-    addImage(src: String){
+    addImage(src: String) {
         this.id.push(src);
     }
 }
 
-// const promotetoHero(){
+const promotetoHero = () => {
 
-// }
+};
 
-// const image() {
-// id: string;
-// string:
-// }
+
 
 const ImagePreview = () => {
     return (
