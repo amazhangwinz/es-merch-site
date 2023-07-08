@@ -63,21 +63,21 @@ class imagegallery {
     getImage(id: number) {
         return this.id[id];
     }
+
 }
 
-const promotetoHero = (event ,imageid:number) => {
-    const images = new imagegallery();
-};
 
 
 
 const ImagePreview = () => {
+    const [heroSrc, setHero] = useState(img);
+    const images = new imagegallery();
     return (
         <StyledGird>
-            <StyledImg src={img} onClick={(event) => promotetoHero (event, 1)}></StyledImg>
-            <LargeStyledImg src={img1} onClick={(event) => promotetoHero (event, 2)}></LargeStyledImg>
-            <StyledImg src={img2} onClick={(event) => promotetoHero (event, 3)}></StyledImg>
-            <StyledImg src={img3} onClick={(event) => promotetoHero (event, 4)}></StyledImg>
+            <StyledImg src={img} onClick={() => setHero(img)}></StyledImg>
+            <LargeStyledImg src={heroSrc}></LargeStyledImg>
+            <StyledImg src={img2} onClick={() => setHero(img2)}></StyledImg>
+            <StyledImg src={img3} onClick={() => setHero(img3)}></StyledImg>
         </StyledGird>
     )
 
