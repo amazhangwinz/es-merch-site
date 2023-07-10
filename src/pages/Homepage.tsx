@@ -17,18 +17,8 @@ const Homepage = () => {
   //     }))
   //   );
   // }, []);
-  return (
-    <div>
-
-      <div>
-        <ImagePreview/>
-      </div> <h1>
-        HOME PAGE
-      </h1>
-    </div>
-
-
-  )
+  //)
+  return (<></>)
 }
 
 export default Homepage;

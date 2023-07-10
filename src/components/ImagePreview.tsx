@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import styled from "styled-components";
 
-const StyledGird = styled.div`
+const StyledGrid = styled.div`
     --gap:16px;
     --num-cols: 4;
     --num-row: 3;
@@ -73,12 +73,12 @@ const ImagePreview = () => {
     const [heroSrc, setHero] = useState(img);
     const images = new imagegallery();
     return (
-        <StyledGird>
-            <StyledImg src={img} onClick={() => setHero(img)}></StyledImg>
+        <StyledGrid>
+            <StyledImg src={img} onClick={() => setHero(img)} style={{cursor:'pointer'}}></StyledImg>
             <LargeStyledImg src={heroSrc}></LargeStyledImg>
-            <StyledImg src={img2} onClick={() => setHero(img2)}></StyledImg>
-            <StyledImg src={img3} onClick={() => setHero(img3)}></StyledImg>
-        </StyledGird>
+            <StyledImg src={img2} onClick={() => setHero(img2)} style={{cursor:'pointer'}}></StyledImg>
+            <StyledImg src={img3} onClick={() => setHero(img3)} style={{cursor:'pointer'}}></StyledImg>
+        </StyledGrid>
     )
 
 }
