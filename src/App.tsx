@@ -6,6 +6,8 @@ import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
 import SingleItemPage from './pages/SingleItemPage';
 
+
+
 function App() {
   return (
     <div className="App">

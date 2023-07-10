@@ -53,31 +53,26 @@ const LargeStyledImg = styled.img`
 `
 
 class imagegallery {
-    id: Array<String>;
-    constructor() {
-        this.id = new Array<String>;
-    }
-    addImage(src: String) {
-        this.id.push(src);
-    }
-    getImage(id: number) {
-        return this.id[id];
-    }
+    pink: string[] = ["../assets/EngsocLogo.svg","../assets/728a14b7c377e3a51bf325b237c74de8.jpg","../assets/lighter.webp"];
+   
 
 }
 
 
+type ImagePreviewProps = {  
+    items: string[];
+  };
 
-
-const ImagePreview = () => {
-    const [heroSrc, setHero] = useState(img);
+const ImagePreview = (props: ImagePreviewProps) => {
+    const [heroSrc, setHero] = useState(props.items[0]);
     const images = new imagegallery();
+    console.log(props.items[0]);
     return (
         <StyledGrid>
-            <StyledImg src={img} onClick={() => setHero(img)} style={{cursor:'pointer'}}></StyledImg>
+            <StyledImg src={props.items[0]} onClick={() => setHero(props.items[0])} style={{cursor:'pointer'}}></StyledImg>
             <LargeStyledImg src={heroSrc}></LargeStyledImg>
-            <StyledImg src={img2} onClick={() => setHero(img2)} style={{cursor:'pointer'}}></StyledImg>
-            <StyledImg src={img3} onClick={() => setHero(img3)} style={{cursor:'pointer'}}></StyledImg>
+            <StyledImg src={props.items[1]} onClick={() => setHero(props.items[1])} style={{cursor:'pointer'}}></StyledImg>
+            <StyledImg src={props.items[2]} onClick={() => setHero(props.items[2])} style={{cursor:'pointer'}}></StyledImg>
         </StyledGrid>
     )
 

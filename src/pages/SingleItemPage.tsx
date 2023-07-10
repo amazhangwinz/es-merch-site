@@ -13,11 +13,12 @@ const SingleItemPage = () => {
   //     }))
   //   );
   // }, []);
+  const pink  = new Array("../assets/EngsocLogo.svg","../assets/728a14b7c377e3a51bf325b237c74de8.jpg","../assets/lighter.webp");
   return (
     <div>
-
+        
       <div>
-        <ImagePreview/>
+        <ImagePreview items={pink}/>
       </div> <h1>
         HOME PAGE
       </h1>
