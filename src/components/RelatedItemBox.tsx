@@ -21,28 +21,34 @@ import styled from "styled-components";
  * way to style components in React without reapeating yourself.
  * @link https://styled-components.com/docs/basics
 */
+const StyledRelatedImage = styled.div`
+width: 20.375rem;
+height: 20.375rem;
+flex-shrink: 0;
+align-items: center;
+`;
+
 const StyledImg = styled.img`
-  width: 10rem;
+  width: 100%;
+  height: 100%;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
   border-radius: 10%;
+  flex-shrink:0;
+  text-align: center;
 `;
 
 const StyledText = styled.text`
     font-family: Montserrat;
     font: Regular;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 500;
     color: #1C3A59;
 `;
 
 const BoldStyledText = styled(StyledText)`
     font-style: ExtraBold;
     font-weight: 800;
-
 `;
-
-// const ItemName = "Sanrio Plush";
-
-// const Price = 20.50;
 
 type Props = {
     children?: any;
@@ -52,14 +58,12 @@ type Props = {
 }
 
 const RelatedItemBox = (props: Props) => {
-
     return (
-        <Box
-            maxWidth="xs"
-        >
+        <StyledRelatedImage>
             <StyledImg src={props.img} />
             <Typography
                 variant="body1"
+                textAlign="center"
             >
                 <StyledText>
                     {props.itemtext}
@@ -71,7 +75,7 @@ const RelatedItemBox = (props: Props) => {
                     {"$" + props.price.toFixed(2)}
                 </BoldStyledText>
             </Typography>
-        </Box>
+        </StyledRelatedImage>
     )
 }
 export default RelatedItemBox;

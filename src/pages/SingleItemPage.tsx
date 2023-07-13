@@ -12,37 +12,73 @@ import {
 } from '@mui/material';
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
+const ImagePreviewContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+background: #ECECEC;
+margin:5rem;
+// border-style: dotted;
+align-items: center;
 `
 
-// const List = [img, img1, img2, img3];
+const ImageDetailContainer = styled.div`
+width: 32.3125rem;
+height: 27.75rem;
+flex-shrink: 0;
+background: red;
+`
+
+const RelatedItemsContainer = styled.div`
+  text-align: left;
+  color: #1C3A59;
+font-family: Montserrat;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 800;
+line-height: normal;
+margin:5rem;
+// border-style:dotted;
+`
+const RelatedImageContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  height: 20rem;
+  align-items: center;
+  text-align: left;
+
+
+`
+
 const SingleItemPage = () => {
-  // const [images, setImages] = useState<ImageType[]>();
-  // useEffect(() => {
-  //   setImages(
-  //     Array.from(Array(4).keys()).map((id) => ({
-  //       id,
-  //       url: List[id]
-  //     }))
-  //   );
-  // }, []);
-  const pink = new Array("../assets/EngsocLogo.svg", "../assets/728a14b7c377e3a51bf325b237c74de8.jpg", "../assets/lighter.webp");
+
   return (
     <div>
 
-      <div>
-        <ImagePreview items={pink} />
-      </div>
-      <h1>Here are some items you'll love</h1>
-      <StyledDiv>
-        <RelatedItems
-          price={12.60}
-          itemtext="Doll"
-          img={img1}
-        />
-      </StyledDiv>
+      <ImagePreviewContainer>
+        <ImagePreview itemColour={"pink"} />
+        <ImageDetailContainer></ImageDetailContainer>
+      </ImagePreviewContainer>
+
+      <RelatedItemsContainer>
+        <h1>Here are some items you'll love</h1>
+        <RelatedImageContainer>
+          <RelatedItems
+            price={12.60}
+            itemtext="Doll"
+            img={img1}
+          />
+          <RelatedItems
+            price={12.60}
+            itemtext="Doll"
+            img={img1}
+          />
+          <RelatedItems
+            price={12.60}
+            itemtext="Doll"
+            img={img1}
+          />
+        </RelatedImageContainer>
+      </RelatedItemsContainer>
     </div>
 
 
