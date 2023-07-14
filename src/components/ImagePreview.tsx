@@ -67,7 +67,7 @@ const ImagePreview = (props: ImagePreviewProps) => {
             items = [img, img, img];
             break;
     }
-    const [heroSrc, setHero] = useState(items[0]);
+    const [heroSrc, setHero] = React.useState(items[0]);
     return (
         <StyledGrid>
             <StyledImg src={items[0]} onClick={() => setHero(items[0])} style={{ cursor: 'pointer' }}></StyledImg>

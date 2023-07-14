@@ -2,6 +2,7 @@ import React from 'react';
 import ImagePreview from "../components/ImagePreview"
 import { useEffect, useState } from 'react';
 import RelatedItems from '../components/RelatedItemBox';
+import CheckoutModal from '../components/CheckoutModal';
 import img from "../assets/EngsocLogo.svg";
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import img2 from "../assets/lighter.webp"
@@ -26,6 +27,9 @@ width: 32.3125rem;
 height: 27.75rem;
 flex-shrink: 0;
 background: red;
+display:flex;
+justify-content: space-around;
+align-items: center;
 `
 
 const RelatedItemsContainer = styled.div`
@@ -56,7 +60,9 @@ const SingleItemPage = () => {
 
       <ImagePreviewContainer>
         <ImagePreview itemColour={"pink"} />
-        <ImageDetailContainer></ImageDetailContainer>
+        <ImageDetailContainer>
+          <CheckoutModal></CheckoutModal>
+        </ImageDetailContainer>
       </ImagePreviewContainer>
 
       <RelatedItemsContainer>
