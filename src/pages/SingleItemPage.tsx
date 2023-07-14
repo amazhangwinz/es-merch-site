@@ -48,7 +48,7 @@ const RelatedImageContainer = styled.div`
   justify-content: space-evenly;
   height: 20rem;
   align-items: center;
-  text-align: left;
+  text-align: center;
 
 
 `
