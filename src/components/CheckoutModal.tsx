@@ -29,22 +29,22 @@ const uppermodal = {
     borderRadius: '33px 33px 0px 0px',
     display: 'flex',
     // justifyContent: "space-around",
-    p: '2rem',
+    p: '1.5rem',
     textAlign: 'left',
 }
 const lowermodal = {
     bgcolor: 'blue',
     borderRadius: '0px 0px 33px 33px',
     background: '#84A8C9',
-    p: '1.5rem',
+    p: '1.2rem',
     display: 'flex',
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
 }
 
 const StyledModalText = styled.text`
 color: #1C3A59;
 font-family: Montserrat;
-font-size: 24px;
+font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: normal;
@@ -56,9 +56,11 @@ const ButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '20px',
+    fontSize: '12px',
     fontWeight: '600',
-    contrastText: 'black'
+    contrastText: 'black',
+    flex: '1 1 0',
+    m: '.5rem',
 
 }
 
@@ -121,6 +123,7 @@ const CheckoutModal = () => {
                     <Box sx={lowermodal}>
                         <ThemeProvider theme={theme}>
                             <Button variant="contained" sx={ButtonStyle} href="/cart">Go to Checkout</Button>
+                            <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Continue Shopping</Button>
                         </ThemeProvider>
                     </Box>
 
