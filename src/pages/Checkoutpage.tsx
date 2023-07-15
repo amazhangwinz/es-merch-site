@@ -68,13 +68,7 @@ const Checkoutpage = () => {
       <h1>
         CHECKOUT PAGE
       </h1>
-      <body>
-        {/* <div style = {{
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }}> */}
+      <div>
         <CustomForm>
           <Container>
             <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
@@ -95,7 +89,7 @@ const Checkoutpage = () => {
           </Container>
           <CustomButton type = "button">Submit</CustomButton>
         </CustomForm>
-      </body>
+      </div>
     </div>
   )
 }
