@@ -28,7 +28,7 @@ text-align: center;
 font-family: Montserrat;
 font-size: 24px;
 font-style: normal;
-font-weight: 400;
+font-weight: 00;
 line-height: normal;
 `
 const StyledImage = styled.img`
@@ -45,7 +45,7 @@ const backtoshoppingButtonStyle = {
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
     fontSize: '20px',
-    fontWeight: '400',
+    fontWeight: '500',
     contrastText: 'black',
     borderRadius: '50px',
     background: '#D9D9D9',
