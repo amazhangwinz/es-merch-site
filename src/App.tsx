@@ -15,23 +15,31 @@ export interface CartItem {
   price: number,
   name: string,
   quantity: number,
+  color: string,
+  size: string
 }
 
 const defaultCart: CartItem[] = [
   {
     price: 100,
     name: "jacket",
-    quantity: 10
+    quantity: 10,
+    size: 'M',
+    color: 'blue',
   },
   {
     price: 100,
     name: "hat",
-    quantity: 2
+    quantity: 2,
+    size: 'M',
+    color: 'blue',
   },
   {
     price: 20,
     name: "scarf",
-    quantity: 10
+    quantity: 10,
+    size: 'M',
+    color: 'blue',
   },
 ];
 
@@ -45,7 +53,7 @@ function App() {
   return (
     <cartContext.Provider value={{ cart, setCart }}>
       <BrowserRouter>
-        <ExampleUseContext></ExampleUseContext>
+        {/*<ExampleUseContext></ExampleUseContext>*/}
         <Navbar />
         <></>
         <Routes>
