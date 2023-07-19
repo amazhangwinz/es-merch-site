@@ -12,8 +12,8 @@ interface Prop {
 
 const StyledComponent = styled.div`
 	display: flex;
-	height: 10vw;
-	width: 30vw;
+	height: clamp(6rem, 10vw, 10rem);
+	width: clamp(18rem, 30vw, 30rem);
 	border-radius: 0.75vw;
 	background: #fbf9f9;
 	margin: 1.75vw;
@@ -39,13 +39,13 @@ const StyledImage = styled.img`
 
 const StyledPrice = styled.p`
 	margin-bottom: 0;
-	font-size: 1.1vw;
+	font-size: clamp(1.1rem, 1.1vw, 1.5rem);
 `;
 
 const StyledTitle = styled.h1`
 	margin-bottom: 0;
-	height: 2.5vw;
-	font-size: 1.25vw;
+	height: clamp(2rem, 2.5vw, 3rem);
+	font-size: clamp(1.25rem, 1.25vw, 1.5rem);
 	margin: 0;
 	cursor: pointer;
 `;
@@ -53,12 +53,12 @@ const StyledTitle = styled.h1`
 const StyledDescription = styled.p`
 	margin: 0;
 	width: 100%;
-	height: 25vw;
+	height: clamp(10rem, 25vw, 25rem);
 	overflow: hidden;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	word-wrap: break-word;
-	font-size: 1vw;
+	font-size: clamp(1rem, 1vw, 1.2rem);
 `;
 
 const StyledColours = styled.p`
