@@ -54,6 +54,10 @@ const StyledInfo = styled.div`
 	font-size: 1.5vw
 `;
 
+const BoldText = styled.span`
+  font-weight: bold;
+`;
+
 const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.quantity);
 	const total = props.unitPrice * quantity;
@@ -67,13 +71,21 @@ const CartCard = (props: Prop) => {
 			<StyledProperty style = {{width: '20%'}}>
   				<StyledImage src={props.image} alt=""/>
 			</StyledProperty>
-			<StyledProperty style = {{width: '30%', justifyContent: 'left', paddingLeft: '2%'}}> 
+			<StyledProperty style = {{width: '30%', justifyContent: 'left' }}> 
 				<StyledText>
-					<StyledTitle>{props.title}</StyledTitle>
-					<StyledInfo>Product: {props.description}</StyledInfo>
-					<StyledInfo>Colour: {props.colour}</StyledInfo>
-					<StyledInfo>Size: {props.size}</StyledInfo>
-					<StyledInfo>Unit Price: ${props.unitPrice}</StyledInfo>
+					<StyledTitle style = {{fontWeight: 'bold', marginBottom: '1vw'}}>{props.title}</StyledTitle>
+					<StyledInfo>
+						<BoldText>Product:</BoldText> {props.description}
+					</StyledInfo>
+					<StyledInfo>
+						<BoldText>Colour:</BoldText> {props.colour}
+					</StyledInfo>
+					<StyledInfo>
+						<BoldText>Size:</BoldText> {props.size}
+					</StyledInfo>
+					<StyledInfo>
+						<BoldText>Unit Price:</BoldText> ${props.unitPrice}
+					</StyledInfo>
 				</StyledText>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 

@@ -13,10 +13,10 @@ import { borderBottomColor } from '@mui/system';
 const Cartpage = () => {
   return (
     <div style={{ marginTop: '5vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-      <p style={{fontSize: '1.875rem', fontStyle: 'normal', fontWeight: '700' }}>
+      <p style={{fontSize: '2.5vw', fontStyle: 'normal', fontWeight: '700' }}>
         Your Cart
       </p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', padding: '1vw', marginBottom: '2vw', borderBottom: '0.1875rem solid #d9d9d9', fontSize: '1.5625rem' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', padding: '1vw', marginBottom: '2.15vw', borderBottom: '0.3vw solid #d9d9d9', fontSize: '2vw' }}>
         <div style={{ width: '50%', textAlign: 'left'}}>Product</div>
         <div style={{ width: '20%', textAlign: 'center'}}>Quantity</div>
         <div style={{ width: '10%'}}></div>
