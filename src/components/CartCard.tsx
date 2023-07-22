@@ -21,7 +21,9 @@ const StyledProduct = styled.div`
 	width: 90vw;
 	background: #fbf9f9;
 	margin: 1.75vw;
-	border: 1px solid black
+	border: 1px solid black;
+	border-radius: 1vw;
+	padding: 1.5vw 1.5vw
 `;
 
 const StyledProperty = styled.div`
@@ -45,11 +47,11 @@ const StyledText = styled.div`
 `;
 
 const StyledTitle = styled.div`
-	font-size: 200%
+	font-size: 2.5vw	
 `;
 
 const StyledInfo = styled.div`
-	font-size: 100%
+	font-size: 1.5vw
 `;
 
 const CartCard = (props: Prop) => {

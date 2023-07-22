@@ -11,7 +11,7 @@ import Bin from '../assets/Bin.png'
 
 const Cartpage = () => {
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <h1>
         Your Cart
       </h1>

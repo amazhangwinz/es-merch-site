@@ -7,32 +7,35 @@ interface Props {
 }
 
 const QuantityWrapper = styled.div`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid black;
-  width: 7rem
+  width: 8vw;
+  height: 3vw
 `;
 
 const Button = styled.button`
   background: transparent;
   border: none;
-  vertical-align: middle;
   cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  width: 2rem
+  font-size: 2vw;
+  width: 33%;
+  height: 100%
 `;
 
 const Count = styled.span`
-  border: none;
   vertical-align: middle;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  width: 3rem
+  padding: 0.5vw;
+  font-size: 2vw;
+  width: 33%
 `;
 
 const Quantity: React.FC<Props> = ({ count, onCountChange }) => {
   const handleIncrease = () => {
-    onCountChange(count + 1);
+    if (count < 10) {
+      onCountChange(count + 1);
+    }
   };
 
   const handleDecrease = () => {
