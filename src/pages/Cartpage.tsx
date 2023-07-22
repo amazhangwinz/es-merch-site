@@ -57,7 +57,7 @@ const Cartpage = () => {
           // total={40} 
         />
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', padding: '3vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', borderTop: '1px solid #d9d9d9', fontSize: '2vw' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', paddingTop: '3vw', paddingBottom: '3vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', borderTop: '1px solid #d9d9d9', fontSize: '2vw' }}>
         <div style={{ width: '70%', textAlign: 'right'}}>Subtotal</div>
         <div style={{ width: '10%'}}></div>
         <div style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>(Enter Value)</div>
