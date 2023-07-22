@@ -21,7 +21,9 @@ const StyledProduct = styled.div`
 	width: 90vw;
 	background: #fbf9f9;
 	margin: 1.75vw;
-	border: 1px solid black
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 20px 10px
 `;
 
 const StyledProperty = styled.div`
@@ -45,20 +47,20 @@ const StyledText = styled.div`
 `;
 
 const StyledTitle = styled.div`
-	font-size: 200%
+	font-size: 2.5vw
 `;
 
 const StyledInfo = styled.div`
-	font-size: 100%
+	font-size: 1.5vw
 `;
 
 const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.quantity);
 	const total = props.unitPrice * quantity;
 
-	const handleQuantityChange = (newQuantity: number) => {
-		setQuantity(newQuantity);
-	};
+	// const handleQuantityChange = (newQuantity: number) => {
+	// 	setQuantity(newQuantity);
+	// };
 	
 	return (
 		<StyledProduct>
@@ -75,7 +77,7 @@ const CartCard = (props: Prop) => {
 				</StyledText>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 
-				<Quantity count={quantity} onCountChange={handleQuantityChange} />
+				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
 				<StyledImage style = {{width: '30%'}}src={props.removeItem} alt=""/>

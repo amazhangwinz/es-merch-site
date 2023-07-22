@@ -22,7 +22,7 @@ const Button = styled.button`
   width: 2rem
 `;
 
-const Count = styled.span`
+const Count = styled.input`
   border: none;
   vertical-align: middle;
   padding: 0.5rem;
@@ -44,7 +44,7 @@ const Quantity: React.FC<Props> = ({ count, onCountChange }) => {
   return (
     <QuantityWrapper>
       <Button onClick={handleDecrease}>-</Button>
-      <Count>{count}</Count>
+      <Count type="number" value={count} onChange={e => onCountChange(parseInt(e.target.value))}></Count>
       <Button onClick={handleIncrease}>+</Button>
     </QuantityWrapper>
   );
