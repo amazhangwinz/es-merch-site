@@ -18,7 +18,7 @@ interface Prop {
 const StyledProduct = styled.div`
 	display: flex;
 	height: 20vw;
-	width: 90vw;
+	width: 85vw;
 	// background: #fbf9f9;
 	margin-bottom: 1.75vw;
 	// border: 1px solid black;

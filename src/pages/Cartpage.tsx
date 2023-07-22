@@ -12,11 +12,11 @@ import { borderBottomColor } from '@mui/system';
 
 const Cartpage = () => {
   return (
-    <div style={{ marginTop: '5vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ marginTop: '4vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <p style={{fontSize: '2.5vw', fontStyle: 'normal', fontWeight: '700' }}>
         Your Cart
       </p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', padding: '1vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', fontSize: '2vw' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '85vw', padding: '1vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', fontSize: '2vw' }}>
         <div style={{ width: '50%', textAlign: 'left'}}>Product</div>
         <div style={{ width: '20%', textAlign: 'center'}}>Quantity</div>
         <div style={{ width: '10%'}}></div>
@@ -57,12 +57,12 @@ const Cartpage = () => {
           // total={40} 
         />
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', paddingTop: '3vw', paddingBottom: '3vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', borderTop: '1px solid #d9d9d9', fontSize: '2vw' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '85vw', paddingTop: '3vw', paddingBottom: '3vw', marginBottom: '2.15vw', borderBottom: '1px solid #d9d9d9', borderTop: '1px solid #d9d9d9', fontSize: '2vw' }}>
         <div style={{ width: '70%', textAlign: 'right'}}>Subtotal</div>
         <div style={{ width: '10%'}}></div>
         <div style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>(Enter Value)</div>
       </div>
-      <div style={{ width: '90vw', display: 'flex', justifyContent: 'right'}}>
+      <div style={{ marginBottom: '10vw', width: '85vw', display: 'flex', justifyContent: 'right'}}>
         <div style={{ width: '20vw', background: '#D9D9D9', padding: '2vw 2vw', borderRadius: '4vw', marginTop: '1vw', fontSize: '2vw', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}}>Go to checkout</div>
       </div>
     </div>
