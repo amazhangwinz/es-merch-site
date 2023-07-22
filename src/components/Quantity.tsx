@@ -10,7 +10,7 @@ const QuantityWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid #d9d9d9;
   width: 8vw;
   height: 3vw
 `;

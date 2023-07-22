@@ -19,11 +19,9 @@ const StyledProduct = styled.div`
 	display: flex;
 	height: 20vw;
 	width: 90vw;
-	background: #fbf9f9;
-	margin: 1.75vw;
-	border: 1px solid black;
-	border-radius: 1vw;
-	padding: 1.5vw 1.5vw
+	// background: #fbf9f9;
+	margin-bottom: 1.75vw;
+	// border: 1px solid black;
 `;
 
 const StyledProperty = styled.div`
@@ -35,6 +33,7 @@ const StyledProperty = styled.div`
 
 const StyledImage = styled.img`
 	width: 100%;
+	border-radius: 1vw
 `;
 // const StyledImage = styled.img`
 // 	width: ${(props) => props.width || "100%"};
@@ -68,7 +67,7 @@ const CartCard = (props: Prop) => {
 	
 	return (
 		<StyledProduct>
-			<StyledProperty style = {{width: '20%'}}>
+			<StyledProperty style = {{width: '20vw'}}>
   				<StyledImage src={props.image} alt=""/>
 			</StyledProperty>
 			<StyledProperty style = {{width: '30%', justifyContent: 'left' }}> 
