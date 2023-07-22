@@ -42,7 +42,7 @@ const StyledImage = styled.img`
 
 const StyledText = styled.div`
 	padding: 1rem;
-	box-sizing: border-box;
+	// box-sizing: border-box;
 	text-align: left;
 `;
 
@@ -58,14 +58,14 @@ const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.quantity);
 	const total = props.unitPrice * quantity;
 
-	const handleQuantityChange = (newQuantity: number) => {
-		setQuantity(newQuantity);
-	};
+	// const handleQuantityChange = (newQuantity: number) => {
+	// 	setQuantity(newQuantity);
+	// };
 	
 	return (
 		<StyledProduct>
 			<StyledProperty style = {{width: '20%'}}>
-  				<StyledImage style = {{width: '100%'}} src={props.image} alt=""/>
+  				<StyledImage src={props.image} alt=""/>
 			</StyledProperty>
 			<StyledProperty style = {{width: '30%', justifyContent: 'left', paddingLeft: '2%'}}> 
 				<StyledText>
@@ -77,7 +77,7 @@ const CartCard = (props: Prop) => {
 				</StyledText>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 
-				<Quantity count={quantity} onCountChange={handleQuantityChange} />
+				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
 				<StyledImage style = {{width: '30%'}}src={props.removeItem} alt=""/>

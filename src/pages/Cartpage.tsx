@@ -8,13 +8,20 @@ import Neel from '../assets/NeelDutta.png'
 
 import QuantityPic from '../assets/Quantity.png'
 import Bin from '../assets/Bin.png'
+import { borderBottomColor } from '@mui/system';
 
 const Cartpage = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-      <h1>
+    <div style={{ marginTop: '5vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      <p style={{fontSize: '1.875rem', fontStyle: 'normal', fontWeight: '700' }}>
         Your Cart
-      </h1>
+      </p>
+      <div style={{ display: 'flex', flexWrap: 'wrap', width: '90vw', padding: '1vw', marginBottom: '2vw', borderBottom: '0.1875rem solid #d9d9d9', fontSize: '1.5625rem' }}>
+        <div style={{ width: '50%', textAlign: 'left'}}>Product</div>
+        <div style={{ width: '20%', textAlign: 'center'}}>Quantity</div>
+        <div style={{ width: '10%'}}></div>
+        <div style={{ width: '20%', textAlign: 'center' }}>Total</div>
+      </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
 				<CartCard
           image={Winnie}
