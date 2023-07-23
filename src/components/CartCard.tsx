@@ -17,11 +17,11 @@ interface Prop {
 
 const StyledProduct = styled.div`
 	display: flex;
-	height: 20vw;
-	width: 85vw;
+	height: 13rem;
+	width: 75rem;
 	// background: #fbf9f9;
-	margin-bottom: 1.75vw;
-	// border: 1px solid black;
+	margin-bottom: 1.75rem;
+	border: 1px solid black;
 `;
 
 const StyledProperty = styled.div`
@@ -33,7 +33,7 @@ const StyledProperty = styled.div`
 
 const StyledImage = styled.img`
 	width: 100%;
-	border-radius: 1vw
+	// border-radius: 1rem
 `;
 // const StyledImage = styled.img`
 // 	width: ${(props) => props.width || "100%"};
@@ -46,11 +46,11 @@ const StyledText = styled.div`
 `;
 
 const StyledTitle = styled.div`
-	font-size: 2.5vw	
+	font-size: 1.625rem	
 `;
 
 const StyledInfo = styled.div`
-	font-size: 1.5vw
+	font-size: 1.25rem
 `;
 
 const BoldText = styled.span`
@@ -67,26 +67,31 @@ const CartCard = (props: Prop) => {
 	
 	return (
 		<StyledProduct>
-			<StyledProperty style = {{width: '20vw'}}>
-  				<StyledImage src={props.image} alt=""/>
-			</StyledProperty>
-			<StyledProperty style = {{width: '30%', justifyContent: 'left' }}> 
-				<StyledText>
-					<StyledTitle style = {{fontWeight: 'bold', marginBottom: '1vw'}}>{props.title}</StyledTitle>
-					<StyledInfo>
-						<BoldText>Product:</BoldText> {props.description}
-					</StyledInfo>
-					<StyledInfo>
-						<BoldText>Colour:</BoldText> {props.colour}
-					</StyledInfo>
-					<StyledInfo>
-						<BoldText>Size:</BoldText> {props.size}
-					</StyledInfo>
-					<StyledInfo>
-						<BoldText>Unit Price:</BoldText> ${props.unitPrice}
-					</StyledInfo>
-				</StyledText>
-			</StyledProperty>
+      <StyledProperty style = {{ width: '50%' }}>
+        <StyledProperty style = {{ width: '13rem'}}>
+            <StyledImage src={props.image} alt=""/>
+        </StyledProperty>
+        <StyledProperty style = {{ justifyContent: 'left' }}> 
+          <StyledText>
+            <StyledTitle style = {{fontWeight: 'bold'}}>{props.title}</StyledTitle>
+            <StyledInfo>
+              <br/>
+            </StyledInfo>
+            <StyledInfo>
+              <BoldText>Product:</BoldText> {props.description}
+            </StyledInfo>
+            <StyledInfo>
+              <BoldText>Colour:</BoldText> {props.colour}
+            </StyledInfo>
+            <StyledInfo>
+              <BoldText>Size:</BoldText> {props.size}
+            </StyledInfo>
+            <StyledInfo>
+              <BoldText>Unit Price:</BoldText> ${props.unitPrice}
+            </StyledInfo>
+          </StyledText>
+        </StyledProperty>
+      </StyledProperty>
 			<StyledProperty style = {{width: '20%'}}> 
 				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
