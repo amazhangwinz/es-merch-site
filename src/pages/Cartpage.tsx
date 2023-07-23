@@ -23,7 +23,7 @@ const Cartpage = () => {
         <div style={{ width: '10%'}}></div>
         <div style={{ width: '20%', textAlign: 'center' }}>Total</div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center' }}>
         <CartCard
           image={Winnie}
           title="Winnie Zhang"
