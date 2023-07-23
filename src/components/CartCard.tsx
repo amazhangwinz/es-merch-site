@@ -20,8 +20,8 @@ const StyledProduct = styled.div`
 	height: 13rem;
 	width: 75rem;
 	// background: #fbf9f9;
-	margin-bottom: 1.75rem;
-	border: 1px solid black;
+	margin-bottom: 2rem;
+	// border: 1px solid black;
 `;
 
 const StyledProperty = styled.div`
