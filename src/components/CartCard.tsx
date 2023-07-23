@@ -67,7 +67,7 @@ const CartCard = (props: Prop) => {
 	
 	return (
 		<StyledProduct>
-      <StyledProperty style = {{ width: '50%' }}>
+      <StyledProperty style = {{ width: '50%', justifyContent: 'left' }}>
         <StyledProperty style = {{ width: '13rem'}}>
             <StyledImage src={props.image} alt=""/>
         </StyledProperty>
@@ -96,7 +96,7 @@ const CartCard = (props: Prop) => {
 				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
-				<StyledImage style = {{width: '30%'}}src={props.removeItem} alt=""/>
+				<StyledImage style = {{width: '28%'}}src={props.removeItem} alt=""/>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%'}}>  
 				<StyledTitle>${total}</StyledTitle>

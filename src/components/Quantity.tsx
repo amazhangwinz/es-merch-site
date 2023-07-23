@@ -11,15 +11,15 @@ const QuantityWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   border: 1px solid #d9d9d9;
-  width: 8vw;
-  height: 3vw
+  width: 9rem;
+  height: 2.9rem
 `;
 
 const Button = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 1.5vw;
   width: 33%;
   height: 100%
 `;
@@ -29,7 +29,7 @@ const Count = styled.span`
   border: none;
   vertical-align: middle;
   padding: 0.5vw;
-  font-size: 2vw;
+  font-size: 1.5rem;
   width: 33%
 `;
 

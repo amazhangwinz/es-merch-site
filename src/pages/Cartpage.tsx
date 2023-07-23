@@ -22,7 +22,7 @@ const Cartpage = () => {
         <div style={{ background: 'green', width: '10%'}}></div>
         <div style={{ background: 'teal', width: '20%', textAlign: 'center' }}>Total</div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         <CartCard
           image={Winnie}
           title="Winnie Zhang"
