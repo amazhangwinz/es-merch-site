@@ -21,10 +21,12 @@ padding: 3rem;
 margin: 5rem;
 margin-left: 12rem;
 margin-right: 12rem;
+min-width: 35rem;
 `
 const IconContainer = styled.div`
-display: flex:
-justify-content: flex-start
+display: flex;
+flex-grow: 1;
+width: 100%;
 `
 
 const StyledText = styled.p`
@@ -35,6 +37,7 @@ font-size: 150%;
 font-style: normal;
 font-weight: 00;
 line-height: normal;
+max-width: 60%;
 `
 const StyledImage = styled.img`
 padding-left: 5rem;
@@ -42,7 +45,7 @@ padding-right: 5rem;
 padding-bottom: 5rem;
 `
 const StyledLogo = styled.img`
-display: flex;
+
 `
 const backtoshoppingButtonStyle = {
 
@@ -89,7 +92,7 @@ const Confirmationpage = () => {
                 <StyledText>
                     Keep a look out in your inbox for a confirmation email. </StyledText>
                 <StyledText>
-                    For any further inquiries, please email <br></br>contact@unswengsoc.com
+                    For any further inquiries, please email contact@unswengsoc.com
                 </StyledText>
                 <ThemeProvider theme={theme}>
                     <Button variant="contained" sx={backtoshoppingButtonStyle}>Back to Shopping</Button>
