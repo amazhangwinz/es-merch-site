@@ -11,7 +11,7 @@ import englogo from "../assets/EngsocLogo.svg"
 
 
 const StyledContainer = styled.div`
-border-radius: 40px;
+border-radius: 2.5rem;
 background: #FBF9F9;
 box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
 display: flex;
@@ -22,32 +22,37 @@ margin: 5rem;
 margin-left: 12rem;
 margin-right: 12rem;
 `
-const StyledText = styled.text`
+const IconContainer = styled.div`
+display: flex:
+justify-content: flex-start
+`
+
+const StyledText = styled.p`
 color: #000;
 text-align: center;
 font-family: Montserrat;
-font-size: 24px;
+font-size: 150%;
 font-style: normal;
 font-weight: 00;
 line-height: normal;
 `
 const StyledImage = styled.img`
-padding: 5rem;
+padding-left: 5rem;
+padding-right: 5rem;
+padding-bottom: 5rem;
 `
 const StyledLogo = styled.img`
-position: absolute;
-left: 16rem;
-top: 12rem;
+display: flex;
 `
 const backtoshoppingButtonStyle = {
 
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '20px',
+    fontSize: '125%',
     fontWeight: '500',
     contrastText: 'black',
-    borderRadius: '50px',
+    borderRadius: '3.125rem',
     background: '#D9D9D9',
     boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
     margin: '4rem',
@@ -74,18 +79,18 @@ const Confirmationpage = () => {
     return (
         <div>
             <StyledContainer>
-                {/* <CheckCircleOutlineIcon>
-            </CheckCircleOutlineIcon> */}
-                <StyledLogo src={englogo}></StyledLogo>
+                <IconContainer>
+                    <StyledLogo src={englogo}></StyledLogo>
+                </IconContainer>
                 <StyledImage src={check}></StyledImage>
                 <StyledText>
-                    Your request has been sent! <br></br> <br></br>
-
-                    Keep a look out in your inbox for a confirmation email. <br></br> <br></br>
-
+                    Your request has been sent!
+                </StyledText>
+                <StyledText>
+                    Keep a look out in your inbox for a confirmation email. </StyledText>
+                <StyledText>
                     For any further inquiries, please email <br></br>contact@unswengsoc.com
                 </StyledText>
-
                 <ThemeProvider theme={theme}>
                     <Button variant="contained" sx={backtoshoppingButtonStyle}>Back to Shopping</Button>
                 </ThemeProvider>
