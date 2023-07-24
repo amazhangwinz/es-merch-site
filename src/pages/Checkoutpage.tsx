@@ -7,6 +7,7 @@ const InputLabel = styled.label`
   color: black;
   font-weight: bold;
   length: 200rem;
+  width: 100%
 `;
 
 const CustomForm = styled.form`
@@ -22,31 +23,29 @@ const CustomForm = styled.form`
 const CustomInput = styled.input`
   display: block;
   background: white;
-  width: 50rem;
+  width: 100%;
   border: none;
   height: 1.8rem;
 
 `;
-  // width: 50rem;
-  // border-width: 0;
-  // block-size: 2rem;
-  // block
+
 const Container = styled.div`
-  width: 40rem;
+  width: 100%;
   line-height: 80%;
   margin: 10px;
 `;
 
 const AttachImage = styled.input`
   display: block;
-  background: white;
-  width: 50rem;
+  //background: white;
+  width: 200px;
   border: none;
-  height: 15rem;
+  height: 15%;
+  margin: 0 auto;
 `
 
 const CustomButton = styled.button`
-  margin: 0;
+  margin: 0 auto;
   background-color: #051839;
   color: white;
   font-size: 16px;
@@ -58,7 +57,6 @@ const CustomButton = styled.button`
   font-weight: 700;
   line-height: 29px;
   letter-spacing: 0em;
-  transform: translateX(260%);
 `
 
 const Checkoutpage = () => {
@@ -85,7 +83,7 @@ const Checkoutpage = () => {
           <Container>
             <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
             {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-            <AttachImage type="text" id = "phoneNumber" name = "phoneNumber"></AttachImage><br></br>
+            <AttachImage type="file" id = "phoneNumber" name = "phoneNumber"></AttachImage><br></br>
           </Container>
           <CustomButton type = "button">Submit</CustomButton>
         </CustomForm>
