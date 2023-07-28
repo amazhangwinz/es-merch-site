@@ -1,66 +1,84 @@
 import React from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
 import footerWaves from '../assets/Waves.svg';
 import emailLogo from '../assets/emailLogo.svg';
 import engsocLogoFooter from '../assets/engsocLogoFooter.svg';
 import igLogo from '../assets/igLogo.svg';
 import {
-  Box,
-  AppBar,
-  Toolbar,
   Typography,
+  Box,
 } from '@mui/material';
 import styled from "styled-components";
 
-/**
- * MUI is an extensive component library with some very useful components that
- * makes styling a lot easier. Visit the documentation for more info.
- * @link https://mui.com/
-*/
 
-/**
- * Styled Components are "visual primitives for components". This is a flexible
- * way to style components in React without reapeating yourself. 
- * @link https://styled-components.com/docs/basics
-*/
 const StyledImg = styled.img`
   width: 100vw;
   position: relative;
-  z-index = 1;
+  margin-top: -10vh;
 `;
 
 const Icons = styled.img`
-  width: 5rem;
-  cursor: pointer;
+  width: 1.5rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  z-index = 5;
+  z-index: 2;
+  margin-bottom: -110px;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
 `;
 
 
 const Footer = () => {
-  const navigate = useNavigate();
 
-  const homeLink = () => {
-    navigate("/")
-  }
+  return (
+    <Box
+      component="footer"
+      sx={{
+        // backgroundColor: '#1C3A59',
+        textAlign: 'center',
+        fontSize: '14px',
+        width: '100vw',
+        position: 'absolute',
+        bottom: 0,
+      }}
+    >
+      <Container>
+        <IconContainer>
+          <a href="https://instagram.com/unswengsoc?igshid=MzRlODBiNWFlZA==">
+            <Icons src={igLogo} />
+          </a>
+          <Icons src={engsocLogoFooter} />
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+            <Icons src={emailLogo} />
+          </a>
+        </IconContainer>
 
-  return(
-    <div className = "Footer">
+        <Typography
+          variant="subtitle1"
+          fontWeight='400'
+          sx={{
+            textAlign: 'center',
+            cursor: 'pointer',
+            color: 'white',
+          }}
+        >
+          Contact Us!
+        </Typography>
+      </Container>
 
-        <a href = "https://instagram.com/unswengsoc?igshid=MzRlODBiNWFlZA=="> <Icons src={igLogo} /> </a>
-        <a onClick = {homeLink}> <Icons src={engsocLogoFooter} /> </a>
-        <a href = "mailto:contact@unswengsoc.com"> <Icons src={emailLogo} /> </a> 
 
-
-        <StyledImg src={footerWaves} />
-
-        
-
-          <Typography>
-            Contact Us
-          </Typography>
-
-    </div>
+      <StyledImg src={footerWaves} />
+    </Box >
   )
 }
 
