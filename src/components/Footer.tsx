@@ -25,9 +25,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: absolute;
+  width: 100vw;
+  bottom: 3vh;
   z-index: 2;
-  margin-bottom: -110px;
 `;
 
 const IconContainer = styled.div`
