@@ -55,11 +55,13 @@ const Footer = () => {
     >
       <Container>
         <IconContainer>
-          <a href="https://instagram.com/unswengsoc?igshid=MzRlODBiNWFlZA==">
+          <a href="https://instagram.com/unswengsoc?igshid=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer">
             <Icons src={igLogo} />
           </a>
-          <Icons src={engsocLogoFooter} />
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+          <a href="https://www.unswengsoc.com/" target="_blank" rel="noopener noreferrer">
+            <Icons src={engsocLogoFooter} />
+          </a>
+          <a href="mailto:contact@unswengsoc.com">
             <Icons src={emailLogo} />
           </a>
         </IconContainer>
