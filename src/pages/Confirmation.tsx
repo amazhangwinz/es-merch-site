@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import {
     Button,
@@ -48,7 +49,6 @@ const StyledLogo = styled.img`
 
 `
 const backtoshoppingButtonStyle = {
-
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
@@ -77,8 +77,9 @@ const theme = createTheme({
 });
 
 
-
 const Confirmationpage = () => {
+    const navigate = useNavigate();
+
     return (
         <div>
             <StyledContainer>
@@ -95,7 +96,7 @@ const Confirmationpage = () => {
                     For any further inquiries, please email contact@unswengsoc.com
                 </StyledText>
                 <ThemeProvider theme={theme}>
-                    <Button variant="contained" sx={backtoshoppingButtonStyle}>Back to Shopping</Button>
+                    <Button variant="contained" onClick={() => navigate('/')} sx={backtoshoppingButtonStyle}>Back to Shopping</Button>
                 </ThemeProvider>
             </StyledContainer>
         </div>
