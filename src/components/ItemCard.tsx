@@ -91,7 +91,7 @@ const ItemCard = (props: Prop) => {
 						</div>
 						))}
 				</StyledColours>
-				<StyledPrice style={{ margin: 0 }}>${props.price}</StyledPrice>
+				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
 			<StyledImage src={props.image} alt="" />
 		</StyledComponent>
