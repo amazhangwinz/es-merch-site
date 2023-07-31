@@ -12,9 +12,9 @@ interface Prop {
 
 const StyledComponent = styled.div`
 	display: flex;
-	height: 10vw;
-	width: 25vw;
-	border-radius: 10px;
+	height: clamp(6rem, 10vw, 10rem);
+	width: clamp(18rem, 30vw, 30rem);
+	border-radius: clamp(0.25rem, 0.5rem, 0.5rem);
 	background: #fbf9f9;
 	margin: 1.75vw;
 	box-shadow: 3px 5px 2px silver;
@@ -27,7 +27,7 @@ const StyledContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	padding: 2rem;
+	padding: clamp(1rem, 7.5%, 1.5rem);
 	box-sizing: border-box;
 	align-items: flex-start;
 	position: relative;
@@ -37,13 +37,21 @@ const StyledImage = styled.img`
 	height: 100%;
 	width: auto;
 	max-width: 33%;
-	border-radius: 0 10px 10px 0;
+	border-radius: 0 clamp(0.25rem, 0.5rem, 0.5rem) clamp(0.25rem, 0.5rem, 0.5rem) 0;
 	object-fit: cover;
+`;
+
+const StyledTitle = styled.h1`
+	margin-bottom: 0;
+	height: clamp(2rem, 2.5vw, 3rem);
+	font-size: clamp(1.25rem, 1.2vw, 1.5rem);
+	margin: 0;
+	cursor: pointer;
 `;
 
 const StyledPrice = styled.p`
 	margin-bottom: 0;
-	font-size: 95%
+	font-size: clamp(1rem, 1vw, 1.5rem)
 `;
 
 const StyledDescription = styled.p`
@@ -53,10 +61,11 @@ const StyledDescription = styled.p`
 	text-overflow: ellipsis;
 	overflow: hidden;
 	word-wrap: break-word;
-	font-size: 95%;
+	font-size: clamp(1rem, 1vw, 1.5rem);
+	padding-bottom: 5%;
 `;
 
-const StyledColours = styled.p`
+const StyledColours = styled.div`
 	display: inline-flex;
 	flex-direction: row;
 	justify-content: flex-start;
@@ -65,8 +74,8 @@ const StyledColours = styled.p`
 `;
 
 const ColourCircles = styled.div`
-	height: 20px;
-	width: 20px;
+	height: 1vw;
+	width: 1vw;
 	border-radius: 50%;
 	box-shadow: 1px 1.5px 0.5px silver;
 `;
@@ -80,13 +89,13 @@ const ItemCard = (props: Prop) => {
 	return (
 		<StyledComponent>
 			<StyledContent>
-				<h1 onClick={productPage} style={{ margin: 0, cursor: 'pointer', fontSize: '125%' }}>
+				<StyledTitle onClick={productPage} style={{ margin: 0, cursor: 'pointer'}}>
 					{props.title}
-				</h1>
+				</StyledTitle>
 				<StyledDescription style={{ margin: 0, textAlign: 'left'}}>{props.description}</StyledDescription>
 				<StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
 					{props.colours.map((colour) => (
-						<div style={{paddingRight: '5%', width: '100%', height: '100%'}}>
+						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
 							<ColourCircles style={{ background: `linear-gradient(190deg, ${colour}, grey 125%)` }}></ColourCircles>
 						</div>
 						))}
