@@ -54,6 +54,7 @@ export const cartContext = React.createContext({
 
 const GlobalStyle = styled.body`
   min-height: 100vh;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   background-color: #ECECEC;
