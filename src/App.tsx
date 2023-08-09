@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
+import Checkoutpage from './pages/Checkoutpage';
 import ExampleUseContext from './components/ExampleUseContext';
 
 /* 
@@ -46,7 +47,7 @@ const defaultCart: CartItem[] = [
 
 export const cartContext = React.createContext({
   cart: defaultCart,
-  setCart: (newCart: CartItem[]) => {}, 
+  setCart: (newCart: CartItem[]) => { },
 })
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/cart' element={<Cartpage />} />
+          <Route path='/Checkoutpage' element={<Checkoutpage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
