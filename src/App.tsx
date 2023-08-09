@@ -5,7 +5,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
-import ExampleUseContext from './components/ExampleUseContext';
+import Confirmationpage from './pages/Confirmation';
+import SingleItemPage from './pages/SingleItemPage';
+import Checkoutpage from './pages/Checkoutpage';
 import { styled } from 'styled-components';
 
 /* 
@@ -47,7 +49,7 @@ const defaultCart: CartItem[] = [
 
 export const cartContext = React.createContext({
   cart: defaultCart,
-  setCart: (newCart: CartItem[]) => {}, 
+  setCart: (newCart: CartItem[]) => { },
 })
 
 const GlobalStyle = styled.body`
@@ -69,7 +71,10 @@ function App() {
             <></>
             <Routes>
               <Route path='/' element={<Homepage />} />
-              <Route path='/cart' element={<Cartpage/>} />
+              <Route path='/cart' element={<Cartpage />} />
+              <Route path='/confirmation' element={<Confirmationpage />} />
+              <Route path='/page' element={<SingleItemPage />} />
+              <Route path='/Checkoutpage' element={<Checkoutpage />} />
             </Routes>
           </Main>
           <Footer />
