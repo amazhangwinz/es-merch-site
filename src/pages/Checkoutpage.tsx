@@ -26,7 +26,7 @@ const CustomForm = styled.form`
 
 const CustomOrderSummary = styled.div`
   width: 30%;
-  height: fit-content;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   border: 20px solid #ECECEC;
