@@ -56,6 +56,7 @@ const GlobalStyle = styled.body`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #ECECEC;
 `
 
 const Main = styled.div``
