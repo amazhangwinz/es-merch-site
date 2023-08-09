@@ -17,7 +17,7 @@ import styled from "styled-components";
 
 /**
  * Styled Components are "visual primitives for components". This is a flexible
- * way to style components in React without reapeating yourself. 
+ * way to style components in React without reapeating yourself.
  * @link https://styled-components.com/docs/basics
 */
 const StyledImg = styled.img`
@@ -35,6 +35,10 @@ const Navbar = () => {
 
   const cartLink = () => {
     navigate("/cart")
+  }
+
+  const confirmationpage = () => {
+    navigate("/")
   }
 
   return (

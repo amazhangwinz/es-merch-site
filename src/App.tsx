@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
+import Confirmationpage from './pages/Confirmation';
+import SingleItemPage from './pages/SingleItemPage';
 import Checkoutpage from './pages/Checkoutpage';
 import ExampleUseContext from './components/ExampleUseContext';
 
@@ -61,6 +63,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/cart' element={<Cartpage />} />
+          <Route path='/confirmation' element={<Confirmationpage />} />
+          <Route path='/page' element={<SingleItemPage />} />
           <Route path='/Checkoutpage' element={<Checkoutpage />} />
         </Routes>
         <Footer />
