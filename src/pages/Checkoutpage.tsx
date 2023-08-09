@@ -26,6 +26,7 @@ const CustomForm = styled.form`
 
 const CustomOrderSummary = styled.div`
   width: 30%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   border: 20px solid #ECECEC;
@@ -94,7 +95,7 @@ const items = [{
   size: "Small",
   qty: 2,
   uprice: 100
-},{
+}, {
   name: "Limited Edition Hoodie",
   colour: "Black",
   size: "Small",
@@ -103,17 +104,17 @@ const items = [{
 }]
 
 const Checkoutpage = () => {
-  let navigate = useNavigate(); 
-  const routeChangeUpdateCart = () =>{ 
-    let path = `/cart`; 
+  let navigate = useNavigate();
+  const routeChangeUpdateCart = () => {
+    let path = `/cart`;
     navigate(path);
   }
-  const routeChangeSubmit = () =>{ 
-    let path = `/order-success`; 
+  const routeChangeSubmit = () => {
+    let path = `/order-success`;
     navigate(path);
   }
   return (
-    <Box  ml={5} mr={7}>
+    <Box ml={5} mr={7}>
       <h1>
         Checkout
       </h1>
@@ -121,22 +122,22 @@ const Checkoutpage = () => {
         <CustomForm>
           <Container>
             <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-            <CustomInput type="text" id = "fname" name="fname"></CustomInput><br></br>
+            <CustomInput type="text" id="fname" name="fname"></CustomInput><br></br>
           </Container>
           <Container>
             <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-            <CustomInput type="text" id = "email" name = "email"></CustomInput><br></br>
+            <CustomInput type="text" id="email" name="email"></CustomInput><br></br>
           </Container>
           <Container>
             <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
-            <CustomInput type="text" id = "phoneNumber" name = "phoneNumber"></CustomInput><br></br>
+            <CustomInput type="text" id="phoneNumber" name="phoneNumber"></CustomInput><br></br>
           </Container>
           <Container>
             <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
             {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-            <AttachImage type="file" id = "phoneNumber" name = "phoneNumber"></AttachImage><br></br>
+            <AttachImage type="file" id="phoneNumber" name="phoneNumber"></AttachImage><br></br>
           </Container>
-          <CustomButton type = "button" onClick={routeChangeSubmit}>Submit</CustomButton>
+          <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
         </CustomForm>
         <CustomOrderSummary>
           <div>
@@ -145,11 +146,11 @@ const Checkoutpage = () => {
               color: "#212121",
               backgroundColor: "#212121",
               height: 2,
-            }}/>
-            </div>
-          <div style={{overflow:'auto',height: '50%'}}>
+            }} />
+          </div>
+          <div style={{ overflow: 'auto', height: '50%' }}>
             {
-              items.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.qty} uprice={x.uprice}/>)
+              items.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.qty} uprice={x.uprice} />)
             }
           </div>
           <TotalSummary>
