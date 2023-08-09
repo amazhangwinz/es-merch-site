@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
 import ExampleUseContext from './components/ExampleUseContext';
+import { styled } from 'styled-components';
 
 /* 
 - quantity of the items
@@ -49,19 +50,30 @@ export const cartContext = React.createContext({
   setCart: (newCart: CartItem[]) => {}, 
 })
 
+const GlobalStyle = styled.body`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const Main = styled.div``
+
 function App() {
   const [cart, setCart] = React.useState<CartItem[]>(defaultCart);
   return (
     <cartContext.Provider value={{ cart, setCart }}>
       <BrowserRouter>
-        {/*<ExampleUseContext></ExampleUseContext>*/}
-        <Navbar />
-        <></>
-        <Routes>
-          <Route path='/' element={<Homepage />} />
-          <Route path='/cart' element={<Cartpage />} />
-        </Routes>
-        <Footer />
+        <GlobalStyle>
+          <Main>
+            <Navbar />
+            <></>
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/cart' element={<Cartpage/>} />
+            </Routes>
+          </Main>
+          <Footer />
+        </GlobalStyle>
       </BrowserRouter>
     </cartContext.Provider>
   );
