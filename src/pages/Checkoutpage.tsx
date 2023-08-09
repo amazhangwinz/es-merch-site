@@ -154,7 +154,7 @@ const Checkoutpage = () => {
           </div>
           <TotalSummary>
             <p>Total</p>
-            <p><b>$300</b></p>
+            <p><b>${items.reduce((accumulator, currentValue) => accumulator + (currentValue.qty * currentValue.uprice), 0)}</b></p>
           </TotalSummary>
           <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
         </CustomOrderSummary>
