@@ -1,5 +1,8 @@
+import { Box, Button } from '@mui/material';
 import React from 'react'
 import styled from "styled-components"
+import OrderSummaryItem from "../components/OrderSummaryItem"
+import { useNavigate } from "react-router-dom";
 
 const InputLabel = styled.label`
   display: block;
@@ -11,13 +14,23 @@ const InputLabel = styled.label`
 `;
 
 const CustomForm = styled.form`
-  width: 40%;
+  width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 auto;
   border: 40px solid #ECECEC;
+  border-radius: 25px;
   background: #ECECEC;
+`;
+
+const CustomOrderSummary = styled.div`
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border: 20px solid #ECECEC;
+  background: #ECECEC;
+  border-radius: 25px;
 `;
 
 const CustomInput = styled.input`
@@ -26,7 +39,6 @@ const CustomInput = styled.input`
   width: 100%;
   border: none;
   height: 1.8rem;
-
 `;
 
 const Container = styled.div`
@@ -57,16 +69,55 @@ const CustomButton = styled.button`
   font-weight: 700;
   line-height: 29px;
   letter-spacing: 0em;
+  cursor: pointer;
 `
 
+const Boxes = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const TotalSummary = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const items = [{
+  name: "Limited Edition Hoodie",
+  colour: "Black",
+  size: "Small",
+  qty: 2,
+  uprice: 100
+}, {
+  name: "Limited Edition Hoodie",
+  colour: "Black",
+  size: "Small",
+  qty: 2,
+  uprice: 100
+},{
+  name: "Limited Edition Hoodie",
+  colour: "Black",
+  size: "Small",
+  qty: 2,
+  uprice: 100
+}]
+
 const Checkoutpage = () => {
-  // let [girichand, setGirichand] = React.useState("sexy");
+  let navigate = useNavigate(); 
+  const routeChangeUpdateCart = () =>{ 
+    let path = `/cart`; 
+    navigate(path);
+  }
+  const routeChangeSubmit = () =>{ 
+    let path = `/order-success`; 
+    navigate(path);
+  }
   return (
-    <div>
+    <Box  ml={5} mr={7}>
       <h1>
-        CHECKOUT PAGE
+        Checkout
       </h1>
-      <div>
+      <Boxes>
         <CustomForm>
           <Container>
             <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
@@ -85,10 +136,30 @@ const Checkoutpage = () => {
             {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
             <AttachImage type="file" id = "phoneNumber" name = "phoneNumber"></AttachImage><br></br>
           </Container>
-          <CustomButton type = "button">Submit</CustomButton>
+          <CustomButton type = "button" onClick={routeChangeSubmit}>Submit</CustomButton>
         </CustomForm>
-      </div>
-    </div>
+        <CustomOrderSummary>
+          <div>
+            <h3>YOUR ORDER SUMMARY</h3>
+            <hr style={{
+              color: "#212121",
+              backgroundColor: "#212121",
+              height: 2,
+            }}/>
+            </div>
+          <div style={{overflow:'auto',height: '50%'}}>
+            {
+              items.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.qty} uprice={x.uprice}/>)
+            }
+          </div>
+          <TotalSummary>
+            <p>Total</p>
+            <p><b>$300</b></p>
+          </TotalSummary>
+          <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
+        </CustomOrderSummary>
+      </Boxes>
+    </Box>
   )
 }
 
