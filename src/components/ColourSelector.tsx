@@ -89,14 +89,20 @@ type Props = {
     left: string;
 }
 
-const SelectOverlay = styled.div<{ $left?: string; $background?: string; }>`
+type SelectOverlayProps = {
+    left: string;
+    background: string;
+    width: string;
+}
+
+const SelectOverlay = styled.div<SelectOverlayProps>`
 position: absolute;
 top: .4rem;
-left: ${props => props.$left};
+left: ${props => props.left};
 border-radius: 4.375rem;
-background: ${props => props.$background};
+background: ${props => props.background};
 flex-shrink: 0;
-width: 9rem;
+width: ${props => props.width};
 height: 2.1875rem;
 z-index: 0;
 // On click
@@ -141,7 +147,8 @@ const theme = createTheme({
 const ColourSelector = () => {
 
     const [clickedButton, setClickedButton] = React.useState(0);
-    const [positon, setPosition] = React.useState('0.4rem');
+    const [position, setPosition] = React.useState('0.4rem');
+    const [width, setWidth] = React.useState('7.5rem');
     const [color, setColor] = React.useState('#FB95BA')
     const [backgroundc, setBackgroundc] = React.useState('#FEC8DC')
     const ref = React.createRef();
@@ -150,25 +157,32 @@ const ColourSelector = () => {
         newButton: number,
     ) => {
         if (newButton !== null) {
+            console.log(newButton)
+            switch (newButton) {
+                case 1:
+                    setPosition('7.6rem')
+                    setColor('#EBB1FF')
+                    setBackgroundc('#F5D8FF')
+                    setWidth('8rem')
+                    break;
+                case 2:
+                    setPosition('16.3rem')
+                    setColor('#FF7A00')
+                    setBackgroundc('#FED5B0')
+                    setWidth('9rem')
+                    break;
+                default:
+                    setPosition('.4rem')
+                    setColor('#FB95BA')
+                    setBackgroundc('#FEC8DC')
+                    setWidth('7.5rem')
+                    break;
+            }
             setClickedButton(newButton);
+            
         }
-        switch (newButton) {
-            case 1:
-                setPosition("7.6rem")
-                setColor('#EBB1FF')
-                setBackgroundc('#F5D8FF')
-                break;
-            case 2:
-                setPosition("16.3rem")
-                setColor('#FF7A00')
-                setBackgroundc('#FED5B0')
-                break;
-            default:
-                setPosition('.4rem')
-                setColor('#FB95BA')
-                setBackgroundc('#FEC8DC')
-                break;
-        }
+        
+        
 
     };
 
@@ -180,7 +194,7 @@ const ColourSelector = () => {
                 exclusive
                 onChange={handleclick}
                 ref={ref}>
-                <SelectOverlay $left={positon} $background={color}></SelectOverlay>
+                <SelectOverlay left={position} background={color} width={width}></SelectOverlay>
                 <ToggleButton value={0} sx={Colour3} disableRipple >Pink</ToggleButton>
                 <ToggleButton value={1} sx={Colour3} disableRipple >Lilac</ToggleButton>
                 <ToggleButton value={2} sx={Colour3} disableRipple >Orange</ToggleButton>
