@@ -169,7 +169,6 @@ const ColourSelector = () => {
                 setBackgroundc('#FEC8DC')
                 break;
         }
-
     };
 
     return (
