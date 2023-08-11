@@ -29,8 +29,8 @@ align-items: center;
 `;
 
 const StyledImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 25vw;
+  height: 25vw;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
   border-radius: 10%;
   flex-shrink:0;
@@ -60,7 +60,7 @@ type Props = {
 const RelatedItemBox = (props: Props) => {
     return (
         <StyledRelatedImage>
-            <StyledImg src={props.img} />
+            <StyledImg src={props.img} style={{ cursor: 'pointer' }}/>
             <Typography
                 variant="body1"
                 textAlign="center"

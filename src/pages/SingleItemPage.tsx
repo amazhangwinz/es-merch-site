@@ -66,9 +66,9 @@ const SingleItemPage = () => {
       </ImagePreviewContainer>
 
       <RelatedItemsContainer>
-        <h1>Here are some items you'll love</h1>
+        <h1 style={{fontSize: 35, textAlign: 'center'}}>Here are some items you'll love</h1>
         <RelatedImageContainer>
-          <RelatedItems
+          <RelatedItems 
             price={12.60}
             itemtext="Doll"
             img={img1}

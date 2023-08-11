@@ -24,13 +24,12 @@ display: grid;
 grid-template-columns: repeat(var(--num-cols), 1fr);
 grid-auto-rows: var(--row-row);
 gap: var(--gap);
-width: 36.5625rem;
-height: 28.125rem;
+
 
 `
 const StyledImg = styled.img`
-width: 100%;
-height: 100%;
+width: 12vw;
+height: 12vw;
 object-fit: cover;
 border-radius: 0.625rem;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -39,8 +38,8 @@ justify-self: stretch;
 `
 
 const LargeStyledImg = styled.img`
-width: 100%;
-height: 100%;
+width: 38vw;
+height: 38vw;
 flex-shrink: 0;
 object-fit: cover;
 grid-column: span 3;
