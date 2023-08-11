@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import RelatedItems from '../components/RelatedItemBox';
 import CheckoutModal from '../components/CheckoutModal';
 import ColourSelector from '../components/ColourSelector';
+import QuantitySelector from '../components/QuanitySelector';
 import img from "../assets/EngsocLogo.svg";
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import img2 from "../assets/lighter.webp"
@@ -11,7 +12,6 @@ import img3 from "../assets/pushin.gif"
 import { CartItem, cartContext } from '../App';
 import {
   Box,
-
 } from '@mui/material';
 import styled from "styled-components";
 
@@ -28,7 +28,7 @@ const ImageDetailContainer = styled.div`
 width: 32.3125rem;
 height: 27.75rem;
 flex-shrink: 0;
-background: red;
+// background: red;
 display:flex;
 justify-content: space-around;
 align-items: center;
@@ -55,7 +55,14 @@ const RelatedImageContainer = styled.div`
 
 
 `
-
+const RelatedDetailsContainer = styled.div`
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 100%;
+ height: 25%;
+padding: 1rem;
+`
 
 const SingleItemPage = () => {
   const { cart, setCart } = React.useContext(cartContext);
@@ -67,7 +74,9 @@ const SingleItemPage = () => {
         <ImagePreview itemColour={cart[0].color} />
         <ImageDetailContainer>
           <ColourSelector></ColourSelector>
-          <CheckoutModal></CheckoutModal>
+          <RelatedDetailsContainer> <QuantitySelector></QuantitySelector>
+            <CheckoutModal></CheckoutModal></RelatedDetailsContainer>
+
         </ImageDetailContainer>
       </ImagePreviewContainer>
 
