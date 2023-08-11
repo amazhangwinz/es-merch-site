@@ -28,7 +28,7 @@ const defaultCart: CartItem[] = [
     name: "jacket",
     quantity: 10,
     size: 'M',
-    color: 'blue',
+    color: 'pink',
   },
   {
     price: 100,
@@ -48,7 +48,7 @@ const defaultCart: CartItem[] = [
 
 export const cartContext = React.createContext({
   cart: defaultCart,
-  setCart: (newCart: CartItem[]) => {},
+  setCart: (newCart: CartItem[]) => { },
 })
 
 function App() {

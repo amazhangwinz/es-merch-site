@@ -8,6 +8,7 @@ import img from "../assets/EngsocLogo.svg";
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import img2 from "../assets/lighter.webp"
 import img3 from "../assets/pushin.gif"
+import { CartItem, cartContext } from '../App';
 import {
   Box,
 
@@ -55,13 +56,15 @@ const RelatedImageContainer = styled.div`
 
 `
 
+
 const SingleItemPage = () => {
+  const { cart, setCart } = React.useContext(cartContext);
 
   return (
     <div>
 
       <ImagePreviewContainer>
-        <ImagePreview itemColour={"pink"} />
+        <ImagePreview itemColour={cart[0].color} />
         <ImageDetailContainer>
           <ColourSelector></ColourSelector>
           <CheckoutModal></CheckoutModal>
@@ -71,21 +74,22 @@ const SingleItemPage = () => {
       <RelatedItemsContainer>
         <h1>Here are some items you'll love</h1>
         <RelatedImageContainer>
+          {cart.map((e) => <RelatedItems price={e.price} itemtext={e.name} img={img1}></RelatedItems>)}
+          {/* <RelatedItems
+            price={cart[0].price}
+            itemtext={cart[0].name}
+            img={img1} // to figure out
+          />
           <RelatedItems
-            price={12.60}
-            itemtext="Doll"
+            price={cart[1].price}
+            itemtext={cart[1].name}
             img={img1}
           />
           <RelatedItems
             price={12.60}
             itemtext="Doll"
             img={img1}
-          />
-          <RelatedItems
-            price={12.60}
-            itemtext="Doll"
-            img={img1}
-          />
+          /> */}
         </RelatedImageContainer>
       </RelatedItemsContainer>
     </div>

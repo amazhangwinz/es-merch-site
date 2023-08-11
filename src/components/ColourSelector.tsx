@@ -27,43 +27,7 @@ import styled, { keyframes, css } from "styled-components";
  * @link https://styled-components.com/docs/basics
 */
 
-const ColorSelectorContainer = styled.div`
-border-radius: 4.375rem;
-background: #FEC8DC;
-display: flex;
-flex-shrink: 0;
-position: relative;
-width: 26.4375rem;
-height: 2.9375rem;
-justify-content: space-evenly;
-align-content: center;
-`
-
-const Colour1 = styled.text`
-text-align: center;
-color: rgba(0, 0, 0, 0.90);
-text-align: center;
-font-family: Montserrat;
-font-size: 1.5625rem;
-font-style: normal;
-font-weight: 600;
-line-height: 190%;
-
-`
-
-const Colour2 = styled.text`
-text-align: center;
-color: rgba(0, 0, 0, 0.90);
-font-family: Montserrat;
-font-size: 1.5625rem;
-font-style: normal;
-font-weight: 600;
-line-height: 190%;
-
-
-`
-
-const Colour3 = {
+const ToggleButtonStyling = {
     textAlign: 'center',
     color: 'rgba(0, 0, 0, 0.90)',
     fontFamily: 'Montserrat',
@@ -80,13 +44,6 @@ const Colour3 = {
     '&.MuiToggleButton-root:hover': {
         color: "grey",
     },
-}
-
-type Props = {
-    children?: any;
-    colour: string;
-    top: string;
-    left: string;
 }
 
 type SelectOverlayProps = {
@@ -125,24 +82,14 @@ const toggleswitchstyle = (bgc: string) => ({
     transiton: 'ease-out 300',
 })
 
-
-const buttonStyling = {
-    width: '7.625rem',
-    height: '2.1875rem',
-    borderRadius: '4.375rem',
+type Item = {
+    item: colors[]
 }
 
-const theme = createTheme({
-    transitions: {
-        duration: {
-            standard: 300,
-        },
-        easing: {
-            easeOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        }
-    }
-})
-
+type colors = {
+    name: string
+    colourcode: string
+}
 
 const ColourSelector = () => {
 
@@ -151,37 +98,48 @@ const ColourSelector = () => {
     const [width, setWidth] = React.useState('7.5rem');
     const [color, setColor] = React.useState('#FB95BA')
     const [backgroundc, setBackgroundc] = React.useState('#FEC8DC')
-    const ref = React.createRef();
+    const container = React.useRef<HTMLElement>(null);
+    const item0 = React.useRef<HTMLButtonElement>(null);
+    const item1 = React.useRef<HTMLButtonElement>(null);
+    const item2 = React.useRef<HTMLButtonElement>(null);
     const handleclick = (
         event: React.MouseEvent<HTMLElement>,
         newButton: number,
     ) => {
         if (newButton !== null) {
             console.log(newButton)
+
             switch (newButton) {
                 case 1:
-                    setPosition('7.6rem')
+                    const m = container.current?.getBoundingClientRect().left
+                    const l = item1.current?.getBoundingClientRect().left
+                    if (m != undefined && l != undefined)
+                        setPosition(Math.round(l) - Math.round(m) + 'px')
                     setColor('#EBB1FF')
                     setBackgroundc('#F5D8FF')
-                    setWidth('8rem')
+                    setWidth(item1.current?.getBoundingClientRect().width + 'px')
                     break;
                 case 2:
-                    setPosition('16.3rem')
+                    const j = container.current?.getBoundingClientRect().left
+                    const i = item2.current?.getBoundingClientRect().left
+                    if (j != undefined && i != undefined)
+                        setPosition((Math.round(i)) - Math.round(j) + 'px')
                     setColor('#FF7A00')
                     setBackgroundc('#FED5B0')
-                    setWidth('9rem')
+                    setWidth(item2.current?.getBoundingClientRect().width + 'px')
                     break;
                 default:
-                    setPosition('.4rem')
+                    const x = container.current?.getBoundingClientRect().left
+                    const y = item0.current?.getBoundingClientRect().left
+                    if (x != undefined && y != undefined)
+                        setPosition(Math.round(y) - Math.round(x) + 'px')
                     setColor('#FB95BA')
                     setBackgroundc('#FEC8DC')
-                    setWidth('7.5rem')
+                    setWidth(item0.current?.getBoundingClientRect().width + 'px')
                     break;
             }
             setClickedButton(newButton);
-            ref.current
         }
-
     };
 
     return (
@@ -191,11 +149,12 @@ const ColourSelector = () => {
                 sx={toggleswitchstyle(backgroundc)}
                 exclusive
                 onChange={handleclick}
-                ref={ref}>
+                ref={container}
+            >
                 <SelectOverlay left={position} background={color} width={width}></SelectOverlay>
-                <ToggleButton value={0} sx={Colour3} disableRipple >Pink</ToggleButton>
-                <ToggleButton value={1} sx={Colour3} disableRipple >Lilac</ToggleButton>
-                <ToggleButton value={2} sx={Colour3} disableRipple >Orange</ToggleButton>
+                <ToggleButton ref={item0} value={0} sx={ToggleButtonStyling} disableRipple >Pink</ToggleButton>
+                <ToggleButton ref={item1} value={1} sx={ToggleButtonStyling} disableRipple >Lilac</ToggleButton>
+                <ToggleButton ref={item2} value={2} sx={ToggleButtonStyling} disableRipple >Orange</ToggleButton>
             </ToggleButtonGroup>
         </>
     )
