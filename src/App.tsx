@@ -74,9 +74,9 @@ function App() {
             <Routes>
               <Route path='/' element={<Homepage />} />
               <Route path='/cart' element={<Cartpage />} />
-              <Route path='/confirmation' element={<Confirmationpage />} />
+              <Route path='/order-success' element={<Confirmationpage />} />
               <Route path='/page' element={<SingleItemPage />} />
-              <Route path='/Checkoutpage' element={<Checkoutpage />} />
+              <Route path='/checkout' element={<Checkoutpage />} />
             </Routes>
           </Main>
           <Footer />
