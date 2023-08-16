@@ -1,10 +1,10 @@
 import React from 'react';
 import ItemCard from '../components/ItemCard';
 
+// const List = [img, img1, img2, img3];
 const Homepage = () => {
 	return (
 		<div>
-			<h1>HOME PAGE</h1>
 			<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', flexFlow: "row wrap", marginLeft: '10vw', marginRight: '10vw' }}>
 				<ItemCard title="Wireless Earbuds" description="b Q W b 7 n v e v 5 j L R a W 2 L M o D " image="https://helios-i.mashable.com/imagery/reviews/02TWYLkCOvrgBAYliOnHbKR/hero-image.fill.size_1200x900.v1623386276.jpg" colours={['Black', 'White', 'Red']} price={79.99} />
 				<ItemCard

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EngsocLogo from '../assets/EngsocLogo.svg';
 import { Box, AppBar, Toolbar, Typography } from '@mui/material';
 import styled from 'styled-components';
+import Button from '@mui/material/Button';
 
 /**
  * MUI is an extensive component library with some very useful components that
@@ -41,13 +42,13 @@ const Navbar = () => {
 			<AppBar position="static" sx={{ backgroundColor: '#1C3A59' }}>
 				<Toolbar>
 					<StyledImg src={EngsocLogo} />
-					<Typography variant="h1" fontSize="2.5rem" fontWeight="400" sx={{ ml: '2rem', cursor: 'pointer' }} onClick={homeLink}>
+					<Typography variant="h1" fontSize="1.4rem" fontWeight="600" sx={{ ml: '0.5rem', cursor: 'pointer' }} onClick={homeLink}>
 						ENGSOC MERCH
 					</Typography>
-
-					<Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={cartLink}>
+          <Button color="inherit">Login</Button>
+					{/* <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={cartLink}>
 						Cart
-					</Typography>
+					</Typography> */}
 				</Toolbar>
 			</AppBar>
 		</Box>
