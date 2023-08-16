@@ -61,11 +61,10 @@ const Footer = () => {
           fontWeight='400'
           sx={{
             textAlign: 'center',
-            cursor: 'pointer',
             color: 'white',
           }}
         >
-          Contact Us!
+          Contact Us
         </Typography>
       </Container>
     </StyledFooter >
