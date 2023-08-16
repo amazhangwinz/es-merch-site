@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
+import {data} from '../Data.jsx';
 
 interface Prop {
 	title: string;
 	description: string;
 	image: string;
-	colours: string[];
+	index: number;
 	price: number;
 }
 
@@ -82,27 +83,46 @@ const ColourCircles = styled.div`
 
 const ItemCard = (props: Prop) => {
 	const navigate = useNavigate();
-	const productPage = () => {
-		navigate('/product');
+	const productPage = (prodName: string) => {
+		navigate({
+			pathname: '/item',
+			search: `?${createSearchParams({title: prodName})}`,
+		});
 	};
 
+	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
+
+	const findColourImage = () => {
+		for (const colourObj of data[props.index].colours) {
+			if (colourObj.name === currColour) {
+				return colourObj.img
+			}
+		}
+			
+	}
+
+
 	return (
-		<StyledComponent>
-			<StyledContent>
-				<StyledTitle onClick={productPage} style={{ margin: 0, cursor: 'pointer'}}>
+		<StyledComponent onClick={() => {productPage(props.title)}} style={{cursor: 'pointer'}}>
+			<StyledContent >
+				<StyledTitle style={{ margin: 0, cursor: 'pointer'}}>
 					{props.title}
 				</StyledTitle>
-				<StyledDescription style={{ margin: 0, textAlign: 'left'}}>{props.description}</StyledDescription>
+				{/* <StyledDescription style={{ margin: 0, textAlign: 'left'}}>{props.description}</StyledDescription> */}
 				<StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
-					{props.colours.map((colour) => (
+					{data[props.index].colours.map((colour) => (
 						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
-							<ColourCircles style={{ background: `linear-gradient(190deg, ${colour}, grey 125%)` }}></ColourCircles>
+							<ColourCircles onClick={(event) => {
+								event.stopPropagation();
+								setCurrColour(colour.name);}} style={{ cursor: 'pointer', background: `linear-gradient(190deg, ${colour.name}, grey 125%)` }}></ColourCircles>
 						</div>
 						))}
 				</StyledColours>
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
-			<StyledImage src={props.image} alt="" />
+			<StyledImage src={
+				findColourImage()
+			} alt={props.title} />
 		</StyledComponent>
 	);
 };
