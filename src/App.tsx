@@ -7,10 +7,11 @@ import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
 import Confirmationpage from './pages/Confirmation';
 import SingleItemPage from './pages/SingleItemPage';
+
 import Checkoutpage from './pages/Checkoutpage';
 import { styled } from 'styled-components';
 
-/* 
+/*
 - quantity of the items
 - items in cart
 */
@@ -19,32 +20,11 @@ export interface CartItem {
   price: number,
   name: string,
   quantity: number,
-  color: string,
+  colour: string,
   size: string
 }
 
 const defaultCart: CartItem[] = [
-  {
-    price: 100,
-    name: "jacket",
-    quantity: 10,
-    size: 'M',
-    color: 'blue',
-  },
-  {
-    price: 100,
-    name: "hat",
-    quantity: 2,
-    size: 'M',
-    color: 'blue',
-  },
-  {
-    price: 20,
-    name: "scarf",
-    quantity: 10,
-    size: 'M',
-    color: 'blue',
-  },
 ];
 
 export const cartContext = React.createContext({

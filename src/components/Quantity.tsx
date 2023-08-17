@@ -70,6 +70,10 @@ const Quantity: React.FC<Props> = ({ count, onCountChange }) => {
     //         onCountChange(parseInt(event.target.value))}
     //       }}
     //     />
+
+
+    
+    // FOR ANY CHANGES, UPDATE THE USE CONTEXT
     <FormControl>
       <Select
         labelId="demo-simple-select-label"

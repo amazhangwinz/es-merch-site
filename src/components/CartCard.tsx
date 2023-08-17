@@ -58,7 +58,7 @@ const BoldText = styled.span`
 `;
 
 const CartCard = (props: Prop) => {
-	// Use context
+	// Use context TO DETERMINE OG VAL, NOT JUST 1
 	const [quantity, setQuantity] = useState(1);
 	const total = Math.round((props.unitPrice * quantity+ Number.EPSILON)* 100)/100;
 	// const handleQuantityChange = (newQuantity: number) => {
@@ -99,9 +99,6 @@ const CartCard = (props: Prop) => {
 				<SizeButtonCartPage/>
               {/* <BoldText>Size:</BoldText> {2} */}
             </StyledInfo>
-            <StyledInfo>
-              {/* <BoldText>Unit Price:</BoldText> ${props.unitPrice} */}
-            </StyledInfo>
           </StyledText>
         </StyledProperty>
       </StyledProperty>
@@ -109,6 +106,7 @@ const CartCard = (props: Prop) => {
 				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
+				{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
 				<StyledImage style = {{width: '28%'}}src={Bin} alt="Bin Item"/>
 			</StyledProperty>
 			<StyledProperty style = {{width: '20%', display: 'flex', flexDirection: 'column'}}>  

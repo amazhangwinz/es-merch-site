@@ -1,13 +1,7 @@
 import React from 'react'
 import CartCard from '../components/CartCard';
-import Quantity from '../components/Quantity';
 import {data} from '../Data.jsx';
-import Winnie from '../assets/WinnieZhang.png'
-import Lawrence from '../assets/LawrenceChau.png'
-import Neel from '../assets/NeelDutta.png'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import QuantityPic from '../assets/Quantity.png'
-import { borderBottomColor } from '@mui/system';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +27,7 @@ const Cartpage = () => {
         <div style={{ width: '20%', textAlign: 'center' }}>Total</div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {/** MAP THE CART INSTEAD OF DATA HERE */}
         {data.map((item, idx) => {
 					return (
 					<CartCard title={item.name} image={item.default} index={idx} unitPrice={item.price}
@@ -42,7 +37,7 @@ const Cartpage = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap', width: '75rem', paddingTop: '3rem', paddingBottom: '3rem', marginBottom: '2.15rem', borderBottom: '1px solid #d9d9d9', borderTop: '1px solid #d9d9d9', fontSize: '1.5rem' }}>
         <div style={{ width: '70%', textAlign: 'right'}}>Subtotal</div>
         <div style={{ width: '10%'}}></div>
-        {/*PUT USE CONTEXT BELOW*/}
+        {/*PUT USE CONTEXT BELOW , USE REDUCE FUNCTION TO SUM IT*/}
         <div style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>(Enter Value)</div>
       </div>
       {/* <div style={{ marginBottom: '10rem', width: '75rem', display: 'flex', justifyContent: 'right'}}> */}

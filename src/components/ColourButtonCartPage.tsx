@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const ColourButtonCartPage = () => {
+    // DEFAULT SHOULD BE USE CONTEXT, NOT BLACK
 	const [colour, setColour] = React.useState('Black');
 
 	const handleChange = (event: SelectChangeEvent) => {
@@ -12,6 +13,7 @@ const ColourButtonCartPage = () => {
 	};
 
     return (
+        // FOR ANY CHANGES, UPDATE THE USE CONTEXT
         <FormControl sx={{ m: 1, minWidth: 80 }} size="small" variant="standard">
                 <InputLabel id="demo-simple-select-autowidth-label">Colour</InputLabel>
                 <Select

@@ -11,6 +11,8 @@ import {
     Grid,
 } from '@mui/material';
 import styled from "styled-components";
+import {findItemObject} from '../Helpers.js';
+
 
 const StyledGrid = styled.div`
 --gap:16px;
@@ -24,13 +26,12 @@ display: grid;
 grid-template-columns: repeat(var(--num-cols), 1fr);
 grid-auto-rows: var(--row-row);
 gap: var(--gap);
-width: 36.5625rem;
-height: 28.125rem;
+
 
 `
 const StyledImg = styled.img`
-width: 100%;
-height: 100%;
+width: 8.5vw;
+height: 8.5vw;
 object-fit: cover;
 border-radius: 0.625rem;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -39,8 +40,8 @@ justify-self: stretch;
 `
 
 const LargeStyledImg = styled.img`
-width: 100%;
-height: 100%;
+width: 27vw;
+height: 27vw;
 flex-shrink: 0;
 object-fit: cover;
 grid-column: span 3;
@@ -53,27 +54,31 @@ justify-self: stretch;
 `
 
 type ImagePreviewProps = {
-    itemColour: string;
+    itemName: string | null;
+    heroSrc: string;
+    setHero: (hero: string) => void;
 };
 
 const ImagePreview = (props: ImagePreviewProps) => {
 
-    let items: Array<string>;
-    switch (props.itemColour) {
-        case "pink":
-            items = [img, img1, img2];
-            break;
-        default:
-            items = [img, img, img];
-            break;
-    }
-    const [heroSrc, setHero] = useState(items[0]);
+    const itemObj = findItemObject(props.itemName);
+
+    // let items: Array<string>;
+    // switch (props.itemColour) {
+    //     case "pink":
+    //         items = [img, img1, img2];
+    //         break;
+    //     default:
+    //         items = [img, img, img];
+    //         break;
+    // }
+    // const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
     return (
         <StyledGrid>
-            <StyledImg src={items[0]} onClick={() => setHero(items[0])} style={{ cursor: 'pointer' }}></StyledImg>
-            <LargeStyledImg src={heroSrc}></LargeStyledImg>
-            <StyledImg src={items[1]} onClick={() => setHero(items[1])} style={{ cursor: 'pointer' }}></StyledImg>
-            <StyledImg src={items[2]} onClick={() => setHero(items[2])} style={{ cursor: 'pointer' }}></StyledImg>
+            <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
+            <LargeStyledImg src={props.heroSrc}></LargeStyledImg>
+            <StyledImg src={itemObj.colours[1].img} onClick={() => props.setHero(itemObj.colours[1].img)} style={{ cursor: 'pointer' }}></StyledImg>
+            <StyledImg src={itemObj.colours[2].img} onClick={() => props.setHero(itemObj.colours[2].img)} style={{ cursor: 'pointer' }}></StyledImg>
         </StyledGrid>
     )
 
