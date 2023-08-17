@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import {data} from '../Data.jsx';
+import {findColourImage} from '../Helpers.js'
+
 
 interface Prop {
 	title: string;
@@ -92,15 +94,6 @@ const ItemCard = (props: Prop) => {
 
 	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
-	const findColourImage = () => {
-		for (const colourObj of data[props.index].colours) {
-			if (colourObj.name === currColour) {
-				return colourObj.img
-			}
-		}
-			
-	}
-
 
 	return (
 		<StyledComponent onClick={() => {productPage(props.title)}} style={{cursor: 'pointer'}}>
@@ -121,7 +114,7 @@ const ItemCard = (props: Prop) => {
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
 			<StyledImage src={
-				findColourImage()
+				findColourImage(props.index, currColour)
 			} alt={props.title} />
 		</StyledComponent>
 	);
