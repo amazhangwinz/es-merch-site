@@ -14,18 +14,18 @@ const InputLabel = styled.label`
 `;
 
 const CustomForm = styled.form`
-  width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 40px solid #ECECEC;
+  border: 20px solid #ECECEC;
   border-radius: 25px;
   background: #ECECEC;
 `;
 
 const CustomOrderSummary = styled.div`
-  width: 30%;
+  width: 100%;
   height: 60vh;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ const CustomButton = styled.button`
   font-size: 16px;
   padding: 10px 30px;
   border-radius: 10px;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  // box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   font-family: Arial;
   font-size: 20px;
   font-weight: 700;
@@ -114,11 +114,14 @@ const Checkoutpage = () => {
     navigate(path);
   }
   return (
-    <Box ml={5} mr={7}>
+    <Box sx={{ml:{xs: 2, md: 5}, mr: 7}}>
+      <Box sx={{textAlign: {xs: 'center'}}}>
       <h1>
         Checkout
       </h1>
-      <Boxes>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: {xs: 'center', md: 'space-between'}, flexDirection: {xs: 'column', md: 'row'}}}>
+        <Box sx={{width: {md: '50%', xs: '90%'}, height: '100%'}}>
         <CustomForm>
           <Container>
             <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
@@ -139,6 +142,8 @@ const Checkoutpage = () => {
           </Container>
           <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
         </CustomForm>
+        </Box>
+        <Box sx={{width: {md: '30%', xs: '100%'}}}>
         <CustomOrderSummary>
           <div>
             <h3>YOUR ORDER SUMMARY</h3>
@@ -159,7 +164,8 @@ const Checkoutpage = () => {
           </TotalSummary>
           <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
         </CustomOrderSummary>
-      </Boxes>
+        </Box>
+      </Box>
     </Box>
   )
 }

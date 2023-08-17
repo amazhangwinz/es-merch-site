@@ -25,11 +25,13 @@ import MenuItem from "@mui/material/MenuItem";
 const StyledImgBig = styled.img`
 	width: 2rem;
   margin-right: 15px;
+  cursor: pointer;
 `;
 
 const StyledImgSmall = styled.img`
 	width: 1.5rem;
   margin-right: 15px;
+  cursor: pointer;
 `;
 
 const Navbar = () => {
@@ -66,7 +68,7 @@ const Navbar = () => {
     <AppBar position="static" sx={{ backgroundColor: '#1C3A59' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ display: { xs: "none", md: "flex" }}}><StyledImgBig src={EngsocLogo} /></Box>
+          <Box sx={{ display: { xs: "none", md: "flex" }}}><StyledImgBig onClick={homeLink} src={EngsocLogo} /></Box>
           <Typography
             variant="h6"
             noWrap
@@ -122,7 +124,7 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" }}}><StyledImgSmall src={EngsocLogo} /></Box>
+          <Box sx={{ display: { xs: "flex", md: "none" }}}><StyledImgSmall onClick={homeLink} src={EngsocLogo} /></Box>
           <Typography
             variant="h5"
             noWrap

@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, createSearchParams } from 'react-router-dom';
+import Bin from '../assets/Bin.png'
 import Quantity from './Quantity';
+import {data} from '../Data.jsx';
+import ColourButtonCartPage from './ColourButtonCartPage';
+import SizeButtonCartPage from './SizeButtonCartPage';
 
 interface Prop {
 	image: string;
 	title: string;
-	description: string;
-	colour: string;
-	size: string;
 	unitPrice: number;
-	quantity: number;
-	removeItem: string;
+	index: number;
 }
 
 const StyledProduct = styled.div`
@@ -33,6 +32,7 @@ const StyledProperty = styled.div`
 
 const StyledImage = styled.img`
 	width: 100%;
+	cursor: pointer;
 	// border-radius: 1rem
 `;
 // const StyledImage = styled.img`
@@ -58,36 +58,49 @@ const BoldText = styled.span`
 `;
 
 const CartCard = (props: Prop) => {
-	const [quantity, setQuantity] = useState(props.quantity);
-	const total = props.unitPrice * quantity;
-
+	// Use context
+	const [quantity, setQuantity] = useState(1);
+	const total = Math.round((props.unitPrice * quantity+ Number.EPSILON)* 100)/100;
 	// const handleQuantityChange = (newQuantity: number) => {
 	// 	setQuantity(newQuantity);
 	// };
+	const navigate = useNavigate();
+	const productPage = (prodName: string) => {
+		navigate({
+			pathname: '/item',
+			search: `?${createSearchParams({title: prodName})}`,
+		});
+	};
+
+	const perItem = () => {
+		if (quantity > 1) {
+			return (<p>(${props.unitPrice} each)</p>)
+		}
+	}
 	
+
 	return (
 		<StyledProduct>
       <StyledProperty style = {{ width: '50%', justifyContent: 'left' }}>
         <StyledProperty style = {{ width: '13rem'}}>
-            <StyledImage src={props.image} alt=""/>
+            <StyledImage onClick={() => {productPage(props.title)}} src={props.image} alt=""/>
         </StyledProperty>
         <StyledProperty style = {{ justifyContent: 'left' }}> 
           <StyledText>
-            <StyledTitle style = {{fontWeight: 'bold'}}>{props.title}</StyledTitle>
+            <StyledTitle onClick={() => {productPage(props.title)}} style = {{cursor: 'pointer', fontWeight: 'bold'}}>{props.title}</StyledTitle>
             <StyledInfo>
               <br/>
             </StyledInfo>
             <StyledInfo>
-              <BoldText>Product:</BoldText> {props.description}
+              {/* <BoldText>Colour:</BoldText>  */}
+				<ColourButtonCartPage/>
             </StyledInfo>
             <StyledInfo>
-              <BoldText>Colour:</BoldText> {props.colour}
+				<SizeButtonCartPage/>
+              {/* <BoldText>Size:</BoldText> {2} */}
             </StyledInfo>
             <StyledInfo>
-              <BoldText>Size:</BoldText> {props.size}
-            </StyledInfo>
-            <StyledInfo>
-              <BoldText>Unit Price:</BoldText> ${props.unitPrice}
+              {/* <BoldText>Unit Price:</BoldText> ${props.unitPrice} */}
             </StyledInfo>
           </StyledText>
         </StyledProperty>
@@ -96,13 +109,15 @@ const CartCard = (props: Prop) => {
 				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
 			<StyledProperty style = {{width: '10%'}}> 
-				<StyledImage style = {{width: '28%'}}src={props.removeItem} alt=""/>
+				<StyledImage style = {{width: '28%'}}src={Bin} alt="Bin Item"/>
 			</StyledProperty>
-			<StyledProperty style = {{width: '20%'}}>  
+			<StyledProperty style = {{width: '20%', display: 'flex', flexDirection: 'column'}}>  
 				<StyledTitle>${total}</StyledTitle>
+				{perItem()}
 			</StyledProperty>
 		</StyledProduct>
 	);
 };
 
 export default CartCard;
+
