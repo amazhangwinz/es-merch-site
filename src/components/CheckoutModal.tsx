@@ -70,9 +70,13 @@ const addCartButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '20px',
-    fontWeight: '400',
-    contrastText: 'black'
+    fontSize: '150%',
+    fontWeight: '500',
+    contrastText: 'black',
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
+    height: '70%',
+    alignSelf: 'center'
 }
 
 const theme = createTheme({
@@ -98,9 +102,11 @@ const CheckoutModal = () => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleAdd = () => {
 
+    }
     return (
-        <div>
+        <div style={{ height: "100%", justifyContent: "space-around", alignContent: "baseline", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
                 <Button variant="contained" sx={addCartButtonStyle} onClick={handleOpen}>Add to Cart</Button>
             </ThemeProvider>
@@ -129,7 +135,7 @@ const CheckoutModal = () => {
 
                 </Box>
             </Modal>
-        </div>
+        </div >
     );
 }
 export default CheckoutModal;
