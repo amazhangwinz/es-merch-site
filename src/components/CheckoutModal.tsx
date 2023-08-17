@@ -26,15 +26,17 @@ const style = {
 
 const uppermodal = {
     bgcolor: 'white',
-    borderRadius: '33px 33px 0px 0px',
+    borderRadius: '30px 30px 0px 0px',
     display: 'flex',
     // justifyContent: "space-around",
     p: '1.5rem',
+    pt: '3rem',
+    pb: '3rem',
     textAlign: 'left',
 }
 const lowermodal = {
     bgcolor: 'blue',
-    borderRadius: '0px 0px 33px 33px',
+    borderRadius: '0px 0px 30px 30px',
     background: '#84A8C9',
     p: '1.2rem',
     display: 'flex',
@@ -61,7 +63,8 @@ const ButtonStyle = {
     contrastText: 'black',
     flex: '1 1 0',
     m: '.5rem',
-
+    pt: '1rem',
+    pb: '1rem'
 }
 
 const addCartButtonStyle = {
@@ -70,7 +73,7 @@ const addCartButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '150%',
+    fontSize: '110%',
     fontWeight: '500',
     contrastText: 'black',
     paddingLeft: '2rem',
@@ -98,17 +101,20 @@ const theme = createTheme({
 //     navigate("/cart")
 // }
 
-const CheckoutModal = () => {
+type CheckoutModalProps = {
+    handleAddToCart: () => void;
+}
+
+const CheckoutModal = (props: CheckoutModalProps) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleAdd = () => {
 
-    }
     return (
         <div style={{ height: "100%", justifyContent: "space-around", alignContent: "baseline", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
-                <Button variant="contained" sx={addCartButtonStyle} onClick={handleOpen}>Add to Cart</Button>
+                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {props.handleAddToCart();
+                    handleOpen()}}>Add to Cart</Button>
             </ThemeProvider>
             <Modal
                 open={open}
@@ -128,8 +134,8 @@ const CheckoutModal = () => {
                     <Box sx={uppermodal}><StyledModalText>Added to Cart !</StyledModalText></Box>
                     <Box sx={lowermodal}>
                         <ThemeProvider theme={theme}>
-                            <Button variant="contained" sx={ButtonStyle} href="/cart">Go to Checkout</Button>
-                            <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Continue Shopping</Button>
+                            <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
+                            <Button variant="contained" sx={ButtonStyle} href="/cart">Go to Cart</Button>
                         </ThemeProvider>
                     </Box>
 

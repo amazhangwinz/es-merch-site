@@ -1,27 +1,28 @@
 import React from 'react';
 import ImagePreview from "../components/ImagePreview"
-import { useEffect, useState } from 'react';
 import RelatedItems from '../components/RelatedItemBox';
 import CheckoutModal from '../components/CheckoutModal';
 import ColourSelector from '../components/ColourSelector';
 import QuantitySelector from '../components/QuanitySelector';
-import img from "../assets/EngsocLogo.svg";
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
-import img2 from "../assets/lighter.webp"
-import img3 from "../assets/pushin.gif"
-import { CartItem, cartContext } from '../App';
-import {
-  Box,
-} from '@mui/material';
+import {data} from "../Data.jsx"
+import {  cartContext } from '../App';
+import { useSearchParams } from 'react-router-dom';
 import styled from "styled-components";
+import {findItemObject} from '../Helpers.js';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
+import SizeButtonItemPage from '../components/SizeButtonItemPage';
+import SizeGuideModal from '../components/SizeGuideModal';
+
 
 const ImagePreviewContainer = styled.div`
   display: flex;
-  justify-content: center;
-background: #ECECEC;
-margin:5rem;
-// border-style: dotted;
-align-items: center;
+  justify-content: space-evenly;
+  background: #ECECEC;
+  margin:5rem;
+  // border-style: dotted;
+  align-items: center;
 `
 
 const ImageDetailContainer = styled.div`
@@ -30,7 +31,7 @@ height: 27.75rem;
 flex-shrink: 0;
 // background: red;
 display:flex;
-justify-content: space-around;
+justify-content: space-evenly;
 align-items: center;
 flex-direction: column;
 `
@@ -49,7 +50,7 @@ margin:5rem;
 const RelatedImageContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 20rem;
+  height: 100%;
   align-items: center;
   text-align: center;
 
@@ -65,45 +66,64 @@ padding: 1rem;
 `
 
 const SingleItemPage = () => {
+
   const { cart, setCart } = React.useContext(cartContext);
+  const [queryString] = useSearchParams();
+  // NAME
+  const itemTitle = queryString.get('title');
+  // CAN GET PRICE
+  const itemObj = findItemObject(itemTitle);
+  // SIZE
+  const [size, setSize] = React.useState('Small');
+  // COLOURS INDEX . NAME
+  const [clickedButton, setClickedButton] = React.useState(0);
+  const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
+  // BRING QUANTITY USESTATE OUTSIDE OF COMPONENT
+  const handleAddToCart = () => {
+
+  }
+
+  React.useEffect(() => {
+    setHero(() => itemObj.colours[clickedButton].img);
+  }, [clickedButton]);
+  
 
   return (
-    <div>
-
+    <>
       <ImagePreviewContainer>
-        <ImagePreview itemColour={cart[0].color} />
+        <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero}/>
         <ImageDetailContainer>
-          <ColourSelector></ColourSelector>
-          <RelatedDetailsContainer> <QuantitySelector></QuantitySelector>
-            <CheckoutModal></CheckoutModal></RelatedDetailsContainer>
-
+          <Box>
+          <Typography variant="h3" sx={{color: '#1C3A59'}} gutterBottom>
+            {itemTitle}
+          </Typography>
+          <Typography variant="h6" gutterBottom sx={{color: '#1C3A59'}}>
+            ${itemObj.price}
+          </Typography>
+          <Typography variant="body1" gutterBottom sx={{color: '#1C3A59'}}>
+            {itemObj.description}
+          </Typography>
+          <Box sx={{display: 'flex', flexDirection:'row', alignItems: 'center', mt: 3}}>
+            <SizeButtonItemPage size={size} setSize={setSize}/>
+            <SizeGuideModal/>
+          </Box>
+          </Box>
+          <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector>
+          <Box sx={{display: 'flex', flexDirection:'row', alignItems: 'center'}}> <QuantitySelector></QuantitySelector>
+            <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal></Box>
         </ImageDetailContainer>
       </ImagePreviewContainer>
-
       <RelatedItemsContainer>
-        <h1 style={{fontSize: 35, textAlign: 'center'}}>Here are some items you'll love</h1>
-        <RelatedImageContainer>
-          {cart.map((e) => <RelatedItems price={e.price} itemtext={e.name} img={img1}></RelatedItems>)}
-          {/* <RelatedItems
-            price={cart[0].price}
-            itemtext={cart[0].name}
-            img={img1} // to figure out
-          />
-          <RelatedItems
-            price={cart[1].price}
-            itemtext={cart[1].name}
-            img={img1}
-          />
-          <RelatedItems
-            price={12.60}
-            itemtext="Doll"
-            img={img1}
-          /> */}
+        <h1 style={{fontSize: 35, textAlign: 'center'}}>Here are some items you'll also love</h1>
+        <RelatedImageContainer >
+          {data.map((e) => {
+            if (e.name !== itemTitle) {
+              return (
+                <RelatedItems price={e.price} itemtext={e.name} img={e.default}></RelatedItems>
+          )}})}
         </RelatedImageContainer>
       </RelatedItemsContainer>
-    </div>
-
-
+    </>
   )
 }
 

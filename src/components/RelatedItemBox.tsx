@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate,createSearchParams } from "react-router-dom";
 
 import {
     Box,
@@ -23,14 +23,16 @@ import styled from "styled-components";
 */
 const StyledRelatedImage = styled.div`
 width: 20.375rem;
-height: 20.375rem;
+height: 100%;
 flex-shrink: 0;
+display: flex;
+flex-direction: column;
 align-items: center;
 `;
 
 const StyledImg = styled.img`
-  width: 25vw;
-  height: 25vw;
+  width: 15vw;
+  height: 15vw;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
   border-radius: 10%;
   flex-shrink:0;
@@ -58,8 +60,16 @@ type Props = {
 }
 
 const RelatedItemBox = (props: Props) => {
+
+    const navigate = useNavigate();
+	const productPage = (prodName: string) => {
+		navigate({
+			pathname: '/item',
+			search: `?${createSearchParams({title: prodName})}`,
+		});
+	};
     return (
-        <StyledRelatedImage>
+        <StyledRelatedImage style={{ cursor: 'pointer' }} onClick={() => productPage(props.itemtext)}>
             <StyledImg src={props.img} style={{ cursor: 'pointer' }}/>
             <Typography
                 variant="body1"

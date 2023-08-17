@@ -1,18 +1,19 @@
 import React from 'react';
-import ImagePreview from "../components/ImagePreview"
-import { useEffect, useState } from 'react';
+import ItemCard from '../components/ItemCard';
+import {data} from '../Data.jsx';
 
-// const List = [img, img1, img2, img3];
 const Homepage = () => {
-  return (
-    <div>
-      <h1>
-        HOME PAGE
-
-      </h1>
-
-    </div>
-  )
-}
+	return (
+		<div>
+			<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', flexFlow: "row wrap", marginLeft: '10vw', marginRight: '10vw' }}>
+				{data.map((item, idx) => {
+					return (
+					<ItemCard title={item.name} description={item.description} image={item.default} index={idx} price={item.price}
+					/>)
+				})}
+			</div>
+		</div>
+	);
+};
 
 export default Homepage;
