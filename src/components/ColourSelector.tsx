@@ -92,17 +92,20 @@ type ColourSelectorProps = {
 
 const ColourSelector = (props: ColourSelectorProps) => {
     const itemObj = findItemObject(props.itemName);
-    const items = new Array;
-    itemObj.colours.map((x, idx) => { items.push(React.useRef<HTMLButtonElement>(null)) })
+    // const items = new Array;
+    // React.useEffect(() => {
+    //     itemObj.colours.map(() => { items.push(React.useRef<HTMLButtonElement>(null)); })
+    // }, []);
+    const items = React.useRef<Array<React.RefObject<HTMLButtonElement>>>([]);
+    items.current = itemObj.colours.map((x, idx) => items.current[idx] = React.createRef())
 
     const [position, setPosition] = React.useState('0.4rem');
     const [width, setWidth] = React.useState('')
     const [color, setColor] = React.useState(itemObj.colours[0].primaryColour)
     const [backgroundc, setBackgroundc] = React.useState(itemObj.colours[0].secondaryColour)
-
     const container = React.useRef<HTMLElement>(null);
     React.useEffect(() => {
-        setWidth(items[0].current?.getBoundingClientRect().width + 'px');
+        setWidth(items.current[0].current?.getBoundingClientRect().width + 'px');
     }, [])
     const handleclick = (
         event: React.MouseEvent<HTMLElement>,
@@ -112,12 +115,12 @@ const ColourSelector = (props: ColourSelectorProps) => {
             console.log(newButton)
 
             const x = container.current?.getBoundingClientRect().left
-            const y = items[newButton].current?.getBoundingClientRect().left
+            const y = items.current[newButton].current?.getBoundingClientRect().left
             if (x != undefined && y != undefined)
                 setPosition(Math.round(y) - Math.round(x) + 'px')
             setColor(itemObj.colours[newButton].primaryColour)
             setBackgroundc(itemObj.colours[newButton].secondaryColour)
-            setWidth(items[newButton].current?.getBoundingClientRect().width + 'px')
+            setWidth(items.current[newButton].current?.getBoundingClientRect().width + 'px')
             props.setClickedButton(newButton);
         }
     };
@@ -133,7 +136,7 @@ const ColourSelector = (props: ColourSelectorProps) => {
         >
             <SelectOverlay left={position} background={color} width={width}></SelectOverlay>
             {
-                items.map((x, idx) => {
+                items.current.map((x, idx) => {
                     return (<ToggleButton ref={x} value={idx} sx={ToggleButtonStyling} disableRipple >{itemObj.colours[idx].name}</ToggleButton>)
                 })
             }
