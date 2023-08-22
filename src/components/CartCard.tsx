@@ -46,7 +46,7 @@ const StyledText = styled.div`
 `;
 
 const StyledTitle = styled.div`
-	font-size: 1.625rem	
+	font-size: 1.625rem
 `;
 
 const StyledInfo = styled.div`
@@ -61,9 +61,7 @@ const CartCard = (props: Prop) => {
 	// Use context TO DETERMINE OG VAL, NOT JUST 1
 	const [quantity, setQuantity] = useState(1);
 	const total = Math.round((props.unitPrice * quantity+ Number.EPSILON)* 100)/100;
-	// const handleQuantityChange = (newQuantity: number) => {
-	// 	setQuantity(newQuantity);
-	// };
+	
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
 		navigate({
@@ -77,7 +75,6 @@ const CartCard = (props: Prop) => {
 			return (<p>(${props.unitPrice} each)</p>)
 		}
 	}
-	
 
 	return (
 		<StyledProduct>
@@ -85,7 +82,7 @@ const CartCard = (props: Prop) => {
         <StyledProperty style = {{ width: '13rem'}}>
             <StyledImage onClick={() => {productPage(props.title)}} src={props.image} alt=""/>
         </StyledProperty>
-        <StyledProperty style = {{ justifyContent: 'left' }}> 
+        <StyledProperty style = {{ justifyContent: 'left' }}>
           <StyledText>
             <StyledTitle onClick={() => {productPage(props.title)}} style = {{cursor: 'pointer', fontWeight: 'bold'}}>{props.title}</StyledTitle>
             <StyledInfo>
@@ -102,14 +99,14 @@ const CartCard = (props: Prop) => {
           </StyledText>
         </StyledProperty>
       </StyledProperty>
-			<StyledProperty style = {{width: '20%'}}> 
+			<StyledProperty style = {{width: '20%'}}>
 				<Quantity count={quantity} onCountChange={setQuantity} />
 			</StyledProperty>
-			<StyledProperty style = {{width: '10%'}}> 
+			<StyledProperty style = {{width: '10%'}}>
 				{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
 				<StyledImage style = {{width: '28%'}}src={Bin} alt="Bin Item"/>
 			</StyledProperty>
-			<StyledProperty style = {{width: '20%', display: 'flex', flexDirection: 'column'}}>  
+			<StyledProperty style = {{width: '20%', display: 'flex', flexDirection: 'column'}}>
 				<StyledTitle>${total}</StyledTitle>
 				{perItem()}
 			</StyledProperty>

@@ -92,21 +92,19 @@ type ColourSelectorProps = {
 
 const ColourSelector = (props: ColourSelectorProps) => {
     const itemObj = findItemObject(props.itemName);
-    // const items = new Array;
-    // React.useEffect(() => {
-    //     itemObj.colours.map(() => { items.push(React.useRef<HTMLButtonElement>(null)); })
-    // }, []);
+
     const items = React.useRef<Array<React.RefObject<HTMLButtonElement>>>([]);
-    items.current = itemObj.colours.map((x, idx) => items.current[idx] = React.createRef())
+    items.current = itemObj.colours.map((x, idx) => items.current[idx] = React.createRef());
 
     const [position, setPosition] = React.useState('0.4rem');
-    const [width, setWidth] = React.useState('')
-    const [color, setColor] = React.useState(itemObj.colours[0].primaryColour)
-    const [backgroundc, setBackgroundc] = React.useState(itemObj.colours[0].secondaryColour)
+    const [width, setWidth] = React.useState('');
+    const [color, setColor] = React.useState(itemObj.colours[0].primaryColour);
+    const [backgroundc, setBackgroundc] = React.useState(itemObj.colours[0].secondaryColour);
     const container = React.useRef<HTMLElement>(null);
     React.useEffect(() => {
         setWidth(items.current[0].current?.getBoundingClientRect().width + 'px');
     }, [])
+
     const handleclick = (
         event: React.MouseEvent<HTMLElement>,
         newButton: number,

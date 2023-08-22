@@ -20,7 +20,7 @@ export const findItemObject = (title) => {
     }
     return {
         "name": "Wireless Earbuds",
-        "description": "b Q W b 7 n v e v 5 j L R a W 2 L M o D ",
+        "description": "b Q W n v e v 5 j L R a W 2 L M o D ",
         "colours": [{name: "Black", img: plush, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF"}, {name:"Lilac", img: pushin, primaryColour: "#FF7A00", secondaryColour: "#FED5B0"}, {name: "Red", img: winz, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC"}],
         "price": 79.99,
         default: plush
