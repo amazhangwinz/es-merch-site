@@ -82,11 +82,15 @@ const SingleItemPage = (prop: SingleItemProp) => {
   // COLOURS INDEX . NAME
   const [clickedButton, setClickedButton] = React.useState(0);
   const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
-  // BRING QUANTITY USESTATE OUTSIDE OF COMPONENT
+  // BRING QUANTITY USESTATE OUTSIDE OF COMPONENT - DONE
   const [qty, setQty] = React.useState(1);
 
   const handleAddToCart = () => {
-    cart.push({ price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size });
+    if (cart.includes({ price: itemObj.price, name: itemObj.name, quantity: 1 | 2 | 3 | 4 | 5, colour: itemObj.colours[clickedButton].name, size: size })) {
+      cart[cart.indexOf({ price: itemObj.price, name: itemObj.name, quantity: 1 | 2 | 3 | 4 | 5, colour: itemObj.colours[clickedButton].name, size: size })].quantity += 1;
+    } else {
+      cart.push({ price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size });
+    }
     setCart(cart);
     console.log(cart);
   }
