@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import {data} from '../Data.jsx';
-import {findColourImage} from '../Helpers.js'
+import {findColourImage} from '../Helpers'
 
 
 interface Prop {

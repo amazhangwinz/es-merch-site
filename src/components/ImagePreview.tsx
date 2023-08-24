@@ -11,7 +11,7 @@ import {
     Grid,
 } from '@mui/material';
 import styled from "styled-components";
-import {findItemObject} from '../Helpers.js';
+import { findItemObject } from "../Helpers";
 
 
 const StyledGrid = styled.div`
@@ -30,8 +30,8 @@ gap: var(--gap);
 
 `
 const StyledImg = styled.img`
-width: 8.5vw;
-height: 8.5vw;
+width: 5rem;
+height: 5rem;
 object-fit: cover;
 border-radius: 0.625rem;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -40,8 +40,8 @@ justify-self: stretch;
 `
 
 const LargeStyledImg = styled.img`
-width: 27vw;
-height: 27vw;
+width: 15rem;
+height: 17rem;
 flex-shrink: 0;
 object-fit: cover;
 grid-column: span 3;
@@ -62,17 +62,6 @@ type ImagePreviewProps = {
 const ImagePreview = (props: ImagePreviewProps) => {
 
     const itemObj = findItemObject(props.itemName);
-
-    // let items: Array<string>;
-    // switch (props.itemColour) {
-    //     case "pink":
-    //         items = [img, img1, img2];
-    //         break;
-    //     default:
-    //         items = [img, img, img];
-    //         break;
-    // }
-    // const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
     return (
         <StyledGrid>
             <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>

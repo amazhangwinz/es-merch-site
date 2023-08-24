@@ -56,13 +56,13 @@ type SelectOverlayProps = {
 
 const SelectOverlay = styled.div<SelectOverlayProps>`
 position: absolute;
-top: .4rem;
+top: .25rem;
 left: ${props => props.left};
 border-radius: 4.375rem;
 background: ${props => props.background};
 flex-shrink: 0;
 width: ${props => props.width};
-height: 2.1875rem;
+height: 1.5rem;
 z-index: 0;
 transition-name: active;
 transition-timing-function: ease-out;
@@ -75,7 +75,7 @@ const toggleswitchstyle = (bgc: string) => ({
     flexShrink: '0',
     position: 'relative',
     width: '60%',
-    height: '2.9375rem',
+    height: '2rem',
     justifyContent: 'space-evenly',
     alignContent: 'center',
     transiton: 'ease-out 300',

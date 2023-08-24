@@ -6,10 +6,10 @@ import ColourSelector from '../components/ColourSelector';
 import QuantitySelector from '../components/QuanitySelector';
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import { data } from "../Data.jsx"
-import { cartContext, CartItem } from '../App';
+import { cartContext, CartItem, } from '../App';
 import { useSearchParams } from 'react-router-dom';
 import styled from "styled-components";
-import { findItemObject } from '../Helpers.js';
+import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
 import SizeButtonItemPage from '../components/SizeButtonItemPage';
@@ -23,6 +23,7 @@ const ImagePreviewContainer = styled.div`
   margin:5rem;
   // border-style: dotted;
   align-items: center;
+
 `
 
 const ImageDetailContainer = styled.div`
@@ -34,6 +35,7 @@ display:flex;
 justify-content: space-evenly;
 align-items: center;
 flex-direction: column;
+overflow: auto;
 `
 
 const RelatedItemsContainer = styled.div`
@@ -45,7 +47,7 @@ font-style: normal;
 font-weight: 800;
 line-height: normal;
 margin:5rem;
-// border-style:dotted;
+
 `
 const RelatedImageContainer = styled.div`
   display: flex;
@@ -53,7 +55,6 @@ const RelatedImageContainer = styled.div`
   height: 100%;
   align-items: center;
   text-align: center;
-
 
 `
 const RelatedDetailsContainer = styled.div`
@@ -63,6 +64,7 @@ const RelatedDetailsContainer = styled.div`
  width: 100%;
  height: 25%;
 padding: 1rem;
+
 `
 
 type SingleItemProp = {
@@ -86,8 +88,11 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const [qty, setQty] = React.useState(1);
 
   const handleAddToCart = () => {
-    if (cart.includes({ price: itemObj.price, name: itemObj.name, quantity: 1 | 2 | 3 | 4 | 5, colour: itemObj.colours[clickedButton].name, size: size })) {
-      cart[cart.indexOf({ price: itemObj.price, name: itemObj.name, quantity: 1 | 2 | 3 | 4 | 5, colour: itemObj.colours[clickedButton].name, size: size })].quantity += 1;
+    if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size })) {
+      cart.forEach(element => {
+        if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
+          element.quantity++;
+      });
     } else {
       cart.push({ price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size });
     }
@@ -101,7 +106,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
 
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <ImagePreviewContainer>
         <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />
         <ImageDetailContainer>
@@ -132,13 +137,13 @@ const SingleItemPage = (prop: SingleItemProp) => {
           {data.map((e) => {
             if (e.name !== itemTitle) {
               return (
-                <RelatedItems price={e.price} itemtext={e.name} img={e.default}></RelatedItems>
+                <RelatedItems price={e.price} itemtext={e.name} img={e.colours[0].img}></RelatedItems>
               )
             }
           })}
         </RelatedImageContainer>
       </RelatedItemsContainer>
-    </>
+    </div >
   )
 }
 
