@@ -91,10 +91,10 @@ const SingleItemPage = (prop: SingleItemProp) => {
     if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size })) {
       cart.forEach(element => {
         if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
-          element.quantity++;
+          element.quantity += qty;
       });
     } else {
-      cart.push({ price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size });
+      cart.push({ price: itemObj.price, name: itemObj.name, quantity: qty, colour: itemObj.colours[clickedButton].name, size: size });
     }
     setCart(cart);
     console.log(cart);

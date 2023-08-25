@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import {
     Box,
     AppBar,
@@ -109,12 +109,18 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
+    const goToCart = () => {
+        navigate("/cart")
+    }
 
     return (
         <div style={{ height: "100%", justifyContent: "space-around", alignContent: "baseline", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
-                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {props.handleAddToCart();
-                    handleOpen()}}>Add to Cart</Button>
+                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
+                    props.handleAddToCart();
+                    handleOpen()
+                }}>Add to Cart</Button>
             </ThemeProvider>
             <Modal
                 open={open}
@@ -127,7 +133,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                     <Box sx={lowermodal}>
                         <ThemeProvider theme={theme}>
                             <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
-                            <Button variant="contained" sx={ButtonStyle} href="/cart">Go to Cart</Button>
+                            <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
                         </ThemeProvider>
                     </Box>
 

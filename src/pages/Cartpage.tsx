@@ -16,6 +16,7 @@ const Cartpage = () => {
     });
   };
   const { cart, setCart } = React.useContext(cartContext);
+  console.log(cart)
   return (
     <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <p style={{ fontSize: '1.875rem', fontStyle: 'normal', fontWeight: '700' }}>
@@ -32,7 +33,7 @@ const Cartpage = () => {
         {/** MAP THE CART INSTEAD OF DATA HERE */}
         {cart.map((item, idx) => {
           return (
-            <CartCard title={item.name} image={findColourImage(idx, item.colour)} index={idx} unitPrice={item.price}
+            <CartCard title={item.name} image={findColourImage(idx, item.colour)} index={idx} unitPrice={item.price} qty={item.quantity} size={item.size} colour={item.colour}
             />)
         })}
       </div>
