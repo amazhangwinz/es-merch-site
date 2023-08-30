@@ -23,7 +23,8 @@ const ImagePreviewContainer = () => ({
   // margin:5rem;
   // border-style: dotted;
   alignItems: 'center',
-  flexDirection: { md: 'row', xs: "column" }
+  flexDirection: { md: 'row', xs: "column" },
+  marginTop: "1rem",
 })
 
 const ImageDetailContainer = styled.div`
@@ -47,7 +48,7 @@ const RelatedItemsContainer = () => ({
   fontStyle: "normal",
   fontWeight: "800",
   lineHeight: "normal",
-  margin: { md: "5rem", xs: "1rem" }
+  margin: "1rem",
 
 })
 const RelatedImageContainer = () => ({
@@ -134,7 +135,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3, justifyContent: "space-around" }}>
-            <SizeGuideModal />
+            <SizeGuideModal img={itemObj.sizeguide} />
           </Box>
         </ImageDetailContainer>
       </Box>

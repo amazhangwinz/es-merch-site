@@ -17,7 +17,12 @@ const style = {
   borderRadius: '30px',
 };
 
-export default function SizeGuideModal() {
+type SizeGuideProps = {
+  children?: any;
+  img: string;
+}
+
+export default function SizeGuideModal(props: SizeGuideProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
