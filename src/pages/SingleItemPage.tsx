@@ -11,20 +11,20 @@ import { useSearchParams } from 'react-router-dom';
 import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import SizeButtonItemPage from '../components/SizeButtonItemPage';
 import SizeGuideModal from '../components/SizeGuideModal';
 
 
-const ImagePreviewContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  background: #ECECEC;
-  margin:5rem;
+const ImagePreviewContainer = () => ({
+  display: 'flex',
+  justifyContent: 'center',
+  background: '#ECECEC',
+  // margin:5rem;
   // border-style: dotted;
-  align-items: center;
-
-`
+  alignItems: 'center',
+  flexDirection: { md: 'row', xs: "column" }
+})
 
 const ImageDetailContainer = styled.div`
 width: 32.3125rem;
@@ -32,31 +32,34 @@ height: 27.75rem;
 flex-shrink: 0;
 // background: red;
 display:flex;
-justify-content: space-evenly;
+justify-content: space-around;
 align-items: center;
 flex-direction: column;
-overflow: auto;
-`
-
-const RelatedItemsContainer = styled.div`
-  text-align: left;
-  color: #1C3A59;
-font-family: Montserrat;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 800;
-line-height: normal;
-margin:5rem;
+// padding: 2rem;
 
 `
-const RelatedImageContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  height: 100%;
-  align-items: center;
-  text-align: center;
 
-`
+const RelatedItemsContainer = () => ({
+  textAlign: "left",
+  color: "#1C3A59",
+  fontFamily: "Montserrat",
+  fontSize: "1.5rem",
+  fontStyle: "normal",
+  fontWeight: "800",
+  lineHeight: "normal",
+  margin: { md: "5rem", xs: "1rem" }
+
+})
+const RelatedImageContainer = () => ({
+  display: 'flex',
+  justifyContent: 'space-evenly',
+  height: '100%',
+  alignItems: 'center',
+  textAlign: 'center',
+  maxWidth: { xs: "400px", md: 'none' },
+  flexDirection: { xs: "column", md: "row" },
+  margin: { xs: "1rem", md: "none" }
+})
 const RelatedDetailsContainer = styled.div`
  display: flex;
  align-items: center;
@@ -107,33 +110,37 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <ImagePreviewContainer>
-        <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />
+      <Box sx={ImagePreviewContainer}>
+        <Box sx={{ marginBottom: { xs: '2rem', md: 'none' } }}>
+          <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />
+        </Box>
         <ImageDetailContainer>
-          <Box>
-            <Typography variant="h3" sx={{ color: '#1C3A59' }} gutterBottom>
+          <Container sx={{ margin: "1rem", maxWidth: { md: 'none', xs: "400px" }, paddingLeft: { md: "none", xs: "2rem" }, paddingRight: { md: "none", xs: "2rem" } }}>
+            <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2.3rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
-            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59' }}>
+            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }}>
               ${itemObj.price}
             </Typography>
-            <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59' }}>
+            <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.5rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3 }}>
-              <SizeButtonItemPage size={size} setSize={setSize} />
-              <SizeGuideModal />
-            </Box>
-          </Box>
-          <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector>
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+
+          </Container>
+          {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth:{md:"none", xs:"400px"}}}>
             <QuantitySelector qty={qty} setQty={setQty}></QuantitySelector>
-            <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal></Box>
+            <SizeButtonItemPage size={size} setSize={setSize} />
+            <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3, justifyContent: "space-around" }}>
+            <SizeGuideModal />
+          </Box>
         </ImageDetailContainer>
-      </ImagePreviewContainer>
-      <RelatedItemsContainer>
+      </Box>
+      <Box sx={RelatedItemsContainer}>
         <h1 style={{ fontSize: 35, textAlign: 'center' }}>Here are some items you'll also love</h1>
-        <RelatedImageContainer >
+        <Box sx={RelatedImageContainer} >
           {data.map((e) => {
             if (e.name !== itemTitle) {
               return (
@@ -141,8 +148,8 @@ const SingleItemPage = (prop: SingleItemProp) => {
               )
             }
           })}
-        </RelatedImageContainer>
-      </RelatedItemsContainer>
+        </Box>
+      </Box>
     </div >
   )
 }

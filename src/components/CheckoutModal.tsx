@@ -73,11 +73,11 @@ const addCartButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '110%',
+    fontSize: { md: '110%', xs: "90%" },
     fontWeight: '500',
     contrastText: 'black',
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
+    paddingLeft: { md: '2rem', xs: "1rem" },
+    paddingRight: { md: '2rem', xs: "1rem" },
     height: '70%',
     alignSelf: 'center'
 }
