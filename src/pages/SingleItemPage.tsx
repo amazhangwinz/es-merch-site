@@ -115,7 +115,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />
         </Box>
         <ImageDetailContainer>
-          <Container sx={{ margin: "1rem", maxWidth: { md: 'none', xs: "400px" }, paddingLeft: { md: "none", xs: "2rem" }, paddingRight: { md: "none", xs: "2rem" } }}>
+          <Container sx={{ margin: "1rem", maxWidth: { md: 'none', xs: "400px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
             <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2.3rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
@@ -128,7 +128,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth:{md:"none", xs:"400px"}}}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
             <QuantitySelector qty={qty} setQty={setQty}></QuantitySelector>
             <SizeButtonItemPage size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
