@@ -25,6 +25,7 @@ const StyledContainer = {
     marginLeft: { md: "12rem", xs: "1rem" },
     marginRight: { md: "12rem", xs: "1rem" },
     marginTop: { md: "none", xs: "1rem" },
+    marginBottom: { md: "none", xs: "1rem" },
     minWidth: { md: "35rem", xs: "380px" },
 }
 const IconContainer = {
