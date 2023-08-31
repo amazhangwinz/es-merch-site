@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import NeelDutta from '../assets/NeelDutta.png';
-import SizeGuide from '../assets/SizeGuide.png'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -44,7 +43,7 @@ export default function SizeGuideModal(props: SizeGuideProps) {
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography> */}
           <Box sx={{ borderRadius: "30px", maxWidth: { md: "none", xs: "400px" }, overflow: "auto" }}>
-            <img src={SizeGuide} alt='Size Guide' />
+            <img src={props.img} alt='Size Guide' />
           </Box>
         </Box>
       </Modal>
