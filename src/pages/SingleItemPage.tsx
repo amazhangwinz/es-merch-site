@@ -68,8 +68,19 @@ const RelatedDetailsContainer = styled.div`
  width: 100%;
  height: 25%;
 padding: 1rem;
-
 `
+const stylebreadcrumbs = {
+  display: { md: "block", xs: "none" },
+  textAlign: "left",
+  color: "#1C3A59",
+  fontFamily: "Montserrat",
+  fontSize: "1.5rem",
+  fontStyle: "normal",
+  fontWeight: "800",
+  lineHeight: "normal",
+  marginTop: "2rem",
+  marginLeft: "2rem",
+}
 
 type SingleItemProp = {
   children?: any;
@@ -112,7 +123,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Breadcrumbs sx={RelatedItemsContainer}>
+      <Breadcrumbs sx={stylebreadcrumbs}>
         <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
