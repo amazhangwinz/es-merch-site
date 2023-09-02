@@ -1,8 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import img3 from "../assets/EngsocLogo.svg";
-import img from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
-import img1 from "../assets/lighter.webp"
-import img2 from "../assets/pushin.gif"
 import {
     Box,
     AppBar,
@@ -11,7 +7,7 @@ import {
     Grid,
 } from '@mui/material';
 import styled from "styled-components";
-import {findItemObject} from '../Helpers.js';
+import { findItemObject } from "../Helpers";
 
 
 const StyledGrid = styled.div`
@@ -30,8 +26,8 @@ gap: var(--gap);
 
 `
 const StyledImg = styled.img`
-width: 8.5vw;
-height: 8.5vw;
+width: 5rem;
+height: 5rem;
 object-fit: cover;
 border-radius: 0.625rem;
 box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -40,11 +36,12 @@ justify-self: stretch;
 `
 
 const LargeStyledImg = styled.img`
-width: 27vw;
-height: 27vw;
+width: 15rem;
+height: 17rem;
 flex-shrink: 0;
 object-fit: cover;
 grid-column: span 3;
+// grid-column: span 4;
 grid-row: span 3;
 justify-self: stretch;
 border-radius: 0.625rem;
@@ -62,24 +59,24 @@ type ImagePreviewProps = {
 const ImagePreview = (props: ImagePreviewProps) => {
 
     const itemObj = findItemObject(props.itemName);
-
-    // let items: Array<string>;
-    // switch (props.itemColour) {
-    //     case "pink":
-    //         items = [img, img1, img2];
-    //         break;
-    //     default:
-    //         items = [img, img, img];
-    //         break;
-    // }
-    // const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
     return (
-        <StyledGrid>
-            <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
-            <LargeStyledImg src={props.heroSrc}></LargeStyledImg>
-            <StyledImg src={itemObj.colours[1].img} onClick={() => props.setHero(itemObj.colours[1].img)} style={{ cursor: 'pointer' }}></StyledImg>
-            <StyledImg src={itemObj.colours[2].img} onClick={() => props.setHero(itemObj.colours[2].img)} style={{ cursor: 'pointer' }}></StyledImg>
-        </StyledGrid>
+        <Box>
+            <img style={{
+                width: "20rem",
+                height: "20rem",
+                objectFit: "cover",
+                justifySelf: "stretch",
+                borderRadius: "0.625rem",
+                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                margin: '5rem',
+            }} src={props.heroSrc}></img>
+        </Box >
+        // <StyledGrid>
+        //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
+        //     <LargeStyledImg src={props.heroSrc}></LargeStyledImg>
+        //     <StyledImg src={itemObj.colours[1].img} onClick={() => props.setHero(itemObj.colours[1].img)} style={{ cursor: 'pointer' }}></StyledImg>
+        //     <StyledImg src={itemObj.colours[2].img} onClick={() => props.setHero(itemObj.colours[2].img)} style={{ cursor: 'pointer' }}></StyledImg>
+        // </StyledGrid>
     )
 
 }
