@@ -43,8 +43,8 @@ export default function SizeGuideModal(props: SizeGuideProps) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography> */}
-          <Box sx={{ borderRadius: "30px", maxWidth: { md: "none", xs: "400px" }, overflow: "auto" }}>
-            <img src={SizeGuide} alt='Size Guide' />
+          <Box sx={{ borderRadius: "30px", maxWidth: { md: "none", xs: "400px" }, overflow: "auto", padding: "1rem" }}>
+            <img src={props.img} alt='Size Guide' />
           </Box>
         </Box>
       </Modal>
