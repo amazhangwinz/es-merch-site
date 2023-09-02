@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import {data} from '../Data.jsx';
-import {findColourImage} from '../Helpers'
+import { data } from '../Data.jsx';
+import { findColourImage } from '../Helpers'
 
 
 interface Prop {
@@ -50,11 +50,19 @@ const StyledTitle = styled.h1`
 	font-size: clamp(1.25rem, 1.2vw, 1.5rem);
 	margin: 0;
 	cursor: pointer;
+	font-family: Montserrat;
+    font: Regular;
+	font-weight: 800;
+    color: #1C3A59;
 `;
 
 const StyledPrice = styled.p`
 	margin-bottom: 0;
 	font-size: clamp(1rem, 1vw, 1.5rem)
+	font-family: Montserrat;
+    font: Regular;
+	font-weight: 500;
+    color: #1C3A59;
 `;
 
 const StyledDescription = styled.p`
@@ -66,6 +74,10 @@ const StyledDescription = styled.p`
 	word-wrap: break-word;
 	font-size: clamp(1rem, 1vw, 1.5rem);
 	padding-bottom: 5%;
+	font-family: Montserrat;
+    font: Regular;
+	font-weight: 500;
+    color: #1C3A59;
 `;
 
 const StyledColours = styled.div`
@@ -88,7 +100,7 @@ const ItemCard = (props: Prop) => {
 	const productPage = (prodName: string) => {
 		navigate({
 			pathname: '/item',
-			search: `?${createSearchParams({title: prodName})}`,
+			search: `?${createSearchParams({ title: prodName })}`,
 		});
 	};
 
@@ -96,13 +108,13 @@ const ItemCard = (props: Prop) => {
 
 
 	return (
-		<StyledComponent onClick={() => {productPage(props.title)}} style={{cursor: 'pointer'}}>
+		<StyledComponent onClick={() => { productPage(props.title) }} style={{ cursor: 'pointer' }}>
 			<StyledContent >
-				<StyledTitle style={{ margin: 0, cursor: 'pointer'}}>
+				<StyledTitle style={{ margin: 0, cursor: 'pointer' }}>
 					{props.title}
 				</StyledTitle>
 				{/* <StyledDescription style={{ margin: 0, textAlign: 'left'}}>{props.description}</StyledDescription> */}
-				<StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
+				{/* <StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
 					{data[props.index].colours.map((colour) => (
 						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
 							<ColourCircles onClick={(event) => {
@@ -110,7 +122,7 @@ const ItemCard = (props: Prop) => {
 								setCurrColour(colour.name);}} style={{ cursor: 'pointer', background: `linear-gradient(190deg, ${colour.name}, grey 125%)` }}></ColourCircles>
 						</div>
 						))}
-				</StyledColours>
+				</StyledColours> */}
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
 			<StyledImage src={

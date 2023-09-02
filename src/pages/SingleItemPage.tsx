@@ -7,11 +7,11 @@ import QuantitySelector from '../components/QuanitySelector';
 import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import { data } from "../Data.jsx"
 import { cartContext, CartItem, } from '../App';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Breadcrumbs, Link } from '@mui/material';
 import SizeButtonItemPage from '../components/SizeButtonItemPage';
 import SizeGuideModal from '../components/SizeGuideModal';
 
@@ -70,6 +70,18 @@ const RelatedDetailsContainer = styled.div`
 padding: 1rem;
 
 `
+const stylebreadcrumbs = {
+  display: { md: "block", xs: "none" },
+  textAlign: "left",
+  color: "#1C3A59",
+  fontFamily: "Montserrat",
+  fontSize: "1.5rem",
+  fontStyle: "normal",
+  fontWeight: "800",
+  lineHeight: "normal",
+  marginTop: "2rem",
+  marginLeft: "2rem",
+}
 
 type SingleItemProp = {
   children?: any;
@@ -108,9 +120,14 @@ const SingleItemPage = (prop: SingleItemProp) => {
     setHero(() => itemObj.colours[clickedButton].img);
   }, [clickedButton]);
 
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Breadcrumbs sx={stylebreadcrumbs}>
+        <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
+        <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
+      </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
         <Box sx={{ marginBottom: { xs: '2rem', md: 'none' } }}>
           <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />

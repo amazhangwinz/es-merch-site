@@ -119,7 +119,14 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={page.function}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <Typography textAlign="center" sx={{
+
+                    fontFamily: "Montserrat",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none"
+                  }}>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -150,7 +157,12 @@ const Navbar = () => {
               <Button
                 key={page.name}
                 onClick={page.function}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2, color: "white", display: "block", fontFamily: "Montserrat",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  textDecoration: "none",
+                }}
               >
                 {page.name}
               </Button>
