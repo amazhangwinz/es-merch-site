@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useNavigate,createSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, createSearchParams } from "react-router-dom";
 
 import {
     Box,
@@ -31,8 +31,8 @@ align-items: center;
 `;
 
 const StyledImg = styled.img`
-  width: 15vw;
-  height: 15vw;
+  width: 15rem;
+  height: 15rem;
   box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
   border-radius: 10%;
   flex-shrink:0;
@@ -62,30 +62,32 @@ type Props = {
 const RelatedItemBox = (props: Props) => {
 
     const navigate = useNavigate();
-	const productPage = (prodName: string) => {
-		navigate({
-			pathname: '/item',
-			search: `?${createSearchParams({title: prodName})}`,
-		});
-	};
+    const productPage = (prodName: string) => {
+        navigate({
+            pathname: '/item',
+            search: `?${createSearchParams({ title: prodName })}`,
+        });
+    };
     return (
-        <StyledRelatedImage style={{ cursor: 'pointer' }} onClick={() => productPage(props.itemtext)}>
-            <StyledImg src={props.img} style={{ cursor: 'pointer' }}/>
-            <Typography
-                variant="body1"
-                textAlign="center"
-            >
-                <StyledText>
-                    {props.itemtext}
-                </StyledText>
-            </Typography>
-            <Typography
-                variant="body1">
-                <BoldStyledText>
-                    {"$" + props.price.toFixed(2)}
-                </BoldStyledText>
-            </Typography>
-        </StyledRelatedImage>
+        <Box sx={{ margin: { md: "none", xs: "1rem" } }}>
+            <StyledRelatedImage style={{ cursor: 'pointer' }} onClick={() => productPage(props.itemtext)}>
+                <StyledImg src={props.img} style={{ cursor: 'pointer' }} />
+                <Typography
+                    variant="body1"
+                    textAlign="center"
+                >
+                    <StyledText>
+                        {props.itemtext}
+                    </StyledText>
+                </Typography>
+                <Typography
+                    variant="body1">
+                    <BoldStyledText>
+                        {"$" + props.price.toFixed(2)}
+                    </BoldStyledText>
+                </Typography>
+            </StyledRelatedImage>
+        </Box>
     )
 }
 export default RelatedItemBox;

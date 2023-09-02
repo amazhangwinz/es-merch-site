@@ -35,7 +35,7 @@ const StyledImgSmall = styled.img`
 `;
 
 const Navbar = () => {
-	// used to switch pages
+  // used to switch pages
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -48,27 +48,27 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-	const [page, setPage] = useState('home');
+  const [page, setPage] = useState('home');
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const homeLink = () => {
-		navigate('/');
-		setPage('home');
-	};
+  const homeLink = () => {
+    navigate('/');
+    setPage('home');
+  };
 
-	const cartLink = () => {
-		navigate('/cart');
-		setPage('cart');
-	};
-  const pages = [{name: "Home", function: homeLink}, {name: "Cart", function: cartLink}];
+  const cartLink = () => {
+    navigate('/cart');
+    setPage('cart');
+  };
+  const pages = [{ name: "Home", function: homeLink }, { name: "Cart", function: cartLink }];
 
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1C3A59' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ display: { xs: "none", md: "flex" }}}><StyledImgBig onClick={homeLink} src={EngsocLogo} /></Box>
+          <Box sx={{ display: { xs: "none", md: "flex" } }}><StyledImgBig onClick={homeLink} src={EngsocLogo} /></Box>
           <Typography
             variant="h6"
             noWrap
@@ -77,7 +77,7 @@ const Navbar = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "Montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -119,12 +119,19 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={page.function}>
-                  <Typography textAlign="center">{page.name}</Typography>
+                  <Typography textAlign="center" sx={{
+
+                    fontFamily: "Montserrat",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none"
+                  }}>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" }}}><StyledImgSmall onClick={homeLink} src={EngsocLogo} /></Box>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}><StyledImgSmall onClick={homeLink} src={EngsocLogo} /></Box>
           <Typography
             variant="h5"
             noWrap
@@ -134,7 +141,7 @@ const Navbar = () => {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "Montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -150,7 +157,12 @@ const Navbar = () => {
               <Button
                 key={page.name}
                 onClick={page.function}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2, color: "white", display: "block", fontFamily: "Montserrat",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  textDecoration: "none",
+                }}
               >
                 {page.name}
               </Button>
@@ -166,4 +178,4 @@ export default Navbar;
 
 
 
-  
+

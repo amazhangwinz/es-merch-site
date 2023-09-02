@@ -3,6 +3,7 @@ import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem"
 import { useNavigate } from "react-router-dom";
+import { cartContext } from '../App';
 
 const InputLabel = styled.label`
   display: block;
@@ -18,7 +19,7 @@ const CustomForm = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-cart: flex-start;
   border: 20px solid #ECECEC;
   border-radius: 25px;
   background: #ECECEC;
@@ -83,25 +84,7 @@ const TotalSummary = styled.div`
   justify-content: space-between;
 `
 
-const items = [{
-  name: "Limited Edition Hoodie",
-  colour: "Black",
-  size: "Small",
-  qty: 2,
-  uprice: 100
-}, {
-  name: "Limited Edition Hoodie",
-  colour: "Black",
-  size: "Small",
-  qty: 2,
-  uprice: 100
-}, {
-  name: "Limited Edition Hoodie",
-  colour: "Black",
-  size: "Small",
-  qty: 2,
-  uprice: 100
-}]
+
 
 const Checkoutpage = () => {
   let navigate = useNavigate();
@@ -113,58 +96,59 @@ const Checkoutpage = () => {
     let path = `/order-success`;
     navigate(path);
   }
+  const { cart, setCart } = React.useContext(cartContext);
   return (
-    <Box sx={{ml:{xs: 2, md: 5}, mr: 7}}>
-      <Box sx={{textAlign: {xs: 'center'}}}>
-      <h1>
-        Checkout
-      </h1>
+    <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
+      <Box sx={{ textAlign: { xs: 'center' } }}>
+        <h1>
+          Checkout
+        </h1>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: {xs: 'center', md: 'space-between'}, flexDirection: {xs: 'column', md: 'row'}}}>
-        <Box sx={{width: {md: '50%', xs: '90%'}, height: '100%'}}>
-        <CustomForm>
-          <Container>
-            <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-            <CustomInput type="text" id="fname" name="fname"></CustomInput><br></br>
-          </Container>
-          <Container>
-            <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-            <CustomInput type="text" id="email" name="email"></CustomInput><br></br>
-          </Container>
-          <Container>
-            <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
-            <CustomInput type="text" id="phoneNumber" name="phoneNumber"></CustomInput><br></br>
-          </Container>
-          <Container>
-            <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
-            {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-            <AttachImage type="file" id="phoneNumber" name="phoneNumber"></AttachImage><br></br>
-          </Container>
-          <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
-        </CustomForm>
+      <Box sx={{ display: "flex", justifyContent: { xs: 'center', md: 'space-between' }, flexDirection: { xs: 'column', md: 'row' } }}>
+        <Box sx={{ width: { md: '50%', xs: '90%' }, height: '100%' }}>
+          <CustomForm>
+            <Container>
+              <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
+              <CustomInput type="text" id="fname" name="fname"></CustomInput><br></br>
+            </Container>
+            <Container>
+              <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
+              <CustomInput type="text" id="email" name="email"></CustomInput><br></br>
+            </Container>
+            <Container>
+              <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
+              <CustomInput type="text" id="phoneNumber" name="phoneNumber"></CustomInput><br></br>
+            </Container>
+            <Container>
+              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
+              {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
+              <AttachImage type="file" id="phoneNumber" name="phoneNumber"></AttachImage><br></br>
+            </Container>
+            <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
+          </CustomForm>
         </Box>
-        <Box sx={{width: {md: '30%', xs: '100%'}}}>
-        <CustomOrderSummary>
-          <div>
-            <h3>YOUR ORDER SUMMARY</h3>
-            <hr style={{
-              color: "#212121",
-              backgroundColor: "#212121",
-              height: 2,
-            }} />
-          </div>
-          <div style={{ overflow: 'auto', height: '50%' }}>
-           {/** MAP OVER CART INSTEAD!!!!! */} 
-            {
-              items.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.qty} uprice={x.uprice} />)
-            }
-          </div>
-          <TotalSummary>
-            <p>Total</p>
-            <p><b>${items.reduce((accumulator, currentValue) => accumulator + (currentValue.qty * currentValue.uprice), 0)}</b></p>
-          </TotalSummary>
-          <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
-        </CustomOrderSummary>
+        <Box sx={{ width: { md: '30%', xs: '100%' } }}>
+          <CustomOrderSummary>
+            <div>
+              <h3>YOUR ORDER SUMMARY</h3>
+              <hr style={{
+                color: "#212121",
+                backgroundColor: "#212121",
+                height: 2,
+              }} />
+            </div>
+            <div style={{ overflow: 'auto', height: '50%' }}>
+              {/** MAP OVER CART INSTEAD!!!!! */}
+              {
+                cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+              }
+            </div>
+            <TotalSummary>
+              <p>Total</p>
+              <p><b>${cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)}</b></p>
+            </TotalSummary>
+            <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
+          </CustomOrderSummary>
         </Box>
       </Box>
     </Box>

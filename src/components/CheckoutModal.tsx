@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import {
     Box,
     AppBar,
@@ -73,11 +73,11 @@ const addCartButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '110%',
+    fontSize: { md: '110%', xs: "90%" },
     fontWeight: '500',
     contrastText: 'black',
-    paddingLeft: '2rem',
-    paddingRight: '2rem',
+    paddingLeft: { md: '2rem', xs: "1rem" },
+    paddingRight: { md: '2rem', xs: "1rem" },
     height: '70%',
     alignSelf: 'center'
 }
@@ -109,12 +109,18 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const navigate = useNavigate();
+    const goToCart = () => {
+        navigate("/cart")
+    }
 
     return (
         <div style={{ height: "100%", justifyContent: "space-around", alignContent: "baseline", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
-                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {props.handleAddToCart();
-                    handleOpen()}}>Add to Cart</Button>
+                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
+                    props.handleAddToCart();
+                    handleOpen()
+                }}>Add to Cart</Button>
             </ThemeProvider>
             <Modal
                 open={open}
@@ -123,19 +129,11 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    {/* <uppermodal></uppermodal> */}
-
-                    {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography> */}
                     <Box sx={uppermodal}><StyledModalText>Added to Cart !</StyledModalText></Box>
                     <Box sx={lowermodal}>
                         <ThemeProvider theme={theme}>
                             <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
-                            <Button variant="contained" sx={ButtonStyle} href="/cart">Go to Cart</Button>
+                            <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
                         </ThemeProvider>
                     </Box>
 
