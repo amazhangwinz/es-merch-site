@@ -111,6 +111,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
     } else {
       cart.push({ price: itemObj.price, name: itemObj.name, quantity: qty, colour: itemObj.colours[clickedButton].name, size: size });
     }
+    localStorage.setItem("cart", JSON.stringify(cart));
     setCart(cart);
     console.log(cart);
   }

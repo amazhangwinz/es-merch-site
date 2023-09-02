@@ -44,6 +44,10 @@ const Main = styled.div``
 
 function App() {
   const [cart, setCart] = React.useState<CartItem[]>(defaultCart);
+  React.useEffect(() => {
+    if (localStorage.getItem("cart") != null)
+      setCart(JSON.parse(localStorage.getItem("cart") || ""))
+  }, []);
   return (
     <cartContext.Provider value={{ cart, setCart }}>
       <BrowserRouter>
