@@ -1,6 +1,6 @@
 {
-  "short_name": "EngSoc Merch 2023",
-  "name": "UNSW Engineering Society Merchandise Store 2023",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
