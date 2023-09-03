@@ -106,7 +106,6 @@ const ItemCard = (props: Prop) => {
 
 	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
-
 	return (
 		<StyledComponent onClick={() => { productPage(props.title) }} style={{ cursor: 'pointer' }}>
 			<StyledContent >

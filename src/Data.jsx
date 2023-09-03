@@ -14,7 +14,7 @@ import PN from "./assets/PastelNights.png"
 export const data = [ {
         "name": "The Original",
         "description": "If you love baking cookies, eating almond pound cake, and cuddling with cute animals, you will adore this sanrio my melody plush",
-        "colours": [{name: "Green", img: OG, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, {name:"Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF"}, {name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0"}],
+        "colours": [{name: "Green", img: OG, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" },],
         "price": 79.99,
         "sizeguide": JumperSizeGuide,
         default: OG
@@ -22,7 +22,7 @@ export const data = [ {
     {
         "name": "Sketchbook",
         "description": "If you love baking cookies, eating almond pound cake, and cuddling with cute animals, you will adore this sanrio my melody plush",
-        "colours": [{name: "Pink", img: Sketch, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, {name:"Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF"}, {name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0"}],
+        "colours": [{name: "White", img: Sketch, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" },],
         "price": 49.99,
         "sizeguide": HoodieSizeGuide,
         default: Sketch
@@ -30,7 +30,7 @@ export const data = [ {
     {
         "name": "Pastel Nights",
         "description": "If you love baking cookies, eating almond pound cake, and cuddling with cute animals, you will adore this sanrio my melody plush ",
-        "colours": [{name: "Pink", img: PN, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, {name:"Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF"}, {name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0"}],
+        "colours": [{name: "Black", img: PN, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" },],
         "price": 129.99,
         "sizeguide": HoodieSizeGuide,
         default: PN

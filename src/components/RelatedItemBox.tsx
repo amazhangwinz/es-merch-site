@@ -68,10 +68,12 @@ const RelatedItemBox = (props: Props) => {
             search: `?${createSearchParams({ title: prodName })}`,
         });
     };
+
     const ClickHandle = () => {
         productPage(props.itemtext);
         window.scroll({ top: 0, left: 0, behavior: "smooth" });
     }
+
     return (
         <Box sx={{ margin: { md: "none", xs: "1rem" } }}>
             <StyledRelatedImage style={{ cursor: 'pointer' }} onClick={ClickHandle}>
