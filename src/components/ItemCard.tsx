@@ -80,20 +80,20 @@ const StyledDescription = styled.p`
     color: #1C3A59;
 `;
 
-const StyledColours = styled.div`
-	display: inline-flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	margin: 0;
-	padding-right: 5%
-`;
+// const StyledColours = styled.div`
+// 	display: inline-flex;
+// 	flex-direction: row;
+// 	justify-content: flex-start;
+// 	margin: 0;
+// 	padding-right: 5%
+// `;
 
-const ColourCircles = styled.div`
-	height: 1vw;
-	width: 1vw;
-	border-radius: 50%;
-	box-shadow: 1px 1.5px 0.5px silver;
-`;
+// const ColourCircles = styled.div`
+// 	height: 1vw;
+// 	width: 1vw;
+// 	border-radius: 50%;
+// 	box-shadow: 1px 1.5px 0.5px silver;
+// `;
 
 const ItemCard = (props: Prop) => {
 	const navigate = useNavigate();
@@ -104,7 +104,7 @@ const ItemCard = (props: Prop) => {
 		});
 	};
 
-	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
+	// const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
 
 	return (
@@ -126,7 +126,8 @@ const ItemCard = (props: Prop) => {
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
 			<StyledImage src={
-				findColourImage(props.index, currColour)
+				props.image
+				// findColourImage(props.index, currColour)
 			} alt={props.title} />
 		</StyledComponent>
 	);
