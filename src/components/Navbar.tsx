@@ -48,7 +48,7 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-  const [page, setPage] = useState('home');
+  const [ , setPage] = useState('home');
 
   const navigate = useNavigate();
 

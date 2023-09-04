@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import { data } from '../Data.jsx';
-import { findColourImage } from '../Helpers'
 
 
 interface Prop {
@@ -65,20 +63,20 @@ const StyledPrice = styled.p`
     color: #1C3A59;
 `;
 
-const StyledDescription = styled.p`
-	max-width: 100%;
-	max-height: 70%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	word-wrap: break-word;
-	font-size: clamp(1rem, 1vw, 1.5rem);
-	padding-bottom: 5%;
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
-`;
+// const StyledDescription = styled.p`
+// 	max-width: 100%;
+// 	max-height: 70%;
+// 	overflow: hidden;
+// 	text-overflow: ellipsis;
+// 	overflow: hidden;
+// 	word-wrap: break-word;
+// 	font-size: clamp(1rem, 1vw, 1.5rem);
+// 	padding-bottom: 5%;
+// 	font-family: Montserrat;
+//     font: Regular;
+// 	font-weight: 500;
+//     color: #1C3A59;
+// `;
 
 // const StyledColours = styled.div`
 // 	display: inline-flex;

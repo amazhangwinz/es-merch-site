@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { data } from './Data.jsx';
 import { CartItem } from './App.js';
 
@@ -16,7 +14,7 @@ export const findColourImage = (index: number, currColour: string) => {
 export const findMatch = (Cart: CartItem[], Item: CartItem) => {
     for (const element of Cart) {
         // if (element.price == Item.price && element.name == Item.name && element.size == Item.size && element.colour == Item.colour) {
-        if (element.price == Item.price && element.name == Item.name && element.size == Item.size) {
+        if (element.price === Item.price && element.name === Item.name && element.size === Item.size) {
             return true
         }
     }
