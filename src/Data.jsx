@@ -1,5 +1,3 @@
-import React from 'react';
-
 // import plush from "./assets/plush.jpg";
 // import pushin from "./assets/pushin.gif";
 // import winz from "./assets/WinnieZhang.png";
