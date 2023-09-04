@@ -34,7 +34,6 @@ const Cartpage = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  console.log(cart)
   return (
     <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <p style={{ fontSize: '1.875rem', fontStyle: 'normal', fontWeight: '700' }}>
