@@ -2,7 +2,7 @@ image: node:latest
 
 .deploy: &deploy
   -npm i -g firebase-tools
-  - firebase use <unsw-engsoc-merch-2023> --token $FIREBASE_TOKEN
+  - firebase use <default> --token $FIREBASE_TOKEN
   - npm install
   - npm run build
 
