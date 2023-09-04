@@ -86,11 +86,11 @@ const TotalSummary = styled.div`
 `
 
 const Checkoutpage = () => {
-  const { cart, } = React.useContext(cartContext);
+  const { cart, setCart } = React.useContext(cartContext);
 
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [phone, setPhone] = React.useState('')
+  const [zid, setZid] = React.useState('')
   const [payment, setPayment] = React.useState<File>()
   const [paymentUploaded, setPaymentUploaded] = React.useState(false)
 
@@ -101,6 +101,8 @@ const Checkoutpage = () => {
   }
   const routeChangeSubmit = (e: React.SyntheticEvent) => {
     handleSubmit(e)
+    setCart([])
+    localStorage.clear()
     let path = `/order-success`;
     navigate(path);
   }
@@ -114,8 +116,70 @@ const Checkoutpage = () => {
 
   const handleSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
+    let collected = 'false'
+    let the_original_s_num = 0
+    let the_original_m_num = 0
+    let the_original_l_num = 0
+    let sketchbook_s_num = 0
+    let sketchbook_m_num = 0
+    let sketchbook_l_num = 0
+    let pastel_nights_s_num = 0
+    let pastel_nights_m_num = 0
+    let pastel_nights_l_num = 0
 
-		const objt = { name, email, phone, payment, cart };
+    for (const item of cart) {
+      if (item.name === "The Original" && item.size === "Small") {
+        the_original_s_num += 1
+      }
+      else if (item.name === "The Original" && item.size === "Medium") {
+        the_original_m_num += 1
+      }
+      else if (item.name === "The Original" && item.size === "Large") {
+        the_original_l_num += 1
+      }
+      else if (item.name === "Sketchbook" && item.size === "Small") {
+        sketchbook_s_num += 1
+      }
+      else if (item.name === "Sketchbook" && item.size === "Medium") {
+        sketchbook_m_num += 1
+      }
+      else if (item.name === "Sketchbook" && item.size === "Large") {
+        sketchbook_l_num += 1
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Small") {
+        pastel_nights_s_num += 1
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Medium") {
+        pastel_nights_m_num += 1
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Large") {
+        pastel_nights_l_num += 1
+      }
+    }
+
+    let the_original_s = the_original_s_num.toString()
+    let the_original_m = the_original_m_num.toString()
+    let the_original_l = the_original_l_num.toString()
+    let sketchbook_s = sketchbook_s_num.toString()
+    let sketchbook_m = sketchbook_m_num.toString()
+    let sketchbook_l = sketchbook_l_num.toString()
+    let pastel_nights_s = pastel_nights_s_num.toString()
+    let pastel_nights_m = pastel_nights_m_num.toString()
+    let pastel_nights_l = pastel_nights_l_num.toString()
+
+		const objt = { name,
+      email, 
+      zid, 
+      the_original_s, 
+      the_original_m,
+      the_original_l,
+      sketchbook_s,
+      sketchbook_m,
+      sketchbook_l,
+      pastel_nights_s,
+      pastel_nights_m,
+      pastel_nights_l,
+      collected };
 
 		axios
 			.post(
@@ -147,8 +211,8 @@ const Checkoutpage = () => {
               <CustomInput type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)}></CustomInput><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
-              <CustomInput type="text" id="phoneNumber" name="phoneNumber" value={phone} onChange={e => setPhone(e.target.value)}></CustomInput><br></br>
+              <InputLabel htmlFor="phoneNumber">ZID:</InputLabel><br></br>
+              <CustomInput type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></CustomInput><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
