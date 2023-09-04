@@ -5,6 +5,8 @@ import OrderSummaryItem from "../components/OrderSummaryItem"
 import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
 import axios from 'axios';
+import storage from "../firebaseConfig"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const InputLabel = styled.label`
   display: block;
@@ -94,6 +96,9 @@ const Checkoutpage = () => {
   const [payment, setPayment] = React.useState<File>()
   const [paymentUploaded, setPaymentUploaded] = React.useState(false)
 
+  // progress
+  const [percent, setPercent] = React.useState(0);
+
   let navigate = useNavigate();
   const routeChangeUpdateCart = () => {
     let path = `/cart`;
@@ -114,8 +119,42 @@ const Checkoutpage = () => {
     }
   }
 
+  const handleFirebaseUpload = () => {
+    if (!payment) {
+      alert("Please upload an image first!");
+    } else {
+
+
+      const storageRef = ref(storage, `/files/${name}`);
+
+      // progress can be paused and resumed. It also exposes progress updates.
+      // Receives the storage reference and the file to upload.
+      const uploadTask = uploadBytesResumable(storageRef, payment);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+        },
+        (err) => console.log(err),
+        () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            console.log(url);
+            // url for the image
+          });
+        }
+      );
+    };
+  }
+
   const handleSubmit = (e: React.SyntheticEvent) => {
-		e.preventDefault();
+    e.preventDefault();
     let collected = 'false'
     let the_original_s_num = 0
     let the_original_m_num = 0
@@ -167,10 +206,11 @@ const Checkoutpage = () => {
     let pastel_nights_m = pastel_nights_m_num.toString()
     let pastel_nights_l = pastel_nights_l_num.toString()
 
-		const objt = { name,
-      email, 
-      zid, 
-      the_original_s, 
+    const objt = {
+      name,
+      email,
+      zid,
+      the_original_s,
       the_original_m,
       the_original_l,
       sketchbook_s,
@@ -181,19 +221,22 @@ const Checkoutpage = () => {
       pastel_nights_l,
       payment,
       paymentUploaded,
-      collected };
+      collected
+    };
 
-		axios
-			.post(
-				'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
-				objt
-			)
-			.then((response) => {
-				console.log(response);
-			});
-	};
+    axios
+      .post(
+        'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
+        objt
+      )
+      .then((response: any) => {
+        console.log(response);
+      });
 
-  
+    handleFirebaseUpload();
+  };
+
+
   return (
     <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>
@@ -243,7 +286,7 @@ const Checkoutpage = () => {
             </div>
             <TotalSummary>
               <p>Total</p>
-              <p><b>${Math.round(((cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0))+ Number.EPSILON) * 100) / 100}</b></p>
+              <p><b>${Math.round(((cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)) + Number.EPSILON) * 100) / 100}</b></p>
             </TotalSummary>
             <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
           </CustomOrderSummary>
