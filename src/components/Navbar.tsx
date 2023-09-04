@@ -80,6 +80,7 @@ const Navbar = () => {
               fontFamily: "Montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
+              fontSize: "1.3rem",
               color: "inherit",
               textDecoration: "none"
             }}
@@ -145,7 +146,8 @@ const Navbar = () => {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none"
+              textDecoration: "none",
+              fontSize: "1.3rem",
             }}
             onClick={homeLink}
           >
@@ -162,6 +164,7 @@ const Navbar = () => {
                   fontWeight: 700,
                   letterSpacing: ".3rem",
                   textDecoration: "none",
+                  fontSize: "1.3rem",
                 }}
               >
                 {page.name}
