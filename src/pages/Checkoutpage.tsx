@@ -4,6 +4,7 @@ import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem"
 import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
+import axios from 'axios';
 
 const InputLabel = styled.label`
   display: block;
@@ -84,19 +85,49 @@ const TotalSummary = styled.div`
   justify-content: space-between;
 `
 
-
-
 const Checkoutpage = () => {
+  const { cart, } = React.useContext(cartContext);
+
+  const [name, setName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [payment, setPayment] = React.useState<File>()
+  const [paymentUploaded, setPaymentUploaded] = React.useState(false)
+
   let navigate = useNavigate();
   const routeChangeUpdateCart = () => {
     let path = `/cart`;
     navigate(path);
   }
-  const routeChangeSubmit = () => {
+  const routeChangeSubmit = (e: React.SyntheticEvent) => {
+    handleSubmit(e)
     let path = `/order-success`;
     navigate(path);
   }
-  const { cart, } = React.useContext(cartContext);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPayment(e.target.files[0])
+      setPaymentUploaded(true)
+    }
+  }
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+		e.preventDefault();
+
+		const objt = { name, email, phone, payment, cart };
+
+		axios
+			.post(
+				'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
+				objt
+			)
+			.then((response) => {
+				console.log(response);
+			});
+	};
+
+  
   return (
     <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>
@@ -109,20 +140,20 @@ const Checkoutpage = () => {
           <CustomForm>
             <Container>
               <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-              <CustomInput type="text" id="fname" name="fname"></CustomInput><br></br>
+              <CustomInput type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)}></CustomInput><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-              <CustomInput type="text" id="email" name="email"></CustomInput><br></br>
+              <CustomInput type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)}></CustomInput><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
-              <CustomInput type="text" id="phoneNumber" name="phoneNumber"></CustomInput><br></br>
+              <CustomInput type="text" id="phoneNumber" name="phoneNumber" value={phone} onChange={e => setPhone(e.target.value)}></CustomInput><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-              <AttachImage type="file" id="phoneNumber" name="phoneNumber"></AttachImage><br></br>
+              <AttachImage type="file" id="phoneNumber" name="phoneNumber" onChange={e => handleFileUpload(e)}></AttachImage><br></br>
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
           </CustomForm>
