@@ -179,6 +179,8 @@ const Checkoutpage = () => {
       pastel_nights_s,
       pastel_nights_m,
       pastel_nights_l,
+      payment,
+      paymentUploaded,
       collected };
 
 		axios
