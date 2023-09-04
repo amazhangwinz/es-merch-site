@@ -1,10 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import NeelDutta from '../assets/NeelDutta.png';
-import SizeGuide from '../assets/SizeGuide.png'
 
 const style = {
   position: 'absolute' as 'absolute',

@@ -74,10 +74,10 @@ const CustomButton = styled.button`
   cursor: pointer;
 `
 
-const Boxes = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
+// const Boxes = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `
 
 const TotalSummary = styled.div`
   display: flex;
@@ -96,7 +96,7 @@ const Checkoutpage = () => {
     let path = `/order-success`;
     navigate(path);
   }
-  const { cart, setCart } = React.useContext(cartContext);
+  const { cart, } = React.useContext(cartContext);
   return (
     <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>
@@ -140,7 +140,8 @@ const Checkoutpage = () => {
             <div style={{ overflow: 'auto', height: '50%' }}>
               {/** MAP OVER CART INSTEAD!!!!! */}
               {
-                cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                // cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                cart.map(x => <OrderSummaryItem size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
               }
             </div>
             <TotalSummary>
