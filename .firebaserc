@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "unsw-engsoc-merch-2023"
+  },
+  "targets": {
+    "unsw-engsoc-merch-2023": {
+      "hosting": {
+        "prod": [
+          "unsw-engsoc-merch-2023"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

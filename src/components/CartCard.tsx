@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import Bin from '../assets/Bin.png'
-import Quantity from './Quantity';
-import { data } from '../Data.jsx';
-import ColourButtonCartPage from './ColourButtonCartPage';
-import SizeButtonCartPage from './SizeButtonCartPage';
+import QuantitySelector from '../components/QuanitySelector';
+// import Quantity from './archive/Quantity';
+// import ColourButtonCartPage from './archive/ColourButtonCartPage';
+
+// import SizeButtonCartPage from './archive/SizeButtonCartPage';
+import SizeSelector from '../components/SizeSelector';
+
 
 interface Prop {
 	image: string;
@@ -13,8 +16,11 @@ interface Prop {
 	unitPrice: number;
 	index: number;
 	qty: number;
-	colour: string;
+	onQuantityChange: (newQuantity: number) => void;
+	// colour: string;
 	size: string;
+	onSizeChange: (newSize: string) => void; // Define a callback prop
+	total: number
 }
 
 const StyledProduct = styled.div`
@@ -56,14 +62,15 @@ const StyledInfo = styled.div`
 	font-size: 1.25rem
 `;
 
-const BoldText = styled.span`
-  font-weight: bold;
-`;
+// const BoldText = styled.span`
+//   font-weight: bold;
+// `;
 
 const CartCard = (props: Prop) => {
 	// Use context TO DETERMINE OG VAL, NOT JUST 1
 	const [quantity, setQuantity] = useState(props.qty);
-	const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
+	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
+	const [size, setSize] = useState(props.size);
 
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
@@ -79,6 +86,22 @@ const CartCard = (props: Prop) => {
 		}
 	}
 
+	// If user changes QUANTITY
+	const handleChangeQuantity = () => {
+		if (quantity !== props.qty) {
+			props.onQuantityChange(quantity);
+			return (<p>(changed quantity)</p>)
+		}
+	}
+
+	// If user changes SIZE
+	const handleChangeSize = () => {
+		if (size !== props.size) {
+			props.onSizeChange(size);
+			return (<p>(changed size)</p>)
+		}
+	}
+
 	return (
 		<StyledProduct>
 			<StyledProperty style={{ width: '50%', justifyContent: 'left' }}>
@@ -91,26 +114,30 @@ const CartCard = (props: Prop) => {
 						<StyledInfo>
 							<br />
 						</StyledInfo>
-						<StyledInfo>
-							{/* <BoldText>Colour:</BoldText>  */}
+						{/* <StyledInfo>
+							<BoldText>Colour:</BoldText>
 							<ColourButtonCartPage />
-						</StyledInfo>
+						</StyledInfo> */}
 						<StyledInfo>
-							<SizeButtonCartPage />
+							<SizeSelector size={size} setSize={setSize} />
+							{handleChangeSize()}
+							{/* <SizeButtonCartPage /> */}
 							{/* <BoldText>Size:</BoldText> {2} */}
 						</StyledInfo>
 					</StyledText>
 				</StyledProperty>
 			</StyledProperty>
 			<StyledProperty style={{ width: '20%' }}>
-				<Quantity count={quantity} onCountChange={setQuantity} />
+				{/* <Quantity count={quantity} onCountChange={setQuantity} /> */}
+				<QuantitySelector qty={quantity} setQty={setQuantity}></QuantitySelector>
+				{handleChangeQuantity()}
 			</StyledProperty>
 			<StyledProperty style={{ width: '10%' }}>
 				{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
 				<StyledImage style={{ width: '28%' }} src={Bin} alt="Bin Item" />
 			</StyledProperty>
 			<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
-				<StyledTitle>${total}</StyledTitle>
+				<StyledTitle>${props.total}</StyledTitle>
 				{perItem()}
 			</StyledProperty>
 		</StyledProduct>

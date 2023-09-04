@@ -1,59 +1,55 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
     Box,
-    AppBar,
-    Toolbar,
-    Typography,
-    Grid,
 } from '@mui/material';
-import styled from "styled-components";
+// import styled from "styled-components";
 import { findItemObject } from "../Helpers";
 
 
-const StyledGrid = styled.div`
---gap:16px;
---num-cols: 4;
---num-row: 3;
---row-height: 300px;
+// const StyledGrid = styled.div`
+// --gap:16px;
+// --num-cols: 4;
+// --num-row: 3;
+// --row-height: 300px;
 
-box-sizing: border-box;
-padding: var(--gap);
-display: grid;
-grid-template-columns: repeat(var(--num-cols), 1fr);
-grid-auto-rows: var(--row-row);
-gap: var(--gap);
+// box-sizing: border-box;
+// padding: var(--gap);
+// display: grid;
+// grid-template-columns: repeat(var(--num-cols), 1fr);
+// grid-auto-rows: var(--row-row);
+// gap: var(--gap);
 
 
-`
-const StyledImg = styled.img`
-width: 5rem;
-height: 5rem;
-object-fit: cover;
-border-radius: 0.625rem;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-justify-self: stretch;
+// `
+// const StyledImg = styled.img`
+// width: 5rem;
+// height: 5rem;
+// object-fit: cover;
+// border-radius: 0.625rem;
+// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+// justify-self: stretch;
 
-`
+// `
 
-const LargeStyledImg = styled.img`
-width: 15rem;
-height: 17rem;
-flex-shrink: 0;
-object-fit: cover;
-grid-column: span 3;
-// grid-column: span 4;
-grid-row: span 3;
-justify-self: stretch;
-border-radius: 0.625rem;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-justify-self: stretch;
+// const LargeStyledImg = styled.img`
+// width: 15rem;
+// height: 17rem;
+// flex-shrink: 0;
+// object-fit: cover;
+// grid-column: span 3;
+// // grid-column: span 4;
+// grid-row: span 3;
+// justify-self: stretch;
+// border-radius: 0.625rem;
+// box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+// justify-self: stretch;
 
-`
+// `
 
 type ImagePreviewProps = {
     itemName: string | null;
-    heroSrc: string;
-    setHero: (hero: string) => void;
+    // heroSrc: string;
+    // setHero: (hero: string) => void;
 };
 
 const ImagePreview = (props: ImagePreviewProps) => {
@@ -68,8 +64,9 @@ const ImagePreview = (props: ImagePreviewProps) => {
                 justifySelf: "stretch",
                 borderRadius: "0.625rem",
                 boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                margin: '5rem',
-            }} src={props.heroSrc}></img>
+                margin: '1rem',
+                // }} src={props.heroSrc}></img>
+            }} src={itemObj.default} alt={"Item Name"}></img>
         </Box >
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>

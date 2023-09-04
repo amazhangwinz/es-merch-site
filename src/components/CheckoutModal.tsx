@@ -1,12 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
     Box,
-    AppBar,
-    Toolbar,
-    Typography,
-    Grid,
-    Container,
     Modal,
     Button,
 } from '@mui/material';
@@ -18,7 +13,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: { md: 400, xs: 350 },
     display: "flex",
     flexDirection: "column",
 

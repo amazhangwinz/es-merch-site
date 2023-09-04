@@ -2,17 +2,16 @@ import React from 'react';
 import ImagePreview from "../components/ImagePreview"
 import RelatedItems from '../components/RelatedItemBox';
 import CheckoutModal from '../components/CheckoutModal';
-import ColourSelector from '../components/ColourSelector';
+// import ColourSelector from '../components/ColourSelector';
 import QuantitySelector from '../components/QuanitySelector';
-import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import { data } from "../Data.jsx"
-import { cartContext, CartItem, } from '../App';
+import { cartContext } from '../App';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Breadcrumbs, Link } from '@mui/material';
-import SizeButtonItemPage from '../components/SizeButtonItemPage';
+import SizeSelector from '../components/SizeSelector';
 import SizeGuideModal from '../components/SizeGuideModal';
 
 
@@ -61,15 +60,15 @@ const RelatedImageContainer = () => ({
   flexDirection: { xs: "column", md: "row" },
   margin: { xs: "1rem", md: "none" }
 })
-const RelatedDetailsContainer = styled.div`
- display: flex;
- align-items: center;
- justify-content: center;
- width: 100%;
- height: 25%;
-padding: 1rem;
 
-`
+// const RelatedDetailsContainer = styled.div`
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  width: 100%;
+//  height: 25%;
+// padding: 1rem;
+// `
 const stylebreadcrumbs = {
   display: { md: "block", xs: "none" },
   textAlign: "left",
@@ -90,6 +89,7 @@ type SingleItemProp = {
 const SingleItemPage = (prop: SingleItemProp) => {
 
   const { cart, setCart } = React.useContext(cartContext);
+
   const [queryString] = useSearchParams();
   // NAME
   const itemTitle = queryString.get('title');
@@ -97,28 +97,50 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const itemObj = findItemObject(itemTitle);
   // SIZE
   const [size, setSize] = React.useState('Small');
-  // COLOURS INDEX . NAME
-  const [clickedButton, setClickedButton] = React.useState(0);
-  const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
+  // // COLOURS INDEX . NAME
+  // const [clickedButton, setClickedButton] = React.useState(0);
+  // const [heroSrc, setHero] = React.useState(itemObj.colours[0].img);
   // BRING QUANTITY USESTATE OUTSIDE OF COMPONENT - DONE
   const [qty, setQty] = React.useState(1);
 
   const handleAddToCart = () => {
-    if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, size: size })) {
+
+    if (findMatch(cart,
+      {
+        price: itemObj.price,
+        name: itemObj.name,
+        quantity: 1,
+        image: itemObj.default,
+        size: size,
+        total: itemObj.price * 1
+      })) {
+      // if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, image: itemObj.default, size: size })) {
       cart.forEach(element => {
-        if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
+        // if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
+        if (element.price === itemObj.price && element.name === itemObj.name && element.size === size && element.image === itemObj.default)
           element.quantity += qty;
+        // todo error: can add 5+ to the cartitem if you do +3 + 4
+        if (element.quantity > 5)
+          element.quantity = 5;
       });
     } else {
-      cart.push({ price: itemObj.price, name: itemObj.name, quantity: qty, colour: itemObj.colours[clickedButton].name, size: size });
+      // cart.push({ price: itemObj.price, name: itemObj.name, quantity: qty, colour: itemObj.colours[clickedButton].name, image: itemObj.default, size: size });
+      cart.push({
+        price: itemObj.price,
+        name: itemObj.name,
+        quantity: qty,
+        image: itemObj.default,
+        size: size,
+        total: Math.round((itemObj.price * qty + Number.EPSILON) * 100) / 100
+      })
     }
+    localStorage.setItem("cart", JSON.stringify(cart));
     setCart(cart);
-    console.log(cart);
   }
 
-  React.useEffect(() => {
-    setHero(() => itemObj.colours[clickedButton].img);
-  }, [clickedButton]);
+  // React.useEffect(() => {
+  //   setHero(() => itemObj.colours[clickedButton].img);
+  // }, [clickedButton]);
 
   const navigate = useNavigate();
 
@@ -129,8 +151,9 @@ const SingleItemPage = (prop: SingleItemProp) => {
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ marginBottom: { xs: '2rem', md: 'none' } }}>
-          <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} />
+        <Box>
+          <ImagePreview itemName={itemTitle} />
+          {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
         <ImageDetailContainer>
           <Container sx={{ margin: "1rem", maxWidth: { md: 'none', xs: "400px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
@@ -148,7 +171,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
             <QuantitySelector qty={qty} setQty={setQty}></QuantitySelector>
-            <SizeButtonItemPage size={size} setSize={setSize} />
+            <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3, justifyContent: "space-around" }}>
@@ -162,8 +185,12 @@ const SingleItemPage = (prop: SingleItemProp) => {
           {data.map((e) => {
             if (e.name !== itemTitle) {
               return (
-                <RelatedItems price={e.price} itemtext={e.name} img={e.colours[0].img}></RelatedItems>
+                // <RelatedItems price={e.price} itemtext={e.name} img={e.colours[0].img}></RelatedItems>
+                <RelatedItems price={e.price} itemtext={e.name} img={e.default}></RelatedItems>
               )
+            }
+            else {
+              return (<></>)
             }
           })}
         </Box>

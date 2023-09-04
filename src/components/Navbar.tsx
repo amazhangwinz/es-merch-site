@@ -48,7 +48,7 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-  const [page, setPage] = useState('home');
+  const [ , setPage] = useState('home');
 
   const navigate = useNavigate();
 
@@ -80,6 +80,7 @@ const Navbar = () => {
               fontFamily: "Montserrat",
               fontWeight: 700,
               letterSpacing: ".3rem",
+              fontSize: "1.3rem",
               color: "inherit",
               textDecoration: "none"
             }}
@@ -145,11 +146,12 @@ const Navbar = () => {
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
-              textDecoration: "none"
+              textDecoration: "none",
+              fontSize: "1.3rem",
             }}
             onClick={homeLink}
           >
-            ENGSOC MERCH
+            MERCH
           </Typography>
           <Box sx={{ flexGrow: 10, display: { xs: "none", md: "flex" } }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -162,6 +164,7 @@ const Navbar = () => {
                   fontWeight: 700,
                   letterSpacing: ".3rem",
                   textDecoration: "none",
+                  fontSize: "1.3rem",
                 }}
               >
                 {page.name}

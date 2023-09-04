@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import { data } from '../Data.jsx';
-import { findColourImage } from '../Helpers'
-
 
 interface Prop {
 	title: string;
@@ -65,35 +62,35 @@ const StyledPrice = styled.p`
     color: #1C3A59;
 `;
 
-const StyledDescription = styled.p`
-	max-width: 100%;
-	max-height: 70%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	word-wrap: break-word;
-	font-size: clamp(1rem, 1vw, 1.5rem);
-	padding-bottom: 5%;
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
-`;
+// const StyledDescription = styled.p`
+// 	max-width: 100%;
+// 	max-height: 70%;
+// 	overflow: hidden;
+// 	text-overflow: ellipsis;
+// 	overflow: hidden;
+// 	word-wrap: break-word;
+// 	font-size: clamp(1rem, 1vw, 1.5rem);
+// 	padding-bottom: 5%;
+// 	font-family: Montserrat;
+//     font: Regular;
+// 	font-weight: 500;
+//     color: #1C3A59;
+// `;
 
-const StyledColours = styled.div`
-	display: inline-flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	margin: 0;
-	padding-right: 5%
-`;
+// const StyledColours = styled.div`
+// 	display: inline-flex;
+// 	flex-direction: row;
+// 	justify-content: flex-start;
+// 	margin: 0;
+// 	padding-right: 5%
+// `;
 
-const ColourCircles = styled.div`
-	height: 1vw;
-	width: 1vw;
-	border-radius: 50%;
-	box-shadow: 1px 1.5px 0.5px silver;
-`;
+// const ColourCircles = styled.div`
+// 	height: 1vw;
+// 	width: 1vw;
+// 	border-radius: 50%;
+// 	box-shadow: 1px 1.5px 0.5px silver;
+// `;
 
 const ItemCard = (props: Prop) => {
 	const navigate = useNavigate();
@@ -104,8 +101,7 @@ const ItemCard = (props: Prop) => {
 		});
 	};
 
-	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
-
+	// const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
 	return (
 		<StyledComponent onClick={() => { productPage(props.title) }} style={{ cursor: 'pointer' }}>
@@ -126,7 +122,8 @@ const ItemCard = (props: Prop) => {
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</StyledContent>
 			<StyledImage src={
-				findColourImage(props.index, currColour)
+				props.image
+				// findColourImage(props.index, currColour)
 			} alt={props.title} />
 		</StyledComponent>
 	);
