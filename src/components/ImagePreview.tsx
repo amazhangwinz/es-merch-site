@@ -64,7 +64,7 @@ const ImagePreview = (props: ImagePreviewProps) => {
                 justifySelf: "stretch",
                 borderRadius: "0.625rem",
                 boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                margin: '5rem',
+                margin: '1rem',
                 // }} src={props.heroSrc}></img>
             }} src={itemObj.default} alt={"Item Name"}></img>
         </Box >
