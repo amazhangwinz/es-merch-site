@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel, FormControl, Select, SelectChangeEvent, MenuItem } from "@mui/material";
+import { InputLabel, FormControl, Select, MenuItem } from "@mui/material";
 
 
 type QuanitySelectorProp = {

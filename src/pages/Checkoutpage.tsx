@@ -241,7 +241,7 @@ const Checkoutpage = () => {
             </div>
             <TotalSummary>
               <p>Total</p>
-              <p><b>${cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)}</b></p>
+              <p><b>${Math.round(((cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0))+ Number.EPSILON) * 100) / 100}</b></p>
             </TotalSummary>
             <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
           </CustomOrderSummary>
