@@ -135,7 +135,6 @@ const SingleItemPage = (prop: SingleItemProp) => {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     setCart(cart);
-    console.log(cart);
   }
 
   // React.useEffect(() => {
