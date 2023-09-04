@@ -11,25 +11,25 @@ import PN from "./assets/PastelNights.png"
 
 export const data = [{
     "name": "The Original",
-    "description": "The OG Crewneck - I love IT",
+    "description": "Imagine wrapping yourself in a soft lush green meadow. Our EngSoc Crewneck isn't just clothing; it's a statement!",
     // "colours": [{ name: "Green", img: OG, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, { name: "Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF" }, { name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0" }],
-    "price": 79.99,
+    "price": 55.00,
     "sizeguide": JumperSizeGuide,
     default: OG
 },
 {
-    "name": "Sketchbook",
-    "description": "The Sketchbook Hoodie - I really love IT",
+    "name": "Sketchbooked",
+    "description": "Whether you're conquering campus, chilling at home, or embarking on epic adventures, this hoodie effortlessly blends comfort and style.",
     // "colours": [{ name: "Pink", img: Sketch, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, { name: "Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF" }, { name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0" }],
-    "price": 49.99,
+    "price": 55.00,
     "sizeguide": HoodieSizeGuide,
     default: Sketch
 },
 {
     "name": "Pastel Nights",
-    "description": "The Pastel Nights Hoodie - I really really love IT",
+    "description": "From chilly winter nights to breezy summer evenings, this hoodie keeps you cozy all year long.",
     // "colours": [{ name: "Pink", img: PN, primaryColour: "#FB95BA", secondaryColour: "#FEC8DC" }, { name: "Purple", img: pushin, primaryColour: "#EBB1FF", secondaryColour: "#F5D8FF" }, { name: "Orange", img: winz, primaryColour: "#FF7A00", secondaryColour: "#FED5B0" }],
-    "price": 129.99,
+    "price": 55.00,
     "sizeguide": HoodieSizeGuide,
     default: PN
 },
