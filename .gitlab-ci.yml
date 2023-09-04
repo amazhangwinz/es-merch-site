@@ -20,7 +20,7 @@ staging:
   only:
     - ci-deploy
   script:
-    - firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --only hosting:<unsw-engsoc-merch-2023> --non-interactive --token $FIREBASE_TOKEN
+    - firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --only hosting:<prod> --non-interactive --token $FIREBASE_TOKEN
 
 production:
   stage: deploy
@@ -31,4 +31,4 @@ production:
   when: manual
   allow_failure: false
   script:
-    - firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --only hosting:<unsw-engsoc-merch-2023> --non-interactive --token $FIREBASE_TOKEN
+    - firebase deploy -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --only hosting:<prod> --non-interactive --token $FIREBASE_TOKEN
