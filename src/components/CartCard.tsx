@@ -4,7 +4,6 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import Bin from '../assets/Bin.png'
 import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
-import { data } from '../Data.jsx';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
@@ -63,9 +62,9 @@ const StyledInfo = styled.div`
 	font-size: 1.25rem
 `;
 
-const BoldText = styled.span`
-  font-weight: bold;
-`;
+// const BoldText = styled.span`
+//   font-weight: bold;
+// `;
 
 const CartCard = (props: Prop) => {
 	// Use context TO DETERMINE OG VAL, NOT JUST 1
@@ -89,7 +88,7 @@ const CartCard = (props: Prop) => {
 
 	// If user changes QUANTITY
 	const handleChangeQuantity = () => {
-		if (quantity != props.qty) {
+		if (quantity !== props.qty) {
 			props.onQuantityChange(quantity);
 			return (<p>(changed quantity)</p>)
 		}
@@ -97,7 +96,7 @@ const CartCard = (props: Prop) => {
 
 	// If user changes SIZE
 	const handleChangeSize = () => {
-		if (size != props.size) {
+		if (size !== props.size) {
 			props.onSizeChange(size);
 			return (<p>(changed size)</p>)
 		}

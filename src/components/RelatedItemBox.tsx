@@ -1,12 +1,9 @@
 import React from 'react';
-import { Navigate, useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 import {
     Box,
-    AppBar,
-    Toolbar,
     Typography,
-    Container,
 } from '@mui/material';
 import styled from "styled-components";
 
