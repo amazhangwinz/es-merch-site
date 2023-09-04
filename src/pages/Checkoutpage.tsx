@@ -74,10 +74,10 @@ const CustomButton = styled.button`
   cursor: pointer;
 `
 
-const Boxes = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
+// const Boxes = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `
 
 const TotalSummary = styled.div`
   display: flex;
@@ -96,7 +96,7 @@ const Checkoutpage = () => {
     let path = `/order-success`;
     navigate(path);
   }
-  const { cart, setCart } = React.useContext(cartContext);
+  const { cart, } = React.useContext(cartContext);
   return (
     <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>

@@ -4,9 +4,8 @@ import RelatedItems from '../components/RelatedItemBox';
 import CheckoutModal from '../components/CheckoutModal';
 // import ColourSelector from '../components/ColourSelector';
 import QuantitySelector from '../components/QuanitySelector';
-import img1 from "../assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 import { data } from "../Data.jsx"
-import { cartContext, CartItem, } from '../App';
+import { cartContext } from '../App';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
@@ -61,14 +60,15 @@ const RelatedImageContainer = () => ({
   flexDirection: { xs: "column", md: "row" },
   margin: { xs: "1rem", md: "none" }
 })
-const RelatedDetailsContainer = styled.div`
- display: flex;
- align-items: center;
- justify-content: center;
- width: 100%;
- height: 25%;
-padding: 1rem;
-`
+
+// const RelatedDetailsContainer = styled.div`
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  width: 100%;
+//  height: 25%;
+// padding: 1rem;
+// `
 const stylebreadcrumbs = {
   display: { md: "block", xs: "none" },
   textAlign: "left",
@@ -116,7 +116,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
       // if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, image: itemObj.default, size: size })) {
       cart.forEach(element => {
         // if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
-        if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.image == itemObj.default)
+        if (element.price === itemObj.price && element.name === itemObj.name && element.size === size && element.image === itemObj.default)
           element.quantity += qty;
         // todo error: can add 5+ to the cartitem if you do +3 + 4
         if (element.quantity > 5)
@@ -187,6 +187,9 @@ const SingleItemPage = (prop: SingleItemProp) => {
                 // <RelatedItems price={e.price} itemtext={e.name} img={e.colours[0].img}></RelatedItems>
                 <RelatedItems price={e.price} itemtext={e.name} img={e.default}></RelatedItems>
               )
+            }
+            else {
+              return(<></>)
             }
           })}
         </Box>
