@@ -10,7 +10,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
+  p: { md: 2, xs: 1 },
   borderRadius: '30px',
 };
 
@@ -40,8 +40,8 @@ export default function SizeGuideModal(props: SizeGuideProps) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography> */}
-          <Box sx={{ borderRadius: "30px", maxWidth: { md: "none", xs: "400px" }, overflow: "auto", padding: "1rem" }}>
-            <img src={props.img} alt='Size Guide' />
+          <Box sx={{ maxWidth: { md: "none", xs: "400px" }, overflow: "auto", margin: "1rem" }}>
+            <img src={props.img} style={{ overflow: "auto", width: "70vw" }} alt='Size Guide' />
           </Box>
         </Box>
       </Modal>
