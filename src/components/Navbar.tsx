@@ -151,7 +151,7 @@ const Navbar = () => {
             }}
             onClick={homeLink}
           >
-            ENGSOC MERCH
+            MERCH
           </Typography>
           <Box sx={{ flexGrow: 10, display: { xs: "none", md: "flex" } }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
