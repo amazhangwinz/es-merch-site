@@ -52,8 +52,8 @@ justify-self: stretch;
 
 type ImagePreviewProps = {
     itemName: string | null;
-    heroSrc: string;
-    setHero: (hero: string) => void;
+    // heroSrc: string;
+    // setHero: (hero: string) => void;
 };
 
 const ImagePreview = (props: ImagePreviewProps) => {
@@ -69,7 +69,8 @@ const ImagePreview = (props: ImagePreviewProps) => {
                 borderRadius: "0.625rem",
                 boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
                 margin: '5rem',
-            }} src={props.heroSrc}></img>
+                // }} src={props.heroSrc}></img>
+            }} src={itemObj.default}></img>
         </Box >
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>

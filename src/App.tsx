@@ -7,21 +7,18 @@ import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
 import Confirmationpage from './pages/Confirmation';
 import SingleItemPage from './pages/SingleItemPage';
-
 import Checkoutpage from './pages/Checkoutpage';
 import { styled } from 'styled-components';
 
-/*
-- quantity of the items
-- items in cart
-*/
 
 export interface CartItem {
-  price: number,
+  image: string,
   name: string,
-  quantity: number,
-  colour: string,
+  price: number,
   size: string
+  // colour: string,
+  quantity: number,
+  total: number
 }
 
 const defaultCart: CartItem[] = [
