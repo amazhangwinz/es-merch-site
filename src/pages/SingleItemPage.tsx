@@ -89,6 +89,7 @@ type SingleItemProp = {
 const SingleItemPage = (prop: SingleItemProp) => {
 
   const { cart, setCart } = React.useContext(cartContext);
+
   const [queryString] = useSearchParams();
   // NAME
   const itemTitle = queryString.get('title');
