@@ -26,7 +26,7 @@ const StyledContainer = {
     marginRight: { md: "12rem", xs: "1rem" },
     marginTop: { md: "none", xs: "1rem" },
     marginBottom: { md: "none", xs: "1rem" },
-    minWidth: { md: "35rem", xs: "380px" },
+    minWidth: { md: "35rem", xs: "325px" },
 }
 const IconContainer = {
     display: { md: "flex", xs: "none" },
@@ -49,7 +49,7 @@ const StyledText = {
 const StyledImage = styled.img`
 padding-left: 5rem;
 padding-right: 5rem;
-padding-bottom: 5rem;
+padding-bottom: 1rem;
 padding-top: 1rem;
 `
 const StyledLogo = styled.img`
@@ -65,7 +65,7 @@ const backtoshoppingButtonStyle = {
     borderRadius: '3.125rem',
     background: '#D9D9D9',
     boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-    margin: '4rem',
+    margin: '1rem',
     padding: '1rem',
 }
 
