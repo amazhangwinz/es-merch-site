@@ -151,7 +151,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ marginBottom: { xs: '2rem', md: 'none' } }}>
+        <Box>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
@@ -190,7 +190,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
               )
             }
             else {
-              return(<></>)
+              return (<></>)
             }
           })}
         </Box>
