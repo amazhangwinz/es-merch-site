@@ -22,6 +22,7 @@ const Cartpage = () => {
     const updatedCart = [...cart];
     updatedCart[index].size = newSize;
     setCart(updatedCart); // Update the state with the new size
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
   const handleQuantityChange = (index: number, newQuantity: number) => {
@@ -30,9 +31,9 @@ const Cartpage = () => {
     // need to change the total as well
     updatedCart[index].total = Math.round((updatedCart[index].price * newQuantity + Number.EPSILON) * 100) / 100;
     setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  console.log(cart)
   return (
     <div style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
       <p style={{ fontSize: '1.875rem', fontStyle: 'normal', fontWeight: '700' }}>
