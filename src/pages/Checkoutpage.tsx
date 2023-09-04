@@ -140,7 +140,8 @@ const Checkoutpage = () => {
             <div style={{ overflow: 'auto', height: '50%' }}>
               {/** MAP OVER CART INSTEAD!!!!! */}
               {
-                cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                // cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                cart.map(x => <OrderSummaryItem size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
               }
             </div>
             <TotalSummary>

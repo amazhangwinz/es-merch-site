@@ -15,7 +15,7 @@ import {
 
 } from '@mui/material';
 import styled, { keyframes, css } from "styled-components";
-import { findItemObject } from '../Helpers';
+import { findItemObject } from '../../Helpers';
 
 /**
  * MUI is an extensive component library with some very useful components that
@@ -93,54 +93,54 @@ type ColourSelectorProps = {
 const ColourSelector = (props: ColourSelectorProps) => {
     const itemObj = findItemObject(props.itemName);
 
-    const items = React.useRef<Array<React.RefObject<HTMLButtonElement>>>([]);
-    items.current = itemObj.colours.map((x, idx) => items.current[idx] = React.createRef());
+    // const items = React.useRef<Array<React.RefObject<HTMLButtonElement>>>([]);
+    // items.current = itemObj.colours.map((x, idx) => items.current[idx] = React.createRef());
 
-    const [position, setPosition] = React.useState('0.4rem');
-    const [width, setWidth] = React.useState('');
-    const [color, setColor] = React.useState(itemObj.colours[0].primaryColour);
-    const [backgroundc, setBackgroundc] = React.useState(itemObj.colours[0].secondaryColour);
-    const container = React.useRef<HTMLElement>(null);
-    React.useEffect(() => {
-        setWidth(items.current[0].current?.getBoundingClientRect().width + 'px');
-    }, [])
+    // const [position, setPosition] = React.useState('0.4rem');
+    // const [width, setWidth] = React.useState('');
+    // const [color, setColor] = React.useState(itemObj.colours[0].primaryColour);
+    // const [backgroundc, setBackgroundc] = React.useState(itemObj.colours[0].secondaryColour);
+    // const container = React.useRef<HTMLElement>(null);
+    // React.useEffect(() => {
+    //     setWidth(items.current[0].current?.getBoundingClientRect().width + 'px');
+    // }, [])
 
-    const handleclick = (
-        event: React.MouseEvent<HTMLElement>,
-        newButton: number,
-    ) => {
-        if (newButton !== null) {
-            console.log(newButton)
+    // const handleclick = (
+    //     event: React.MouseEvent<HTMLElement>,
+    //     newButton: number,
+    // ) => {
+    //     if (newButton !== null) {
+    //         console.log(newButton)
 
-            const x = container.current?.getBoundingClientRect().left
-            const y = items.current[newButton].current?.getBoundingClientRect().left
-            if (x != undefined && y != undefined)
-                setPosition(Math.round(y) - Math.round(x) + 'px')
-            setColor(itemObj.colours[newButton].primaryColour)
-            setBackgroundc(itemObj.colours[newButton].secondaryColour)
-            setWidth(items.current[newButton].current?.getBoundingClientRect().width + 'px')
-            props.setClickedButton(newButton);
-        }
-    };
+    //         const x = container.current?.getBoundingClientRect().left
+    //         const y = items.current[newButton].current?.getBoundingClientRect().left
+    //         if (x != undefined && y != undefined)
+    //             setPosition(Math.round(y) - Math.round(x) + 'px')
+    //         setColor(itemObj.colours[newButton].primaryColour)
+    //         setBackgroundc(itemObj.colours[newButton].secondaryColour)
+    //         setWidth(items.current[newButton].current?.getBoundingClientRect().width + 'px')
+    //         props.setClickedButton(newButton);
+    //     }
+    // };
 
-    return (
-        <ToggleButtonGroup
-            size="small"
-            value={props.clickedButton}
-            sx={toggleswitchstyle(backgroundc)}
-            exclusive
-            onChange={handleclick}
-            ref={container}
-        >
-            <SelectOverlay left={position} background={color} width={width}></SelectOverlay>
-            {
-                items.current.map((x, idx) => {
-                    return (<ToggleButton ref={x} value={idx} sx={ToggleButtonStyling} disableRipple >{itemObj.colours[idx].name}</ToggleButton>)
-                })
-            }
+    // return (
+    //     <ToggleButtonGroup
+    //         size="small"
+    //         value={props.clickedButton}
+    //         sx={toggleswitchstyle(backgroundc)}
+    //         exclusive
+    //         onChange={handleclick}
+    //         ref={container}
+    //     >
+    //         <SelectOverlay left={position} background={color} width={width}></SelectOverlay>
+    //         {
+    //             items.current.map((x, idx) => {
+    //                 return (<ToggleButton ref={x} value={idx} sx={ToggleButtonStyling} disableRipple >{itemObj.colours[idx].name}</ToggleButton>)
+    //             })
+    //         }
 
-        </ToggleButtonGroup>
-    )
+    //     </ToggleButtonGroup>
+    // )
 }
 export default ColourSelector;
 
