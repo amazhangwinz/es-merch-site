@@ -157,10 +157,6 @@ const Checkoutpage = () => {
   }
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
-    // TODO: Error Checking
-    // Check for an image
-
-
     e.preventDefault();
     let collected = 'false'
     let the_original_s_num = 0
@@ -184,13 +180,13 @@ const Checkoutpage = () => {
       else if (item.name === "The Original" && item.size === "Large") {
         the_original_l_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Small") {
+      else if (item.name === "Sketchbooked" && item.size === "Small") {
         sketchbook_s_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Medium") {
+      else if (item.name === "Sketchbooked" && item.size === "Medium") {
         sketchbook_m_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Large") {
+      else if (item.name === "Sketchbooked" && item.size === "Large") {
         sketchbook_l_num += item.quantity
       }
       else if (item.name === "Pastel Nights" && item.size === "Small") {
