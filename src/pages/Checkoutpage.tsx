@@ -128,34 +128,7 @@ const Checkoutpage = () => {
       // upload the file
       const snapshot = await uploadBytes(storageRef, payment);
       const downloadURL = await getDownloadURL(snapshot.ref)
-      await setUrl(downloadURL)
-
-      /* uploadBytes(storageRef, payment)
-        .then((snapshot) => {
-          return getDownloadURL(snapshot.ref)
-        })
-        .then(downloadURL => {
-          setUrl(downloadURL)
-          console.log(downloadURL)
-        }); */
-
-      /* // progress can be paused and resumed. It also exposes progress updates.
-      // Receives the storage reference and the file to upload.
-      const uploadTask = uploadBytesResumable(storageRef, payment);
-
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => { },
-        (err) => console.log(err),
-        () => {
-          // download url
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            setUrl(url);
-            console.log(url);
-            // url for the image
-          });
-        }
-      ); */
+      return downloadURL
     };
   }
 
@@ -207,9 +180,7 @@ const Checkoutpage = () => {
       }
     }
 
-    await handleFirebaseUpload()
-
-    console.log(url)
+    const proof_of_purchase = await handleFirebaseUpload()
 
     let the_original_s = the_original_s_num.toString()
     let the_original_m = the_original_m_num.toString()
@@ -237,17 +208,17 @@ const Checkoutpage = () => {
       payment,
       paymentUploaded,
       collected,
-      url
+      proof_of_purchase
     };
 
-    /* axios
+    axios
       .post(
         'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
         objt
       )
       .then((response: any) => {
         console.log(response);
-      }); */
+      });
   };
 
 
