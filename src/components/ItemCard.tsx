@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import { data } from '../Data.jsx';
-import { findColourImage } from '../Helpers'
+import { findColourImage } from '../Helpers';
+import { Box, AppBar, Toolbar, Typography, Grid } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 interface Prop {
 	title: string;
@@ -15,8 +19,8 @@ interface Prop {
 
 const StyledComponent = styled.div`
 	display: flex;
-	height: clamp(6rem, 10vw, 10rem);
-	width: clamp(18rem, 30vw, 30rem);
+	height: clamp(6rem, 10vw, 12rem);
+	width: clamp(18rem, 30vw, 36rem);
 	border-radius: clamp(0.25rem, 0.5rem, 0.5rem);
 	background: #fbf9f9;
 	margin: 1.75vw;
@@ -44,40 +48,10 @@ const StyledImage = styled.img`
 	object-fit: cover;
 `;
 
-const StyledTitle = styled.h1`
-	margin-bottom: 0;
-	height: clamp(2rem, 2.5vw, 3rem);
-	font-size: clamp(1.25rem, 1.2vw, 1.5rem);
-	margin: 0;
-	cursor: pointer;
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 800;
-    color: #1C3A59;
-`;
-
-const StyledPrice = styled.p`
-	margin-bottom: 0;
-	font-size: clamp(1rem, 1vw, 1.5rem)
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
-`;
-
 const StyledDescription = styled.p`
-	max-width: 100%;
-	max-height: 70%;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	overflow: hidden;
 	word-wrap: break-word;
-	font-size: clamp(1rem, 1vw, 1.5rem);
-	padding-bottom: 5%;
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
+	color: #1c3a59;
 `;
 
 const StyledColours = styled.div`
@@ -85,7 +59,7 @@ const StyledColours = styled.div`
 	flex-direction: row;
 	justify-content: flex-start;
 	margin: 0;
-	padding-right: 5%
+	padding-right: 5%;
 `;
 
 const ColourCircles = styled.div`
@@ -106,14 +80,33 @@ const ItemCard = (props: Prop) => {
 
 	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
-
 	return (
-		<StyledComponent onClick={() => { productPage(props.title) }} style={{ cursor: 'pointer' }}>
-			<StyledContent >
-				<StyledTitle style={{ margin: 0, cursor: 'pointer' }}>
-					{props.title}
-				</StyledTitle>
-				{/* <StyledDescription style={{ margin: 0, textAlign: 'left'}}>{props.description}</StyledDescription> */}
+		<StyledComponent
+			onClick={() => {
+				productPage(props.title);
+			}}
+			style={{ cursor: 'pointer' }}
+		>
+			<Box component={StyledContent}>
+				{
+					<Typography sx={{ variant: { xs: 'h6', md: 'h1' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
+						<b>{props.title}</b>
+					</Typography>
+				}
+				{
+					<Typography
+						sx={{
+							display: { xs: 'none', md: 'inline-block' },
+							fontFamily: 'Montserrat',
+							fontStyle: 'normal',
+							overflow: 'hidden',
+						}}
+						variant="body2"
+						paragraph={true}
+					>
+						{props.description}
+					</Typography>
+				}
 				{/* <StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
 					{data[props.index].colours.map((colour) => (
 						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
@@ -123,11 +116,14 @@ const ItemCard = (props: Prop) => {
 						</div>
 						))}
 				</StyledColours> */}
-				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
-			</StyledContent>
-			<StyledImage src={
-				findColourImage(props.index, currColour)
-			} alt={props.title} />
+				{
+					<Typography variant="subtitle2" fontFamily="Montserrat" fontStyle="normal">
+						<b>$ </b>
+						{props.price}
+					</Typography>
+				}
+			</Box>
+			<StyledImage src={findColourImage(props.index, currColour)} alt={props.title} />
 		</StyledComponent>
 	);
 };

@@ -1,17 +1,26 @@
 import React from 'react';
 import ItemCard from '../components/ItemCard';
-import {data} from '../Data.jsx';
+import { data } from '../Data.jsx';
+import { Box } from '@mui/material';
 
 const Homepage = () => {
 	return (
 		<div>
-			<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', flexFlow: "row wrap", marginLeft: '10vw', marginRight: '10vw' }}>
+			<Box
+				sx={{ flexFlow: { md: 'row wrap', xs: 'column' } }}
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginLeft: '10vw',
+					marginRight: '10vw',
+				}}
+			>
 				{data.map((item, idx) => {
-					return (
-					<ItemCard title={item.name} description={item.description} image={item.default} index={idx} price={item.price}
-					/>)
+					return <ItemCard title={item.name} description={item.description} image={item.default} index={idx} price={item.price} />;
 				})}
-			</div>
+			</Box>
 		</div>
 	);
 };
