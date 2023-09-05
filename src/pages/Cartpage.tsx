@@ -8,6 +8,7 @@ import { cartContext } from '../App';
 // import { findColourImage } from '../Helpers';
 
 
+
 const Cartpage = () => {
   const navigate = useNavigate();
   const checkoutPage = () => {

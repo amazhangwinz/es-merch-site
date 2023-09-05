@@ -8,6 +8,10 @@ import QuantitySelector from '../components/QuanitySelector';
 
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 import SizeSelector from '../components/SizeSelector';
+import { cartContext } from '../App';
+import { findMatch } from '../Helpers';
+import { title } from 'process';
+
 
 
 interface Prop {
@@ -72,6 +76,17 @@ const CartCard = (props: Prop) => {
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
 	const [size, setSize] = useState(props.size);
 
+	const { cart, setCart } = React.useContext(cartContext);
+
+
+	const deleteCard = (value:String) => {
+
+		setCart(cart.filter((CartItem) => CartItem.name !== value));
+
+		console.log("meow");
+		console.log(cart);
+	}
+
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
 		navigate({
@@ -102,6 +117,7 @@ const CartCard = (props: Prop) => {
 		}
 	}
 
+	
 	return (
 		<StyledProduct>
 			<StyledProperty style={{ width: '50%', justifyContent: 'left' }}>
@@ -134,7 +150,7 @@ const CartCard = (props: Prop) => {
 			</StyledProperty>
 			<StyledProperty style={{ width: '10%' }}>
 				{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-				<StyledImage style={{ width: '28%' }} src={Bin} alt="Bin Item" />
+				<StyledImage onClick={() => { deleteCard(props.title) }} style={{ width: '28%' }} src={Bin} alt="Bin Item" />
 			</StyledProperty>
 			<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
 				<StyledTitle>${props.total}</StyledTitle>
