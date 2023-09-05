@@ -145,7 +145,7 @@ const Checkoutpage = () => {
         () => {
           // download url
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            console.log(url);
+            return url;
             // url for the image
           });
         }
@@ -206,6 +206,8 @@ const Checkoutpage = () => {
     let pastel_nights_m = pastel_nights_m_num.toString()
     let pastel_nights_l = pastel_nights_l_num.toString()
 
+    let payment_url = handleFirebaseUpload();
+
     const objt = {
       name,
       email,
@@ -221,7 +223,8 @@ const Checkoutpage = () => {
       pastel_nights_l,
       payment,
       paymentUploaded,
-      collected
+      collected,
+      payment_url
     };
 
     axios
@@ -232,8 +235,6 @@ const Checkoutpage = () => {
       .then((response: any) => {
         console.log(response);
       });
-
-    handleFirebaseUpload();
   };
 
 
@@ -278,7 +279,6 @@ const Checkoutpage = () => {
               }} />
             </div>
             <div style={{ overflow: 'auto', height: '50%' }}>
-              {/** MAP OVER CART INSTEAD!!!!! */}
               {
                 // cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
                 cart.map(x => <OrderSummaryItem size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
