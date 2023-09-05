@@ -1,11 +1,16 @@
 import React from 'react';
+
+import EngsocLogo from '../assets/EngsocLogo.svg';
+import heroImage from '../assets/winnie.jpg';
+import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
 import { data } from '../Data.jsx';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 const Homepage = () => {
 	return (
 		<div>
+			<Hero title="EngSoc 2023" tagLine="Braincells not included." image={heroImage} itemName="test"></Hero>
 			<Box
 				sx={{ flexFlow: { md: 'row wrap', xs: 'column' } }}
 				style={{
