@@ -68,7 +68,7 @@ const Cartpage = () => {
         <div style={{ width: '70%', textAlign: 'right' }}>Subtotal</div>
         <div style={{ width: '10%' }}></div>
         {/*PUT USE CONTEXT BELOW , USE REDUCE FUNCTION TO SUM IT*/}
-        <div style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>{subTotal}</div>
+        <div style={{ width: '20%', textAlign: 'center', fontWeight: 'bold' }}>${subTotal}</div>
       </div>
       {/* <div style={{ marginBottom: '10rem', width: '75rem', display: 'flex', justifyContent: 'right'}}> */}
       <Button onClick={checkoutPage} style={{ color: 'black', fontSize: '1.2rem', background: '#D9D9D9' }} variant="contained" endIcon={<ArrowForwardIcon />}>Go to Checkout</Button>
