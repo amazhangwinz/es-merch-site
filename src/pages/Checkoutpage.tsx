@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
 import axios from 'axios';
 import storage from "../firebaseConfig"
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { upload } from '@testing-library/user-event/dist/upload';
 
 const InputLabel = styled.label`
   display: block;
@@ -95,9 +96,7 @@ const Checkoutpage = () => {
   const [zid, setZid] = React.useState('')
   const [payment, setPayment] = React.useState<File>()
   const [paymentUploaded, setPaymentUploaded] = React.useState(false)
-
-  // progress
-  const [percent, setPercent] = React.useState(0);
+  const [url, setUrl] = React.useState('');
 
   let navigate = useNavigate();
   const routeChangeUpdateCart = () => {
@@ -119,41 +118,52 @@ const Checkoutpage = () => {
     }
   }
 
-  const handleFirebaseUpload = () => {
+  // TODO: make use effect
+  const handleFirebaseUpload = async () => {
     if (!payment) {
       alert("Please upload an image first!");
     } else {
+      const storageRef = await ref(storage, `/files/${name}`);
 
+      // upload the file
+      const snapshot = await uploadBytes(storageRef, payment);
+      const downloadURL = await getDownloadURL(snapshot.ref)
+      await setUrl(downloadURL)
 
-      const storageRef = ref(storage, `/files/${name}`);
+      /* uploadBytes(storageRef, payment)
+        .then((snapshot) => {
+          return getDownloadURL(snapshot.ref)
+        })
+        .then(downloadURL => {
+          setUrl(downloadURL)
+          console.log(downloadURL)
+        }); */
 
-      // progress can be paused and resumed. It also exposes progress updates.
+      /* // progress can be paused and resumed. It also exposes progress updates.
       // Receives the storage reference and the file to upload.
       const uploadTask = uploadBytesResumable(storageRef, payment);
 
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          const percent = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-
-          // update progress
-          setPercent(percent);
-        },
+        (snapshot) => { },
         (err) => console.log(err),
         () => {
           // download url
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            return url;
+            setUrl(url);
+            console.log(url);
             // url for the image
           });
         }
-      );
+      ); */
     };
   }
 
-  const handleSubmit = (e: React.SyntheticEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    // TODO: Error Checking
+    // Check for an image
+
+
     e.preventDefault();
     let collected = 'false'
     let the_original_s_num = 0
@@ -166,35 +176,40 @@ const Checkoutpage = () => {
     let pastel_nights_m_num = 0
     let pastel_nights_l_num = 0
 
+
     for (const item of cart) {
       if (item.name === "The Original" && item.size === "Small") {
-        the_original_s_num += 1
+        the_original_s_num += item.quantity
       }
       else if (item.name === "The Original" && item.size === "Medium") {
-        the_original_m_num += 1
+        the_original_m_num += item.quantity
       }
       else if (item.name === "The Original" && item.size === "Large") {
-        the_original_l_num += 1
+        the_original_l_num += item.quantity
       }
       else if (item.name === "Sketchbook" && item.size === "Small") {
-        sketchbook_s_num += 1
+        sketchbook_s_num += item.quantity
       }
       else if (item.name === "Sketchbook" && item.size === "Medium") {
-        sketchbook_m_num += 1
+        sketchbook_m_num += item.quantity
       }
       else if (item.name === "Sketchbook" && item.size === "Large") {
-        sketchbook_l_num += 1
+        sketchbook_l_num += item.quantity
       }
       else if (item.name === "Pastel Nights" && item.size === "Small") {
-        pastel_nights_s_num += 1
+        pastel_nights_s_num += item.quantity
       }
       else if (item.name === "Pastel Nights" && item.size === "Medium") {
-        pastel_nights_m_num += 1
+        pastel_nights_m_num += item.quantity
       }
       else if (item.name === "Pastel Nights" && item.size === "Large") {
-        pastel_nights_l_num += 1
+        pastel_nights_l_num += item.quantity
       }
     }
+
+    await handleFirebaseUpload()
+
+    console.log(url)
 
     let the_original_s = the_original_s_num.toString()
     let the_original_m = the_original_m_num.toString()
@@ -205,8 +220,6 @@ const Checkoutpage = () => {
     let pastel_nights_s = pastel_nights_s_num.toString()
     let pastel_nights_m = pastel_nights_m_num.toString()
     let pastel_nights_l = pastel_nights_l_num.toString()
-
-    let payment_url = handleFirebaseUpload();
 
     const objt = {
       name,
@@ -224,17 +237,17 @@ const Checkoutpage = () => {
       payment,
       paymentUploaded,
       collected,
-      payment_url
+      url
     };
 
-    axios
+    /* axios
       .post(
         'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
         objt
       )
       .then((response: any) => {
         console.log(response);
-      });
+      }); */
   };
 
 
