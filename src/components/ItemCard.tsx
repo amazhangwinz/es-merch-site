@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 
-
 interface Prop {
 	title: string;
 	description: string;
