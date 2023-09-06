@@ -17,27 +17,29 @@ import SizeGuideModal from '../components/SizeGuideModal';
 
 const ImagePreviewContainer = () => ({
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: { md: 'center', xs: "flex-start" },
   background: '#ECECEC',
   // margin:5rem;
   // border-style: dotted;
   alignItems: 'center',
   flexDirection: { md: 'row', xs: "column" },
   marginTop: "1rem",
+
 })
 
-const ImageDetailContainer = styled.div`
-width: 32.3125rem;
-height: 27.75rem;
-flex-shrink: 0;
-// background: red;
-display:flex;
-justify-content: space-around;
-align-items: center;
-flex-direction: column;
-// padding: 2rem;
+const ImageDetailContainer =
+{
+  width: { md: "32.3125rem", xs: "fit-content" },
+  height: { md: "27.75rem", xs: "fit-content" },
+  flexShrink: 0,
+  // background: red;
+  display: "flex",
+  justifyContent: { md: "space-around", xs: "flex-start" },
+  alignItems: "center",
+  flexDirection: "column",
+  // padding: 2rem;
+}
 
-`
 
 const RelatedItemsContainer = () => ({
   textAlign: "left",
@@ -47,7 +49,7 @@ const RelatedItemsContainer = () => ({
   fontStyle: "normal",
   fontWeight: "800",
   lineHeight: "normal",
-  margin: "1rem",
+  margin: { md: "1rem", xs: "none" },
 
 })
 const RelatedImageContainer = () => ({
@@ -145,7 +147,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const navigate = useNavigate();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" } }}>
       <Breadcrumbs sx={stylebreadcrumbs}>
         <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
@@ -155,15 +157,15 @@ const SingleItemPage = (prop: SingleItemProp) => {
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
-        <ImageDetailContainer>
-          <Container sx={{ margin: "1rem", maxWidth: { md: 'none', xs: "400px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
-            <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2.3rem" }, lineHeight: "normal" }} gutterBottom>
+        <Box sx={ImageDetailContainer}>
+          <Container sx={{ margin: { md: "1rem", xs: ".5rem" }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
+            <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
-            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }}>
+            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal" }}>
               ${itemObj.price}
             </Typography>
-            <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.5rem" }, fontWeight: '400', lineHeight: "normal" }}>
+            <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
 
@@ -174,13 +176,20 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3, justifyContent: "space-around" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
             <SizeGuideModal img={itemObj.sizeguide} />
           </Box>
-        </ImageDetailContainer>
+        </Box>
       </Box>
       <Box sx={RelatedItemsContainer}>
-        <h1 style={{ fontSize: 35, textAlign: 'center' }}>Here are some items you'll also love</h1>
+        <Typography variant='h1' sx={{
+          fontSize: 35, textAlign: 'center',
+          color: "#1C3A59",
+          fontFamily: "Montserrat",
+          fontStyle: "normal",
+          fontWeight: "800",
+          lineHeight: "normal",
+        }}>Here are some items you'll also love</Typography>
         <Box sx={RelatedImageContainer} >
           {data.map((e) => {
             if (e.name !== itemTitle) {
@@ -195,7 +204,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           })}
         </Box>
       </Box>
-    </div >
+    </Box >
   )
 }
 

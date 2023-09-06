@@ -73,7 +73,7 @@ const addCartButtonStyle = {
     contrastText: 'black',
     paddingLeft: { md: '2rem', xs: "1rem" },
     paddingRight: { md: '2rem', xs: "1rem" },
-    height: '70%',
+    height: { md: '70%', xs: "130%" },
     alignSelf: 'center'
 }
 
@@ -110,12 +110,20 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     }
 
     return (
-        <div style={{ height: "100%", justifyContent: "space-around", alignContent: "baseline", display: 'flex', margin: '1rem' }}>
+        <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
-                <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
-                    props.handleAddToCart();
-                    handleOpen()
-                }}>Add to Cart</Button>
+                <Box sx={{ display: { md: "block", xs: "none" } }}>
+                    <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
+                        props.handleAddToCart();
+                        handleOpen()
+                    }}>Add to Cart</Button>
+                </Box>
+                <Box sx={{ display: { md: "none", xs: "flex" }, }}>
+                    <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
+                        props.handleAddToCart();
+                        handleOpen()
+                    }}>Add</Button>
+                </Box>
             </ThemeProvider>
             <Modal
                 open={open}
@@ -134,7 +142,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
 
                 </Box>
             </Modal>
-        </div >
+        </Box >
     );
 }
 export default CheckoutModal;

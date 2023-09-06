@@ -56,17 +56,19 @@ const ImagePreview = (props: ImagePreviewProps) => {
 
     const itemObj = findItemObject(props.itemName);
     return (
-        <Box>
-            <img style={{
-                width: "20rem",
-                height: "20rem",
-                objectFit: "cover",
-                justifySelf: "stretch",
-                borderRadius: "0.625rem",
-                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                margin: '1rem',
-                // }} src={props.heroSrc}></img>
-            }} src={itemObj.default} alt={"Item Name"}></img>
+        <Box sx={{
+            width: { md: "20rem", xs: "15rem" },
+            height: { md: "20rem", xs: "15rem" },
+            objectFit: "cover",
+            justifySelf: "stretch",
+            borderRadius: "0.625rem",
+            boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            margin: { md: '1rem', xs: 'none' },
+            // }} src={props.heroSrc}></img>
+        }} component="img" src={itemObj.default} alt="Item Name" >
+            {/* <img
+                src={props.heroSrc} alt="Item name">
+            </img> */}
         </Box >
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
