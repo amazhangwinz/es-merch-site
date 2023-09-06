@@ -176,20 +176,21 @@ const CartCard = (props: Prop) => {
 							<Typography sx={{
 								color: "#1C3A59",
 								fontFamily: "Montserrat",
-								fontSize: "1.3rem",
+								fontSize: "1rem",
 								fontStyle: "normal",
-								fontWeight: "800",
+								fontWeight: "600",
 								lineHeight: "normal",
 								mb: 3,
-							}}>${props.unitPrice}</Typography>
-							<Box sx={{ maxHeight: "1rem" }}>
+							}}>{props.size}</Typography>
+							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
+								<img style={{ width: '2rem', height: "2rem", marginLeft: "5rem" }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
 					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "center" }}>
-						<img style={{ width: '2rem', height: "2rem" }} src={Bin} alt="Bin Item" />
+
 						<Typography sx={{
 							color: "#1C3A59",
 							fontFamily: "Montserrat",
@@ -200,6 +201,7 @@ const CartCard = (props: Prop) => {
 
 						}}> ${props.total}</Typography>
 						{perItem()}
+
 					</Box>
 				</Box>
 			</Box >
