@@ -154,7 +154,7 @@ const CartCard = (props: Prop) => {
 					{perItem()}
 				</StyledProperty>
 			</Box>
-			<Box sx={{ display: { md: "none", xs: "flex" } }}>
+			<Box sx={{ display: { md: "none", xs: "flex", borderTop: "1px solid #d9d9d9", maxWidth: "370px" } }}>
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
 					<Box sx={{ display: "flex", alignContent: "start" }}>
 						<Box sx={{ margin: ".5rem", flexGrow: 1 }}>
@@ -189,7 +189,7 @@ const CartCard = (props: Prop) => {
 							</Box>
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "center" }}>
+					<Box sx={{ display: "flex", justifyContent: "space-around", m: 1, alignContent: "center" }}>
 
 						<Typography sx={{
 							color: "#1C3A59",
