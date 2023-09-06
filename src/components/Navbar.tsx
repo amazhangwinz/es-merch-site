@@ -10,6 +10,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
+import Divider from '@mui/material/Divider';
 
 /**
  * MUI is an extensive component library with some very useful components that
@@ -48,7 +49,7 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-  const [ , setPage] = useState('home');
+  const [, setPage] = useState('home');
 
   const navigate = useNavigate();
 
@@ -126,8 +127,12 @@ const Navbar = () => {
                     fontWeight: 700,
                     letterSpacing: ".3rem",
                     color: "inherit",
-                    textDecoration: "none"
+                    textDecoration: "none",
+                    borderLeft: "10px",
+                    borderLeftColor: 'white',
+
                   }}>{page.name}</Typography>
+
                 </MenuItem>
               ))}
             </Menu>

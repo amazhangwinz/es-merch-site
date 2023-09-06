@@ -54,7 +54,7 @@ const RelatedItemsContainer = () => ({
 })
 const RelatedImageContainer = () => ({
   display: 'flex',
-  justifyContent: 'space-evenly',
+  justifyContent: 'center',
   height: '100%',
   alignItems: 'center',
   textAlign: 'center',
