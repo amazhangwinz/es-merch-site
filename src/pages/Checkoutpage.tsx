@@ -1,10 +1,11 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem"
 import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
 import axios from 'axios';
+import CheckoutErrorModal from '../components/CheckoutErrorModal';
 import storage from "../firebaseConfig"
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { upload } from '@testing-library/user-event/dist/upload';
@@ -92,10 +93,14 @@ const Checkoutpage = () => {
   const { cart, setCart } = React.useContext(cartContext);
 
   const [name, setName] = React.useState('')
+  const [nameTouched, setNameTouched] = React.useState(false)
   const [email, setEmail] = React.useState('')
+  const [emailTouched, setEmailTouched] = React.useState(false)
   const [zid, setZid] = React.useState('')
   const [payment, setPayment] = React.useState<File>()
   const [paymentUploaded, setPaymentUploaded] = React.useState(false)
+  const [paymentTouched, setPaymentTouched] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
   const [url, setUrl] = React.useState('');
 
   let navigate = useNavigate();
@@ -104,6 +109,10 @@ const Checkoutpage = () => {
     navigate(path);
   }
   const routeChangeSubmit = (e: React.SyntheticEvent) => {
+    if (name === '' || email === '' || !paymentUploaded) {
+      setShowModal(true)
+      return
+    }
     handleSubmit(e)
     setCart([])
     localStorage.clear()
@@ -118,7 +127,22 @@ const Checkoutpage = () => {
     }
   }
 
-  // TODO: make use effect
+  const handleNameBlur = () => {
+    setNameTouched(true)
+  }
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true)
+  }
+
+  const handleFileBlur = () => {
+    setPaymentTouched(true)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
   const handleFirebaseUpload = async () => {
     if (!payment) {
       alert("Please upload an image first!");
@@ -133,10 +157,6 @@ const Checkoutpage = () => {
   }
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
-    // TODO: Error Checking
-    // Check for an image
-
-
     e.preventDefault();
     let collected = 'false'
     let the_original_s_num = 0
@@ -160,13 +180,13 @@ const Checkoutpage = () => {
       else if (item.name === "The Original" && item.size === "Large") {
         the_original_l_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Small") {
+      else if (item.name === "Sketchbooked" && item.size === "Small") {
         sketchbook_s_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Medium") {
+      else if (item.name === "Sketchbooked" && item.size === "Medium") {
         sketchbook_m_num += item.quantity
       }
-      else if (item.name === "Sketchbook" && item.size === "Large") {
+      else if (item.name === "Sketchbooked" && item.size === "Large") {
         sketchbook_l_num += item.quantity
       }
       else if (item.name === "Pastel Nights" && item.size === "Small") {
@@ -234,22 +254,25 @@ const Checkoutpage = () => {
           <CustomForm>
             <Container>
               <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-              <CustomInput type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)}></CustomInput><br></br>
+              <TextField error={name === '' && nameTouched} helperText={name === '' && nameTouched ? 'Name Required' : ''} sx={{ width: '100%'}} type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)} onBlur={handleNameBlur}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-              <CustomInput type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)}></CustomInput><br></br>
+              <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%'}} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="phoneNumber">ZID:</InputLabel><br></br>
-              <CustomInput type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></CustomInput><br></br>
+              <TextField sx={{ width: '100%'}} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
+              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br> 
+              {!paymentUploaded && paymentTouched ? <div><span style={{fontSize:'12px', color:'#d32f2f'}}>Proof of Purchase Required</span></div> : null}
+              {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-              <AttachImage type="file" id="phoneNumber" name="phoneNumber" onChange={e => handleFileUpload(e)}></AttachImage><br></br>
+              <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br>
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
+            <CheckoutErrorModal open={showModal} onClose={handleClose}/>
           </CustomForm>
         </Box>
         <Box sx={{ width: { md: '30%', xs: '100%' } }}>
