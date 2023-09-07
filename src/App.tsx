@@ -29,7 +29,7 @@ export const cartContext = React.createContext({
   setCart: (newCart: CartItem[]) => { },
 })
 
-const GlobalStyle = styled.body`
+const GlobalStyle = styled.div`
   min-height: 100vh;
   overflow-x: hidden;
   display: flex;

@@ -5,8 +5,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from '../App';
-import { Typography } from '@mui/material';
-// import { findColourImage } from '../Helpers';
 
 
 const Cartpage = () => {
