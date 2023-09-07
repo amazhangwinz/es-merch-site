@@ -5,12 +5,9 @@ import Bin from '../assets/Bin.png'
 import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
-
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
-import { findMatch } from '../Helpers';
-import { title } from 'process';
 
 
 
@@ -79,7 +76,7 @@ const CartCard = (props: Prop) => {
 	const { cart, setCart } = React.useContext(cartContext);
 
 
-	const deleteCard = (value:String) => {
+	const deleteCard = (value: String) => {
 
 		setCart(cart.filter((CartItem) => CartItem.name !== value));
 
@@ -117,7 +114,7 @@ const CartCard = (props: Prop) => {
 		}
 	}
 
-	
+
 	return (
 		<StyledProduct>
 			<StyledProperty style={{ width: '50%', justifyContent: 'left' }}>
