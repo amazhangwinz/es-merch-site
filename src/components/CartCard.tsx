@@ -8,7 +8,6 @@ import QuantitySelector from '../components/QuanitySelector';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
-
 import { Box, Typography } from '@mui/material';
 
 
@@ -77,17 +76,16 @@ const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
 	const [size, setSize] = useState(props.size);
-
 	const { cart, setCart } = React.useContext(cartContext);
 
-
 	const deleteCard = (value: String) => {
-
-		setCart(cart.filter((CartItem) => CartItem.name !== value));
-
+		const updatedCart = cart.filter((CartItem) => CartItem.name !== value)
+		setCart(updatedCart)
+		localStorage.setItem("cart", JSON.stringify(updatedCart));
 		console.log("meow");
-		console.log(cart);
+		console.log(updatedCart);
 	}
+
 
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
@@ -160,8 +158,9 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<img style={{ width: '28%' }} src={Bin} alt="Bin Item" />
+					<img onClick={() => { deleteCard(props.title) }} style={{ width: '28%' }} src={Bin} alt="Bin Item" />
 				</StyledProperty>
+
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
 					<StyledTitle>${props.total}</StyledTitle>
 					{perItem()}
@@ -183,8 +182,6 @@ const CartCard = (props: Prop) => {
 								fontWeight: "800",
 								lineHeight: "normal",
 								mb: 1,
-
-
 							}}>{props.title}</Typography>
 							<Typography sx={{
 								color: "#1C3A59",
@@ -198,7 +195,7 @@ const CartCard = (props: Prop) => {
 							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<img style={{ width: '2rem', height: "2rem", marginLeft: "5rem" }} src={Bin} alt="Bin Item" />
+								<img onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem" }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
