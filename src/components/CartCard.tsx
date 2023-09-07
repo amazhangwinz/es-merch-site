@@ -199,7 +199,7 @@ const CartCard = (props: Prop) => {
 							</Box>
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", justifyContent: "space-around", m: 1, alignContent: "center" }}>
+					<Box sx={{ display: "flex", justifyContent: "space-around", m: 1, alignContent: "center", borderTop: "1.5px solid #d9d9d9", paddingTop: '1px' }}>
 
 						<Typography sx={{
 							color: "#1C3A59",
@@ -211,7 +211,6 @@ const CartCard = (props: Prop) => {
 
 						}}> ${props.total}</Typography>
 						{perItem()}
-
 					</Box>
 				</Box>
 			</Box >
