@@ -7,16 +7,14 @@ import { cartContext } from '../App';
 import axios from 'axios';
 import CheckoutErrorModal from '../components/CheckoutErrorModal';
 import storage from "../firebaseConfig"
-import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { upload } from '@testing-library/user-event/dist/upload';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const InputLabel = styled.label`
   display: block;
   text-align: left;
   color: black;
   font-weight: bold;
-  length: 200rem;
-  width: 100%
+  width: 100%;
 `;
 
 const CustomForm = styled.form`
@@ -24,7 +22,6 @@ const CustomForm = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-cart: flex-start;
   border: 20px solid #ECECEC;
   border-radius: 25px;
   background: #ECECEC;
@@ -38,14 +35,6 @@ const CustomOrderSummary = styled.div`
   border: 20px solid #ECECEC;
   background: #ECECEC;
   border-radius: 25px;
-`;
-
-const CustomInput = styled.input`
-  display: block;
-  background: white;
-  width: 100%;
-  border: none;
-  height: 1.8rem;
 `;
 
 const Container = styled.div`
@@ -101,7 +90,6 @@ const Checkoutpage = () => {
   const [paymentUploaded, setPaymentUploaded] = React.useState(false)
   const [paymentTouched, setPaymentTouched] = React.useState(false)
   const [showModal, setShowModal] = React.useState(false)
-  const [url, setUrl] = React.useState('');
 
   let navigate = useNavigate();
   const routeChangeUpdateCart = () => {
@@ -254,25 +242,25 @@ const Checkoutpage = () => {
           <CustomForm>
             <Container>
               <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-              <TextField error={name === '' && nameTouched} helperText={name === '' && nameTouched ? 'Name Required' : ''} sx={{ width: '100%'}} type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)} onBlur={handleNameBlur}></TextField><br></br>
+              <TextField error={name === '' && nameTouched} helperText={name === '' && nameTouched ? 'Name Required' : ''} sx={{ width: '100%' }} type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)} onBlur={handleNameBlur}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-              <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%'}} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
+              <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%' }} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="phoneNumber">ZID:</InputLabel><br></br>
-              <TextField sx={{ width: '100%'}} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
+              <TextField sx={{ width: '100%' }} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br> 
-              {!paymentUploaded && paymentTouched ? <div><span style={{fontSize:'12px', color:'#d32f2f'}}>Proof of Purchase Required</span></div> : null}
+              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
+              {!paymentUploaded && paymentTouched ? <div><span style={{ fontSize: '12px', color: '#d32f2f' }}>Proof of Purchase Required</span></div> : null}
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
               <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br>
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
-            <CheckoutErrorModal open={showModal} onClose={handleClose}/>
+            <CheckoutErrorModal open={showModal} onClose={handleClose} />
           </CustomForm>
         </Box>
         <Box sx={{ width: { md: '30%', xs: '100%' } }}>
