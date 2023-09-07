@@ -151,7 +151,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ marginBottom: { xs: '2rem', md: 'none' } }}>
+        <Box>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
@@ -170,7 +170,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
-            <QuantitySelector qty={qty} setQty={setQty}></QuantitySelector>
+            <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
@@ -190,7 +190,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
               )
             }
             else {
-              return(<></>)
+              return (<></>)
             }
           })}
         </Box>
