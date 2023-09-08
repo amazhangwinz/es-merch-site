@@ -1,11 +1,10 @@
 import React from 'react';
 
-import EngsocLogo from '../assets/EngsocLogo.svg';
 import heroImage from '../assets/wholeEngSoc.png';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
 import { data } from '../Data.jsx';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 const Homepage = () => {
 	return (

@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import { data } from '../Data.jsx';
-import { findColourImage } from '../Helpers';
-import { Box, AppBar, Toolbar, Typography, Grid } from '@mui/material';
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-
-let theme = createTheme();
-theme = responsiveFontSizes(theme);
+import { Box, Typography } from '@mui/material';
 
 interface Prop {
 	title: string;
@@ -46,31 +40,6 @@ const StyledImage = styled.img`
 	max-width: 33%;
 	border-radius: 0 clamp(0.25rem, 0.5rem, 0.5rem) clamp(0.25rem, 0.5rem, 0.5rem) 0;
 	object-fit: cover;
-`;
-
-const StyledDescription = styled.p`
-	overflow: hidden;
-	word-wrap: break-word;
-	color: #1c3a59;
-`;
-
-const StyledColours = styled.div`
-	display: inline-flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	margin: 0;
-	padding-right: 5%;
-`;
-const StyledTitle = styled.h1`
-	margin-bottom: 0;
-	height: clamp(2rem, 2.5vw, 3rem);
-	font-size: clamp(1.25rem, 1.2vw, 1.5rem);
-	margin: 0;
-	cursor: pointer;
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 800;
-    color: #1C3A59;
 `;
 
 const StyledPrice = styled.p`
