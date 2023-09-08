@@ -13,8 +13,11 @@ interface Prop {
 
 const StyledComponent = styled.div`
 	display: flex;
-	height: clamp(6rem, 10vw, 12rem);
-	width: clamp(16rem, 28vw, 34rem);
+	flex-direction: column;
+	// height: clamp(6rem, 10vw, 12rem);
+	// width: clamp(16rem, 22vw, 26rem);
+	width: auto;
+	max-width: 45%;
 	border-radius: clamp(0.25rem, 0.5rem, 0.5rem);
 	background: #fbf9f9;
 	margin: 1.75vw;
@@ -23,7 +26,6 @@ const StyledComponent = styled.div`
 
 const StyledContent = styled.div`
 	height: 100%;
-	width: 65%;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -35,9 +37,11 @@ const StyledContent = styled.div`
 `;
 
 const StyledImage = styled.img`
-	height: 100%;
-	width: auto;
-	max-width: 33%;
+	// height: 100%;
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 5%;
+	// max-width: 33%;
 	border-radius: 0 clamp(0.25rem, 0.5rem, 0.5rem) clamp(0.25rem, 0.5rem, 0.5rem) 0;
 	object-fit: cover;
 `;
@@ -101,6 +105,10 @@ const ItemCard = (props: Prop) => {
 			}}
 			style={{ cursor: 'pointer' }}
 		>
+			<StyledImage src={
+				props.image
+				// findColourImage(props.index, currColour)
+			} alt={props.title} />
 			<Box component={StyledContent}>
 				{
 					<Typography sx={{ variant: { xs: 'h6', md: 'h1' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
@@ -132,10 +140,6 @@ const ItemCard = (props: Prop) => {
 				</StyledColours> */}
 				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</Box>
-			<StyledImage src={
-				props.image
-				// findColourImage(props.index, currColour)
-			} alt={props.title} />
 		</StyledComponent >
 	);
 };

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import heroImage from '../assets/wholeEngSoc.webp';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
@@ -17,12 +16,12 @@ const Homepage = () => {
 			/>
 
 			<Box
-				sx={{ flexFlow: { md: 'row wrap', xs: 'column' } }}
+				sx={{ flexFlow: { md: 'row wrap', xs: 'row wrap' } }}
 				style={{
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'center',
-					alignItems: 'center',
+					alignItems: 'flex-start',
 					marginLeft: '10vw',
 					marginRight: '10vw',
 					zIndex: '1',
