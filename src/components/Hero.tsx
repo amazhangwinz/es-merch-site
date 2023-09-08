@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createSearchParams } from 'react-router-dom';
-import { Box, AppBar, Toolbar, Typography } from '@mui/material';
-import styled from 'styled-components';
-import * as React from 'react';
+import { Box, Typography } from '@mui/material';
 
 interface Prop {
 	title: string;
@@ -33,9 +30,6 @@ export const Hero = (props: Prop) => {
 							<Typography
 								sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }}
 								variant="h3"
-								onClick={() => {
-									productPage(props.itemName);
-								}}
 							>
 								<b>{props.title}</b>
 							</Typography>
@@ -53,9 +47,6 @@ export const Hero = (props: Prop) => {
 						src={props.image}
 						style={{ height: '50vh', width: '50vh', objectFit: 'cover', marginTop: '10vh' }}
 						alt={props.itemName}
-						onClick={() => {
-							productPage(props.itemName);
-						}}
 					></img>
 				}
 			</Box>
@@ -68,9 +59,6 @@ export const Hero = (props: Prop) => {
 						src={props.image}
 						style={{ width: '50vh', height: '50vh', objectFit: 'cover', padding: '10%' }}
 						alt={props.itemName}
-						onClick={() => {
-							productPage(props.itemName);
-						}}
 					></img>
 				}
 				{
