@@ -1,6 +1,6 @@
 import React from 'react';
 
-import heroImage from '../assets/wholeEngSoc.png';
+import heroImage from '../assets/wholeEngSoc.webp';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
 import { data } from '../Data.jsx';

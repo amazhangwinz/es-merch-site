@@ -9,7 +9,7 @@ import {
     Typography
 } from "@mui/material";
 // import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import check from "../assets/check.png"
+import check from "../assets/check.webp"
 import englogo from "../assets/EngsocLogo.svg"
 
 

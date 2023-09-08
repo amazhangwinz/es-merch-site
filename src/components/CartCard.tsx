@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import Bin from '../assets/Bin.png'
+import Bin from '../assets/Bin.webp'
 import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
