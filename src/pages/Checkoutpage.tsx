@@ -1,17 +1,20 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem"
 import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
+import axios from 'axios';
+import CheckoutErrorModal from '../components/CheckoutErrorModal';
+import storage from "../firebaseConfig"
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const InputLabel = styled.label`
   display: block;
   text-align: left;
   color: black;
   font-weight: bold;
-  length: 200rem;
-  width: 100%
+  width: 100%;
 `;
 
 const CustomForm = styled.form`
@@ -19,7 +22,6 @@ const CustomForm = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-cart: flex-start;
   border: 20px solid #ECECEC;
   border-radius: 25px;
   background: #ECECEC;
@@ -33,14 +35,6 @@ const CustomOrderSummary = styled.div`
   border: 20px solid #ECECEC;
   background: #ECECEC;
   border-radius: 25px;
-`;
-
-const CustomInput = styled.input`
-  display: block;
-  background: white;
-  width: 100%;
-  border: none;
-  height: 1.8rem;
 `;
 
 const Container = styled.div`
@@ -74,29 +68,168 @@ const CustomButton = styled.button`
   cursor: pointer;
 `
 
-const Boxes = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
+// const Boxes = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+// `
 
 const TotalSummary = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-
-
 const Checkoutpage = () => {
+  const { cart, setCart } = React.useContext(cartContext);
+
+  const [name, setName] = React.useState('')
+  const [nameTouched, setNameTouched] = React.useState(false)
+  const [email, setEmail] = React.useState('')
+  const [emailTouched, setEmailTouched] = React.useState(false)
+  const [zid, setZid] = React.useState('')
+  const [payment, setPayment] = React.useState<File>()
+  const [paymentUploaded, setPaymentUploaded] = React.useState(false)
+  const [paymentTouched, setPaymentTouched] = React.useState(false)
+  const [showModal, setShowModal] = React.useState(false)
+
   let navigate = useNavigate();
   const routeChangeUpdateCart = () => {
     let path = `/cart`;
     navigate(path);
   }
-  const routeChangeSubmit = () => {
+  const routeChangeSubmit = (e: React.SyntheticEvent) => {
+    if (name === '' || email === '' || !paymentUploaded) {
+      setShowModal(true)
+      return
+    }
+    handleSubmit(e)
+    setCart([])
+    localStorage.clear()
     let path = `/order-success`;
     navigate(path);
   }
-  const { cart, setCart } = React.useContext(cartContext);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setPayment(e.target.files[0])
+      setPaymentUploaded(true)
+    }
+  }
+
+  const handleNameBlur = () => {
+    setNameTouched(true)
+  }
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true)
+  }
+
+  const handleFileBlur = () => {
+    setPaymentTouched(true)
+  }
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
+  const handleFirebaseUpload = async () => {
+    if (!payment) {
+      alert("Please upload an image first!");
+    } else {
+      const storageRef = await ref(storage, `/files/${name}`);
+
+      // upload the file
+      const snapshot = await uploadBytes(storageRef, payment);
+      const downloadURL = await getDownloadURL(snapshot.ref)
+      return downloadURL
+    };
+  }
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    let collected = 'false'
+    let the_original_s_num = 0
+    let the_original_m_num = 0
+    let the_original_l_num = 0
+    let sketchbook_s_num = 0
+    let sketchbook_m_num = 0
+    let sketchbook_l_num = 0
+    let pastel_nights_s_num = 0
+    let pastel_nights_m_num = 0
+    let pastel_nights_l_num = 0
+
+
+    for (const item of cart) {
+      if (item.name === "The Original" && item.size === "Small") {
+        the_original_s_num += item.quantity
+      }
+      else if (item.name === "The Original" && item.size === "Medium") {
+        the_original_m_num += item.quantity
+      }
+      else if (item.name === "The Original" && item.size === "Large") {
+        the_original_l_num += item.quantity
+      }
+      else if (item.name === "Sketchbooked" && item.size === "Small") {
+        sketchbook_s_num += item.quantity
+      }
+      else if (item.name === "Sketchbooked" && item.size === "Medium") {
+        sketchbook_m_num += item.quantity
+      }
+      else if (item.name === "Sketchbooked" && item.size === "Large") {
+        sketchbook_l_num += item.quantity
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Small") {
+        pastel_nights_s_num += item.quantity
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Medium") {
+        pastel_nights_m_num += item.quantity
+      }
+      else if (item.name === "Pastel Nights" && item.size === "Large") {
+        pastel_nights_l_num += item.quantity
+      }
+    }
+
+    const proof_of_purchase = await handleFirebaseUpload()
+
+    let the_original_s = the_original_s_num.toString()
+    let the_original_m = the_original_m_num.toString()
+    let the_original_l = the_original_l_num.toString()
+    let sketchbook_s = sketchbook_s_num.toString()
+    let sketchbook_m = sketchbook_m_num.toString()
+    let sketchbook_l = sketchbook_l_num.toString()
+    let pastel_nights_s = pastel_nights_s_num.toString()
+    let pastel_nights_m = pastel_nights_m_num.toString()
+    let pastel_nights_l = pastel_nights_l_num.toString()
+
+    const objt = {
+      name,
+      email,
+      zid,
+      the_original_s,
+      the_original_m,
+      the_original_l,
+      sketchbook_s,
+      sketchbook_m,
+      sketchbook_l,
+      pastel_nights_s,
+      pastel_nights_m,
+      pastel_nights_l,
+      payment,
+      paymentUploaded,
+      collected,
+      proof_of_purchase
+    };
+
+    axios
+      .post(
+        'https://sheet.best/api/sheets/d6dafd35-ad99-4082-9da1-f122f2c14a69',
+        objt
+      )
+      .then((response: any) => {
+        console.log(response);
+      });
+  };
+
+
   return (
     <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>
@@ -109,22 +242,25 @@ const Checkoutpage = () => {
           <CustomForm>
             <Container>
               <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
-              <CustomInput type="text" id="fname" name="fname"></CustomInput><br></br>
+              <TextField error={name === '' && nameTouched} helperText={name === '' && nameTouched ? 'Name Required' : ''} sx={{ width: '100%' }} type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)} onBlur={handleNameBlur}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
-              <CustomInput type="text" id="email" name="email"></CustomInput><br></br>
+              <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%' }} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="phoneNumber">Phone Number:</InputLabel><br></br>
-              <CustomInput type="text" id="phoneNumber" name="phoneNumber"></CustomInput><br></br>
+              <InputLabel htmlFor="phoneNumber">ZID:</InputLabel><br></br>
+              <TextField sx={{ width: '100%' }} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
             </Container>
             <Container>
               <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
+              {!paymentUploaded && paymentTouched ? <div><span style={{ fontSize: '12px', color: '#d32f2f' }}>Proof of Purchase Required</span></div> : null}
+              {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-              <AttachImage type="file" id="phoneNumber" name="phoneNumber"></AttachImage><br></br>
+              <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br>
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
+            <CheckoutErrorModal open={showModal} onClose={handleClose} />
           </CustomForm>
         </Box>
         <Box sx={{ width: { md: '30%', xs: '100%' } }}>
@@ -138,14 +274,14 @@ const Checkoutpage = () => {
               }} />
             </div>
             <div style={{ overflow: 'auto', height: '50%' }}>
-              {/** MAP OVER CART INSTEAD!!!!! */}
               {
-                cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                // cart.map(x => <OrderSummaryItem colour={x.colour} size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
+                cart.map(x => <OrderSummaryItem size={x.size} item={x.name} qty={x.quantity} uprice={x.price} />)
               }
             </div>
             <TotalSummary>
               <p>Total</p>
-              <p><b>${cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)}</b></p>
+              <p><b>${Math.round(((cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)) + Number.EPSILON) * 100) / 100}</b></p>
             </TotalSummary>
             <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
           </CustomOrderSummary>

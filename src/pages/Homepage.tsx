@@ -23,7 +23,14 @@ const Homepage = () => {
 				}}
 			>
 				{data.map((item, idx) => {
-					return <ItemCard title={item.name} description={item.description} image={item.default} index={idx} price={item.price} />;
+					return (
+						<ItemCard
+							title={item.name}
+							description={item.description}
+							image={item.default}
+							index={idx}
+							price={item.price}
+						/>)
 				})}
 			</Box>
 		</div>

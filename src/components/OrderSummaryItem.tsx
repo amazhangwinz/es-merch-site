@@ -5,7 +5,7 @@ type Props = {
     uprice: number;
     size: string;
     qty: number;
-    colour: string;
+    // colour: string;
 }
 
 const OrderSummaryItem = (props: Props) => {
@@ -13,7 +13,7 @@ const OrderSummaryItem = (props: Props) => {
         <div>
             <h3>{props.item}</h3>
             <ul>
-                <li>Colour: {props.colour}</li>
+                {/* <li>Colour: {props.colour}</li> */}
                 <li>Size: {props.size}</li>
                 <li>Qty: {props.qty}</li>
                 <li>Unit Price: ${props.uprice}</li>
@@ -23,7 +23,7 @@ const OrderSummaryItem = (props: Props) => {
                 color: "#212121",
                 backgroundColor: "#212121",
                 height: 2,
-            }}/>
+            }} />
         </div>
     )
 }

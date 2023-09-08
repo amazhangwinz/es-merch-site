@@ -61,13 +61,56 @@ const StyledColours = styled.div`
 	margin: 0;
 	padding-right: 5%;
 `;
-
-const ColourCircles = styled.div`
-	height: 1vw;
-	width: 1vw;
-	border-radius: 50%;
-	box-shadow: 1px 1.5px 0.5px silver;
+const StyledTitle = styled.h1`
+	margin-bottom: 0;
+	height: clamp(2rem, 2.5vw, 3rem);
+	font-size: clamp(1.25rem, 1.2vw, 1.5rem);
+	margin: 0;
+	cursor: pointer;
+	font-family: Montserrat;
+    font: Regular;
+	font-weight: 800;
+    color: #1C3A59;
 `;
+
+const StyledPrice = styled.p`
+	margin-bottom: 0;
+	font-size: clamp(1rem, 1vw, 1.5rem);
+	font-family: Montserrat;
+    font: Regular;
+	font-weight: 500;
+    color: #1C3A59;
+`;
+
+// const StyledDescription = styled.p`
+// 	max-width: 100%;
+// 	max-height: 70%;
+// 	overflow: hidden;
+// 	text-overflow: ellipsis;
+// 	overflow: hidden;
+// 	word-wrap: break-word;
+// 	font-size: clamp(1rem, 1vw, 1.5rem);
+// 	padding-bottom: 5%;
+// 	font-family: Montserrat;
+//     font: Regular;
+// 	font-weight: 500;
+//     color: #1C3A59;
+// `;
+
+// const StyledColours = styled.div`
+// 	display: inline-flex;
+// 	flex-direction: row;
+// 	justify-content: flex-start;
+// 	margin: 0;
+// 	padding-right: 5%
+// `;
+
+// const ColourCircles = styled.div`
+// 	height: 1vw;
+// 	width: 1vw;
+// 	border-radius: 50%;
+// 	box-shadow: 1px 1.5px 0.5px silver;
+// `;
 
 const ItemCard = (props: Prop) => {
 	const navigate = useNavigate();
@@ -78,7 +121,7 @@ const ItemCard = (props: Prop) => {
 		});
 	};
 
-	const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
+	// const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
 	return (
 		<StyledComponent
@@ -116,15 +159,13 @@ const ItemCard = (props: Prop) => {
 						</div>
 						))}
 				</StyledColours> */}
-				{
-					<Typography variant="subtitle2" fontFamily="Montserrat" fontStyle="normal">
-						<b>$ </b>
-						{props.price}
-					</Typography>
-				}
+				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
 			</Box>
-			<StyledImage src={findColourImage(props.index, currColour)} alt={props.title} />
-		</StyledComponent>
+			<StyledImage src={
+				props.image
+				// findColourImage(props.index, currColour)
+			} alt={props.title} />
+		</StyledComponent >
 	);
 };
 
