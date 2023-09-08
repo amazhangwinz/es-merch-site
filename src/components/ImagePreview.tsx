@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 // import styled from "styled-components";
 import { findItemObject } from "../Helpers";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 // const StyledGrid = styled.div`
@@ -57,16 +58,19 @@ const ImagePreview = (props: ImagePreviewProps) => {
     const itemObj = findItemObject(props.itemName);
     return (
         <Box>
-            <img style={{
-                width: "20rem",
-                height: "20rem",
-                objectFit: "cover",
-                justifySelf: "stretch",
-                borderRadius: "0.625rem",
-                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                margin: '1rem',
-                // }} src={props.heroSrc}></img>
-            }} src={itemObj.default} alt={"Item Name"}></img>
+            <LazyLoadImage
+                style={{
+                    width: "20rem",
+                    height: "20rem",
+                    objectFit: "cover",
+                    justifySelf: "stretch",
+                    borderRadius: "0.625rem",
+                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                    margin: '1rem',
+                    // }} src={props.heroSrc}></img>
+                }}
+                src={itemObj.default} alt={"Item Name"}
+            />
         </Box >
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
