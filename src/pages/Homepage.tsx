@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import heroImage from '../assets/wholeEngSoc.webp';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
@@ -5,15 +6,25 @@ import { data } from '../Data.jsx';
 import { Box } from '@mui/material';
 
 const Homepage = () => {
+	const [offsetY, setOffsetY] = useState(0)
+	const handleScroll = () => setOffsetY(window.scrollY)
+
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll)
+
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [])
 
 	return (
 		<div>
-			<Hero
-				title="EngSoc 2023"
-				tagLine="Braincells not included."
-				image={heroImage}
-				itemName="test"
-			/>
+			<div style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+				<Hero
+					title="EngSoc 2023"
+					tagLine="Braincells not included."
+					image={heroImage}
+					itemName="test"
+				/>
+			</div>
 
 			<Box
 				sx={{ flexFlow: { md: 'row wrap', xs: 'row wrap' } }}
@@ -24,7 +35,9 @@ const Homepage = () => {
 					alignItems: 'flex-start',
 					marginLeft: '10vw',
 					marginRight: '10vw',
-					zIndex: '1',
+					position: 'relative',
+					zIndex: '2',
+					background: '#ececec'
 				}}
 			>
 				{data.map((item, idx) => {
