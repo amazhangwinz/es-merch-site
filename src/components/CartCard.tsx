@@ -93,6 +93,7 @@ const CartCard = (props: Prop) => {
 			pathname: '/item',
 			search: `?${createSearchParams({ title: prodName })}`,
 		});
+		window.scroll({ top: 0, left: 0, behavior: "smooth" });
 	};
 
 	const perItem = () => {
