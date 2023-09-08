@@ -23,10 +23,10 @@ export const Hero = (props: Prop) => {
 		<div>
 			<Box
 				sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', justifyContent: 'space-evenly' }}
-				style={{ background: 'linear-gradient(194deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 60%)', height: '80vh', width: '100vw', marginBottom: '5vh' }}
+				style={{ background: 'linear-gradient(194deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 60%)', height: '60vh', width: '100vw', marginBottom: '6vh' }}
 			>
 				{
-					<Box sx={{ display: 'flex', flexDirection: 'column', paddingTop: '48vh', maxWidth: '30vw' }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', paddingTop: '35vh', maxWidth: '30vw' }}>
 						{
 							<Typography
 								sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }}
