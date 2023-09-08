@@ -14,7 +14,7 @@ interface Prop {
 const StyledComponent = styled.div`
 	display: flex;
 	height: clamp(6rem, 10vw, 12rem);
-	width: clamp(18rem, 30vw, 36rem);
+	width: clamp(16rem, 28vw, 34rem);
 	border-radius: clamp(0.25rem, 0.5rem, 0.5rem);
 	background: #fbf9f9;
 	margin: 1.75vw;
@@ -84,10 +84,12 @@ const StyledPrice = styled.p`
 const ItemCard = (props: Prop) => {
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
+		window.scroll({ top: 0, left: 0, behavior: "smooth" });
 		navigate({
 			pathname: '/item',
 			search: `?${createSearchParams({ title: prodName })}`,
 		});
+
 	};
 
 	// const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
