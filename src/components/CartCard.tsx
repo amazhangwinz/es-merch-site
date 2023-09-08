@@ -158,7 +158,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<img onClick={() => { deleteCard(props.title) }} style={{ width: '28%' }} src={Bin} alt="Bin Item" />
+					<img onClick={() => { deleteCard(props.title) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 				</StyledProperty>
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
@@ -195,7 +195,7 @@ const CartCard = (props: Prop) => {
 							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<img onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem" }} src={Bin} alt="Bin Item" />
+								<img onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
