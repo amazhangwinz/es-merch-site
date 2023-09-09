@@ -249,7 +249,7 @@ const Checkoutpage = () => {
               <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%' }} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="phoneNumber">ZID:</InputLabel><br></br>
+              <InputLabel htmlFor="phoneNumber">zID:</InputLabel><br></br>
               <TextField sx={{ width: '100%' }} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
             </Container>
             <Container>
