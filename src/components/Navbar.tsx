@@ -48,7 +48,7 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
 
-  const [ , setPage] = useState('home');
+  const [, setPage] = useState('home');
 
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const Navbar = () => {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#1C3A59' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: '#1C3A59' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" } }}><StyledImgBig onClick={homeLink} src={EngsocLogo} /></Box>
@@ -169,7 +169,7 @@ const Navbar = () => {
               >
                 {page.name}
               </Button>
-              {page.name !== 'Cart' &&
+                {page.name !== 'Cart' &&
                   (<Typography sx={{
                     my: 3, color: "white", display: "block", fontFamily: "Montserrat",
                     fontWeight: 700,
