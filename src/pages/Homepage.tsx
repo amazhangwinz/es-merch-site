@@ -6,6 +6,7 @@ import { data } from '../Data.jsx';
 import { Box } from '@mui/material';
 
 const Homepage = () => {
+	// might be a lil jittery at the moment, could use a react module for smoother scroll
 	const [offsetY, setOffsetY] = useState(0)
 	const handleScroll = () => setOffsetY(window.scrollY)
 
@@ -17,7 +18,7 @@ const Homepage = () => {
 
 	return (
 		<div>
-			<div style={{ transform: `translateY(${offsetY * 0.5}px)` }}>
+			<div style={{ transform: `translateY(${offsetY * 0.6}px)` }}>
 				<Hero
 					title="EngSoc 2023"
 					tagLine="Braincells not included."
@@ -33,11 +34,11 @@ const Homepage = () => {
 					flexWrap: 'wrap',
 					justifyContent: 'center',
 					alignItems: 'flex-start',
-					marginLeft: '10vw',
-					marginRight: '10vw',
 					position: 'relative',
 					zIndex: '2',
-					background: '#ececec'
+					background: '#ececec',
+					width: 'calc(100% - 10vw)',
+					padding: '0 5vw',
 				}}
 			>
 				{data.map((item, idx) => {
