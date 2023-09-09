@@ -1,31 +1,34 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import heroImage from '../assets/wholeEngSoc.webp';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
 import { data } from '../Data.jsx';
 import { Box } from '@mui/material';
+import { Parallax } from 'react-scroll-parallax';
 
 const Homepage = () => {
 	// might be a lil jittery at the moment, could use a react module for smoother scroll
-	const [offsetY, setOffsetY] = useState(0)
-	const handleScroll = () => setOffsetY(window.scrollY)
+	// const [offsetY, setOffsetY] = useState(0)
+	// const handleScroll = () => setOffsetY(window.scrollY)
 
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll)
+	// useEffect(() => {
+	// 	window.addEventListener("scroll", handleScroll)
 
-		return () => window.removeEventListener("scroll", handleScroll)
-	}, [])
+	// 	return () => window.removeEventListener("scroll", handleScroll)
+	// }, [])
 
 	return (
 		<div>
-			<div style={{ transform: `translateY(${offsetY * 0.6}px)` }}>
+			{/* <div style={{ transform: `translateY(${offsetY * 0.6}px)` }}> */}
+			<Parallax translateY={[-60, 45]}>
 				<Hero
 					title="EngSoc 2023"
 					tagLine="Braincells not included."
 					image={heroImage}
 					itemName="test"
 				/>
-			</div>
+			</Parallax>
+			{/* </div> */}
 
 			<Box
 				sx={{ flexFlow: { md: 'row wrap', xs: 'row wrap' } }}

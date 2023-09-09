@@ -9,6 +9,7 @@ import Confirmationpage from './pages/Confirmation';
 import SingleItemPage from './pages/SingleItemPage';
 import Checkoutpage from './pages/Checkoutpage';
 import { styled } from 'styled-components';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 export interface CartItem {
@@ -51,19 +52,20 @@ function App() {
         <GlobalStyle>
           <Main>
             <Navbar />
-            <></>
-            <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/cart' element={<Cartpage />} />
-              <Route path='/order-success' element={<Confirmationpage />} />
-              <Route path='/item' element={<SingleItemPage />} />
-              <Route path='/checkout' element={<Checkoutpage />} />
-            </Routes>
+            <ParallaxProvider>
+              <Routes>
+                <Route path='/' element={<Homepage />} />
+                <Route path='/cart' element={<Cartpage />} />
+                <Route path='/order-success' element={<Confirmationpage />} />
+                <Route path='/item' element={<SingleItemPage />} />
+                <Route path='/checkout' element={<Checkoutpage />} />
+              </Routes>
+            </ParallaxProvider>
           </Main>
           <Footer />
         </GlobalStyle>
       </BrowserRouter>
-    </cartContext.Provider>
+    </cartContext.Provider >
   );
 }
 
