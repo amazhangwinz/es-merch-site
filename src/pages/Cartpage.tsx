@@ -5,15 +5,28 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from '../App';
+import CartErrorModal from '../components/CartErrorModal';
 
 
 const Cartpage = () => {
   const navigate = useNavigate();
   const checkoutPage = () => {
-    navigate({
-      pathname: '/checkout',
-    });
+    if (cart.length < 1) {
+      setShowModal(true)
+    } else {
+      navigate({
+        pathname: '/checkout',
+      });
+    }
   };
+
+  // popup for going to checkout with an empty cart
+  const [showModal, setShowModal] = React.useState(false)
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
+
   const { cart, setCart } = React.useContext(cartContext);
   const subTotal = Math.round((cart.reduce((total, item) => total + item.total, 0) + Number.EPSILON) * 100) / 100;
 
@@ -46,10 +59,8 @@ const Cartpage = () => {
         <div style={{ width: '20%', textAlign: 'center' }}>Total</div>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', maxWidth: { md: "none", xs: "370px" } }}>
-        {/** MAP THE CART INSTEAD OF DATA HERE */}
         {cart.map((item, idx) => {
           return (
-            // <CartCard title={item.name} image={item.image} index={idx} unitPrice={item.price} qty={item.quantity} size={item.size} colour={item.colour}
             <CartCard
               title={item.name}
               image={item.image}
@@ -72,6 +83,7 @@ const Cartpage = () => {
       {/* <div style={{ marginBottom: '10rem', width: '75rem', display: 'flex', justifyContent: 'right'}}> */}
       <Button onClick={checkoutPage} sx={{ display: { md: "flex", xs: "none" }, color: 'black', fontSize: '1.2rem', background: '#D9D9D9' }} variant="contained" endIcon={<ArrowForwardIcon />}> Go to Checkout </Button>
       <Button onClick={checkoutPage} size='small' sx={{ display: { md: "none", xs: 'flex' }, color: 'black', fontSize: '1.2rem', background: '#D9D9D9' }} variant="contained" > Checkout </Button>
+      <CartErrorModal open={showModal} onClose={handleClose} />
       {/* <div style={{ width: '13rem', background: '#D9D9D9', padding: '1rem', borderRadius: '3.13rem', marginTop: '1rem', fontSize: '1.5rem', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'}}>Go to checkout</div> */}
       {/* </div> */}
     </Box>

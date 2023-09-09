@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import Bin from '../assets/Bin.png'
+import Bin from '../assets/Bin.webp'
 import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
@@ -9,7 +9,7 @@ import QuantitySelector from '../components/QuanitySelector';
 import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 interface Prop {
 	image: string;
@@ -93,6 +93,7 @@ const CartCard = (props: Prop) => {
 			pathname: '/item',
 			search: `?${createSearchParams({ title: prodName })}`,
 		});
+		window.scroll({ top: 0, left: 0, behavior: "smooth" });
 	};
 
 	const perItem = () => {
@@ -130,7 +131,7 @@ const CartCard = (props: Prop) => {
 			<Box sx={StyledProduct}>
 				<StyledProperty style={{ width: '50%', justifyContent: 'left' }}>
 					<StyledProperty style={{ width: '13rem' }}>
-						<img style={StyledImage} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
+						<LazyLoadImage style={StyledImage} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
 					</StyledProperty>
 					<StyledProperty style={{ justifyContent: 'left' }}>
 						<StyledText>
@@ -158,7 +159,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<img onClick={() => { deleteCard(props.title) }} style={{ width: '28%' }} src={Bin} alt="Bin Item" />
+					<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 				</StyledProperty>
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
@@ -170,7 +171,7 @@ const CartCard = (props: Prop) => {
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
 					<Box sx={{ display: "flex", alignContent: "start" }}>
 						<Box sx={{ margin: ".5rem", flexGrow: 1 }}>
-							<img style={{ height: "8rem" }} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
+							<LazyLoadImage style={{ height: "8rem" }} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
 						</Box>
 						<Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
 							<Typography onClick={() => { productPage(props.title) }} sx={{
@@ -195,7 +196,7 @@ const CartCard = (props: Prop) => {
 							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<img onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem" }} src={Bin} alt="Bin Item" />
+								<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
