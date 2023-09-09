@@ -1,7 +1,8 @@
 import { Box, Button, TextField } from '@mui/material';
 import React from 'react'
 import styled from "styled-components"
-import OrderSummaryItem from "../components/OrderSummaryItem"
+import OrderSummaryItem from "../components/OrderSummaryItem";
+import ImageInput from '../components/ImageInput';
 import { useNavigate } from "react-router-dom";
 import { cartContext } from '../App';
 import axios from 'axios';
@@ -43,14 +44,14 @@ const Container = styled.div`
   margin: 10px;
 `;
 
-const AttachImage = styled.input`
-  display: block;
-  //background: white;
-  width: 200px;
-  border: none;
-  height: 15%;
-  margin: 0 auto;
-`
+// const AttachImage = styled.input`
+//   display: block;
+//   //background: white;
+//   width: 200px;
+//   border: none;
+//   height: 15%;
+//   margin: 0 auto;
+// `
 
 const CustomButton = styled.button`
   margin: 0 auto;
@@ -257,7 +258,8 @@ const Checkoutpage = () => {
               {!paymentUploaded && paymentTouched ? <div><span style={{ fontSize: '12px', color: '#d32f2f' }}>Proof of Purchase Required</span></div> : null}
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
-              <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br>
+              {/* <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br> */}
+              <ImageInput onBlur={handleFileBlur} onChange={e => handleFileUpload(e)} />
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
             <CheckoutErrorModal open={showModal} onClose={handleClose} />
