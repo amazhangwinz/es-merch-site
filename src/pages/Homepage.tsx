@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import heroImage from '../assets/wholeEngSoc.webp';
 import { Hero } from '../components/Hero';
 import ItemCard from '../components/ItemCard';
