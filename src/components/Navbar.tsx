@@ -126,8 +126,12 @@ const Navbar = () => {
                     fontWeight: 700,
                     letterSpacing: ".3rem",
                     color: "inherit",
-                    textDecoration: "none"
+                    textDecoration: "none",
+                    borderLeft: "10px",
+                    borderLeftColor: 'white',
+
                   }}>{page.name}</Typography>
+
                 </MenuItem>
               ))}
             </Menu>
