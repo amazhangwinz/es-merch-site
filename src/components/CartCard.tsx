@@ -214,7 +214,7 @@ const CartCard = (props: Prop) => {
 						{perItem()}
 					</Box>
 				</Box>
-			</Box >
+			</Box>
 		</>
 	);
 };
