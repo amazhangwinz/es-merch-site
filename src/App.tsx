@@ -51,19 +51,20 @@ function App() {
         <GlobalStyle>
           <Main>
             <Navbar />
-            <></>
-            <Routes>
-              <Route path='/' element={<Homepage />} />
-              <Route path='/cart' element={<Cartpage />} />
-              <Route path='/order-success' element={<Confirmationpage />} />
-              <Route path='/item' element={<SingleItemPage />} />
-              <Route path='/checkout' element={<Checkoutpage />} />
-            </Routes>
+            <div style={{ paddingTop: '56px' }}>
+              <Routes>
+                <Route path='/' element={<Homepage />} />
+                <Route path='/cart' element={<Cartpage />} />
+                <Route path='/order-success' element={<Confirmationpage />} />
+                <Route path='/item' element={<SingleItemPage />} />
+                <Route path='/checkout' element={<Checkoutpage />} />
+              </Routes>
+            </div>
           </Main>
           <Footer />
         </GlobalStyle>
       </BrowserRouter>
-    </cartContext.Provider>
+    </cartContext.Provider >
   );
 }
 
