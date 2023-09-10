@@ -8,7 +8,6 @@ const UploadIcon = styled.img`
 `;
 
 const Parent = styled.div`
-  width: {xs: "4rem", md: "25rem"};
   margin: 0 auto 2rem auto;
   padding: 1.5rem;
   background: #ffffff;
