@@ -148,7 +148,15 @@ const CartCard = (props: Prop) => {
 								{handleChangeSize()} */}
 								{/* <SizeButtonCartPage /> */}
 								{/* <BoldText>Size:</BoldText> {2} */}
-								{props.size}
+								<Typography sx={{
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1rem",
+									fontStyle: "normal",
+									fontWeight: "600",
+									lineHeight: "normal",
+									mb: 3,
+								}}>{props.size}</Typography>
 							</StyledInfo>
 						</StyledText>
 					</StyledProperty>
