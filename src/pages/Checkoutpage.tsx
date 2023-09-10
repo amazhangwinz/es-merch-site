@@ -109,12 +109,12 @@ const Checkoutpage = () => {
     navigate(path);
   }
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setPayment(e.target.files[0])
-      setPaymentUploaded(true)
-    }
-  }
+  // const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     setPayment(e.target.files[0])
+  //     setPaymentUploaded(true)
+  //   }
+  // }
 
   const handleNameBlur = () => {
     setNameTouched(true)
@@ -259,7 +259,7 @@ const Checkoutpage = () => {
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
               {/* <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br> */}
-              <ImageInput onBlur={handleFileBlur} onChange={e => handleFileUpload(e)} />
+              <ImageInput onBlur={handleFileBlur} selectedFile={payment} setSelectedFile={setPayment} uploaded={paymentUploaded} setUploaded={setPaymentUploaded} />
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
             <CheckoutErrorModal open={showModal} onClose={handleClose} />

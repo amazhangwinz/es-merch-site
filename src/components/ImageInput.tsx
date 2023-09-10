@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import uploadImg from '../assets/uploadImg.webp';
+import { Typography } from '@mui/material';
 
 const UploadIcon = styled.img`
   width: 10rem;
 `;
 
 const Parent = styled.div`
-  width: 25rem;
+  width: {xs: "4rem", md: "25rem"};
   margin: 0 auto 2rem auto;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #ffffff;
   border-radius: 25px;
   box-shadow: 7px 20px 20px rgb(215, 224, 234);
@@ -38,18 +39,33 @@ const FileInput = styled.input`
 
 interface Prop {
   onBlur: () => void;
-  onChange: (e) => void;
+  selectedFile: File | undefined;
+  setSelectedFile: (f: File) => void;
+  uploaded: Boolean;
+  setUploaded: Dispatch<SetStateAction<boolean>>
 }
 
 const ImageInput = (props: Prop) => {
+
+  const [selectedName, setSelectedName] = useState("");
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      props.setSelectedFile(file)
+      props.setUploaded(true)
+      setSelectedName(file.name)
+    }
+  }
+
   return (
     <Parent>
       <FileUpload>
-        <UploadIcon src={uploadImg} alt="uploaded image" />
-        <h3>Upload Image Here</h3>
-        <FileInput onChange={e => props.onChange(e)} type="file" />
+        <UploadIcon src={(props.uploaded && props.selectedFile !== undefined) ? URL.createObjectURL(props.selectedFile) : uploadImg} alt="uploaded image" />
+        <Typography style={{ wordWrap: 'break-word' }}>{selectedName || "Upload Image Here"}</Typography>
+        <FileInput onChange={handleFileChange} type="file" />
       </FileUpload>
-    </Parent>
+    </Parent >
   )
 }
 
