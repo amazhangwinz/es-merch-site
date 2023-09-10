@@ -10,6 +10,7 @@ import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import CartRemovalModal from './CartRemovalModal';
 
 interface Prop {
 	image: string;
@@ -160,7 +161,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+					<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 				</StyledProperty>
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>

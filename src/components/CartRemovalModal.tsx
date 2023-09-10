@@ -9,7 +9,8 @@ import {
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import styled from "styled-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import { cartContext } from "../App";
+import Bin from "../assets/Bin.webp"
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -101,8 +102,7 @@ const theme = createTheme({
 //     navigate("/cart")
 // }
 
-type CheckoutModalProps = {
-    handleAddToCart: () => void;
+type CartRemovalModalProps = {
     title: string;
     size: string;
     image: string;
@@ -110,11 +110,13 @@ type CheckoutModalProps = {
     qty: number;
 }
 
-const CheckoutModal = (props: CheckoutModalProps) => {
+const CartRemovalModal = (props: CartRemovalModalProps) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navigate = useNavigate();
+    const { cart, setCart } = React.useContext(cartContext);
+
     const goToCart = () => {
         navigate("/cart")
     }
@@ -125,6 +127,13 @@ const CheckoutModal = (props: CheckoutModalProps) => {
         });
         window.scroll({ top: 0, left: 0, behavior: "smooth" });
     };
+    const deleteCard = (value: String) => {
+        const updatedCart = cart.filter((CartItem) => CartItem.name !== value)
+        setCart(updatedCart)
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        console.log("meow");
+        console.log(updatedCart);
+    }
 
     return (
         <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
@@ -133,12 +142,11 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                     variant="contained"
                     sx={addCartButtonStyle}
                     onClick={() => {
-                        props.handleAddToCart();
+                        deleteCard(props.title)
                         handleOpen()
                     }}
                 >
-                    <Box component="span" sx={{ display: { xs: 'none', md: 'inline' }, }}>Add to Cart</Box>
-                    <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, width: '3.5rem' }}>Add</Box>
+                    <LazyLoadImage style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
                 </Button>
             </ThemeProvider>
             <Modal
@@ -149,9 +157,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
             >
                 <Box sx={style}>
                     <Box sx={uppermodal}>
-                        <Typography sx={StyledModalText}>
-                            Added to Cart !
-                        </Typography>
+                        <LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
                         <Box sx={{ display: 'flex', borderTop: "1px solid #d9d9d9", mt: "1rem", maxWidth: "370px" }}>
                             <Box sx={{ display: "flex", flexDirection: "column" }}>
                                 <Box sx={{ display: "flex", alignContent: "start" }}>
@@ -206,14 +212,14 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                     <Box sx={lowermodal}>
                         <Box sx={{ display: { md: "flex", xs: "none" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
-                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Remove Item</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Keep Item</Button>
                             </ThemeProvider>
                         </Box>
                         <Box sx={{ display: { md: "none", xs: "flex" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Continue</Button>
-                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Cart</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Remove</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Keep</Button>
                             </ThemeProvider>
                         </Box>
                     </Box>
@@ -223,4 +229,4 @@ const CheckoutModal = (props: CheckoutModalProps) => {
         </Box >
     );
 }
-export default CheckoutModal;
+export default CartRemovalModal;
