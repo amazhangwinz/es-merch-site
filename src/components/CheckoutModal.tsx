@@ -1,12 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 import {
     Box,
     Modal,
     Button,
+    Typography,
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import styled from "styled-components";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -20,32 +22,34 @@ const style = {
 };
 
 const uppermodal = {
-    bgcolor: 'white',
-    borderRadius: '30px 30px 0px 0px',
+    bgcolor: '#FFF',
+    borderRadius: '2.0625rem 2.0625rem 0px 0px',
     display: 'flex',
     // justifyContent: "space-around",
     p: '1.5rem',
-    pt: '3rem',
-    pb: '3rem',
+    pt: '1.5rem',
+    pb: '.5rem',
     textAlign: 'left',
+    flexDirection: "column",
 }
 const lowermodal = {
     bgcolor: 'blue',
-    borderRadius: '0px 0px 30px 30px',
-    background: '#84A8C9',
-    p: '1.2rem',
+    borderRadius: '0px 0px 2.0625rem 2.0625rem',
+    background: '#1C3A59',
+    p: { md: '1.2rem', xs: '.7rem' },
     display: 'flex',
-    justifyContent: "space-evenly",
+    justifyContent: { md: "space-around", xs: "center" },
 }
 
-const StyledModalText = styled.text`
-color: #1C3A59;
-font-family: Montserrat;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-`
+const StyledModalText =
+{
+    color: "#1C3A59",
+    fontFamily: "Montserrat",
+    fontSize: "20px",
+    fontStyle: "normal",
+    fontWeight: "700",
+    lineHeight: "normal",
+}
 const ButtonStyle = {
     borderRadius: '50px',
     background: '#D9D9D9',
@@ -53,13 +57,13 @@ const ButtonStyle = {
     textAlign: 'center',
     fontFamily: 'Montserrat',
     fontStyle: 'normal',
-    fontSize: '12px',
+    fontSize: { md: '12px', xs: "70%" },
     fontWeight: '600',
     contrastText: 'black',
     flex: '1 1 0',
     m: '.5rem',
-    pt: '1rem',
-    pb: '1rem'
+    pt: { md: '.8rem', xs: ".5rem" },
+    pb: { md: '.8rem', xs: ".5rem" },
 }
 
 const addCartButtonStyle = {
@@ -98,6 +102,11 @@ const theme = createTheme({
 
 type CheckoutModalProps = {
     handleAddToCart: () => void;
+    title: string;
+    size: string;
+    image: string;
+    unitPrice: number;
+    qty: number;
 }
 
 const CheckoutModal = (props: CheckoutModalProps) => {
@@ -108,6 +117,13 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     const goToCart = () => {
         navigate("/cart")
     }
+    const productPage = (prodName: string) => {
+        navigate({
+            pathname: '/item',
+            search: `?${createSearchParams({ title: prodName })}`,
+        });
+        window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    };
 
     return (
         <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
@@ -131,12 +147,74 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Box sx={uppermodal}><StyledModalText>Added to Cart !</StyledModalText></Box>
+                    <Box sx={uppermodal}>
+                        <Typography sx={StyledModalText}>
+                            Added to Cart !
+                        </Typography>
+                        <Box sx={{ display: 'flex', borderTop: "1px solid #d9d9d9", mt: "1rem", maxWidth: "370px" }}>
+                            <Box sx={{ display: "flex", flexDirection: "column" }}>
+                                <Box sx={{ display: "flex", alignContent: "start" }}>
+                                    <Box sx={{ margin: ".5rem", flexGrow: 1 }}>
+                                        <LazyLoadImage style={{ height: "8rem", borderRadius: "0.625rem" }} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
+                                    </Box>
+                                    <Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
+                                        <Typography onClick={() => { productPage(props.title) }} sx={{
+                                            cursor: 'pointer',
+                                            color: "#1C3A59",
+                                            fontFamily: "Montserrat",
+                                            fontSize: { md: "1.5rem", xs: "1.2rem" },
+                                            fontStyle: "normal",
+                                            fontWeight: "800",
+                                            lineHeight: "normal",
+                                            mb: 2,
+                                        }}>{props.title}</Typography>
+                                        <Typography sx={{
+                                            color: "#1C3A59",
+                                            fontFamily: "Montserrat",
+                                            fontSize: { md: "1.1rem", xs: ".9rem" },
+                                            fontStyle: "normal",
+                                            fontWeight: "600",
+                                            lineHeight: "normal",
+
+                                        }}>Size: {props.size}</Typography>
+                                        <Typography sx={{
+                                            color: "#1C3A59",
+                                            fontFamily: "Montserrat",
+                                            fontSize: { md: "1.1rem", xs: ".9rem" },
+                                            fontStyle: "normal",
+                                            fontWeight: "600",
+                                            lineHeight: "normal",
+
+                                        }}>Qty: {props.qty}</Typography>
+                                        <Typography sx={{
+                                            color: "#1C3A59",
+                                            fontFamily: "Montserrat",
+                                            fontSize: { md: "1.1rem", xs: ".9rem" },
+                                            fontStyle: "normal",
+                                            fontWeight: "600",
+                                            lineHeight: "normal",
+
+                                        }}>Price: ${props.unitPrice * props.qty}</Typography>
+
+                                    </Box>
+                                </Box>
+
+                            </Box>
+                        </Box>
+                    </Box>
                     <Box sx={lowermodal}>
-                        <ThemeProvider theme={theme}>
-                            <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
-                            <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
-                        </ThemeProvider>
+                        <Box sx={{ display: { md: "flex", xs: "none" } }}>
+                            <ThemeProvider theme={theme}>
+                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
+                            </ThemeProvider>
+                        </Box>
+                        <Box sx={{ display: { md: "none", xs: "flex" } }}>
+                            <ThemeProvider theme={theme}>
+                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Continue</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Cart</Button>
+                            </ThemeProvider>
+                        </Box>
                     </Box>
 
                 </Box>
