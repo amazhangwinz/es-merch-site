@@ -112,18 +112,17 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     return (
         <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
             <ThemeProvider theme={theme}>
-                <Box sx={{ display: { md: "block", xs: "none" } }}>
-                    <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
+                <Button
+                    variant="contained"
+                    sx={addCartButtonStyle}
+                    onClick={() => {
                         props.handleAddToCart();
                         handleOpen()
-                    }}>Add to Cart</Button>
-                </Box>
-                <Box sx={{ display: { md: "none", xs: "flex" }, }}>
-                    <Button variant="contained" sx={addCartButtonStyle} onClick={() => {
-                        props.handleAddToCart();
-                        handleOpen()
-                    }}>Add</Button>
-                </Box>
+                    }}
+                >
+                    <Box component="span" sx={{ display: { xs: 'none', md: 'inline' }, }}>Add to Cart</Box>
+                    <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, width: '3.5rem' }}>Add</Box>
+                </Button>
             </ThemeProvider>
             <Modal
                 open={open}

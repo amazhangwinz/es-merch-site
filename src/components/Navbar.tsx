@@ -66,7 +66,7 @@ const Navbar = () => {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#1C3A59' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: '#1C3A59' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" } }}><StyledImgBig onClick={homeLink} src={EngsocLogo} /></Box>
@@ -161,7 +161,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 10, display: { xs: "none", md: "flex" } }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+              <><Button
                 key={page.name}
                 onClick={page.function}
                 sx={{
@@ -174,6 +174,16 @@ const Navbar = () => {
               >
                 {page.name}
               </Button>
+                {page.name !== 'Cart' &&
+                  (<Typography sx={{
+                    my: 3, color: "white", display: "block", fontFamily: "Montserrat",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    textDecoration: "none",
+                    fontSize: "1.3rem",
+                  }}>|</Typography>)
+                }
+              </>
             ))}
           </Box>
         </Toolbar>
