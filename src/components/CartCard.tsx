@@ -144,10 +144,11 @@ const CartCard = (props: Prop) => {
 							<ColourButtonCartPage />
 						</StyledInfo> */}
 							<StyledInfo>
-								<SizeSelector size={size} setSize={setSize} />
-								{handleChangeSize()}
+								{/* <SizeSelector size={size} setSize={setSize} />
+								{handleChangeSize()} */}
 								{/* <SizeButtonCartPage /> */}
 								{/* <BoldText>Size:</BoldText> {2} */}
+								{props.size}
 							</StyledInfo>
 						</StyledText>
 					</StyledProperty>
