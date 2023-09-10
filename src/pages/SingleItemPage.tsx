@@ -7,13 +7,11 @@ import QuantitySelector from '../components/QuanitySelector';
 import { data } from "../Data.jsx"
 import { cartContext } from '../App';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Breadcrumbs, Link } from '@mui/material';
 import SizeSelector from '../components/SizeSelector';
 import SizeGuideModal from '../components/SizeGuideModal';
-
 
 const ImagePreviewContainer = () => ({
   display: 'flex',
@@ -172,7 +170,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
-            <QuantitySelector qty={qty} setQty={setQty}></QuantitySelector>
+            <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>

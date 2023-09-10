@@ -4,6 +4,7 @@ import {
 } from '@mui/material';
 // import styled from "styled-components";
 import { findItemObject } from "../Helpers";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 // const StyledGrid = styled.div`

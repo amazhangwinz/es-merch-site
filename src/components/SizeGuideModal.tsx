@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -41,7 +42,7 @@ export default function SizeGuideModal(props: SizeGuideProps) {
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography> */}
           <Box sx={{ maxWidth: { md: "none", xs: "400px" }, overflow: "auto", margin: "1rem" }}>
-            <img src={props.img} style={{ overflow: "auto", width: "70vw" }} alt='Size Guide' />
+            <LazyLoadImage src={props.img} style={{ overflow: "auto", width: "70vw" }} alt='Size Guide' />
           </Box>
         </Box>
       </Modal>

@@ -1,13 +1,13 @@
 // import plush from "./assets/plush.jpg";
 // import pushin from "./assets/pushin.gif";
-// import winz from "./assets/WinnieZhang.png";
+// import winz from "./assets/WinnieZhang.webp";
 // import item from "./assets/728a14b7c377e3a51bf325b237c74de8.jpg";
 // import item1 from "./assets/lighter.webp"
-import HoodieSizeGuide from "./assets/HoodieSizeGuide.png"
-import JumperSizeGuide from "./assets/JumperSizeGuide.png"
-import OG from "./assets/OG.png"
-import Sketch from "./assets/SketchBooked.png"
-import PN from "./assets/PastelNights.png"
+import HoodieSizeGuide from "./assets/HoodieSizeGuide.webp"
+import JumperSizeGuide from "./assets/JumperSizeGuide.webp"
+import OG from "./assets/OG.webp"
+import Sketch from "./assets/SketchBooked.webp"
+import PN from "./assets/PastelNights.webp"
 
 export const data = [{
     "name": "The Original",
