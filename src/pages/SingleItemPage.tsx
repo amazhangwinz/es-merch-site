@@ -7,7 +7,6 @@ import QuantitySelector from '../components/QuanitySelector';
 import { data } from "../Data.jsx"
 import { cartContext } from '../App';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import styled from "styled-components";
 import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Breadcrumbs, Link } from '@mui/material';
