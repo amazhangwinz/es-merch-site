@@ -7,7 +7,6 @@ import {
     Typography,
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import styled from "styled-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const style = {
@@ -39,6 +38,7 @@ const lowermodal = {
     p: { md: '1.2rem', xs: '.7rem' },
     display: 'flex',
     justifyContent: { md: "space-around", xs: "center" },
+    height: '4rem',
 }
 
 const StyledModalText =
