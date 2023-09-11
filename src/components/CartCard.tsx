@@ -78,12 +78,10 @@ const CartCard = (props: Prop) => {
 	// const [size, setSize] = useState(props.size);
 	const { cart, setCart } = React.useContext(cartContext);
 
-	const deleteCard = (value: String) => {
-		const updatedCart = cart.filter((CartItem) => CartItem.name !== value)
+	const deleteCard = (title: String, size: String) => {
+		const updatedCart = cart.filter((CartItem) => (CartItem.name !== title || CartItem.size !== size))
 		setCart(updatedCart)
 		localStorage.setItem("cart", JSON.stringify(updatedCart));
-		console.log("meow");
-		console.log(updatedCart);
 	}
 
 
@@ -168,7 +166,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+					<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 				</StyledProperty>
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
@@ -205,7 +203,7 @@ const CartCard = (props: Prop) => {
 							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+								<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
