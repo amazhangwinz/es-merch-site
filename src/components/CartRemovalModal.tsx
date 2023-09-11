@@ -7,7 +7,6 @@ import {
     Typography,
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import styled from "styled-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { cartContext } from "../App";
 import Bin from "../assets/Bin.webp"
@@ -68,21 +67,6 @@ const ButtonStyle = {
     pb: { md: '.8rem', xs: ".5rem" },
 }
 
-const addCartButtonStyle = {
-    borderRadius: '13px',
-    background: '#FB9E9E',
-    textAlign: 'center',
-    fontFamily: 'Montserrat',
-    fontStyle: 'normal',
-    fontSize: { md: '110%', xs: "90%" },
-    fontWeight: '500',
-    contrastText: 'black',
-    paddingLeft: { md: '2rem', xs: "1rem" },
-    paddingRight: { md: '2rem', xs: "1rem" },
-    height: { md: '70%', xs: "130%" },
-    alignSelf: 'center'
-}
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -127,13 +111,12 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
         });
         window.scroll({ top: 0, left: 0, behavior: "smooth" });
     };
-    const deleteCard = (value: String) => {
-        const updatedCart = cart.filter((CartItem) => CartItem.name !== value)
+
+    const deleteCard = (title: String, size: String) => {
+        const updatedCart = cart.filter((CartItem) => (CartItem.name !== title || CartItem.size !== size))
         setCart(updatedCart)
         localStorage.setItem("cart", JSON.stringify(updatedCart));
-        console.log("meow");
-        console.log(updatedCart);
-    }
+    };
 
     return (
         <Box sx={{ justifyContent: "space-around", alignContent: "center", display: 'flex', margin: { md: '1rem', xs: 0 } }}>
@@ -208,14 +191,14 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
                     <Box sx={lowermodal}>
                         <Box sx={{ display: { md: "flex", xs: "none" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title); handleClose(); }}>Remove Item</Button>
                                 <Button component="a" variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Item</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title, props.size); handleClose(); }}>Remove Item</Button>
                             </ThemeProvider>
                         </Box>
                         <Box sx={{ display: { md: "none", xs: "flex" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title); handleClose(); }}>Remove</Button>
                                 <Button component="a" variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title, props.size); handleClose(); }}>Remove</Button>
                             </ThemeProvider>
                         </Box>
                     </Box>
