@@ -156,7 +156,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
         <Box sx={ImageDetailContainer}>
-          <Container sx={{ marginTop: { xs: '.5rem' }, margin: { md: "1rem" }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
+          <Container sx={{ margin: { md: "1rem", xs: ".5rem" }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
             <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
@@ -187,8 +187,6 @@ const SingleItemPage = (prop: SingleItemProp) => {
           fontStyle: "normal",
           fontWeight: "800",
           lineHeight: "normal",
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
         }}>Here are some items you'll also love</Typography>
         <Box sx={RelatedImageContainer} >
           {data.map((e) => {
