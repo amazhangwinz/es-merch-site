@@ -203,7 +203,7 @@ const CartCard = (props: Prop) => {
 							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+								<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '1.5rem', marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
 							</Box>
 						</Box>
 					</Box>
