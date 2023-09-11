@@ -175,7 +175,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
             <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
-            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><StraightenIcon sx={{ color: '#1C3A59', fontSize: "6rem" }} /></Button>
+            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><StraightenIcon sx={{ color: '#1C3A59', fontSize: "3.5rem", }} /></Button>
 
 
           </Box>
