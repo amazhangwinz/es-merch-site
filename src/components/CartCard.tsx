@@ -10,6 +10,7 @@ import QuantitySelector from '../components/QuanitySelector';
 import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import CartRemovalModal from './CartRemovalModal';
 
 interface Prop {
 	image: string;
@@ -166,14 +167,14 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
-				</StyledProperty>
+					<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
+				</StyledProperty >
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
 					<StyledTitle>${props.total}</StyledTitle>
 					{perItem()}
 				</StyledProperty>
-			</Box>
+			</Box >
 			<Box sx={{ display: { md: "none", xs: "flex", borderTop: "1px solid #d9d9d9", maxWidth: "370px" } }}>
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
 					<Box sx={{ display: "flex", alignContent: "start" }}>
@@ -200,10 +201,10 @@ const CartCard = (props: Prop) => {
 								lineHeight: "normal",
 								mb: 3,
 							}}>{props.size}</Typography>
-							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
+							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<LazyLoadImage onClick={() => { deleteCard(props.title, props.size) }} style={{ width: '1.5rem', marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 							</Box>
 						</Box>
 					</Box>

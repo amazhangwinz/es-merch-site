@@ -43,7 +43,7 @@ type SizeSelectorProp = {
 
 const SizeSelector = (props: SizeSelectorProp) => {
     return (
-        <FormControl sx={{ mr: 1, minWidth: 150, background: 'white' }}>
+        <FormControl sx={{ mr: 1, minWidth: "fit-content", background: 'white' }}>
             <InputLabel id="demo-simple-select-autowidth-label">Size</InputLabel>
             <Select value={props.size} onChange={(event) => props.setSize(event.target.value as string)} autoWidth label={"Size"}>
                 <MenuItem value={'Small'}>Small</MenuItem>
