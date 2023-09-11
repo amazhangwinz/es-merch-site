@@ -172,7 +172,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem" } }}>
             <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
-            <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
+            <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size}  handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
             {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
