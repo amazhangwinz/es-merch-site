@@ -73,6 +73,7 @@ const addCartButtonStyle = {
     contrastText: 'black',
     paddingLeft: { md: '2rem', xs: "1rem" },
     paddingRight: { md: '2rem', xs: "1rem" },
+    p: { xs: ".5rem" },
     height: { md: '70%', xs: "130%" },
     alignSelf: 'center'
 }

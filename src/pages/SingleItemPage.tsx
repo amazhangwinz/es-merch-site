@@ -21,7 +21,7 @@ const ImagePreviewContainer = () => ({
   // border-style: dotted;
   alignItems: 'center',
   flexDirection: { md: 'row', xs: "column" },
-  marginTop: "1rem",
+  marginTop: "4rem",
 
 })
 
@@ -48,6 +48,7 @@ const RelatedItemsContainer = () => ({
   fontWeight: "800",
   lineHeight: "normal",
   margin: { md: "1rem", xs: "none" },
+  mt: { xs: 0 },
 
 })
 const RelatedImageContainer = () => ({
@@ -160,7 +161,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="h3" sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
-            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal" }}>
+            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal", mb: { xs: 0 } }}>
               ${itemObj.price}
             </Typography>
             <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
@@ -169,7 +170,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "400px" } }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "360px" } }}>
             <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
@@ -187,6 +188,8 @@ const SingleItemPage = (prop: SingleItemProp) => {
           fontStyle: "normal",
           fontWeight: "800",
           lineHeight: "normal",
+          margin: { md: 0, xs: "1rem" },
+          mt: { xs: 0 },
         }}>Here are some items you'll also love</Typography>
         <Box sx={RelatedImageContainer} >
           {data.map((e) => {
