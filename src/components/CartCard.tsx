@@ -195,10 +195,10 @@ const CartCard = (props: Prop) => {
 								lineHeight: "normal",
 								mb: 3,
 							}}>{props.size}</Typography>
-							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
+							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 							</Box>
 						</Box>
 					</Box>
@@ -216,7 +216,7 @@ const CartCard = (props: Prop) => {
 						{perItem()}
 					</Box>
 				</Box>
-			</Box>
+			</Box >
 		</>
 	);
 };

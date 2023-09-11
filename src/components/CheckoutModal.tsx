@@ -52,6 +52,7 @@ const StyledModalText =
     lineHeight: "normal",
 }
 const ButtonStyle = {
+    // width: "100%",
     borderRadius: '50px',
     background: '#D9D9D9',
     boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -61,10 +62,10 @@ const ButtonStyle = {
     fontSize: { md: '12px', xs: "70%" },
     fontWeight: '600',
     contrastText: 'black',
-    flex: '1 1 0',
+    // flex: '1',
     m: '.5rem',
-    pt: { md: '.8rem', xs: ".5rem" },
-    pb: { md: '.8rem', xs: ".5rem" },
+    pt: { md: '.5rem', xs: ".8rem" },
+    pb: { md: '.5rem', xs: ".8rem" },
 }
 
 const addCartButtonStyle = {
@@ -152,7 +153,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                         <Typography sx={StyledModalText}>
                             Added to Cart !
                         </Typography>
-                        <Box sx={{ display: 'flex', borderTop: "1px solid #d9d9d9", mt: "1rem", maxWidth: "370px" }}>
+                        <Box sx={{ display: 'flex', borderTop: "1px solid #d9d9d9", mt: ".5rem", maxWidth: "370px" }}>
                             <Box sx={{ display: "flex", flexDirection: "column" }}>
                                 <Box sx={{ display: "flex", alignContent: "start" }}>
                                     <Box sx={{ margin: ".5rem", flexGrow: 1 }}>
@@ -204,13 +205,13 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                         </Box>
                     </Box>
                     <Box sx={lowermodal}>
-                        <Box sx={{ display: { md: "flex", xs: "none" } }}>
+                        <Box sx={{ display: { md: "flex", xs: "none" }, justifyContent: "center" }}>
                             <ThemeProvider theme={theme}>
                                 <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Shopping</Button>
                                 <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Go to Cart</Button>
                             </ThemeProvider>
                         </Box>
-                        <Box sx={{ display: { md: "none", xs: "flex" } }}>
+                        <Box sx={{ display: { md: "none", xs: "flex" }, justifyContent: "center" }}>
                             <ThemeProvider theme={theme}>
                                 <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Continue</Button>
                                 <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Cart</Button>

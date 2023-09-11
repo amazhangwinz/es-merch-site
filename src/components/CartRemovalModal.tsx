@@ -40,7 +40,7 @@ const lowermodal = {
     background: '#1C3A59',
     p: { md: '1.2rem', xs: '.7rem' },
     display: 'flex',
-    justifyContent: { md: "space-around", xs: "center" },
+    justifyContent: { md: "center", xs: "center" },
 }
 
 const StyledModalText =
@@ -62,7 +62,7 @@ const ButtonStyle = {
     fontSize: { md: '12px', xs: "70%" },
     fontWeight: '600',
     contrastText: 'black',
-    flex: '1 1 0',
+    // flex: '1 1 0',
     m: '.5rem',
     pt: { md: '.8rem', xs: ".5rem" },
     pb: { md: '.8rem', xs: ".5rem" },
@@ -136,18 +136,12 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
     }
 
     return (
-        <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
+        <Box sx={{ justifyContent: "space-around", alignContent: "center", display: 'flex', margin: { md: '1rem', xs: 0 } }}>
             <ThemeProvider theme={theme}>
-                <Button
-                    variant="contained"
-                    sx={addCartButtonStyle}
-                    onClick={() => {
-                        deleteCard(props.title)
-                        handleOpen()
-                    }}
-                >
-                    <LazyLoadImage style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
-                </Button>
+                <LazyLoadImage onClick={() => {
+
+                    handleOpen()
+                }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
             </ThemeProvider>
             <Modal
                 open={open}
@@ -157,7 +151,9 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
             >
                 <Box sx={style}>
                     <Box sx={uppermodal}>
-                        <LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+                        <Typography sx={StyledModalText}>
+                            Remove Item ?
+                        </Typography>
                         <Box sx={{ display: 'flex', borderTop: "1px solid #d9d9d9", mt: "1rem", maxWidth: "370px" }}>
                             <Box sx={{ display: "flex", flexDirection: "column" }}>
                                 <Box sx={{ display: "flex", alignContent: "start" }}>
@@ -212,14 +208,14 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
                     <Box sx={lowermodal}>
                         <Box sx={{ display: { md: "flex", xs: "none" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Remove Item</Button>
-                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Keep Item</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title); handleClose(); }}>Remove Item</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep Item</Button>
                             </ThemeProvider>
                         </Box>
                         <Box sx={{ display: { md: "none", xs: "flex" } }}>
                             <ThemeProvider theme={theme}>
-                                <Button variant="contained" sx={ButtonStyle} onClick={handleClose}>Remove</Button>
-                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={goToCart}>Keep</Button>
+                                <Button variant="contained" sx={ButtonStyle} onClick={() => { deleteCard(props.title); handleClose(); }}>Remove</Button>
+                                <Button component="a" variant="contained" sx={ButtonStyle} onClick={handleClose}>Keep</Button>
                             </ThemeProvider>
                         </Box>
                     </Box>
