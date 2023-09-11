@@ -70,7 +70,9 @@ const ImagePreview = (props: ImagePreviewProps) => {
                     // }} src={props.heroSrc}></img>
                 }}
                 src={itemObj.default} alt={"Item Name"}
+
             />
+            
         </Box >
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
