@@ -77,8 +77,9 @@ const addCartButtonStyle = {
     contrastText: 'black',
     paddingLeft: { md: '2rem', xs: "1rem" },
     paddingRight: { md: '2rem', xs: "1rem" },
-    height: { md: '70%', xs: "130%" },
-    alignSelf: 'center'
+    height: { md: '70%', xs: "100%" },
+    alignSelf: 'center',
+    padding: "1rem",
 }
 
 const theme = createTheme({
@@ -126,7 +127,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     };
 
     return (
-        <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: '1rem' }}>
+        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', }}>
             <ThemeProvider theme={theme}>
                 <Button
                     variant="contained"
@@ -136,8 +137,8 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                         handleOpen()
                     }}
                 >
-                    <Box component="span" sx={{ display: { xs: 'none', md: 'inline' }, }}>Add to Cart</Box>
-                    <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, width: '3.5rem' }}>Add</Box>
+                    <Box component="span">Add to Cart</Box>
+                    {/* <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, }}>Add</Box> */}
                 </Button>
             </ThemeProvider>
             <Modal

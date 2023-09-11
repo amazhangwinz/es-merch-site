@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import StraightenIcon from '@mui/icons-material/Straighten';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -27,7 +28,7 @@ export default function SizeGuideModal(props: SizeGuideProps) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>SIZE GUIDE</Button>
+      <Button onClick={handleOpen}><StraightenIcon /></Button>
       <Modal
         open={open}
         onClose={handleClose}
