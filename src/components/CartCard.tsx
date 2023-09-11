@@ -6,7 +6,7 @@ import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
-import SizeSelector from '../components/SizeSelector';
+// import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -75,7 +75,7 @@ const CartCard = (props: Prop) => {
 	// Use context TO DETERMINE OG VAL, NOT JUST 1
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
-	const [size, setSize] = useState(props.size);
+	// const [size, setSize] = useState(props.size);
 	const { cart, setCart } = React.useContext(cartContext);
 
 	const deleteCard = (value: String) => {
@@ -118,12 +118,12 @@ const CartCard = (props: Prop) => {
 	}
 
 	// If user changes SIZE
-	const handleChangeSize = () => {
+	/* const handleChangeSize = () => {
 		if (size !== props.size) {
 			props.onSizeChange(size);
 			return (<Typography sx={{ margin: "none" }}>(changed size)</Typography>)
 		}
-	}
+	} */
 
 
 	return (
@@ -144,10 +144,19 @@ const CartCard = (props: Prop) => {
 							<ColourButtonCartPage />
 						</StyledInfo> */}
 							<StyledInfo>
-								<SizeSelector size={size} setSize={setSize} />
-								{handleChangeSize()}
+								{/* <SizeSelector size={size} setSize={setSize} />
+								{handleChangeSize()} */}
 								{/* <SizeButtonCartPage /> */}
 								{/* <BoldText>Size:</BoldText> {2} */}
+								<Typography sx={{
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1rem",
+									fontStyle: "normal",
+									fontWeight: "600",
+									lineHeight: "normal",
+									mb: 3,
+								}}>{props.size}</Typography>
 							</StyledInfo>
 						</StyledText>
 					</StyledProperty>
