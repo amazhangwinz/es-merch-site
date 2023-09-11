@@ -13,6 +13,7 @@ const style = {
   boxShadow: 24,
   p: { md: 2, xs: 1 },
   borderRadius: '30px',
+  mt: { xs: 0 },
 };
 
 type SizeGuideProps = {
@@ -26,7 +27,7 @@ export default function SizeGuideModal(props: SizeGuideProps) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <Box sx={{ mt: { xs: 0 } }}>
       <Button onClick={handleOpen}>SIZE GUIDE</Button>
       <Modal
         open={open}
@@ -46,6 +47,6 @@ export default function SizeGuideModal(props: SizeGuideProps) {
           </Box>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

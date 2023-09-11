@@ -57,23 +57,39 @@ const ImagePreview = (props: ImagePreviewProps) => {
 
     const itemObj = findItemObject(props.itemName);
     return (
-        <Box>
-            <LazyLoadImage
-                style={{
-                    width: "20rem",
-                    height: "20rem",
-                    objectFit: "cover",
-                    justifySelf: "stretch",
-                    borderRadius: "0.625rem",
-                    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                    margin: '1rem',
-                    // }} src={props.heroSrc}></img>
-                }}
-                src={itemObj.default} alt={"Item Name"}
+        <>
+            <Box sx={{ display: { md: "flex", xs: "none" } }}>
+                <LazyLoadImage
+                    style={{
+                        width: "20rem",
+                        height: "20rem",
+                        objectFit: "cover",
+                        justifySelf: "stretch",
+                        borderRadius: "0.625rem",
+                        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
 
-            />
-            
-        </Box >
+                        // }} src={props.heroSrc}></img>
+                    }}
+                    src={itemObj.default} alt={"Item Name"}
+                />
+            </Box >
+            <Box sx={{ display: { xs: "flex", md: 'none' }, my: '0.8rem' }}>
+                <LazyLoadImage
+                    style={{
+                        width: "18rem",
+                        height: "18rem",
+                        objectFit: "cover",
+                        justifySelf: "stretch",
+                        borderRadius: "0.625rem",
+                        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+
+                        // }} src={props.heroSrc}></img>
+                    }}
+                    src={itemObj.default} alt={"Item Name"}
+                />
+
+            </Box >
+        </>
         // <StyledGrid>
         //     <StyledImg src={itemObj.colours[0].img} onClick={() => props.setHero(itemObj.colours[0].img)} style={{ cursor: 'pointer' }}></StyledImg>
         //     <LargeStyledImg src={props.heroSrc}></LargeStyledImg>
