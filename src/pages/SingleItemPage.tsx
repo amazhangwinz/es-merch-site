@@ -11,7 +11,8 @@ import { findItemObject, findMatch } from '../Helpers';
 import Typography from '@mui/material/Typography';
 import { Box, Container, Breadcrumbs, Link } from '@mui/material';
 import SizeSelector from '../components/SizeSelector';
-import SizeGuideModal from '../components/SizeGuideModal';
+// import SizeGuideModal from '../components/SizeGuideModal';
+import Button from '@mui/material/Button';
 
 const ImagePreviewContainer = () => ({
   display: 'flex',
@@ -175,8 +176,9 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <SizeSelector size={size} setSize={setSize} />
             <CheckoutModal handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
-            <SizeGuideModal img={itemObj.sizeguide} />
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: 3, justifyContent: "space-around" }}>
+            {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
+            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank">SIZE GUIDE</Button>
           </Box>
         </Box>
       </Box>
