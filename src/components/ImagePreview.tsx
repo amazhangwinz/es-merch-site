@@ -73,7 +73,7 @@ const ImagePreview = (props: ImagePreviewProps) => {
                     src={itemObj.default} alt={"Item Name"}
                 />
             </Box >
-            <Box sx={{ display: { xs: "flex", md: 'none' } }}>
+            <Box sx={{ display: { xs: "flex", md: 'none' }, my: '0.8rem' }}>
                 <LazyLoadImage
                     style={{
                         width: "18rem",
