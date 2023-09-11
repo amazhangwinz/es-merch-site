@@ -101,9 +101,6 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
     const navigate = useNavigate();
     const { cart, setCart } = React.useContext(cartContext);
 
-    const goToCart = () => {
-        navigate("/cart")
-    }
     const productPage = (prodName: string) => {
         navigate({
             pathname: '/item',

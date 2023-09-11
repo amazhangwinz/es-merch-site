@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import Bin from '../assets/Bin.webp'
 import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 // import SizeSelector from '../components/SizeSelector';
-import { cartContext } from '../App';
+// import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CartRemovalModal from './CartRemovalModal';
@@ -77,14 +76,7 @@ const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
 	// const [size, setSize] = useState(props.size);
-	const { cart, setCart } = React.useContext(cartContext);
-
-	const deleteCard = (title: String, size: String) => {
-		const updatedCart = cart.filter((CartItem) => (CartItem.name !== title || CartItem.size !== size))
-		setCart(updatedCart)
-		localStorage.setItem("cart", JSON.stringify(updatedCart));
-	}
-
+	// const { cart, setCart } = React.useContext(cartContext);
 
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
