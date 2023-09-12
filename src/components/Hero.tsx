@@ -55,30 +55,26 @@ export const Hero = (props: Prop) => {
 				sx={{ display: { xs: 'flex', md: 'none' }, flexDirection: 'column', alignItems: 'center' }}
 				style={{ background: 'linear-gradient(184deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 70%)', height: '60vh', width: '100vw' }}
 			>
-				{
-					<LazyLoadImage
-						src={props.image}
-						style={{ width: '50vh', height: '50vh', objectFit: 'cover', padding: '10%' }}
-						alt={props.itemName}
-					></LazyLoadImage>
-				}
-				{
-					<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '60vw' }}>
-						{
-							<Typography
-								sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }}
-								variant="h4"
-							>
-								<b>{props.title}</b>
-							</Typography>
-						}
-						{
-							<Typography sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }} variant="subtitle2">
-								{props.tagLine}
-							</Typography>
-						}
-					</Box>
-				}
+				<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '90vw', zIndex: 1, position: "relative", top: "6rem" }}>
+
+					<Typography
+						sx={{ fontFamily: 'montserrat', color: 'white', }}
+						variant="h4"
+					>
+						<b>{props.title}</b>
+					</Typography>
+
+					<Typography sx={{ fontFamily: 'montserrat', color: 'white' }} variant="subtitle2">
+						{props.tagLine}
+					</Typography>
+
+				</Box>
+				<LazyLoadImage
+					src={props.image}
+					style={{ width: "100%", height: '50vh', objectFit: 'cover', }}
+					alt={props.itemName}
+				></LazyLoadImage>
+
 			</Box>
 		</div>
 	);
