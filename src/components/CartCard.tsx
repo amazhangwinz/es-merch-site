@@ -178,7 +178,7 @@ const CartCard = (props: Prop) => {
 								cursor: 'pointer',
 								color: "#1C3A59",
 								fontFamily: "Montserrat",
-								fontSize: "1.7rem",
+								fontSize: "1.3rem",
 								fontStyle: "normal",
 								fontWeight: "800",
 								lineHeight: "normal",
@@ -191,16 +191,26 @@ const CartCard = (props: Prop) => {
 								fontStyle: "normal",
 								fontWeight: "600",
 								lineHeight: "normal",
-								mb: 3,
+
 							}}>{props.size}</Typography>
-							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
+							<Typography sx={{
+								color: "#1C3A59",
+								fontFamily: "Montserrat",
+								fontSize: "1rem",
+								fontStyle: "normal",
+								fontWeight: "600",
+								lineHeight: "normal",
+								mb: 2,
+							}}>${props.unitPrice}</Typography>
+							<Box sx={{ display: "flex", justifyContent: "flex-start" }}>
 								<QuantitySelector width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
+
 							</Box>
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", justifyContent: "space-around", m: 1, alignContent: "center", borderTop: "1.5px solid #d9d9d9", paddingTop: '1px' }}>
+					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "flex-start", borderTop: "1.5px solid #d9d9d9", paddingTop: '1px' }}>
+						<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 
 						<Typography sx={{
 							color: "#1C3A59",
