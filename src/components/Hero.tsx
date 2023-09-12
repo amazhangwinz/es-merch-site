@@ -68,9 +68,6 @@ export const Hero = (props: Prop) => {
 							<Typography
 								sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }}
 								variant="h4"
-								onClick={() => {
-									productPage(props.itemName);
-								}}
 							>
 								<b>{props.title}</b>
 							</Typography>
