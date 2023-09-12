@@ -28,7 +28,7 @@ export default function SizeGuideModal(props: SizeGuideProps) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
+    <Box>
       <Button onClick={handleOpen}><StraightenIcon /></Button>
       <Modal
         open={open}

@@ -77,11 +77,11 @@ const addCartButtonStyle = {
     fontSize: { md: '110%', xs: "90%" },
     fontWeight: '500',
     contrastText: 'black',
-    paddingLeft: { md: '2rem', xs: "1rem" },
-    paddingRight: { md: '2rem', xs: "1rem" },
+    paddingLeft: { md: '2rem', xs: ".8rem" },
+    paddingRight: { md: '2rem', xs: ".8rem" },
     height: { md: '70%', xs: "100%" },
     alignSelf: 'center',
-    padding: "1rem",
+    padding: ".5rem",
 }
 
 const theme = createTheme({
@@ -129,7 +129,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     };
 
     return (
-        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', }}>
+        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', mt: ".5rem" }}>
             <ThemeProvider theme={theme}>
                 <Button
                     variant="contained"
