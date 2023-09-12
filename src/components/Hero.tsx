@@ -55,7 +55,20 @@ export const Hero = (props: Prop) => {
 				sx={{ display: { xs: 'flex', md: 'none' }, flexDirection: 'column', alignItems: 'center' }}
 				style={{ background: 'linear-gradient(184deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 70%)', height: '60vh', width: '100vw' }}
 			>
-				<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '90vw', zIndex: 1, position: "relative", top: "6rem" }}>
+				<Box>
+					<img
+						src={props.image}
+						style={{ width: "100%", height: '50vh', objectFit: 'cover', }}
+						alt={props.itemName}
+					/>
+					<Box sx={{
+						position: "absolute", width: "100%", height: "50vh", boxShadow: "inset 0px -4rem 1rem -1rem rgb(236, 236, 236)",
+						top: '4rem',
+						left: 0,
+					}} />
+				</Box>
+				<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '90vw', zIndex: 1, position: "relative", bottom: "18rem", background: "rgba(35, 30, 30, 0.5)", boxShadow: "0 0 10px 10px rgba(35, 30, 30, 0.50) " }}>
+
 
 					<Typography
 						sx={{ fontFamily: 'montserrat', color: 'white', }}
@@ -69,13 +82,8 @@ export const Hero = (props: Prop) => {
 					</Typography>
 
 				</Box>
-				<LazyLoadImage
-					src={props.image}
-					style={{ width: "100%", height: '50vh', objectFit: 'cover', }}
-					alt={props.itemName}
-				></LazyLoadImage>
 
 			</Box>
-		</div>
+		</div >
 	);
 };
