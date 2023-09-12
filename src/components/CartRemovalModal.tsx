@@ -139,7 +139,6 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
         <Box sx={{ justifyContent: "space-around", alignContent: "center", display: 'flex', margin: { md: '1rem', xs: 0 } }}>
             <ThemeProvider theme={theme}>
                 <LazyLoadImage onClick={() => {
-
                     handleOpen()
                 }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
             </ThemeProvider>
