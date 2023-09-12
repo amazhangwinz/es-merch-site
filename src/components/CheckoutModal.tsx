@@ -129,7 +129,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     };
 
     return (
-        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', mt: ".5rem" }}>
+        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', padding:'0.5rem'}}>
             <ThemeProvider theme={theme}>
                 <Button
                     variant="contained"

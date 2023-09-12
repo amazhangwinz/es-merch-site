@@ -11,14 +11,16 @@ export const findColourImage = (index: number, currColour: string) => {
 
 }
 
-export const findMatch = (Cart: CartItem[], Item: CartItem) => {
+export const findMatch = (Cart: CartItem[], name: string, size: string) => {
+    let index = 0;
     for (const element of Cart) {
         // if (element.price == Item.price && element.name == Item.name && element.size == Item.size && element.colour == Item.colour) {
-        if (element.price === Item.price && element.name === Item.name && element.size === Item.size) {
-            return true
+        if (element.name === name && element.size === size) {
+            return index
         }
+        index++;
     }
-    return false
+    return -1
 }
 
 

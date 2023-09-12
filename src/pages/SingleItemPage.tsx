@@ -13,7 +13,7 @@ import { Box, Container, Breadcrumbs, Link } from '@mui/material';
 import SizeSelector from '../components/SizeSelector';
 // import SizeGuideModal from '../components/SizeGuideModal';
 import Button from '@mui/material/Button';
-import StraightenIcon from '@mui/icons-material/Straighten';
+import SquareFootIcon from '@mui/icons-material/SquareFoot';
 
 const ImagePreviewContainer = () => ({
   display: 'flex',
@@ -23,13 +23,13 @@ const ImagePreviewContainer = () => ({
   // margin:5rem;
   // border-style: dotted;
   flexDirection: { md: 'row', xs: "column" },
-  mt: { md: "1.5rem", xs: 0 }
+  mt: { md: "1.5rem", xs: '1rem' }
 
 })
 
 const ImageDetailContainer =
 {
-  width: { md: "32.3125rem", xs: "fit-content" },
+  width: { md: "32.3125rem", xs: "100vw" },
   height: { md: "27.75rem", xs: "fit-content" },
   flexShrink: 0,
   // background: red;
@@ -38,7 +38,7 @@ const ImageDetailContainer =
   alignItems: "center",
   flexDirection: "column",
   marginBottom: { md: 0, xs: "1rem" },
-  ml: "5vw",
+  ml: {md: "5vw", xs: '0'},
 
   // padding: 2rem;
 }
@@ -62,9 +62,10 @@ const RelatedImageContainer = () => ({
   height: '100%',
   alignItems: 'center',
   textAlign: 'center',
-  maxWidth: { xs: "400px", md: 'none' },
+  width: '100vw',
+  // maxWidth: { xs: "400px", md: 'none' },
   flexDirection: { xs: "column", md: "row" },
-  margin: { xs: "1rem", md: "none" }
+  // margin: { xs: "1rem", md: "none" }
 })
 
 // const RelatedDetailsContainer = styled.div`
@@ -78,13 +79,13 @@ const RelatedImageContainer = () => ({
 const stylebreadcrumbs = {
   display: { md: "block", xs: "none" },
   textAlign: "left",
-  color: "#1C3A59",
+  color: "#808080",
   fontFamily: "Montserrat",
-  fontSize: "1.5rem",
+  fontSize: "1.4rem",
   fontStyle: "normal",
-  fontWeight: "800",
+  fontWeight: "500",
   lineHeight: "normal",
-  marginTop: "2rem",
+  marginTop: "3rem",
   marginLeft: "2rem",
 }
 
@@ -110,25 +111,16 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const [qty, setQty] = React.useState(1);
 
   const handleAddToCart = () => {
+    const indexAtCart = findMatch(cart,
+      itemObj.name,size)
 
-    if (findMatch(cart,
-      {
-        price: itemObj.price,
-        name: itemObj.name,
-        quantity: 1,
-        image: itemObj.default,
-        size: size,
-        total: itemObj.price * 1
-      })) {
+    if (indexAtCart !== -1) {
       // if (findMatch(cart, { price: itemObj.price, name: itemObj.name, quantity: 1, colour: itemObj.colours[clickedButton].name, image: itemObj.default, size: size })) {
-      cart.forEach(element => {
-        // if (element.price == itemObj.price && element.name == itemObj.name && element.size == size && element.colour == itemObj.colours[clickedButton].name)
-        if (element.price === itemObj.price && element.name === itemObj.name && element.size === size && element.image === itemObj.default)
-          element.quantity += qty;
+      cart[indexAtCart].quantity += qty;
         // todo error: can add 5+ to the cartitem if you do +3 + 4
-        if (element.quantity > 5)
-          element.quantity = 5;
-      });
+        if (cart[indexAtCart].quantity > 5)
+        cart[indexAtCart].quantity = 5;
+        cart[indexAtCart].total = Math.round((cart[indexAtCart].price * cart[indexAtCart].quantity + Number.EPSILON) * 100) / 100;
     } else {
       // cart.push({ price: itemObj.price, name: itemObj.name, quantity: qty, colour: itemObj.colours[clickedButton].name, image: itemObj.default, size: size });
       cart.push({
@@ -153,44 +145,43 @@ const SingleItemPage = (prop: SingleItemProp) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" }, }}>
       <Breadcrumbs sx={stylebreadcrumbs}>
-        <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
+        <Link sx={{cursor: "pointer"}} color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ alignItems: "flex-start" }}>
+        <Box sx={{alignItems: "flex-start", display: {xs: 'none', md:'block'} }}>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
+        <Box sx={{minWidth: "100vw", justifyContent: "center", display: {xs: 'flex', md:'none'} }}>
+          <ImagePreview itemName={itemTitle} />
+          </Box>
         <Box sx={ImageDetailContainer}>
-          <Container sx={{ margin: { md: "1rem", xs: 0 }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" }, alignItems: "flex-start" }}>
+          <Container sx={{ display: 'flex', justifyContent: "center", flexDirection: 'column', marginTop: { md: "1rem", xs: '0.7rem' }, alignContent: 'center'}}>
             <Typography gutterBottom variant="h3" sx={{ mb: { xs: 0 }, color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }}>
               {itemTitle}
             </Typography>
-            <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal", mb: { xs: 0 } }}>
+            <Typography variant="h6" gutterBottom sx={{ mt: "0.5rem", color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2rem', xs: "1.8rem" }, lineHeight: "normal", mb: { xs: 0 } }}>
               ${itemObj.price}
             </Typography>
-            <Typography variant="body1" gutterBottom sx={{ mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
+            <Typography variant="body1" gutterBottom sx={{ mt: "1rem", mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.4rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
             <Typography variant="body2" gutterBottom sx={{ mt: "1rem", color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
               Details: {itemObj.details}
             </Typography>
-
+            <Box sx={{ display: 'flex', flexDirection: 'row', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem", md: "1rem" } }}>
+            <QuantitySelector width={80} qty={qty} setQty={setQty}></QuantitySelector>
+            <SizeSelector size={size} setSize={setSize} />
+            <Button  sx={{ minHeight: 0, minWidth: 0, padding: 0 }} href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><SquareFootIcon sx={{ color: '#1C3A59', fontSize: {xs:"2.4rem", md: '3.5rem'}, }} /></Button>
+          </Box>
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem" } }}>
-            <QuantitySelector width={80} qty={qty} setQty={setQty}></QuantitySelector>
-            <SizeSelector size={size} setSize={setSize} />
-            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><StraightenIcon sx={{ color: '#1C3A59', fontSize: "3.5rem", }} /></Button>
 
-
-          </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: "space-around" }}>
             {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
-
             <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size} handleAddToCart={handleAddToCart}></CheckoutModal>
-
           </Box>
         </Box>
       </Box>
@@ -203,7 +194,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           fontWeight: "800",
           lineHeight: "normal",
           margin: { md: 0, xs: "1rem" },
-          mt: { xs: 0 },
+          mt: { xs: '0' },
         }}>Here are some items you'll also love</Typography>
         <Box sx={RelatedImageContainer} >
           {data.map((e) => {

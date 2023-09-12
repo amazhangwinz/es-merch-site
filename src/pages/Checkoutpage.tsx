@@ -1,5 +1,5 @@
-import { Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
-import ExpandIcon from '@mui/icons-material/ExpandMore';
+import { Box, Button, TextField, ThemeProvider, Typography, createTheme } from '@mui/material';
+// import ExpandIcon from '@mui/icons-material/ExpandMore';
 import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem";
@@ -79,6 +79,19 @@ const TotalSummary = styled.div`
   display: flex;
   justify-content: space-between;
 `
+const theme = createTheme({
+  palette: {
+      primary: {
+          // Purple and green play nicely together.
+          main: '#D9D9D9',
+          contrastText: "black",
+      },
+      secondary: {
+          // This is green.A700 as hex.
+          main: '#11cb5f',
+      },
+  },
+});
 
 const Checkoutpage = () => {
   const { cart, setCart } = React.useContext(cartContext);
@@ -259,7 +272,7 @@ const Checkoutpage = () => {
 
 
   return (
-    <Box sx={{ ml: { xs: 2, md: 5 }, mr: 7 }}>
+    <Box sx={{ mt: 5, ml: { xs: 2, md: 5 }, mr: 7 }}>
       <Box sx={{ textAlign: { xs: 'center' } }}>
         <h1>
           Checkout
@@ -269,45 +282,45 @@ const Checkoutpage = () => {
         <Box sx={{ width: { md: '50%', xs: '90%' }, height: '100%' }}>
           <CustomForm>
             <Container>
-              <InputLabel htmlFor="fname">Full Name:</InputLabel><br></br>
+              <InputLabel htmlFor="fname">Full Name</InputLabel><br></br>
               <TextField error={name === '' && nameTouched} helperText={name === '' && nameTouched ? 'Name Required' : ''} sx={{ width: '100%' }} type="text" id="fname" name="fname" value={name} onChange={e => setName(e.target.value)} onBlur={handleNameBlur}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="email">Email Address:</InputLabel><br></br>
+              <InputLabel htmlFor="email">Email Address</InputLabel><br></br>
               <TextField error={email === '' && emailTouched} helperText={email === '' && emailTouched ? 'Email Required' : ''} sx={{ width: '100%' }} type="text" id="email" name="email" value={email} onChange={e => setEmail(e.target.value)} onBlur={handleEmailBlur}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="phoneNumber">zID:</InputLabel><br></br>
+              <InputLabel htmlFor="phoneNumber">zID</InputLabel><br></br>
               <TextField sx={{ width: '100%' }} type="text" id="phoneNumber" name="phoneNumber" value={zid} onChange={e => setZid(e.target.value)}></TextField><br></br>
             </Container>
             <Container>
-              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase:</InputLabel><br></br>
+              <InputLabel htmlFor="proofOfPurchase">Proof of Purchase</InputLabel><br></br>
               {!paymentUploaded && paymentTouched ? <div><span style={{ fontSize: '12px', color: '#d32f2f' }}>Proof of Purchase Required</span></div> : null}
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
               {/* <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br> */}
               <Box sx={{ mb: '1rem' }}>
-                <Accordion sx={{ px: '1rem' }}>
+                {/* <Accordion sx={{ px: '1rem' }}>
                   <AccordionSummary
                     expandIcon={<ExpandIcon />}
                     aria-controls="panel1a-content"
                   >
                     <Typography sx={{ fontWeight: 'bold' }}>Paying for your Merch</Typography>
                   </AccordionSummary>
-                  <AccordionDetails sx={{ borderTop: '2px solid #666363' }}>
-                    <Typography sx={{ fontSize: '18px' }}>
+                  <AccordionDetails sx={{ borderTop: '2px solid #666363' }}> */}
+                    <Typography sx={{ fontSize: '14px' }}>
                       Transfer to the following account to pay for your merchandise:
                     </Typography>
-                    <Typography><strong>Account Name:</strong> UNSW Engineering Society</Typography>
-                    <Typography><strong>BSB:</strong> 062-303</Typography>
-                    <Typography><strong> Account Number:</strong> 1076 1538</Typography>
+                    <Typography sx={{ fontSize: '14px' }}><strong>Account Name:</strong> UNSW Engineering Society</Typography>
+                    <Typography sx={{ fontSize: '14px' }}><strong>BSB:</strong> 062-303</Typography>
+                    <Typography sx={{ fontSize: '14px' }}><strong> Account Number:</strong> 1076 1538</Typography>
                     <br />
-                    <Typography><strong>IMPORTANT</strong></Typography>
-                    <Typography>To pay for your merch, in your bank transfer, you must fill the 'Description on your statement' with your zID and 'MERCH23'. For Example: z1234567 MERCH23</Typography>
+                    <Typography sx={{ fontSize: '14px' }}><strong>IMPORTANT</strong></Typography>
+                    <Typography sx={{ fontSize: '14px' }}>To pay for your merch, in your bank transfer, you must fill the 'Description on your statement' with your zID and 'MERCH23'. For example: z1234567 MERCH23</Typography>
                     <br />
-                    <Typography>Note: This purchase is only a pre-order. Engsoc will announce when your merch is ready for pickup</Typography>
-                  </AccordionDetails>
-                </Accordion>
+                    <Typography sx={{ fontSize: '14px' }}>Note: This purchase is only a pre-order. Keep an eye on your emails to hear when merch is ready for pickup.</Typography>
+                  {/* </AccordionDetails>
+                </Accordion> */}
               </Box>
               <ImageInput onBlur={handleFileBlur} selectedFile={payment} setSelectedFile={setPayment} uploaded={paymentUploaded} setUploaded={setPaymentUploaded} />
             </Container>
@@ -335,7 +348,9 @@ const Checkoutpage = () => {
               <p>Total</p>
               <p><b>${Math.round(((cart.reduce((accumulator, currentValue) => accumulator + (currentValue.quantity * currentValue.price), 0)) + Number.EPSILON) * 100) / 100}</b></p>
             </TotalSummary>
-            <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
+            <ThemeProvider theme={theme}>
+              <Button onClick={routeChangeUpdateCart} variant="contained">Update Cart</Button>
+            </ThemeProvider>
           </CustomOrderSummary>
         </Box>
       </Box >
