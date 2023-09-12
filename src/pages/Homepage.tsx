@@ -7,7 +7,7 @@ import { Box } from '@mui/material';
 const Homepage = () => {
 
 	return (
-		<div>
+		<Box >
 			<Hero
 				title="EngSoc 2023"
 				tagLine="Braincells not included."
@@ -16,16 +16,15 @@ const Homepage = () => {
 			/>
 
 			<Box
-				sx={{ flexFlow: { md: 'row wrap', xs: 'row wrap' } }}
-				style={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					justifyContent: 'center',
-					alignItems: 'flex-start',
-					marginLeft: '10vw',
-					marginRight: '10vw',
-					zIndex: '1',
-				}}
+				sx={{
+					display: "flex",
+					flex: "1 1 0",
+					flexDirection: { md: "row", xs: "column" },
+					justifyContent: "space-around",
+					alignItems: "center",
+					flexWrap: { md: "wrap", xs: "nowrap" },
+				}
+				}
 			>
 				{data.map((item, idx) => {
 					return (
@@ -38,7 +37,7 @@ const Homepage = () => {
 						/>)
 				})}
 			</Box>
-		</div>
+		</Box >
 	);
 };
 
