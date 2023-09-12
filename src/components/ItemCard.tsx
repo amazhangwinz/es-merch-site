@@ -11,19 +11,6 @@ interface Prop {
 	price: number;
 }
 
-const StyledComponent = styled.div`
-	display: flex;
-	flex-direction: column;
-	// height: clamp(6rem, 10vw, 12rem);
-	// width: clamp(16rem, 22vw, 26rem);
-	width: auto;
-	max-width: 45%;
-	border-radius: clamp(0.25rem, 0.5rem, 0.5rem);
-	background: #fbf9f9;
-	margin: 1.75vw;
-	box-shadow: 3px 5px 2px silver;
-`;
-
 const StyledContent = styled.div`
 	height: 100%;
 	flex: 1;
@@ -91,48 +78,63 @@ const ItemCard = (props: Prop) => {
 	// const [currColour, setCurrColour] = React.useState(data[props.index].colours[0].name);
 
 	return (
-		<StyledComponent
-			onClick={() => {
-				productPage(props.title);
-			}}
-			style={{ cursor: 'pointer' }}
-		>
-			<StyledImage src={
-				props.image
-				// findColourImage(props.index, currColour)
-			} alt={props.title} />
-			<Box component={StyledContent}>
-				{
-					<Typography sx={{ fontSize: { xs: '0.8rem', md: '2rem' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
-						<b>{props.title}</b>
-					</Typography>
-				}
-				{/* {
-					<Typography
-						sx={{
-							display: { xs: 'none', md: 'inline-block' },
-							fontFamily: 'Montserrat',
-							fontStyle: 'normal',
-							overflow: 'hidden',
-						}}
-						variant="body2"
-						paragraph={true}
-					>
-						{props.description}
-					</Typography>
-				} */}
-				{/* <StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
-					{data[props.index].colours.map((colour) => (
-						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
-							<ColourCircles onClick={(event) => {
-								event.stopPropagation();
-								setCurrColour(colour.name);}} style={{ cursor: 'pointer', background: `linear-gradient(190deg, ${colour.name}, grey 125%)` }}></ColourCircles>
-						</div>
-						))}
-				</StyledColours> */}
-				<Typography sx={{ m: 0, fontFamily: 'Montserrat', color: '#1C3A59', fontSize: { xs: '0.7rem', md: '1.4rem' } }}><b>${props.price}</b></Typography>
+		<>
+			<Box
+				sx={{
+					display: { xs: 'none', md: 'flex' },
+					cursor: 'pointer',
+					flexDirection: 'column',
+					width: 'auto',
+					maxWidth: '45%',
+					borderRadius: '0.5rem',
+					margin: '1.75vw',
+					background: '#fbf9f9',
+					boxShadow: '3px 5px 2px silver',
+				}}
+				onClick={() => {
+					productPage(props.title);
+				}}
+			>
+				<StyledImage src={
+					props.image
+					// findColourImage(props.index, currColour)
+				} alt={props.title} />
+				<Box component={StyledContent}>
+					{
+						<Typography sx={{ fontSize: { xs: '0.8rem', md: '2rem' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
+							<b>{props.title}</b>
+						</Typography>
+					}
+					<Typography sx={{ m: 0, fontFamily: 'Montserrat', color: '#1C3A59', fontSize: { xs: '0.7rem', md: '1.4rem' } }}><b>${props.price}</b></Typography>
+				</Box>
 			</Box>
-		</StyledComponent >
+
+			<Box
+				sx={{
+					display: { xs: 'flex', md: 'none' },
+					cursor: 'pointer',
+					flexDirection: 'column',
+					width: 'auto',
+					maxWidth: '75%',
+					borderRadius: '0.5rem',
+					margin: '1.75vw',
+					background: '#fbf9f9',
+					boxShadow: '3px 5px 2px silver',
+				}}
+			>
+				<StyledImage src={
+					props.image
+				} alt={props.title} />
+				<Box component={StyledContent}>
+					{
+						<Typography sx={{ fontSize: { xs: '0.8rem', md: '2rem' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
+							<b>{props.title}</b>
+						</Typography>
+					}
+					<Typography sx={{ m: 0, fontFamily: 'Montserrat', color: '#1C3A59', fontSize: { xs: '0.7rem', md: '1.4rem' } }}><b>${props.price}</b></Typography>
+				</Box>
+			</Box >
+		</>
 	);
 };
 
