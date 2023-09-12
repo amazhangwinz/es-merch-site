@@ -121,6 +121,9 @@ const ItemCard = (props: Prop) => {
 					background: '#fbf9f9',
 					boxShadow: '3px 5px 2px silver',
 				}}
+				onClick={() => {
+					productPage(props.title);
+				}}
 			>
 				<StyledImage src={
 					props.image
