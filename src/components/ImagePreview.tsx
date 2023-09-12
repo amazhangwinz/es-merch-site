@@ -58,11 +58,11 @@ const ImagePreview = (props: ImagePreviewProps) => {
     const itemObj = findItemObject(props.itemName);
     return (
         <>
-            <Box sx={{ display: { md: "flex", xs: "none" } }}>
+            <Box sx={{ display: { md: "flex", xs: "none" }, alignItems: 'center' }}>
                 <LazyLoadImage
                     style={{
-                        width: "20rem",
-                        height: "20rem",
+                        width: "44.5vh",
+                        height: "44.5vh",
                         objectFit: "cover",
                         justifySelf: "stretch",
                         borderRadius: "0.625rem",

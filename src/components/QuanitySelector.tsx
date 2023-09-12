@@ -25,7 +25,7 @@ const QuantitySelector = (props: QuanitySelectorProp) => {
                 </FormControl >
             </Box>
             <Box sx={{ display: { md: 'none', xs: "flex" } }}>
-                <FormControl sx={{ background: 'white', minWidth: props.width, }} size="small" >
+                <FormControl sx={{ background: 'white', mr: 1, minWidth: props.width, }} size="small" >
                     <InputLabel>Qty</InputLabel>
                     <Select value={props.qty} onChange={(event) => props.setQty(event.target.value as number)} autoWidth label={"Qty"}>
                         <MenuItem value={1}>1</MenuItem>

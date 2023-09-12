@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { createSearchParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -11,13 +9,6 @@ interface Prop {
 }
 
 export const Hero = (props: Prop) => {
-	const navigate = useNavigate();
-	const productPage = (prodName: string) => {
-		navigate({
-			pathname: '/item',
-			search: `?${createSearchParams({ title: prodName })}`,
-		});
-	};
 
 	return (
 		<div>
