@@ -6,6 +6,7 @@ import QuantitySelector from '../components/QuanitySelector';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 // import SizeSelector from '../components/SizeSelector';
+// import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CartRemovalModal from './CartRemovalModal';
@@ -75,6 +76,7 @@ const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
 	// const [size, setSize] = useState(props.size);
+	// const { cart, setCart } = React.useContext(cartContext);
 
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
@@ -158,13 +160,13 @@ const CartCard = (props: Prop) => {
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
 					<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
-				</StyledProperty>
+				</StyledProperty >
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
 					<StyledTitle>${props.total}</StyledTitle>
 					{perItem()}
 				</StyledProperty>
-			</Box>
+			</Box >
 			<Box sx={{ display: { md: "none", xs: "flex", borderTop: "1px solid #d9d9d9", maxWidth: "370px" } }}>
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
 					<Box sx={{ display: "flex", alignContent: "start" }}>
