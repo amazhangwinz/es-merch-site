@@ -14,6 +14,7 @@ const style = {
   boxShadow: 24,
   p: { md: 2, xs: 1 },
   borderRadius: '30px',
+  mt: { xs: 0 },
 };
 
 type SizeGuideProps = {
@@ -47,6 +48,6 @@ export default function SizeGuideModal(props: SizeGuideProps) {
           </Box>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

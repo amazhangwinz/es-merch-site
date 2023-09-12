@@ -6,10 +6,11 @@ import QuantitySelector from '../components/QuanitySelector';
 // import Quantity from './archive/Quantity';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
-import SizeSelector from '../components/SizeSelector';
+// import SizeSelector from '../components/SizeSelector';
 import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import CartRemovalModal from './CartRemovalModal';
 
 interface Prop {
 	image: string;
@@ -75,7 +76,7 @@ const CartCard = (props: Prop) => {
 	// Use context TO DETERMINE OG VAL, NOT JUST 1
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
-	const [size, setSize] = useState(props.size);
+	// const [size, setSize] = useState(props.size);
 	const { cart, setCart } = React.useContext(cartContext);
 
 	const deleteCard = (value: String) => {
@@ -118,12 +119,12 @@ const CartCard = (props: Prop) => {
 	}
 
 	// If user changes SIZE
-	const handleChangeSize = () => {
+	/* const handleChangeSize = () => {
 		if (size !== props.size) {
 			props.onSizeChange(size);
 			return (<Typography sx={{ margin: "none" }}>(changed size)</Typography>)
 		}
-	}
+	} */
 
 
 	return (
@@ -144,10 +145,19 @@ const CartCard = (props: Prop) => {
 							<ColourButtonCartPage />
 						</StyledInfo> */}
 							<StyledInfo>
-								<SizeSelector size={size} setSize={setSize} />
-								{handleChangeSize()}
+								{/* <SizeSelector size={size} setSize={setSize} />
+								{handleChangeSize()} */}
 								{/* <SizeButtonCartPage /> */}
 								{/* <BoldText>Size:</BoldText> {2} */}
+								<Typography sx={{
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1rem",
+									fontStyle: "normal",
+									fontWeight: "600",
+									lineHeight: "normal",
+									mb: 3,
+								}}>{props.size}</Typography>
 							</StyledInfo>
 						</StyledText>
 					</StyledProperty>
@@ -159,7 +169,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
-					<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '28%', cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+					<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 				</StyledProperty>
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
@@ -193,10 +203,10 @@ const CartCard = (props: Prop) => {
 								lineHeight: "normal",
 								mb: 3,
 							}}>{props.size}</Typography>
-							<Box sx={{ maxHeight: "1rem", justifyContent: "space-around" }}>
+							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
 								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<LazyLoadImage onClick={() => { deleteCard(props.title) }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 							</Box>
 						</Box>
 					</Box>
