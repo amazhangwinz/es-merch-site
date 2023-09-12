@@ -168,6 +168,9 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="body1" gutterBottom sx={{ mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
+            <Typography variant="body2" gutterBottom sx={{ color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
+              Details: {itemObj.details}
+            </Typography>
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
