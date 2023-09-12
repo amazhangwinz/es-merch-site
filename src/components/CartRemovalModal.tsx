@@ -138,7 +138,7 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
             <ThemeProvider theme={theme}>
                 <LazyLoadImage onClick={() => {
                     handleOpen()
-                }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
+                }} style={{ width: '2rem', height: "2rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
             </ThemeProvider>
             <Modal
                 open={open}
