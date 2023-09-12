@@ -18,10 +18,12 @@ import StraightenIcon from '@mui/icons-material/Straighten';
 const ImagePreviewContainer = () => ({
   display: 'flex',
   justifyContent: { md: 'center', xs: "flex-start" },
+  alignItems: { md: "start", xs: "center" },
   background: '#ECECEC',
+  mt: '1rem',
   // margin:5rem;
   // border-style: dotted;
-  alignItems: 'center',
+  // alignItems: 'center',
   flexDirection: { md: 'row', xs: "column" },
 })
 
