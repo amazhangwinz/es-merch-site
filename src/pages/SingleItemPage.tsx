@@ -21,7 +21,7 @@ const ImagePreviewContainer = () => ({
   background: '#ECECEC',
   // margin:5rem;
   // border-style: dotted;
-  alignItems: 'flex-start',
+  alignItems: { md: 'flex-start', xs: "center" },
   flexDirection: { md: 'row', xs: "column" },
   mt: { md: "1rem", xs: 0 }
 })
@@ -156,7 +156,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ alignItems: "flex-start" }}>
+        <Box sx={{ display: "flex", alignItems: { md: "flex-start", xs: "center" } }}>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
