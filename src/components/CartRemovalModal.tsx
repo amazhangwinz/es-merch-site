@@ -7,7 +7,6 @@ import {
     Typography,
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import styled from "styled-components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { cartContext } from "../App";
 import Bin from "../assets/Bin.webp"
@@ -68,20 +67,20 @@ const ButtonStyle = {
     pb: { md: '.8rem', xs: ".5rem" },
 }
 
-const addCartButtonStyle = {
-    borderRadius: '13px',
-    background: '#FB9E9E',
-    textAlign: 'center',
-    fontFamily: 'Montserrat',
-    fontStyle: 'normal',
-    fontSize: { md: '110%', xs: "90%" },
-    fontWeight: '500',
-    contrastText: 'black',
-    paddingLeft: { md: '2rem', xs: "1rem" },
-    paddingRight: { md: '2rem', xs: "1rem" },
-    height: { md: '70%', xs: "130%" },
-    alignSelf: 'center'
-}
+// const addCartButtonStyle = {
+//     borderRadius: '13px',
+//     background: '#FB9E9E',
+//     textAlign: 'center',
+//     fontFamily: 'Montserrat',
+//     fontStyle: 'normal',
+//     fontSize: { md: '110%', xs: "90%" },
+//     fontWeight: '500',
+//     contrastText: 'black',
+//     paddingLeft: { md: '2rem', xs: "1rem" },
+//     paddingRight: { md: '2rem', xs: "1rem" },
+//     height: { md: '70%', xs: "130%" },
+//     alignSelf: 'center'
+// }
 
 const theme = createTheme({
     palette: {
@@ -117,9 +116,9 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
     const navigate = useNavigate();
     const { cart, setCart } = React.useContext(cartContext);
 
-    const goToCart = () => {
-        navigate("/cart")
-    }
+    // const goToCart = () => {
+    //     navigate("/cart")
+    // }
     const productPage = (prodName: string) => {
         navigate({
             pathname: '/item',
