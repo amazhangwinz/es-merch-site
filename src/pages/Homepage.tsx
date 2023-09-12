@@ -9,7 +9,7 @@ const Homepage = () => {
 	return (
 		<Box >
 			<Hero
-				title="EngSoc 2023"
+				title="EngSoc Merch 2023"
 				tagLine="Braincells not included."
 				image={heroImage}
 				itemName="test"

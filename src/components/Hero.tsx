@@ -22,34 +22,39 @@ export const Hero = (props: Prop) => {
 	return (
 		<div>
 			<Box
-				sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'row', justifyContent: 'space-evenly' }}
+				sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center' }}
 				style={{ background: 'linear-gradient(194deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 60%)', height: '60vh', width: '100vw', marginBottom: '6vh' }}
 			>
-				{
-					<Box sx={{ display: 'flex', flexDirection: 'column', paddingTop: '35vh', maxWidth: '30vw' }}>
-						{
-							<Typography
-								sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }}
-								variant="h3"
-							>
-								<b>{props.title}</b>
-							</Typography>
-						}
-						{
-							<Typography sx={{ fontFamily: 'montserrat', color: 'rgba(17,22,30,1)' }} variant="subtitle1">
-								{props.tagLine}
-							</Typography>
-						}
-					</Box>
-				}
+				<LazyLoadImage
+					src={props.image}
+					style={{ height: '68vh', width: '100%', objectFit: 'cover', }}
+					alt={props.itemName}
+				></LazyLoadImage>
+				<Box sx={{
+					position: "absolute", width: "100%", height: "50vh", boxShadow: "inset 0px -4rem 1rem -1rem rgb(236, 236, 236)",
+					top: '14rem',
+					left: 0,
+				}} />
+				<Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '35vh', maxWidth: '55vw', position: 'relative', bottom: "49rem", zIndex: 1, background: "rgba(35, 30, 30, 0.8)", boxShadow: "0 0 20px 25px rgba(35, 30, 30, 0.80) " }}>
 
-				{
-					<LazyLoadImage
-						src={props.image}
-						style={{ height: '50vh', width: '50vh', objectFit: 'cover', marginTop: '10vh' }}
-						alt={props.itemName}
-					></LazyLoadImage>
-				}
+
+
+					<Typography
+						sx={{ fontFamily: 'montserrat', color: 'white' }}
+						variant="h2"
+					>
+						<b>{props.title}</b>
+					</Typography>
+
+
+					<Typography sx={{ fontFamily: 'montserrat', color: 'white' }} variant="h4">
+						{props.tagLine}
+					</Typography>
+
+				</Box>
+
+
+
 			</Box>
 			<Box
 				sx={{ display: { xs: 'flex', md: 'none' }, flexDirection: 'column', alignItems: 'center' }}
