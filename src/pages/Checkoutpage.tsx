@@ -1,4 +1,5 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import ExpandIcon from '@mui/icons-material/ExpandMore';
 import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem";
@@ -285,12 +286,35 @@ const Checkoutpage = () => {
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
               {/* <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br> */}
+              <Box sx={{ mb: '1rem' }}>
+                <Accordion sx={{ px: '1rem' }}>
+                  <AccordionSummary
+                    expandIcon={<ExpandIcon />}
+                    aria-controls="panel1a-content"
+                  >
+                    <Typography sx={{ fontWeight: 'bold' }}>Paying for your Merch</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ borderTop: '2px solid #666363' }}>
+                    <Typography sx={{ fontSize: '18px' }}>
+                      Transfer to the following account to pay for your merchandise:
+                    </Typography>
+                    <Typography><strong>Account Name:</strong> UNSW Engineering Society</Typography>
+                    <Typography><strong>BSB:</strong> 062-303</Typography>
+                    <Typography><strong> Account Number:</strong> 1076 1538</Typography>
+                    <br />
+                    <Typography><strong>IMPORTANT</strong></Typography>
+                    <Typography>To pay for your merch, in your bank transfer, you must fill the 'Description on your statement' with your zID and 'MERCH23'. For Example: z1234567 MERCH23</Typography>
+                    <br />
+                    <Typography>Note: This purchase is only a pre-order. Engsoc will announce when your merch is ready for pickup</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </Box>
               <ImageInput onBlur={handleFileBlur} selectedFile={payment} setSelectedFile={setPayment} uploaded={paymentUploaded} setUploaded={setPaymentUploaded} />
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
             <CheckoutErrorModal open={showModal} onClose={handleClose} />
           </CustomForm>
-        </Box>
+        </Box >
         <Box sx={{ width: { md: '30%', xs: '100%' } }}>
           <CustomOrderSummary>
             <div>
@@ -314,8 +338,8 @@ const Checkoutpage = () => {
             <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
           </CustomOrderSummary>
         </Box>
-      </Box>
-    </Box>
+      </Box >
+    </Box >
   )
 }
 
