@@ -76,8 +76,8 @@ const ImagePreview = (props: ImagePreviewProps) => {
             <Box sx={{ display: { xs: "flex", md: 'none' }, my: '0.8rem' }}>
                 <LazyLoadImage
                     style={{
-                        width: "18rem",
-                        height: "18rem",
+                        width: "51vh",
+                        height: "51vh",
                         objectFit: "cover",
                         justifySelf: "stretch",
                         borderRadius: "0.625rem",

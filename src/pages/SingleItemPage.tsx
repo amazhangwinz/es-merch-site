@@ -18,13 +18,12 @@ import SquareFootIcon from '@mui/icons-material/SquareFoot';
 const ImagePreviewContainer = () => ({
   display: 'flex',
   justifyContent: { md: 'center', xs: "flex-start" },
-  alignItems: 'flex-start',
   background: '#ECECEC',
   // margin:5rem;
   // border-style: dotted;
+  alignItems: { md: 'flex-start', xs: "center" },
   flexDirection: { md: 'row', xs: "column" },
-  mt: { md: "1.5rem", xs: '1rem' }
-
+  mt: { md: "1rem", xs: 0 }
 })
 
 const ImageDetailContainer =
@@ -170,11 +169,12 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="body2" gutterBottom sx={{ mt: "1rem", color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
               Details: {itemObj.details}
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem", md: "1rem" } }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem", md: "1rem" }, justifyContent:"center" }}>
             <QuantitySelector width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
             <Button  sx={{ minHeight: 0, minWidth: 0, padding: 0 }} href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><SquareFootIcon sx={{ color: '#1C3A59', fontSize: {xs:"2.4rem", md: '3.5rem'}, }} /></Button>
           </Box>
+
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
