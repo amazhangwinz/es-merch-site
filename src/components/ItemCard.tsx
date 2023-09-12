@@ -46,14 +46,6 @@ const StyledImage = styled.img`
 	object-fit: cover;
 `;
 
-const StyledPrice = styled.p`
-	margin-bottom: 0;
-	font-size: clamp(0.7rem, 1vw, 5rem);
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
-`;
 
 // const StyledDescription = styled.p`
 // 	max-width: 100%;
