@@ -171,34 +171,47 @@ const CartCard = (props: Prop) => {
 						<Box sx={{ margin: ".5rem", flexGrow: 1 }}>
 							<LazyLoadImage style={{ height: "8rem" }} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
 						</Box>
-						<Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
-							<Typography onClick={() => { productPage(props.title) }} sx={{
-								cursor: 'pointer',
-								color: "#1C3A59",
-								fontFamily: "Montserrat",
-								fontSize: "1.7rem",
-								fontStyle: "normal",
-								fontWeight: "800",
-								lineHeight: "normal",
-								mb: 1,
-							}}>{props.title}</Typography>
-							<Typography sx={{
-								color: "#1C3A59",
-								fontFamily: "Montserrat",
-								fontSize: "1rem",
-								fontStyle: "normal",
-								fontWeight: "600",
-								lineHeight: "normal",
-								mb: 3,
-							}}>{props.size}</Typography>
-							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
-								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
+						<Box sx={{ display: "flex", flexDirection: "row" }}>
+							<Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
+								<Typography onClick={() => { productPage(props.title) }} sx={{
+									cursor: 'pointer',
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1.3rem",
+									fontStyle: "normal",
+									fontWeight: "800",
+									lineHeight: "normal",
+									mb: 1,
+								}}>{props.title}</Typography>
+								<Typography sx={{
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1rem",
+									fontStyle: "normal",
+									fontWeight: "600",
+									lineHeight: "normal",
+
+								}}>{props.size}</Typography>
+								<Typography sx={{
+									color: "#1C3A59",
+									fontFamily: "Montserrat",
+									fontSize: "1rem",
+									fontStyle: "normal",
+									fontWeight: "600",
+									lineHeight: "normal",
+									mb: 2,
+								}}>${props.unitPrice}</Typography>
+
+
+							</Box>
+							<Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+								<QuantitySelector width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
-								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 							</Box>
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", justifyContent: "space-around", m: 1, alignContent: "center", borderTop: "1.5px solid #d9d9d9", paddingTop: '1px' }}>
+					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "flex-start", paddingTop: '1px' }}>
+						<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 
 						<Typography sx={{
 							color: "#1C3A59",

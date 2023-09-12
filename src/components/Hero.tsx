@@ -32,10 +32,10 @@ export const Hero = (props: Prop) => {
 				></LazyLoadImage>
 				<Box sx={{
 					position: "absolute", width: "100%", height: "50vh", boxShadow: "inset 0px -4rem 1rem -1rem rgb(236, 236, 236)",
-					top: '14rem',
+					top: '26vh',
 					left: 0,
 				}} />
-				<Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '35vh', maxWidth: '55vw', position: 'relative', bottom: "49rem", zIndex: 1, background: "rgba(35, 30, 30, 0.8)", boxShadow: "0 0 20px 25px rgba(35, 30, 30, 0.80) " }}>
+				<Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '35vh', maxWidth: '55vw', position: 'relative', bottom: "95vh", zIndex: 1, background: "rgba(35, 30, 30, 0.8)", boxShadow: "0 0 20px 25px rgba(35, 30, 30, 0.80) " }}>
 
 
 
