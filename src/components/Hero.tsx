@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { createSearchParams } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
@@ -11,23 +9,16 @@ interface Prop {
 }
 
 export const Hero = (props: Prop) => {
-	const navigate = useNavigate();
-	const productPage = (prodName: string) => {
-		navigate({
-			pathname: '/item',
-			search: `?${createSearchParams({ title: prodName })}`,
-		});
-	};
 
 	return (
 		<div>
 			<Box
 				sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', alignItems: 'center' }}
-				style={{ background: 'linear-gradient(194deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 60%)', height: '60vh', width: '100vw', marginBottom: '6vh' }}
+				style={{ background: 'linear-gradient(194deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 60%)', height: '62vh', width: '100vw', marginBottom: '6vh' }}
 			>
 				<LazyLoadImage
 					src={props.image}
-					style={{ height: '68vh', width: '100%', objectFit: 'cover', }}
+					style={{ height: '62vh', width: '100%', objectFit: 'cover', }}
 					alt={props.itemName}
 				></LazyLoadImage>
 				<Box sx={{
@@ -58,7 +49,7 @@ export const Hero = (props: Prop) => {
 			</Box>
 			<Box
 				sx={{ display: { xs: 'flex', md: 'none' }, flexDirection: 'column', alignItems: 'center' }}
-				style={{ background: 'linear-gradient(184deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 70%)', height: '60vh', width: '100vw' }}
+				style={{ background: 'linear-gradient(184deg, rgba(28,55,98,1) 0%, rgba(236,236,236,1) 70%)', height: '50vh', width: '100vw' }}
 			>
 				<Box>
 					<img
@@ -72,7 +63,7 @@ export const Hero = (props: Prop) => {
 						left: 0,
 					}} />
 				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '90vw', zIndex: 1, position: "relative", bottom: "18rem", background: "rgba(35, 30, 30, 0.5)", boxShadow: "0 0 10px 10px rgba(35, 30, 30, 0.50) " }}>
+				<Box sx={{ display: 'flex', flexDirection: 'column', maxWidth: '90vw', zIndex: 1, position: "relative", bottom: "18rem", mb: '-18rem', background: "rgba(35, 30, 30, 0.5)", boxShadow: "0 0 10px 10px rgba(35, 30, 30, 0.50) " }}>
 
 
 					<Typography
