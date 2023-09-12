@@ -67,6 +67,21 @@ const ButtonStyle = {
     pb: { md: '.8rem', xs: ".5rem" },
 }
 
+// const addCartButtonStyle = {
+//     borderRadius: '13px',
+//     background: '#FB9E9E',
+//     textAlign: 'center',
+//     fontFamily: 'Montserrat',
+//     fontStyle: 'normal',
+//     fontSize: { md: '110%', xs: "90%" },
+//     fontWeight: '500',
+//     contrastText: 'black',
+//     paddingLeft: { md: '2rem', xs: "1rem" },
+//     paddingRight: { md: '2rem', xs: "1rem" },
+//     height: { md: '70%', xs: "130%" },
+//     alignSelf: 'center'
+// }
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -101,6 +116,9 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
     const navigate = useNavigate();
     const { cart, setCart } = React.useContext(cartContext);
 
+    // const goToCart = () => {
+    //     navigate("/cart")
+    // }
     const productPage = (prodName: string) => {
         navigate({
             pathname: '/item',
@@ -119,7 +137,6 @@ const CartRemovalModal = (props: CartRemovalModalProps) => {
         <Box sx={{ justifyContent: "space-around", alignContent: "center", display: 'flex', margin: { md: '1rem', xs: 0 } }}>
             <ThemeProvider theme={theme}>
                 <LazyLoadImage onClick={() => {
-
                     handleOpen()
                 }} style={{ width: '2rem', height: "2rem", marginLeft: "5rem", cursor: 'pointer' }} src={Bin} alt="Bin Item" />
             </ThemeProvider>
