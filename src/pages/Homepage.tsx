@@ -10,7 +10,7 @@ const Homepage = () => {
 		<Box >
 			<Hero
 				title="EngSoc Merch 2023"
-				tagLine="Braincells not included."
+				tagLine=""     // Braincells not included
 				image={heroImage}
 				itemName="test"
 			/>

@@ -3,7 +3,7 @@ import JumperSizeGuide from "./assets/JumperSizeGuide.webp"
 import MorningGreen from "./assets/greenhoodie.png"
 import MidnightBlue from "./assets/bluehoodie.webp"
 import SilveryMoon from "./assets/greyhoodie.webp"
-import PastelNights from "./assets/PastelNights.webp"
+import PastelNights from "./assets/pastelnights.png"
 
 export const data = [{
     "name": "Morning Green",

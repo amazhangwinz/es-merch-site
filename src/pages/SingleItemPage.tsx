@@ -18,13 +18,13 @@ import StraightenIcon from '@mui/icons-material/Straighten';
 const ImagePreviewContainer = () => ({
   display: 'flex',
   justifyContent: { md: 'center', xs: "flex-start" },
-  alignItems: { md: "start", xs: "center" },
+  alignItems: 'flex-start',
   background: '#ECECEC',
-  mt: '1rem',
   // margin:5rem;
   // border-style: dotted;
-  // alignItems: 'center',
   flexDirection: { md: 'row', xs: "column" },
+  mt: { md: "1.5rem", xs: 0 }
+
 })
 
 const ImageDetailContainer =
@@ -38,6 +38,8 @@ const ImageDetailContainer =
   alignItems: "center",
   flexDirection: "column",
   marginBottom: { md: 0, xs: "1rem" },
+  ml: "5vw",
+
   // padding: 2rem;
 }
 
@@ -149,19 +151,19 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" } }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" }, }}>
       <Breadcrumbs sx={stylebreadcrumbs}>
         <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ m: { md: 1, xs: 0 } }}>
+        <Box sx={{ alignItems: "flex-start" }}>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
         <Box sx={ImageDetailContainer}>
-          <Container sx={{ margin: { md: "1rem", xs: 0 }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
-            <Typography variant="h3" sx={{ mb: { xs: 0 }, color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }} gutterBottom>
+          <Container sx={{ margin: { md: "1rem", xs: 0 }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" }, alignItems: "flex-start" }}>
+            <Typography gutterBottom variant="h3" sx={{ mb: { xs: 0 }, color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }}>
               {itemTitle}
             </Typography>
             <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal", mb: { xs: 0 } }}>
@@ -170,9 +172,10 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="body1" gutterBottom sx={{ mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
-            <Typography variant="body2" gutterBottom sx={{ color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
+            <Typography variant="body2" gutterBottom sx={{ mt: "1rem", color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
               Details: {itemObj.details}
             </Typography>
+
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
@@ -183,7 +186,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
 
 
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: "space-around" }}>
             {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
 
             <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size} handleAddToCart={handleAddToCart}></CheckoutModal>
