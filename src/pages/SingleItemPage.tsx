@@ -23,6 +23,7 @@ const ImagePreviewContainer = () => ({
   // border-style: dotted;
   alignItems: 'flex-start',
   flexDirection: { md: 'row', xs: "column" },
+  mt: { md: "1rem", xs: 0 }
 })
 
 const ImageDetailContainer =
@@ -37,6 +38,7 @@ const ImageDetailContainer =
   flexDirection: "column",
   marginBottom: { md: 0, xs: "1rem" },
   ml: "5vw",
+
   // padding: 2rem;
 }
 
@@ -159,7 +161,7 @@ const SingleItemPage = (prop: SingleItemProp) => {
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
         <Box sx={ImageDetailContainer}>
-          <Container sx={{ margin: { md: "1rem", xs: 0 }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" } }}>
+          <Container sx={{ margin: { md: "1rem", xs: 0 }, maxWidth: { md: 'none', xs: "370px" }, paddingLeft: { md: "none", xs: "1.5rem" }, paddingRight: { md: "none", xs: "1.5rem" }, alignItems: "flex-start" }}>
             <Typography variant="h3" sx={{ mb: { xs: 0 }, color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '700', fontSize: { md: '2.5rem', xs: "2rem" }, lineHeight: "normal" }} gutterBottom>
               {itemTitle}
             </Typography>
