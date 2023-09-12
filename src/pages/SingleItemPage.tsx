@@ -13,6 +13,7 @@ import { Box, Container, Breadcrumbs, Link } from '@mui/material';
 import SizeSelector from '../components/SizeSelector';
 // import SizeGuideModal from '../components/SizeGuideModal';
 import Button from '@mui/material/Button';
+import StraightenIcon from '@mui/icons-material/Straighten';
 
 const ImagePreviewContainer = () => ({
   display: 'flex',
@@ -31,9 +32,10 @@ const ImageDetailContainer =
   flexShrink: 0,
   // background: red;
   display: "flex",
-  justifyContent: { md: "space-around", xs: "flex-start" },
+  justifyContent: { md: "center", xs: "flex-start" },
   alignItems: "center",
   flexDirection: "column",
+  marginBottom: { md: 0, xs: "1rem" },
   // padding: 2rem;
 }
 
@@ -163,11 +165,8 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="h6" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontWeight: '600', fontSize: { md: '2.5rem', xs: "1.8rem" }, lineHeight: "normal", mb: { xs: 0 } }}>
               ${itemObj.price}
             </Typography>
-            <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
+            <Typography variant="body1" gutterBottom sx={{ mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
-            </Typography>
-            <Typography variant="body2" gutterBottom sx={{ color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
-              Details: {itemObj.details}
             </Typography>
 
           </Container>
@@ -175,11 +174,15 @@ const SingleItemPage = (prop: SingleItemProp) => {
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem" } }}>
             <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
-            <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size} handleAddToCart={handleAddToCart}></CheckoutModal>
+            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank"><StraightenIcon sx={{ color: '#1C3A59', fontSize: "3.5rem", }} /></Button>
+
+
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
             {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
-            <Button href='https://www.bocini.com.au/Product/ProductDetail/CJ1060?search=hoodie#' target="_blank">SIZE GUIDE</Button>
+
+            <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size} handleAddToCart={handleAddToCart}></CheckoutModal>
+
           </Box>
         </Box>
       </Box>
