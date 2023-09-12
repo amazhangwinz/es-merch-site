@@ -3,6 +3,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Box } from '@mui/material';
+
 
 
 // type SizeButtonItemPageProps = {
@@ -44,14 +46,28 @@ type SizeSelectorProp = {
 
 const SizeSelector = (props: SizeSelectorProp) => {
     return (
-        <FormControl sx={{ mr: 1, minWidth: "fit-content", background: 'white' }}>
-            <InputLabel id="demo-simple-select-autowidth-label">Size</InputLabel>
-            <Select value={props.size} onChange={(event) => props.setSize(event.target.value as string)} autoWidth label={"Size"}>
-                <MenuItem value={'Small'}>Small</MenuItem>
-                <MenuItem value={'Medium'}>Medium</MenuItem>
-                <MenuItem value={'Large'}>Large</MenuItem>
-            </Select>
-        </FormControl>
+        <div>
+            <Box sx={{ display: { md: 'flex', xs: "none" } }}>
+                <FormControl sx={{ mr: 1, minWidth: "fit-content", background: 'white' }}>
+                    <InputLabel id="demo-simple-select-autowidth-label">Size</InputLabel>
+                    <Select value={props.size} onChange={(event) => props.setSize(event.target.value as string)} autoWidth label={"Size"}>
+                        <MenuItem value={'Small'}>Small</MenuItem>
+                        <MenuItem value={'Medium'}>Medium</MenuItem>
+                        <MenuItem value={'Large'}>Large</MenuItem>
+                    </Select>
+                </FormControl >
+            </Box>
+            <Box sx={{ display: { md: 'none', xs: "flex" } }}>
+                <FormControl sx={{ mr: 1, minWidth: "fit-content", background: 'white' }} size="small">
+                    <InputLabel id="demo-simple-select-autowidth-label">Size</InputLabel>
+                    <Select value={props.size} onChange={(event) => props.setSize(event.target.value as string)} autoWidth label={"Size"}>
+                        <MenuItem value={'Small'}>Small</MenuItem>
+                        <MenuItem value={'Medium'}>Medium</MenuItem>
+                        <MenuItem value={'Large'}>Large</MenuItem>
+                    </Select>
+                </FormControl >
+            </Box>
+        </div>
     )
 }
 
