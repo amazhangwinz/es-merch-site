@@ -77,11 +77,11 @@ const addCartButtonStyle = {
     fontSize: { md: '110%', xs: "90%" },
     fontWeight: '500',
     contrastText: 'black',
-    paddingLeft: { md: '2rem', xs: "1rem" },
-    paddingRight: { md: '2rem', xs: "1rem" },
-    p: { xs: ".5rem" },
-    height: { md: '70%', xs: "130%" },
-    alignSelf: 'center'
+    paddingLeft: { md: '2rem', xs: ".8rem" },
+    paddingRight: { md: '2rem', xs: ".8rem" },
+    height: { md: '70%', xs: "100%" },
+    alignSelf: 'center',
+    padding: ".5rem",
 }
 
 const theme = createTheme({
@@ -129,7 +129,7 @@ const CheckoutModal = (props: CheckoutModalProps) => {
     };
 
     return (
-        <Box sx={{ height: "100%", justifyContent: "space-around", alignContent: "center", display: 'flex', margin: { md: '1rem', xs: '0.5rem' } }}>
+        <Box sx={{ height: "100%", justifyContent: "center", alignContent: "center", display: 'flex', mt: ".5rem" }}>
             <ThemeProvider theme={theme}>
                 <Button
                     variant="contained"
@@ -139,8 +139,8 @@ const CheckoutModal = (props: CheckoutModalProps) => {
                         handleOpen()
                     }}
                 >
-                    <Box component="span" sx={{ display: { xs: 'none', md: 'inline' }, }}>Add to Cart</Box>
-                    <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, width: '3.5rem' }}>Add</Box>
+                    <Box component="span">Add to Cart</Box>
+                    {/* <Box component="span" sx={{ display: { xs: 'inline', md: 'none' }, }}>Add</Box> */}
                 </Button>
             </ThemeProvider>
             <Modal

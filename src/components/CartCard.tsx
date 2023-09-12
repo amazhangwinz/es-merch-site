@@ -6,6 +6,7 @@ import QuantitySelector from '../components/QuanitySelector';
 // import ColourButtonCartPage from './archive/ColourButtonCartPage';
 // import SizeButtonCartPage from './archive/SizeButtonCartPage';
 // import SizeSelector from '../components/SizeSelector';
+// import { cartContext } from '../App';
 import { Box, Typography } from '@mui/material';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CartRemovalModal from './CartRemovalModal';
@@ -75,6 +76,7 @@ const CartCard = (props: Prop) => {
 	const [quantity, setQuantity] = useState(props.qty);
 	// const total = Math.round((props.unitPrice * quantity + Number.EPSILON) * 100) / 100;
 	// const [size, setSize] = useState(props.size);
+	// const { cart, setCart } = React.useContext(cartContext);
 
 	const navigate = useNavigate();
 	const productPage = (prodName: string) => {
@@ -152,65 +154,62 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '20%' }}>
 					{/* <Quantity count={quantity} onCountChange={setQuantity} /> */}
-					<QuantitySelector size='medium' width={80} qty={quantity} setQty={setQuantity}></QuantitySelector>
+					<QuantitySelector width={80} qty={quantity} setQty={setQuantity}></QuantitySelector>
 					{handleChangeQuantity()}
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
 					{/**MUI ALSO HAS ICON BUTTONS, ALSO REMEMBER THE SIDE EFFECT CHANGES USE CONTEXT TOO */}
 					<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
-				</StyledProperty>
+				</StyledProperty >
 
 				<StyledProperty style={{ width: '20%', display: 'flex', flexDirection: 'column' }}>
 					<StyledTitle>${props.total}</StyledTitle>
 					{perItem()}
 				</StyledProperty>
-			</Box>
+			</Box >
 			<Box sx={{ display: { md: "none", xs: "flex", borderTop: "1px solid #d9d9d9", maxWidth: "370px" } }}>
 				<Box sx={{ display: "flex", flexDirection: "column" }}>
 					<Box sx={{ display: "flex", alignContent: "start" }}>
 						<Box sx={{ margin: ".5rem", flexGrow: 1 }}>
 							<LazyLoadImage style={{ height: "8rem" }} onClick={() => { productPage(props.title) }} src={props.image} alt="" />
 						</Box>
-						<Box sx={{ display: "flex", flexDirection: "row" }}>
-							<Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
-								<Typography onClick={() => { productPage(props.title) }} sx={{
-									cursor: 'pointer',
-									color: "#1C3A59",
-									fontFamily: "Montserrat",
-									fontSize: "1.3rem",
-									fontStyle: "normal",
-									fontWeight: "800",
-									lineHeight: "normal",
-									mb: 1,
-								}}>{props.title}</Typography>
-								<Typography sx={{
-									color: "#1C3A59",
-									fontFamily: "Montserrat",
-									fontSize: "1rem",
-									fontStyle: "normal",
-									fontWeight: "600",
-									lineHeight: "normal",
+						<Box sx={{ justifyContent: "center", margin: ".5rem", flexGrow: 2, alignContent: "center" }}>
+							<Typography onClick={() => { productPage(props.title) }} sx={{
+								cursor: 'pointer',
+								color: "#1C3A59",
+								fontFamily: "Montserrat",
+								fontSize: "1.3rem",
+								fontStyle: "normal",
+								fontWeight: "800",
+								lineHeight: "normal",
+								mb: 1,
+							}}>{props.title}</Typography>
+							<Typography sx={{
+								color: "#1C3A59",
+								fontFamily: "Montserrat",
+								fontSize: "1rem",
+								fontStyle: "normal",
+								fontWeight: "600",
+								lineHeight: "normal",
 
-								}}>{props.size}</Typography>
-								<Typography sx={{
-									color: "#1C3A59",
-									fontFamily: "Montserrat",
-									fontSize: "1rem",
-									fontStyle: "normal",
-									fontWeight: "600",
-									lineHeight: "normal",
-									mb: 2,
-								}}>${props.unitPrice}</Typography>
-
-
-							</Box>
+							}}>{props.size}</Typography>
+							<Typography sx={{
+								color: "#1C3A59",
+								fontFamily: "Montserrat",
+								fontSize: "1rem",
+								fontStyle: "normal",
+								fontWeight: "600",
+								lineHeight: "normal",
+								mb: 2,
+							}}>${props.unitPrice}</Typography>
 							<Box sx={{ display: "flex", justifyContent: "flex-start" }}>
 								<QuantitySelector width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
+
 							</Box>
 						</Box>
 					</Box>
-					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "flex-start", paddingTop: '1px' }}>
+					<Box sx={{ display: "flex", justifyContent: "space-evenly", m: 1, alignContent: "flex-start", borderTop: "1.5px solid #d9d9d9", paddingTop: '1px' }}>
 						<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 
 						<Typography sx={{

@@ -1,4 +1,5 @@
-import { Box, Button, TextField } from '@mui/material';
+import { Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import ExpandIcon from '@mui/icons-material/ExpandMore';
 import React from 'react'
 import styled from "styled-components"
 import OrderSummaryItem from "../components/OrderSummaryItem";
@@ -146,9 +147,40 @@ const Checkoutpage = () => {
   }
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
+    // console.log(cart)
     e.preventDefault();
     let collected = 'false'
-    let the_original_s_num = 0
+    let pastel_nights = ''
+    let morning_green = ''
+    let midnight_blue = ''
+    let silvery_moon = ''
+
+    for (const item of cart) {
+      // console.log(item.name)
+      if (item.name === 'Pastel Nights') {
+        if (pastel_nights) {
+          pastel_nights += ' , '
+        }
+        pastel_nights += `${item.size} ${item.quantity}`
+      } else if (item.name === 'The Original') {
+        if (morning_green) {
+          morning_green += ' , '
+        }
+        morning_green += `${item.size} ${item.quantity}`
+        // console.log(morning_green)
+      } else if (item.name === 'Midnight Blue') {
+        if (midnight_blue) {
+          midnight_blue += ' , '
+        }
+        midnight_blue += `${item.size} ${item.quantity}`
+      } else if (item.name === 'Silvery Moon') {
+        if (silvery_moon) {
+          silvery_moon += ' , '
+        }
+        silvery_moon += `${item.size} ${item.quantity}`
+      }
+    }
+    /*let the_original_s_num = 0
     let the_original_m_num = 0
     let the_original_l_num = 0
     let sketchbook_s_num = 0
@@ -188,9 +220,9 @@ const Checkoutpage = () => {
         pastel_nights_l_num += item.quantity
       }
     }
-
+    */
     const proof_of_purchase = await handleFirebaseUpload()
-
+    /*
     let the_original_s = the_original_s_num.toString()
     let the_original_m = the_original_m_num.toString()
     let the_original_l = the_original_l_num.toString()
@@ -200,20 +232,15 @@ const Checkoutpage = () => {
     let pastel_nights_s = pastel_nights_s_num.toString()
     let pastel_nights_m = pastel_nights_m_num.toString()
     let pastel_nights_l = pastel_nights_l_num.toString()
-
+    */
     const objt = {
       name,
       email,
       zid,
-      the_original_s,
-      the_original_m,
-      the_original_l,
-      sketchbook_s,
-      sketchbook_m,
-      sketchbook_l,
-      pastel_nights_s,
-      pastel_nights_m,
-      pastel_nights_l,
+      pastel_nights,
+      morning_green,
+      midnight_blue,
+      silvery_moon,
       payment,
       paymentUploaded,
       collected,
@@ -259,12 +286,35 @@ const Checkoutpage = () => {
               {!paymentUploaded && paymentTouched ? <br></br> : null}
               {/* <AttachImage type="file" id = "proofOfPurchase" name = "proofOfPurchase"></AttachImage> */}
               {/* <AttachImage type="file" id="phoneNumber" name="phoneNumber" onBlur={handleFileBlur} onChange={e => handleFileUpload(e)}></AttachImage><br></br> */}
+              <Box sx={{ mb: '1rem' }}>
+                <Accordion sx={{ px: '1rem' }}>
+                  <AccordionSummary
+                    expandIcon={<ExpandIcon />}
+                    aria-controls="panel1a-content"
+                  >
+                    <Typography sx={{ fontWeight: 'bold' }}>Paying for your Merch</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails sx={{ borderTop: '2px solid #666363' }}>
+                    <Typography sx={{ fontSize: '18px' }}>
+                      Transfer to the following account to pay for your merchandise:
+                    </Typography>
+                    <Typography><strong>Account Name:</strong> UNSW Engineering Society</Typography>
+                    <Typography><strong>BSB:</strong> 062-303</Typography>
+                    <Typography><strong> Account Number:</strong> 1076 1538</Typography>
+                    <br />
+                    <Typography><strong>IMPORTANT</strong></Typography>
+                    <Typography>To pay for your merch, in your bank transfer, you must fill the 'Description on your statement' with your zID and 'MERCH23'. For Example: z1234567 MERCH23</Typography>
+                    <br />
+                    <Typography>Note: This purchase is only a pre-order. Engsoc will announce when your merch is ready for pickup</Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </Box>
               <ImageInput onBlur={handleFileBlur} selectedFile={payment} setSelectedFile={setPayment} uploaded={paymentUploaded} setUploaded={setPaymentUploaded} />
             </Container>
             <CustomButton type="button" onClick={routeChangeSubmit}>Submit</CustomButton>
             <CheckoutErrorModal open={showModal} onClose={handleClose} />
           </CustomForm>
-        </Box>
+        </Box >
         <Box sx={{ width: { md: '30%', xs: '100%' } }}>
           <CustomOrderSummary>
             <div>
@@ -288,8 +338,8 @@ const Checkoutpage = () => {
             <Button onClick={routeChangeUpdateCart}>Update Cart</Button>
           </CustomOrderSummary>
         </Box>
-      </Box>
-    </Box>
+      </Box >
+    </Box >
   )
 }
 
