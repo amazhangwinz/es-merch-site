@@ -154,7 +154,7 @@ const CartCard = (props: Prop) => {
 				</StyledProperty>
 				<StyledProperty style={{ width: '20%' }}>
 					{/* <Quantity count={quantity} onCountChange={setQuantity} /> */}
-					<QuantitySelector size='medium' width={80} qty={quantity} setQty={setQuantity}></QuantitySelector>
+					<QuantitySelector width={80} qty={quantity} setQty={setQuantity}></QuantitySelector>
 					{handleChangeQuantity()}
 				</StyledProperty>
 				<StyledProperty style={{ width: '10%' }}>
@@ -194,7 +194,7 @@ const CartCard = (props: Prop) => {
 								mb: 3,
 							}}>{props.size}</Typography>
 							<Box sx={{ display: "flex", justifyContent: "space-around" }}>
-								<QuantitySelector size='small' width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
+								<QuantitySelector width={10} qty={quantity} setQty={setQuantity}></QuantitySelector>
 								{handleChangeQuantity()}
 								<CartRemovalModal title={props.title} image={props.image} unitPrice={props.unitPrice} qty={props.qty} size={props.size} />
 							</Box>
