@@ -146,9 +146,40 @@ const Checkoutpage = () => {
   }
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
+    // console.log(cart)
     e.preventDefault();
     let collected = 'false'
-    let the_original_s_num = 0
+    let pastel_nights = ''
+    let morning_green = ''
+    let midnight_blue = ''
+    let silvery_moon = ''
+
+    for (const item of cart) {
+      // console.log(item.name)
+      if (item.name === 'Pastel Nights') {
+        if (pastel_nights) {
+          pastel_nights += ' , '
+        }
+        pastel_nights += `${item.size} ${item.quantity}`
+      } else if (item.name === 'The Original') {
+        if (morning_green) {
+          morning_green += ' , '
+        }
+        morning_green += `${item.size} ${item.quantity}`
+        // console.log(morning_green)
+      } else if (item.name === 'Midnight Blue') {
+        if (midnight_blue) {
+          midnight_blue += ' , '
+        }
+        midnight_blue += `${item.size} ${item.quantity}`
+      } else if (item.name === 'Silvery Moon') {
+        if (silvery_moon) {
+          silvery_moon += ' , '
+        }
+        silvery_moon += `${item.size} ${item.quantity}`
+      }
+    }
+    /*let the_original_s_num = 0
     let the_original_m_num = 0
     let the_original_l_num = 0
     let sketchbook_s_num = 0
@@ -188,9 +219,9 @@ const Checkoutpage = () => {
         pastel_nights_l_num += item.quantity
       }
     }
-
+    */
     const proof_of_purchase = await handleFirebaseUpload()
-
+    /*
     let the_original_s = the_original_s_num.toString()
     let the_original_m = the_original_m_num.toString()
     let the_original_l = the_original_l_num.toString()
@@ -200,20 +231,15 @@ const Checkoutpage = () => {
     let pastel_nights_s = pastel_nights_s_num.toString()
     let pastel_nights_m = pastel_nights_m_num.toString()
     let pastel_nights_l = pastel_nights_l_num.toString()
-
+    */
     const objt = {
       name,
       email,
       zid,
-      the_original_s,
-      the_original_m,
-      the_original_l,
-      sketchbook_s,
-      sketchbook_m,
-      sketchbook_l,
-      pastel_nights_s,
-      pastel_nights_m,
-      pastel_nights_l,
+      pastel_nights,
+      morning_green,
+      midnight_blue,
+      silvery_moon,
       payment,
       paymentUploaded,
       collected,
