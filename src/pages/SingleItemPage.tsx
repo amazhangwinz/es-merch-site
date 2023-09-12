@@ -21,7 +21,7 @@ const ImagePreviewContainer = () => ({
   background: '#ECECEC',
   // margin:5rem;
   // border-style: dotted;
-  alignItems: 'center',
+  alignItems: 'flex-start',
   flexDirection: { md: 'row', xs: "column" },
 })
 
@@ -36,6 +36,7 @@ const ImageDetailContainer =
   alignItems: "center",
   flexDirection: "column",
   marginBottom: { md: 0, xs: "1rem" },
+  ml: "5vw",
   // padding: 2rem;
 }
 
@@ -147,13 +148,13 @@ const SingleItemPage = (prop: SingleItemProp) => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" } }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: { md: "space-evenly", xs: "center" }, }}>
       <Breadcrumbs sx={stylebreadcrumbs}>
         <Link color={"inherit"} underline={"hover"} onClick={() => { navigate('/') }}>Home</Link>
         <Link color={"inherit"} underline={"none"}>{itemTitle}</Link>
       </Breadcrumbs>
       <Box sx={ImagePreviewContainer}>
-        <Box sx={{ m: { md: 1, xs: 0 } }}>
+        <Box sx={{ alignItems: "flex-start" }}>
           <ImagePreview itemName={itemTitle} />
           {/* <ImagePreview itemName={itemTitle} heroSrc={heroSrc} setHero={setHero} /> */}
         </Box>
@@ -168,6 +169,10 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="body1" gutterBottom sx={{ mb: 0, color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
+            <Typography variant="body2" gutterBottom sx={{ mt: "1rem", color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
+              Details: {itemObj.details}
+            </Typography>
+
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
