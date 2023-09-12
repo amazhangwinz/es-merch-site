@@ -46,14 +46,6 @@ const StyledImage = styled.img`
 	object-fit: cover;
 `;
 
-const StyledPrice = styled.p`
-	margin-bottom: 0;
-	font-size: clamp(1rem, 1vw, 1.5rem);
-	font-family: Montserrat;
-    font: Regular;
-	font-weight: 500;
-    color: #1C3A59;
-`;
 
 // const StyledDescription = styled.p`
 // 	max-width: 100%;
@@ -111,11 +103,11 @@ const ItemCard = (props: Prop) => {
 			} alt={props.title} />
 			<Box component={StyledContent}>
 				{
-					<Typography sx={{ variant: { xs: 'h6', md: 'h1' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
+					<Typography sx={{ fontSize: { xs: '0.8rem', md: '2rem' }, fontFamily: 'Montserrat', fontStyle: 'normal' }}>
 						<b>{props.title}</b>
 					</Typography>
 				}
-				{
+				{/* {
 					<Typography
 						sx={{
 							display: { xs: 'none', md: 'inline-block' },
@@ -128,7 +120,7 @@ const ItemCard = (props: Prop) => {
 					>
 						{props.description}
 					</Typography>
-				}
+				} */}
 				{/* <StyledColours style={{ margin: 0, marginBottom: '2.5%'}}>
 					{data[props.index].colours.map((colour) => (
 						<div style={{paddingRight: 'clamp(0.5rem, 0.25vw, 0.5rem)', width: '100%', height: '100%'}}>
@@ -138,7 +130,7 @@ const ItemCard = (props: Prop) => {
 						</div>
 						))}
 				</StyledColours> */}
-				<StyledPrice style={{ margin: 0 }}><b>${props.price}</b></StyledPrice>
+				<Typography sx={{ m: 0, fontFamily: 'Montserrat', color: '#1C3A59', fontSize: { xs: '0.7rem', md: '1.4rem' } }}><b>${props.price}</b></Typography>
 			</Box>
 		</StyledComponent >
 	);
