@@ -166,13 +166,16 @@ const SingleItemPage = (prop: SingleItemProp) => {
             <Typography variant="body1" gutterBottom sx={{ color: '#1C3A59', fontFamily: "Montserrat", fontSize: { md: "1.5625rem", xs: "1.2rem" }, fontWeight: '400', lineHeight: "normal" }}>
               {itemObj.description}
             </Typography>
+            <Typography variant="body2" gutterBottom sx={{ color: '#374a5d', fontFamily: "Montserrat", fontSize: { md: "1.1rem", xs: "0.9rem" }, fontWeight: '400', lineHeight: "normal" }}>
+              Details: {itemObj.details}
+            </Typography>
 
           </Container>
           {/* <ColourSelector clickedButton={clickedButton} setClickedButton={setClickedButton} itemName={itemTitle}></ColourSelector> */}
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', maxWidth: { md: "none", xs: "360px" }, mt: { xs: "0.5rem" } }}>
             <QuantitySelector size='medium' width={80} qty={qty} setQty={setQty}></QuantitySelector>
             <SizeSelector size={size} setSize={setSize} />
-            <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size}  handleAddToCart={handleAddToCart}></CheckoutModal>
+            <CheckoutModal unitPrice={itemObj.price} qty={qty} image={itemObj.default} title={itemObj.name} size={size} handleAddToCart={handleAddToCart}></CheckoutModal>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', mt: { md: 3, xs: 0 }, justifyContent: "space-around" }}>
             {/* <SizeGuideModal img={itemObj.sizeguide} /> */}
