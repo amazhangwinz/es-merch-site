@@ -62,7 +62,7 @@ const ImageInput = (props: Prop) => {
       <FileUpload>
         <UploadIcon src={(props.uploaded && props.selectedFile !== undefined) ? URL.createObjectURL(props.selectedFile) : uploadImg} alt="uploaded image" />
         <Typography style={{ wordWrap: 'break-word' }}>{selectedName || "Upload Image Here"}</Typography>
-        <FileInput onChange={handleFileChange} type="file" />
+        <FileInput id='proofOfPurchase' onChange={handleFileChange} type="file" />
       </FileUpload>
     </Parent >
   )
