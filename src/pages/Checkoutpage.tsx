@@ -175,7 +175,7 @@ const Checkoutpage = () => {
           pastel_nights += ' , '
         }
         pastel_nights += `${item.size} ${item.quantity}`
-      } else if (item.name === 'The Original') {
+      } else if (item.name === 'Morning Green') {
         if (morning_green) {
           morning_green += ' , '
         }
@@ -192,6 +192,7 @@ const Checkoutpage = () => {
         }
         silvery_moon += `${item.size} ${item.quantity}`
       }
+      else{console.log(item.name)}
     }
     /*let the_original_s_num = 0
     let the_original_m_num = 0
@@ -266,7 +267,7 @@ const Checkoutpage = () => {
         objt
       )
       .then((response: any) => {
-        console.log(response);
+        // console.log(response);
       });
   };
 
