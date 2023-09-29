@@ -3,21 +3,22 @@ import CartCard from '../components/CartCard';
 // import { data } from '../Data.jsx';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button, Box } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { cartContext } from '../App';
 import CartErrorModal from '../components/CartErrorModal';
 
 
 const Cartpage = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const checkoutPage = () => {
-    if (cart.length < 1) {
+    // if (cart.length < 1) {
       setShowModal(true)
-    } else {
-      navigate({
-        pathname: '/checkout',
-      });
-    }
+    // } else {
+      // navigate({
+      //   pathname: '/checkout',
+      // });
+
+    // }
   };
 
   // popup for going to checkout with an empty cart

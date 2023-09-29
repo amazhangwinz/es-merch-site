@@ -32,16 +32,19 @@ const CartErrorModal: React.FC<CartErrorModalProps> = ({
         }}
       >
         <Typography variant="h6" component="h2">
-          <strong>Empty Cart</strong>
+          {/* <strong>Empty Cart</strong> */}
+          <strong>SALES HAVE ENDED</strong>
         </Typography>
         <Typography sx={{ mt: 2 }}>
-          Please add at least one item to the cart before proceeding to checkout
+          {/* Please add at least one item to the cart before proceeding to checkout */}
+          Sales for 2023 UNSW EngSoc Merch has closed. You can no longer purchase any items.
         </Typography>
-        <Typography sx={{ mt: 1, fontSize: 10 }}>
+        {/* <Typography sx={{ mt: 1, fontSize: 10 }}>
           <em>You can't buy nothing now, can you?</em>
-        </Typography>
+        </Typography> */}
         <Button variant="contained" onClick={() => navigate('/')} sx={{ mt: 2, mr: 2 }}>
-          Go Shopping
+          {/* Go Shopping */}
+          Close
         </Button>
       </Box>
     </Modal >

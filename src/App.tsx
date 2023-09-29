@@ -5,9 +5,9 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Homepage from './pages/Homepage';
 import Cartpage from './pages/Cartpage';
-import Confirmationpage from './pages/Confirmation';
+// import Confirmationpage from './pages/Confirmation';
 import SingleItemPage from './pages/SingleItemPage';
-import Checkoutpage from './pages/Checkoutpage';
+// import Checkoutpage from './pages/Checkoutpage';
 import { styled } from 'styled-components';
 
 
@@ -55,9 +55,9 @@ function App() {
               <Routes>
                 <Route path='/' element={<Homepage />} />
                 <Route path='/cart' element={<Cartpage />} />
-                <Route path='/order-success' element={<Confirmationpage />} />
+                {/* <Route path='/order-success' element={<Confirmationpage />} /> */}
                 <Route path='/item' element={<SingleItemPage />} />
-                <Route path='/checkout' element={<Checkoutpage />} />
+                {/* <Route path='/checkout' element={<Checkoutpage />} /> */}
               </Routes>
             </div>
           </Main>
